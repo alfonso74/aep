@@ -1,0 +1,938 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 3.7.2.v20120213 Build &lt;3.7.2.v20120214-1408></property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="layoutPreference">auto layout</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="AEP Produccion" id="6">
+            <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>metadataBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledMetadataBidiFormatStr</name>
+                </ex-property>
+                <ex-property>
+                    <name>contentBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledContentBidiFormatStr</name>
+                </ex-property>
+            </list-property>
+            <property name="odaDriverClass">com.mysql.jdbc.Driver</property>
+            <property name="odaURL">jdbc:mysql://servidor:3306/aep</property>
+            <property name="odaUser">carlos</property>
+            <encrypted-property name="odaPassword" encryptionID="base64">bG90dXNub3Rlcw==</encrypted-property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Productos" id="7">
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">idPRODUCTO</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">idTIPO</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">DESCRIPCION</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">ESTADO</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">COSTO</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">VENTA0</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">VENTA1</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">VENTA2</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">VENTA3</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">TIPO_RESERVA</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">isTOUR</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">12</property>
+                        <property name="name">TOUR_YN</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">13</property>
+                        <property name="name">HOTELAEP_YN</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">14</property>
+                        <property name="name">MODIFICABLE_YN</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">15</property>
+                        <property name="name">COMENTARIO</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">16</property>
+                        <property name="name">FECHA_CREACION</property>
+                        <property name="dataType">date-time</property>
+                    </structure>
+                    <structure>
+                        <property name="position">17</property>
+                        <property name="name">FECHA_MODIFICACION</property>
+                        <property name="dataType">date-time</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">AEP Produccion</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">idPRODUCTO</property>
+                    <property name="nativeName">idPRODUCTO</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">idTIPO</property>
+                    <property name="nativeName">idTIPO</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">DESCRIPCION</property>
+                    <property name="nativeName">DESCRIPCION</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">ESTADO</property>
+                    <property name="nativeName">ESTADO</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">COSTO</property>
+                    <property name="nativeName">COSTO</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">VENTA0</property>
+                    <property name="nativeName">VENTA0</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">VENTA1</property>
+                    <property name="nativeName">VENTA1</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">VENTA2</property>
+                    <property name="nativeName">VENTA2</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">VENTA3</property>
+                    <property name="nativeName">VENTA3</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">TIPO_RESERVA</property>
+                    <property name="nativeName">TIPO_RESERVA</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">11</property>
+                    <property name="name">isTOUR</property>
+                    <property name="nativeName">isTOUR</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">12</property>
+                    <property name="name">TOUR_YN</property>
+                    <property name="nativeName">TOUR_YN</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">13</property>
+                    <property name="name">HOTELAEP_YN</property>
+                    <property name="nativeName">HOTELAEP_YN</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">14</property>
+                    <property name="name">MODIFICABLE_YN</property>
+                    <property name="nativeName">MODIFICABLE_YN</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">15</property>
+                    <property name="name">COMENTARIO</property>
+                    <property name="nativeName">COMENTARIO</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">16</property>
+                    <property name="name">FECHA_CREACION</property>
+                    <property name="nativeName">FECHA_CREACION</property>
+                    <property name="dataType">date-time</property>
+                </structure>
+                <structure>
+                    <property name="position">17</property>
+                    <property name="name">FECHA_MODIFICACION</property>
+                    <property name="nativeName">FECHA_MODIFICACION</property>
+                    <property name="dataType">date-time</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select *
+from productos
+order by descripcion]]></xml-property>
+        </oda-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="TipoProductos" id="8">
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">idTIPO</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">DESCRIPCION</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">TOUR_YN</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">AEP Produccion</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">idTIPO</property>
+                    <property name="nativeName">idTIPO</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">DESCRIPCION</property>
+                    <property name="nativeName">DESCRIPCION</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">TOUR_YN</property>
+                    <property name="nativeName">TOUR_YN</property>
+                    <property name="dataType">integer</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select *
+from tipo_productos]]></xml-property>
+        </oda-data-set>
+        <joint-data-set name="ListadoProductos" id="9">
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">Productos::idPRODUCTO</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">Productos::idTIPO</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">Productos::DESCRIPCION</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">Productos::ESTADO</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">Productos::COSTO</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">Productos::VENTA0</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">Productos::VENTA1</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">Productos::VENTA2</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">Productos::VENTA3</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">Productos::TIPO_RESERVA</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">Productos::isTOUR</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">12</property>
+                        <property name="name">Productos::TOUR_YN</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">13</property>
+                        <property name="name">Productos::HOTELAEP_YN</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">14</property>
+                        <property name="name">Productos::MODIFICABLE_YN</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">15</property>
+                        <property name="name">Productos::COMENTARIO</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">16</property>
+                        <property name="name">Productos::FECHA_CREACION</property>
+                        <property name="dataType">date-time</property>
+                    </structure>
+                    <structure>
+                        <property name="position">17</property>
+                        <property name="name">Productos::FECHA_MODIFICACION</property>
+                        <property name="dataType">date-time</property>
+                    </structure>
+                    <structure>
+                        <property name="position">18</property>
+                        <property name="name">TipoProductos::idTIPO</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">19</property>
+                        <property name="name">TipoProductos::DESCRIPCION</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">20</property>
+                        <property name="name">TipoProductos::TOUR_YN</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <simple-property-list name="dataSets">
+                <value>Productos</value>
+                <value>TipoProductos</value>
+            </simple-property-list>
+            <list-property name="joinConditions">
+                <structure>
+                    <property name="joinType">inner</property>
+                    <property name="joinOperator">eq</property>
+                    <property name="leftDataSet">Productos</property>
+                    <property name="rightDataSet">TipoProductos</property>
+                    <expression name="leftExpression">dataSetRow["idTIPO"]</expression>
+                    <expression name="rightExpression">dataSetRow["idTIPO"]</expression>
+                </structure>
+            </list-property>
+        </joint-data-set>
+    </data-sets>
+    <styles>
+        <style name="crosstab" id="4">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="crosstab-cell" id="5">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <property name="orientation">auto</property>
+            <property name="topMargin">1in</property>
+            <property name="leftMargin">1in</property>
+            <property name="bottomMargin">1in</property>
+            <property name="rightMargin">1in</property>
+            <property name="showHeaderOnFirst">false</property>
+            <property name="showFooterOnLast">true</property>
+            <property name="headerHeight">0.5in</property>
+            <page-footer>
+                <grid id="187">
+                    <property name="borderTopColor">#004080</property>
+                    <property name="borderTopStyle">solid</property>
+                    <property name="borderTopWidth">medium</property>
+                    <property name="marginTop">0pt</property>
+                    <property name="width">100%</property>
+                    <column id="188"/>
+                    <column id="189"/>
+                    <row id="190">
+                        <cell id="191">
+                            <text id="193">
+                                <property name="contentType">html</property>
+                                <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                            </text>
+                        </cell>
+                        <cell id="192">
+                            <text id="194">
+                                <property name="contentType">html</property>
+                                <text-property name="content"><![CDATA[<B><value-of>pageNumber</value-of></B>]]></text-property>
+                            </text>
+                        </cell>
+                    </row>
+                </grid>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <grid id="83">
+            <property name="height">0.9479166666666666in</property>
+            <property name="width">6.489583333333333in</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">Column Binding</property>
+                    <text-property name="displayName">Fecha actual</text-property>
+                    <expression name="expression">new Date()</expression>
+                    <property name="dataType">date-time</property>
+                </structure>
+            </list-property>
+            <column id="84"/>
+            <column id="85"/>
+            <column id="86"/>
+            <row id="87">
+                <property name="height">0.6041666666666666in</property>
+                <cell id="88">
+                    <image id="215">
+                        <property name="height">38px</property>
+                        <property name="width">28px</property>
+                        <property name="source">embed</property>
+                        <property name="imageName">logoAnconSmall.gif</property>
+                    </image>
+                </cell>
+                <cell id="89">
+                    <text id="155">
+                        <property name="contentType">html</property>
+                        <text-property name="content"><![CDATA[<CENTER>
+<FONT size="5" color=blue>
+Reporte de Productos AEP
+</FONT>
+<BR>
+<I>Solo para uso interno</I>
+</CENTER>]]></text-property>
+                    </text>
+                </cell>
+                <cell id="90">
+                    <grid id="149">
+                        <property name="width">100%</property>
+                        <column id="150"/>
+                        <column id="151"/>
+                        <row id="152">
+                            <cell id="153">
+                                <label id="156">
+                                    <property name="textAlign">right</property>
+                                    <text-property name="text">Fechax:</text-property>
+                                </label>
+                            </cell>
+                            <cell id="154">
+                                <data id="157">
+                                    <structure name="dateTimeFormat">
+                                        <property name="category">Long Date</property>
+                                        <property name="pattern">Long Date</property>
+                                    </structure>
+                                    <property name="resultSetColumn">Column Binding</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+            </row>
+            <row id="91">
+                <property name="height">0.25in</property>
+                <cell id="92"/>
+                <cell id="93"/>
+                <cell id="94"/>
+            </row>
+        </grid>
+        <table id="95">
+            <property name="masterPage">Simple MasterPage</property>
+            <property name="pageBreakAfter">auto</property>
+            <property name="pageBreakBefore">auto</property>
+            <property name="height">0.9270833333333334in</property>
+            <property name="width">6.135416666666667in</property>
+            <property name="dataSet">ListadoProductos</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">Productos::idPRODUCTO</property>
+                    <expression name="expression">dataSetRow["Productos::idPRODUCTO"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">Productos::idTIPO</property>
+                    <expression name="expression">dataSetRow["Productos::idTIPO"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">Productos::DESCRIPCION</property>
+                    <text-property name="displayName">PRODUCTO</text-property>
+                    <expression name="expression">dataSetRow["Productos::DESCRIPCION"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">Productos::ESTADO</property>
+                    <expression name="expression">dataSetRow["Productos::ESTADO"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">Productos::COSTO</property>
+                    <text-property name="displayName">COSTO</text-property>
+                    <expression name="expression">dataSetRow["Productos::COSTO"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">Productos::VENTA0</property>
+                    <text-property name="displayName">VENTA0</text-property>
+                    <expression name="expression">dataSetRow["Productos::VENTA0"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">Productos::VENTA1</property>
+                    <text-property name="displayName">VENTA1</text-property>
+                    <expression name="expression">dataSetRow["Productos::VENTA1"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">Productos::VENTA2</property>
+                    <text-property name="displayName">VENTA2</text-property>
+                    <expression name="expression">dataSetRow["Productos::VENTA2"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">Productos::VENTA3</property>
+                    <text-property name="displayName">VENTA3</text-property>
+                    <expression name="expression">dataSetRow["Productos::VENTA3"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">Productos::TIPO_RESERVA</property>
+                    <expression name="expression">dataSetRow["Productos::TIPO_RESERVA"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">Productos::isTOUR</property>
+                    <expression name="expression">dataSetRow["Productos::isTOUR"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">Productos::TOUR_YN</property>
+                    <expression name="expression">dataSetRow["Productos::TOUR_YN"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">Productos::HOTELAEP_YN</property>
+                    <expression name="expression">dataSetRow["Productos::HOTELAEP_YN"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">Productos::MODIFICABLE_YN</property>
+                    <expression name="expression">dataSetRow["Productos::MODIFICABLE_YN"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">Productos::COMENTARIO</property>
+                    <expression name="expression">dataSetRow["Productos::COMENTARIO"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">Productos::FECHA_CREACION</property>
+                    <expression name="expression">dataSetRow["Productos::FECHA_CREACION"]</expression>
+                    <property name="dataType">date-time</property>
+                </structure>
+                <structure>
+                    <property name="name">Productos::FECHA_MODIFICACION</property>
+                    <expression name="expression">dataSetRow["Productos::FECHA_MODIFICACION"]</expression>
+                    <property name="dataType">date-time</property>
+                </structure>
+                <structure>
+                    <property name="name">TipoProductos::idTIPO</property>
+                    <expression name="expression">dataSetRow["TipoProductos::idTIPO"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">TipoProductos::DESCRIPCION</property>
+                    <text-property name="displayName">TIPO</text-property>
+                    <expression name="expression">dataSetRow["TipoProductos::DESCRIPCION"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">TipoProductos::TOUR_YN</property>
+                    <expression name="expression">dataSetRow["TipoProductos::TOUR_YN"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+            </list-property>
+            <property name="repeatHeader">true</property>
+            <property name="pageBreakInterval">35</property>
+            <column id="120">
+                <property name="width">0.4375in</property>
+            </column>
+            <column id="121">
+                <property name="width">2.7916666666666665in</property>
+                <property name="pageBreakAfter">auto</property>
+            </column>
+            <column id="122"/>
+            <column id="123"/>
+            <column id="124"/>
+            <column id="125"/>
+            <column id="126"/>
+            <header>
+                <row id="96">
+                    <property name="verticalAlign">middle</property>
+                    <cell id="97">
+                        <property name="fontWeight">bold</property>
+                        <property name="borderBottomColor">#004080</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <property name="textAlign">center</property>
+                    </cell>
+                    <cell id="98">
+                        <property name="fontWeight">bold</property>
+                        <property name="borderBottomColor">#004080</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <property name="textAlign">center</property>
+                        <label id="175">
+                            <text-property name="text">Producto</text-property>
+                        </label>
+                    </cell>
+                    <cell id="99">
+                        <property name="fontWeight">bold</property>
+                        <property name="borderBottomColor">#004080</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <property name="textAlign">center</property>
+                        <label id="177">
+                            <text-property name="text">Costo</text-property>
+                        </label>
+                    </cell>
+                    <cell id="100">
+                        <property name="fontWeight">bold</property>
+                        <property name="borderBottomColor">#004080</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <property name="textAlign">center</property>
+                        <label id="179">
+                            <text-property name="text">Mínimo</text-property>
+                        </label>
+                    </cell>
+                    <cell id="101">
+                        <property name="fontWeight">bold</property>
+                        <property name="borderBottomColor">#004080</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <property name="textAlign">center</property>
+                        <label id="181">
+                            <text-property name="text">Público</text-property>
+                        </label>
+                    </cell>
+                    <cell id="102">
+                        <property name="fontWeight">bold</property>
+                        <property name="borderBottomColor">#004080</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <property name="textAlign">center</property>
+                        <label id="183">
+                            <text-property name="text">Operador</text-property>
+                        </label>
+                    </cell>
+                    <cell id="103">
+                        <property name="fontWeight">bold</property>
+                        <property name="borderBottomColor">#004080</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <property name="textAlign">center</property>
+                        <label id="185">
+                            <text-property name="text">Comisionable</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <group id="195">
+                <property name="groupName">TipoProducto</property>
+                <property name="interval">none</property>
+                <property name="sortDirection">asc</property>
+                <expression name="keyExpr">row["TipoProductos::DESCRIPCION"]</expression>
+                <structure name="toc">
+                    <expression name="expressionValue">row["TipoProductos::DESCRIPCION"]</expression>
+                </structure>
+                <property name="repeatHeader">true</property>
+                <property name="hideDetail">false</property>
+                <property name="pageBreakAfter">auto</property>
+                <property name="pageBreakBefore">auto</property>
+                <property name="pageBreakInside">auto</property>
+                <list-property name="sort">
+                    <structure>
+                        <expression name="key">row["Productos::idTIPO"]</expression>
+                        <property name="direction">asc</property>
+                    </structure>
+                </list-property>
+                <header>
+                    <row id="196">
+                        <property name="pageBreakAfter">auto</property>
+                        <cell id="197">
+                            <property name="colSpan">2</property>
+                            <property name="rowSpan">1</property>
+                            <grid id="218">
+                                <property name="width">100%</property>
+                                <column id="219">
+                                    <property name="width">0.20833333333333334in</property>
+                                </column>
+                                <column id="220"/>
+                                <row id="221">
+                                    <cell id="222">
+                                        <property name="verticalAlign">middle</property>
+                                        <image id="224">
+                                            <property name="height">8px</property>
+                                            <property name="width">8px</property>
+                                            <property name="source">embed</property>
+                                            <property name="imageName">plus.gif</property>
+                                        </image>
+                                    </cell>
+                                    <cell id="223">
+                                        <data id="212">
+                                            <property name="fontWeight">bold</property>
+                                            <property name="resultSetColumn">TipoProductos::DESCRIPCION</property>
+                                        </data>
+                                    </cell>
+                                </row>
+                            </grid>
+                        </cell>
+                        <cell id="199"/>
+                        <cell id="200"/>
+                        <cell id="201"/>
+                        <cell id="202"/>
+                        <cell id="203"/>
+                    </row>
+                </header>
+                <footer>
+                    <row id="204">
+                        <property name="pageBreakAfter">auto</property>
+                        <cell id="205"/>
+                        <cell id="206"/>
+                        <cell id="207"/>
+                        <cell id="208"/>
+                        <cell id="209"/>
+                        <cell id="210"/>
+                        <cell id="211"/>
+                    </row>
+                </footer>
+            </group>
+            <detail>
+                <row id="104">
+                    <property name="masterPage">Simple MasterPage</property>
+                    <property name="pageBreakAfter">auto</property>
+                    <property name="pageBreakBefore">auto</property>
+                    <cell id="105"/>
+                    <cell id="106">
+                        <data id="176">
+                            <property name="resultSetColumn">Productos::DESCRIPCION</property>
+                        </data>
+                    </cell>
+                    <cell id="107">
+                        <data id="178">
+                            <structure name="numberFormat">
+                                <property name="category">Fixed</property>
+                                <property name="pattern">#,##0.00</property>
+                            </structure>
+                            <property name="textAlign">right</property>
+                            <property name="resultSetColumn">Productos::COSTO</property>
+                        </data>
+                    </cell>
+                    <cell id="108">
+                        <data id="180">
+                            <structure name="numberFormat">
+                                <property name="category">Fixed</property>
+                                <property name="pattern">#,##0.00</property>
+                            </structure>
+                            <property name="textAlign">right</property>
+                            <property name="resultSetColumn">Productos::VENTA0</property>
+                        </data>
+                    </cell>
+                    <cell id="109">
+                        <data id="182">
+                            <structure name="numberFormat">
+                                <property name="category">Fixed</property>
+                                <property name="pattern">#,##0.00</property>
+                            </structure>
+                            <property name="textAlign">right</property>
+                            <property name="resultSetColumn">Productos::VENTA1</property>
+                        </data>
+                    </cell>
+                    <cell id="110">
+                        <data id="184">
+                            <structure name="numberFormat">
+                                <property name="category">Fixed</property>
+                                <property name="pattern">#,##0.00</property>
+                            </structure>
+                            <property name="textAlign">right</property>
+                            <property name="resultSetColumn">Productos::VENTA2</property>
+                        </data>
+                    </cell>
+                    <cell id="111">
+                        <data id="186">
+                            <structure name="numberFormat">
+                                <property name="category">Fixed</property>
+                                <property name="pattern">#,##0.00</property>
+                            </structure>
+                            <property name="textAlign">right</property>
+                            <property name="resultSetColumn">Productos::VENTA3</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="112">
+                    <property name="pageBreakAfter">auto</property>
+                    <cell id="113"/>
+                    <cell id="114"/>
+                    <cell id="115"/>
+                    <cell id="116"/>
+                    <cell id="117"/>
+                    <cell id="118"/>
+                    <cell id="119"/>
+                </row>
+            </footer>
+        </table>
+    </body>
+    <list-property name="images">
+        <structure>
+            <property name="name">logoAnconSmall.gif</property>
+            <property name="data">
+                R0lGODlhHAAmAPcAAIQ+HCSiPNS2rDRyHKzetFxaHLSGbFy6dPTm5ASOHJxiRGxOHHzKjOz67CSePESu
+                VJzWrMTmzERmHBSWLHxGHIzOnAyGHNzy5BySLPz+/DSmTNTGvLzixExiHLyWhHTCfASSHKRuVJRWPITK
+                lOz69FSyZKzatMzq1DxuHIxKLPTy7IRCHDSmRCx2HKzevFReHLSGdGS6dAyOHGRWHITKjEyaTKTWrERq
+                HBSaLHRKHJTOnByCHOTy5NzGvJxuXPT69FS2ZNTq1P9Eff8AAG0+gAUFU5ED1XwAdxXq6goEBIIHB3wA
+                AAAMcAAAPhUAfQAAAGAA2AMA5wAAEgAAAJBgh4DI3BhP1AAAd6hQcF/nPhUSfQAAAADg+ACuDABEfQAA
+                AH7gAACuAABEAMAAAAAAYAAAyAAATwAAAP/sAf/mAP8SAP8AAP8QUv/gAP/UAf93AQA0uAAF6wAGEgAA
+                AAAgoQAArQAARAAAAAA+0QAFtBUD1AAAd1MSyH8AvgAARwACACABPuYABRIAAwAAAC+xUA6L6ILUEnx3
+                ANto9AUA64LaEnx3AMCAANzmAE8SAAAAAKg0AF/nAAESAAAAAGwkBwDgAADUAAB3AFxTq+V/NxIAkQAA
+                fDQ4AADnAAASAMAAADiDAPkqABKCAAB8ABgAAO4AAJAAAHwAAHAAAAUAAJEAAHwAAP8AAP8AAP8AAP8A
+                AG0AKAUBAJEAAHwAAErn//Yq/4CC/3x8/wBcKADnABUSAAAAAADCrAAq8gCCEgB8AKgAAF8AABUAAAAA
+                AAAMZAEA6ACwEgAAAAC+/gA+WACCSwB8AFf/RPb/6ID/Enz/AEhgW+foYhISTgAAAKj3eF8+6BWCEgB8
+                AABsvgBvPgBOggAAfEEoCDuW6T9OEncAABsA1rMB/9QA/3cAf1Rc4Obn6BISEgAAACwADAABAAAAsAAA
+                AAAWvgA/PhCCggF8fOMBDJQAANQAsHcAAEkAU2Ywf9YwAHcAAOoBAAQAAAcAAAAAAAwwbgDn/QASRgAA
+                ACH5BAEAABkALAAAAAAcACYABwj/ADMIHEiwoMGDCAmSOJAARAkSCSMKbOAABIiGHyQm/MGi4UUQODQO
+                JHFipMWPF4OIrIADxAOIGYCc/HhBowuPCUYIhNDQo06BLh64OBgDpQaBPz7igDAwRk8OBitabDjwAUiV
+                Aivg/GkSJQgeQIH8GHihp8UKBSN4tHgUYYSTDSMUDIKSBcyDdJUe/GCRxdgMDDQk0HAAqkCpIGIgtDEC
+                IomOMxM8zOACpA6NJxB7LSEwyN+IJ3CsTWAWBNOREEoabDBhZosWUy86GNm6bUENUzskuCEhwQILJ4dm
+                0HFS9UC+PRckkCDBQo7YijPgjkvwwlQUFiS0YC5B98kJAj8CtSk4YmqBATsKaF8wwGtJqw8+C3yAc0YL
+                ADkAACANYkdDpj/YcNABHyWwAwX66UfaAsqBwNVBPLR0kn4IUiABBcr9J1EQuF20QIIUAmcRWBqVB4IE
+                IBYgoksiCXTBBxggCAAK/CWAA1YtZrDBCvrVMAINI9hwV44G6LdCjgmloF8ISB60gYw+NGmQB0YyKSVB
+                IiQY5ZUCIcAjgltyKQAAPK6gAJcCwcBjgiqg6QOZZK7QA5poBgQAOw==
+            </property>
+        </structure>
+        <structure>
+            <property name="name">twistcb.gif</property>
+            <property name="data">
+                R0lGODlhDAAPAJH/AMDAwICAgAAAAAAAACH5BAEAAAAALAAAAAAMAA8AQAIahI8pywnr0AqxOiYqprb7
+                3DUaFmECJ00aihQAOw==
+            </property>
+        </structure>
+        <structure>
+            <property name="name">plus.gif</property>
+            <property name="data">
+                R0lGODlhCwALAPdTAP////z8/b3I4LfD3Z2u0ZSlzJCiyo+iynaNv3GKvHGJvGqDuWZ/t2J8tVx3slt3
+                sUxqqklnqUZlp0V230VlqEVkpkBuzUBtzUBgpTxcojtitjthtjpgtTpcozlgtjlbojhftDherjhZoDZc
+                rzZcrjZcrTZZozVcszVYozVXojVXoTVXoDRXoDRWoTRWnzRVnjRVnTNXpTNWnzNVnTNUmzNSmDNRlzJU
+                nTJPkjFUoTFUnjFRlzFQlzBUoTBTnTBSnS5RnS1OlSlDeClBdyhEfyhBcyhBcihAcSg/cCZLnCZLmSAz
+                WyAyWSAyWB4vUxpBkhpAkxQ7kBM6kAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                ACH5BAEAAFMALAAAAAALAAsAAAh7AD0IOVLEiEEjRZA4uQCDhgogSnSsaIGjiQUULn5AWIBBB4saSyyY
+                8CHlAIAHUGSAtNAjAgIBAAgk6MAjZBIFAHLmpBAkZA4JDQYAKMDgw46QI6MYCODgicqQKV7cyFBBxAwX
+                NphM2MAVxAkOGzSEGBKDxIizaEmUIBIQADs=
+            </property>
+        </structure>
+    </list-property>
+</report>

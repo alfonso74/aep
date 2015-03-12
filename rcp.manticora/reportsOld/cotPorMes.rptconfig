@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.17" id="1">
+    <list-property name="configVars">
+        <structure>
+            <property name="name">__isdisplay__aaaa_176_0</property>
+            <property name="value">2008</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__mes_177_1</property>
+            <property name="value">Enero</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__estado_179_2</property>
+            <property name="value">Cancelada</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__ordenarPor_180_3</property>
+            <property name="value">Cotizacion</property>
+        </structure>
+        <structure>
+            <property name="name">aaaa_176_4</property>
+            <property name="value">2008</property>
+        </structure>
+        <structure>
+            <property name="name">aaaa_176_type_</property>
+            <property name="value">integer</property>
+        </structure>
+        <structure>
+            <property name="name">aaaa_176_expr_</property>
+            <property name="value">dataSetRow["yyyy"]</property>
+        </structure>
+        <structure>
+            <property name="name">ordenarPor_180_5</property>
+            <property name="value">idCOTIZACION</property>
+        </structure>
+        <structure>
+            <property name="name">ordenarPor_180_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">mes_177_6</property>
+            <property name="value">1</property>
+        </structure>
+        <structure>
+            <property name="name">mes_177_type_</property>
+            <property name="value">integer</property>
+        </structure>
+        <structure>
+            <property name="name">estado_179_7</property>
+            <property name="value">C</property>
+        </structure>
+        <structure>
+            <property name="name">estado_179_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">estado_179_expr_</property>
+            <property name="value">dataSetRow["CODIGO"]</property>
+        </structure>
+    </list-property>
+</report>

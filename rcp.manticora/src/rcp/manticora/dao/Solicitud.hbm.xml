@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+	<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="rcp.manticora.model.Solicitud" table="SOLICITUDES">
+		<id name="idSolicitud" column="idSOLICITUD" unsaved-value="-1">
+			<generator class="native"/>
+		</id>
+		<property name="idVendedor"/>
+		<property name="dspVendedor"
+			formula="(select concat(v.nombre, ' ', v.apellido) from vendedores v
+				where v.idVendedor = idVendedor)"/>
+		<property name="nombre"/>
+		<property name="apellido"/>
+		<property name="telefono"/>
+		<property name="celular"/>
+		<property name="email"/>
+		<property name="idPais"/>
+		<property name="dspPais"
+			formula="(select p.descripcion from paises p
+				where p.idPais = idPais)"/>
+		<property name="fechaInicio"
+			type = "date"
+			column = "FECHA_INICIO"/>
+		<property name="fechaFin"
+			type = "date"
+			column = "FECHA_FIN"/>
+		<property name="programa"/>
+		<property name="comentario"/>
+		<property name="fechaCreacion"
+			type = "timestamp"
+			column = "FECHA_CREACION"/>
+		<property name="fechaAsignacion"
+			type = "timestamp"
+			column = "FECHA_ASIGNACION"/>
+		<property name="fechaFinalizacion"
+			type = "timestamp"
+			column = "FECHA_FINALIZACION"/>
+		<property name="estado"/>
+	</class>
+</hibernate-mapping>

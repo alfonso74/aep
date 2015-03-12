@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+	<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="rcp.manticora.model.IReservaX" abstract="true">
+		<id name="idReserva" column="idRESERVA" unsaved-value="-1">
+			<generator class="increment"/>
+		</id>
+		<many-to-one name="hoja" column="idHoja" not-null="true"/>
+		<many-to-one name="actividad"
+				column="idActividad"
+				unique="true"
+				not-null="true"/>
+		<union-subclass name="rcp.manticora.model.ReservaTransporte" table="RESERVA_TRANSPORTE">
+<!-- para tener acceso a los valores de idHoja, sino retorna siempre 0 -->
+<!-- insert y update false reflejan que la columna es de lectura y está definida como llave -->
+			<property name="idHoja" insert="false" update="false"/>
+			<property name="idActividad" insert="false" update="false"/>
+			<property name="origen"/>
+			<property name="destino"/>
+			<property name="fechaOrigen" type="timestamp" column="FECHA_INI"/>
+			<property name="fechaDestino" type="timestamp" column="FECHA_FIN"/>
+			<property name="idTransporte"/>
+			<property name="tipo"/>
+			<property name="servicio"/>
+			<property name="comentario"/>
+			<property name="dspTransporte"
+				formula="(select concat(t.nombre, ' ', t.apellido) from transportes t
+					where t.idTransporte = idTransporte)"/>
+		</union-subclass>
+		
+		<union-subclass name="rcp.manticora.model.ReservaTour" table="RESERVA_TOURS">
+			<many-to-one name="disponibilidad" column="idDisp" not-null="true"/>
+			<property name="idHoja" insert="false" update="false"/>
+			<property name="idActividad" insert="false" update="false"/>
+			<property name="idDisponibilidad" column="idDisp" insert="false" update="false"/>
+			<property name="idCapitan"/>
+			<property name="estado"/>
+			<property name="dspEstado"
+			formula="(select k.descripcion from keywords k
+				where k.codigo = estado and k.tipo = 'Status general')"/>
+			<property name="cantidad"/>
+			<property name="comentario"/>
+		</union-subclass>
+		
+	</class>
+</hibernate-mapping>

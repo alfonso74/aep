@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+	<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="rcp.manticora.model.Producto" table="PRODUCTOS">
+		<id name="idProducto" column="idPRODUCTO" unsaved-value="-1">
+			<generator class="native"/>
+		</id>
+		<property name="idTipo"/>
+		<property name="dspTipo"
+			formula="(select k.descripcion from tipo_productos k
+				where k.idTIPO = idTipo)"/>
+		<property name="descripcion"/>
+		<property name="costo" type = "float"/>
+		<property name="venta0" type = "float"/>
+		<property name="venta1" type = "float"/>
+		<property name="venta2" type = "float"/>
+		<property name="venta3" type = "float"/>
+		<property name="tipoReserva"
+			column = "tipo_reserva"/>
+		<property name="isTour"/>
+		<property name="tour" column="tour_yn"/>
+		<property name="hotelAEP" column="hotelaep_yn"/>
+		<property name="modificable" column="modificable_yn"/>
+		<property name="estado"/>
+		<property name="dspEstado"
+			formula="(select k.descripcion from keywords k
+				where k.codigo = estado and k.tipo = 'Status general')"/>
+		<property name="comentario"/>
+		<property name="fechaCreacion" type="timestamp" column="FECHA_CREACION"/>
+		<property name="fechaModificacion" type="timestamp" column="FECHA_MODIFICACION"/>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+	<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="rcp.manticora.model.Habitacion" table="HABITACIONES">
+		<id name="idHabitacion" column="idHABITACION" unsaved-value="-1">
+			<generator class="native"/>
+		</id>
+		<many-to-one name="hotel"
+				column="idPRODUCTO"
+				fetch="join"
+				unique="true"
+				not-null="true"/>
+		<many-to-one name="tipo"
+				column="idTIPOHABITACION"
+				fetch="join"
+				unique="true"
+				not-null="true"/>
+		<property name="nombre"/>
+		<property name="numero"/>
+		<property name="piso"/>
+		<property name="condiciones"/>
+		<property name="estado"/>
+		<property name="dspEstado"
+			formula="(select k.descripcion from keywords k
+				where k.codigo = estado and k.tipo = 'Status general')"/>
+	</class>
+	
+	<class name="rcp.manticora.model.TipoHabitacion" table="TIPO_HABITACIONES">
+		<id name="idTipoHabitacion" column="idTIPOHABITACION" unsaved-value="-1">
+			<generator class="native"/>
+		</id>
+<!-- fetch="join" para cargar los hoteles inmediatamente (no lazy) -->
+		<many-to-one name="hotel"
+				column="idPRODUCTO"
+				fetch="join"
+				unique="true"
+				not-null="true"/>
+		<property name="descripcion"/>
+		<property name="comentario"/>
+		<property name="condiciones"/>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+	<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="rcp.manticora.model.Template" table="TEMPLATES">
+		<id name="idTemplate" column="idTEMPLATE">
+			<generator class="native"/>
+		</id>
+		<property name="idProducto"/>
+		<property name="dspTipoProducto"
+			formula="(select tp.descripcion from productos p, tipo_productos tp
+				where tp.idTipo = p.idTipo and p.idProducto = idProducto)"/>
+		<property name="dspProducto"
+			formula="(select p.descripcion from productos p
+				where p.idProducto = idProducto)"/>
+		<property name="nombre"/>
+		
+		<set name="listaActividades" order-by="dia, secuencia"
+			cascade="all,delete-orphan">
+			<key column="idTemplate" not-null="true"/>
+			<one-to-many class="rcp.manticora.model.LineaTemplate"/>
+		</set>
+	</class>
+	
+	<class name="rcp.manticora.model.LineaTemplate" table="DETALLES_TEMPLATES">
+		<id name="idDetalle" column="idDETALLE" unsaved-value="-1">
+			<generator class="native" />
+		</id>
+<!-- El fetch="join" parece no ser útil aquí?. -->
+		<many-to-one name="producto"
+				column="idPRODUCTO"
+				unique="true"
+				not-null="true"/>
+		<property name="dia"/>
+		<property name="secuencia"/>
+		<property name="cantidad"/>
+		<property name="reserva"/>
+		<property name="tipoReserva" column="TIPO_RESERVA"/>
+		<property name="comidas"/>
+		<property name="comentario"/>
+	</class>
+</hibernate-mapping>

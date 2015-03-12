@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='utf-8'?>
+	<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+
+	<session-factory>
+	
+		<!-- Database connection settings -->
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<!-- Conexión a utilizar: -->
+		<!-- property name="connection.url">jdbc:mysql://192.168.0.211:3306/test</property -->
+		<property name="connection.url">jdbc:mysql://localhost:3306/test</property>
+		<!-- property name="connection.url">jdbc:mysql://servidor:3306/test</property -->
+		
+		<property name="connection.username">carlos</property>
+		<property name="connection.password">lotusnotes</property>
+		
+		<!-- JDBC connection pool (use the built-in) -->
+		<property name="connection.pool_size">1</property>
+		
+		<!-- SQL dialect -->
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		
+		<!-- Enable Hibernate's automatic session context management -->
+		<property name="current_session_context_class">thread</property>
+		
+		<!-- Disable the second-level cache -->
+		<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+		
+		<!-- Echo all executed SQL to stdout -->
+		<property name="show_sql">true</property>
+		
+		<mapping resource="rcp/manticora/dao/Keyword.hbm.xml"/>
+		<mapping resource="rcp/manticora/dao/TipoProducto.hbm.xml"/>
+		<mapping resource="rcp/manticora/dao/TipoCliente.hbm.xml"/>
+		<mapping resource="rcp/manticora/dao/Cliente.hbm.xml"/>
+		<mapping resource="rcp/manticora/dao/RedViajes.hbm.xml"/>
+		<mapping resource="rcp/manticora/dao/Pais.hbm.xml"/>
+		<mapping resource="rcp/manticora/dao/Vendedor.hbm.xml"/>
+		<mapping resource="rcp/manticora/dao/Transporte.hbm.xml"/>
+		<mapping resource="rcp/manticora/dao/Guia.hbm.xml"/>
+		<mapping resource="rcp/manticora/dao/Producto.hbm.xml"/>
+		<mapping resource="rcp/manticora/dao/Solicitud.hbm.xml"/>
+		<mapping resource="rcp/manticora/dao/Template.hbm.xml"/>
+		<mapping resource="rcp/manticora/dao/Cotizacion.hbm.xml"/>
+		<mapping resource="rcp/manticora/dao/HojaServicio.hbm.xml"/>
+		<!-- mapping resource="rcp/manticora/dao/ReservaTransporte.hbm.xml"/ -->
+		<!-- mapping resource="rcp/manticora/dao/ReservaTour.hbm.xml"/ -->
+		<mapping resource="rcp/manticora/dao/Tour.hbm.xml"/>
+		<mapping resource="rcp/manticora/dao/Reservas.hbm.xml"/>
+		<mapping resource="rcp/manticora/dao/Habitacion.hbm.xml"/>
+		<mapping resource="rcp/manticora/dao/Usuario.hbm.xml"/>
+		
+	</session-factory>
+	
+</hibernate-configuration>

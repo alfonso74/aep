@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+	<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+<!-- ***** Inheritance strategy:  Table per concrete class (using union-subclass) ***** -->
+	<class name="rcp.manticora.model.IReserva" abstract="true">
+		<id name="idReserva" column="idRESERVA" unsaved-value="-1">
+			<generator class="increment"/>
+		</id>
+<!-- una reserva solo puede estar asignada a una hoja, y esta asociación es opcional -->
+		<many-to-one name="hoja"
+				column="idHoja"
+				unique="true" not-null="false"/>
+<!-- una reserva puede tener 0 o más asignaciones -->
+		<set name="listaAsignaciones"
+			cascade="all,delete-orphan" inverse="true">
+			<key column="idReserva" not-null="true"/>
+			<one-to-many class="rcp.manticora.model.AsignacionReserva"/>
+		</set>
+		
+		<union-subclass name="rcp.manticora.model.ReservaTransporte" table="RESERVA_TRANSPORTES">
+			<property name="origen"/>
+			<property name="destino"/>
+			<property name="fechaOrigen" type="timestamp" column="FECHA_INI"/>
+			<property name="fechaDestino" type="timestamp" column="FECHA_FIN"/>
+			<property name="idTransporte"/>
+			<property name="tipo"/>
+			<property name="servicio"/>
+			<property name="comentario"/>
+			<property name="dspTransporte"
+				formula="(select concat(t.nombre, ' ', t.apellido) from transportes t
+					where t.idTransporte = idTransporte)"/>
+		</union-subclass>
+		
+		<union-subclass name="rcp.manticora.model.ReservaVuelo" table="RESERVA_VUELOS">
+			<property name="localizador" column="NO_RESERVA"/>
+			<property name="aerolinea"/>
+			<property name="vuelo"/>
+			<property name="fecha" type="timestamp" column="FECHA"/>
+			<property name="comentario"/>
+		</union-subclass>
+		
+		<union-subclass name="rcp.manticora.model.ReservaAlimento" table="RESERVA_ALIMENTOS">
+			<property name="ubicacion"/>
+			<property name="fecha" type="timestamp" column="FECHA"/>
+			<property name="comentario"/>
+		</union-subclass>
+		
+		<union-subclass name="rcp.manticora.model.ReservaBoleto" table="RESERVA_BOLETOS">
+			<property name="ubicacion"/>
+			<property name="fecha" type="timestamp" column="FECHA"/>
+			<property name="comentario"/>
+		</union-subclass>
+		
+		<union-subclass name="rcp.manticora.model.ReservaTour" table="RESERVA_TOURS">
+			<many-to-one name="disponibilidad" column="idDisp" not-null="true"/>
+<!-- para tener acceso a los valores de idHoja, sino retorna siempre 0 -->
+<!-- insert y update false reflejan que la columna es de lectura y está definida como llave -->
+			<property name="idHoja" insert="false" update="false"/>
+			<property name="idDisponibilidad" column="idDisp" insert="false" update="false"/>
+			<property name="idCapitan"/>
+			<property name="estado"/>
+			<property name="dspEstado"
+			formula="(select k.descripcion from keywords k
+				where k.codigo = estado and k.tipo = 'Status general')"/>
+			<property name="cantidad"/>
+			<property name="comentario"/>
+		</union-subclass>
+		
+		<union-subclass name="rcp.manticora.model.ReservaHospedaje" table="RESERVA_HOTELES">
+			<many-to-one name="producto" column="idPRODUCTO"
+				fetch="join" unique="true" not-null="true"/>
+			<set name="listaHabitaciones"
+				cascade="all,delete-orphan" inverse="true">
+				<key column="idRESERVA" not-null="true"/>
+				<one-to-many class="rcp.manticora.model.ILineaHospedaje"/>
+			</set>
+			<property name="fechaDesde" type="timestamp" column="FECHA_DESDE"/>
+			<property name="fechaHasta" type="timestamp" column="FECHA_HASTA"/>
+			<property name="noReserva" column="NO_RESERVA"/>
+			<property name="confirmadoPor" column="CONFIRMADO_POR"/>
+			<property name="fechaConfirmado" type="timestamp" column="FECHA_CONFIRMADO"/>
+			<property name="estado"/>
+			<property name="dspEstado">
+				<formula>
+					(select k.descripcion
+					from Keywords k
+					where k.codigo = estado and k.tipo = 'Status general')
+				</formula>
+			</property>
+		</union-subclass>
+	</class>
+	
+	
+<!-- ***** Inheritance strategy:  Table per class hierarchy ***** -->
+	<class name="rcp.manticora.model.ILineaHospedaje" table="DETALLES_RESERVA_HOTEL">
+		<id name="idLinea" type="long" column="idDETALLE">
+			<generator class="native"/>
+		</id>
+<!-- una linea de detalle solo puede estar asignada a una reserva, y esta asociación es obligatoria -->
+		<many-to-one name="reserva"
+				column="idRESERVA"
+				unique="true" not-null="true"/>
+		<set name="listaPaxs" table="HOSPEDAJE_HAS_PAXS">
+			<key column="idDETALLE"/>
+			<many-to-many column="idPAX" class="rcp.manticora.model.Pax"/>
+		</set>
+		<property name="fechaDesde" type="timestamp" column="FECHA_DESDE"/>
+		<property name="fechaHasta" type="timestamp" column="FECHA_HASTA"/>
+		<property name="comentario" column="COMENTARIO"/>
+
+		<joined-subclass name="rcp.manticora.model.LineaHospedajeExt" table="RESERVA_HOTEL_EXT">
+			<key column="idDETALLE"/>
+			<many-to-one name="tipoHabitacion"
+				column="idTIPOHABITACION"
+				unique="true" not-null="true"/>
+			<property name="noHabitacion" column="NUMERO"/>
+		</joined-subclass>
+		<joined-subclass name="rcp.manticora.model.LineaHospedajeInt" table="RESERVA_HOTEL_INT">
+			<key column="idDETALLE"/>
+			<many-to-one name="habitacion"
+				column="idHABITACION"
+				unique="true" not-null="true"/>
+		</joined-subclass>
+	</class>
+	
+	<class name="rcp.manticora.model.ReservaGuia" table="RESERVA_GUIAS">
+		<id name="idReserva" column="idRESERVA" unsaved-value="-1">
+			<generator class="native" />
+		</id>
+<!-- una reserva de guía solo puede estar asignada a una hoja, y esta asociación es obligatoria -->
+		<many-to-one name="hoja"
+				column="idHOJA"
+				unique="true" not-null="true"/>
+<!-- igual tenemos que indicar qué guía está asignado a esta reserva -->
+		<many-to-one name="guia"
+				column="idGUIA"
+				unique="true" not-null="true"/>
+		<property name="fechaDesde" type="timestamp" column="FECHA_INI"/>
+		<property name="fechaHasta" type="timestamp" column="FECHA_FIN"/>
+	</class>
+
+</hibernate-mapping>

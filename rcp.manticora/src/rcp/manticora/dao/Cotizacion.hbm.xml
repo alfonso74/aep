@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+	<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="rcp.manticora.model.Cotizacion" table="COTIZACIONES">
+		<id name="idCotizacion" column="idCOTIZACION" unsaved-value="-1">
+			<generator class="native"/>
+		</id>
+		<property name="idVendedor"/>
+		<property name="idSolicitud"/>
+		<component name="numeroTour" class="rcp.manticora.model.NumeroTour">
+			<property name="numero" column="NO_TOUR"/>
+			<property name="year" column="NO_TOUR_YYYY"/>
+			<property name="mes" column="NO_TOUR_MM"/>
+			<property name="secuencial" column="NO_TOUR_SEQ"/>
+		</component>
+		<property name="fechaInicio" type="date" column="FECHA_INICIO"/>
+		<property name="fechaFin" type = "date" column="FECHA_FIN"/>
+		<property name="nombre"/>
+		<property name="prospecto" column="CLIENTE"/>
+		<property name="subtotal"/>
+		<property name="porcHospedaje" column="PORC_HOSPEDAJE"/>
+		<property name="hospedaje"/>
+		<property name="porcImpuesto" column="PORC_IMPUESTO"/>
+		<property name="impuesto"/>
+		<property name="total"/>
+		<property name="pago"/>
+		<property name="porcPago" column="PORC_PAGO"/>
+		<property name="noFactura" column="NO_FACTURA"/>
+		<property name="paxs" column="NO_PAXS"/>
+		<property name="estado"/>
+		<property name="creadoPor" column="CREADO_POR"/>
+		<property name="fechaCreacion" type="timestamp" column="FECHA_CREACION"/>
+		<property name="fechaFinalizacion" type="timestamp" column="FECHA_FINALIZACION"/>
+		<property name="fechaContabilidad" type="timestamp" column="FECHA_CONTABILIDAD"/>
+		<!-- 
+		<one-to-one name="comision"
+				property-ref="cotizacion"/>
+		 -->
+		<set name="listaComisiones" inverse="true"
+			cascade="all,delete-orphan">
+			<key column="idCotizacion" not-null="true"/>
+			<one-to-many class="rcp.manticora.model.Comision"/>
+		</set>
+		<many-to-one name="redViajes"
+				column="idRED" 
+				unique="false"
+				not-null="false"/>
+		<property name="dspVendedor"
+			formula="(select concat(v.nombre, ' ', v.apellido) from vendedores v
+				where v.idVendedor = idVendedor)"/>
+		<!--sort="rcp.manticora.services.CotizacionesComparator" order-by="fecha asc">-->
+		<set name="listaActividades"
+			cascade="all,delete-orphan"
+			sort="rcp.manticora.services.CotizacionesComparator">
+			<key column="idCotizacion" not-null="true"/>
+			<one-to-many class="rcp.manticora.model.LineaCotizacion"/>
+		</set>
+		
+		<set name="listaPaxs" table="cotizaciones_has_paxs"
+			cascade="all,delete-orphan">
+			<key column="idCotizacion"/>
+			<many-to-many column="idPax"
+				class="rcp.manticora.model.Pax"/>
+		</set>
+		
+		<join table="cotizaciones_has_clientes"
+			optional="true">
+			<key column="idCotizacion" unique="true"/>
+			<many-to-one name="cliente"
+				column="idCliente"
+				not-null="true"/>
+		</join>
+	</class>
+	
+	<class name="rcp.manticora.model.Comision" table="COMISIONES">
+		<id name="idComision" column="idCOMISION" unsaved-value="-1">
+			<generator class="native" />
+		</id>
+		<many-to-one name="cotizacion" column="idCOTIZACION"
+			fetch="join" unique="true" not-null="true" />
+		<many-to-one name="cliente" column="idCLIENTE"
+			fetch="join" unique="true" not-null="true" />
+		<property name="monto"/>	
+	</class>
+	
+	<class name="rcp.manticora.model.LineaCotizacion" table="DETALLES_COT">
+		<id name="idDetalle" column="idDETALLE" unsaved-value="-1">
+			<generator class="native" />
+		</id>
+		<version name="version" column="VERSION"/>
+		<property name="idCotizacion" insert="false" update="false"/>
+		<property name="idProducto" insert="false" update="false"/>
+<!-- fetch="join" para realizar menos select.  El select de actividades incluye detalles del producto. -->
+		<many-to-one name="producto"
+				column="idPRODUCTO"
+				fetch="join"
+				unique="true"
+				not-null="true"/>
+		<property name="dspProducto"
+			formula="(select p.descripcion from productos p
+				where p.idProducto = idProducto)"/>
+		<property name="fecha" column="FECHA"/>
+		<property name="secuencia"/>
+		<property name="cantidad" column="CANTIDAD"/>
+		<property name="precio" column="MONTO"/>
+		<property name="espacios" column="ESPACIOS"/>
+		<property name="hotelAEP"
+			formula="(select p.hotelaep_yn from productos p
+				where p.idProducto = idProducto)"/>
+		<property name="visible" column="VISIBLE_YN"/>
+		<property name="comentario"/>
+	</class>
+	
+	<class name="rcp.manticora.model.Pax" table="PAXS">
+		<id name="idPax" column="idPAX" unsaved-value="-1">
+			<generator class="native"/>
+		</id>
+		<property name="idPais"/>
+		<property name="dspPais"
+			formula="(select p.descripcion from paises p
+				where p.idPais = idPais)"/>
+		<property name="nombre"/>
+		<property name="apellido"/>
+		<property name="identificacion"/>
+		<property name="fechaNacimiento" type = "date" column="FECHA_NACIMIENTO"/>
+		<property name="peso"/>
+		<property name="condiciones"/>
+	</class>
+</hibernate-mapping>

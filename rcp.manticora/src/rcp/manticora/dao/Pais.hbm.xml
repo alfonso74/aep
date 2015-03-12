@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+	<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="rcp.manticora.model.Pais" table="PAISES">
+		<id name="idPais" column="idPAIS" unsaved-value="-1">
+			<generator class="native"/>
+		</id>
+		<property name="descripcion"/>
+		<property name="estado"/>
+	</class>
+</hibernate-mapping>

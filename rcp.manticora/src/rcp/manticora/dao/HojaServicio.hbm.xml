@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+	<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="rcp.manticora.model.IHojaServicio" table="HOJAS_SERVICIOS">
+		<id name="idHoja" column="idHOJA" unsaved-value="-1">
+			<generator class="native"/>
+		</id>
+		<discriminator column="CLASE" type="string"/>
+		<version name="version" column="VERSION"/>
+		<property name="idProducto"/>
+		<property name="fechaInicio" type="date" column="FECHA_INICIO"/>
+		<property name="fechaFin" type = "date" column="FECHA_FIN"/>
+		<property name="nombre"/>
+		<property name="fechaCreacion" type="timestamp" column="FECHA_CREACION"/>
+		<property name="fechaOperaciones" type="timestamp" column="FECHA_OPERACIONES"/>
+		<property name="comentario"/>
+		<property name="estado"/>
+		<property name="dspEstado"
+			formula="(select k.descripcion from keywords k
+				where k.codigo = estado and k.tipo = 'Status hoja de servicios')"/>
+<!-- la columna clase es solo de lectura.  El discriminador la actualiza -->
+		<property name="clase" insert="false" update="false"/>
+		<set name="listaActividades" order-by="fecha"
+			cascade="all,delete-orphan" inverse="true">
+			<key column="idHoja" not-null="true"/>
+			<one-to-many class="rcp.manticora.model.LineaActividad"/>
+		</set>
+<!-- solamente dejamos actualizar los datos del pax, no delete o crear -->
+		<set name="listaPaxs" table="hs_has_paxs"
+			cascade="save-update">
+			<key column="idHoja"/>
+			<many-to-many column="idPax"
+				class="rcp.manticora.model.Pax"/>
+		</set>
+<!-- inverse:  la colección es un mirror image del many-to-one del otro lado -->
+<!-- lazy="false" o fetch="join" evita problemas al invocar getDisponibilidad() - complicaciones del polimorfismo -->
+<!-- fetch="join" también evita problemas con getDisponibilidad() pero como ejecuta un solo query (con outer join) al haber -->
+<!-- múltiples rows de reserva, muestra n hojas de servicio iguales (tantas n como reservas se hayan creado) así que nos quedamos con lazy="false" -->
+		<set name="listaReservas"
+			cascade="all,delete-orphan" inverse="true">
+			<key column="idHoja" not-null="true"/>
+			<one-to-many class="rcp.manticora.model.IReserva"/>
+		</set>
+		<join table="hs_has_clientes"
+			optional="true">
+			<key column="idHoja" unique="true"/>
+			<many-to-one name="cliente"
+				column="idCliente"
+				not-null="true"/>
+		</join>
+		
+		<subclass name="rcp.manticora.model.HojaServicioVentas" discriminator-value="V">
+			<property name="idCotizacion"/>
+			<property name="paxs" column="NO_PAXS"/>
+			<property name="dspVendedor"
+				formula="(select concat(v.nombre, ' ', v.apellido)
+					from vendedores v, cotizaciones cot, hojas_servicios hs
+					where v.idVendedor = cot.idVendedor and
+					cot.idCotizacion = hs.idCotizacion and hs.idHoja = idHoja)"/>
+		</subclass>
+		
+		<subclass name="rcp.manticora.model.HojaServicioTour" discriminator-value="T">
+			<!-- many-to-one name="disponibilidad" column="idDISP" not-null="false"/ -->
+			<one-to-one name="disponibilidad" property-ref="hoja"></one-to-one>
+			<set name="listaResGuias"
+				cascade="all,delete-orphan" inverse="true">
+				<key column="idHoja" not-null="true"/>
+				<one-to-many class="rcp.manticora.model.ReservaGuia"/>
+			</set>
+			<property name="numero"/>
+			<property name="capacidad" column="NO_PAXS"/>
+			<property name="tipo"/>
+		</subclass>
+	</class>
+	
+	
+	<class name="rcp.manticora.model.LineaActividad" table="ACTIVIDADES">
+		<id name="idActividad" column="idACTIVIDAD" unsaved-value="-1">
+			<generator class="native" />
+		</id>
+		<version name="version" column="VERSION"/>
+
+   		<many-to-one name="hojaTour" class="rcp.manticora.model.HojaServicioTour">
+        	<column name="idTOUR"
+				not-null="false"/>
+		</many-to-one>
+		
+<!-- una actividad TIENE que estar asignada a una sola hoja -->
+<!-- para bidireccional, y agregar inverse en el collection(set) de la hoja -->
+		<many-to-one name="hoja" column="idHoja" not-null="true"/>
+<!-- one-to-one name="reserva" property-ref="actividad" cascade="all"/ -->
+		<set name="listaAsignaciones"
+			cascade="all,delete-orphan" inverse="true">
+			<key column="idActividad" not-null="true"/>
+			<one-to-many class="rcp.manticora.model.AsignacionReserva"/>
+		</set>
+<!-- fetch="join" nos trae el producto asociado como parte del select de actividades -->
+		<many-to-one name="producto"
+				column="idPRODUCTO"
+				fetch="join"
+				unique="true"
+				not-null="true"/>
+		<property name="fecha" type = "timestamp" column="FECHA"/>
+		<property name="hora" type = "time" column="HORA"/>
+		<property name="precio" column="MONTO"/>
+		<property name="tipoReserva" column="TIPO_RESERVA"/>
+		<property name="comidas"/>
+		<property name="comentario"/>
+	</class>
+	
+	
+	<class name="rcp.manticora.model.AsignacionReserva" table="ASIGNACION_RESERVA">
+		<id name="idAsignacion" column="idASIGNACION" unsaved-value="-1">
+			<generator class="native"/>
+		</id>
+<!-- la asignación TIENE una actividad y una reserva -->
+		<many-to-one name="actividad" column="idActividad" not-null="true"/>
+<!-- TODO: la reserva está dando problemas al guardar, ya que intenta crear el registro de asignación antes -->
+<!-- que la reserva, por lo que el not-null revienta, así que lo dejamos en false por ahora. -->
+		<many-to-one name="reserva" column="idReserva" not-null="false"/>
+		<property name="usuario"/>
+		<property name="fechaCreacion" type="timestamp" column="FECHA_ASIGNACION"/>
+	</class>
+	
+	
+</hibernate-mapping>

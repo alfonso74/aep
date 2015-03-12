@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+	<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="rcp.manticora.model.Rol" table="ROLES">
+		<id name="idRol" column="idROL" unsaved-value="-1">
+			<generator class="native"/>
+		</id>
+		<property name="descripcion"/>
+		<property name="estado"/>
+		<property name="dspEstado"
+			formula="(select k.descripcion from keywords k
+				where k.codigo = estado and k.tipo = 'Status general')"/>
+	</class>
+
+	<class name="rcp.manticora.model.Usuario" table="USUARIOS">
+		<id name="idUsuario" column="idUSUARIO" unsaved-value="-1">
+			<generator class="native"/>
+		</id>
+<!-- fetch="join" permite hacer un solo query para traer los usuarios y roles, en lugar -->
+<!-- de un query para los usuarios y N querys para los roles de cada usuario. -->
+		<set name="listaRoles" table="USUARIOS_HAS_ROLES" fetch="join">
+			<key column="idUSUARIO"/>
+			<many-to-many column="idROL" class="rcp.manticora.model.Rol"/>
+		</set>
+		<property name="nombre"/>
+		<property name="apellido"/>
+		<property name="userName"/>
+		<property name="password"/>
+		<property name="estado"/>
+		<property name="dspEstado"
+			formula="(select k.descripcion from keywords k
+				where k.codigo = estado and k.tipo = 'Status general')"/>
+	</class>
+</hibernate-mapping>

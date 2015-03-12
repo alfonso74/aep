@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+	<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="rcp.manticora.model.Tour" table="TOURS">
+		<id name="idTour" column="idTOUR" unsaved-value="-1">
+			<generator class="native"/>
+		</id>
+		<property name="idProducto"/>
+		<property name="nombre"/>
+		<property name="capacidad"/>
+		<property name="estado"/>
+		<property name="comentario"/>
+		<property name="dspTipoProducto"
+			formula="(select tp.descripcion from tipo_productos tp, productos p
+				where tp.idTipo = p.idTipo and p.idProducto = idProducto)"/>
+		<property name="dspProducto"
+			formula="(select p.descripcion from productos p
+				where p.idProducto = idProducto)"/>
+		<property name="dspEstado"
+			formula="(select k.descripcion from keywords k
+				where k.codigo = estado and k.tipo = 'Status general')"/>
+		
+		<set name="listaActividades" order-by="dia, secuencia"
+			cascade="all,delete-orphan">
+			<key column="idTour" not-null="true"/>
+			<one-to-many class="rcp.manticora.model.LineaTour"/>
+		</set>
+		<set name="listaDisponibilidad" order-by="fecha"
+			cascade="all,delete-orphan" inverse="true">
+			<key column="idTour"/>
+			<one-to-many class="rcp.manticora.model.DisponibilidadTour"/>
+		</set>
+	</class>
+	
+	<class name="rcp.manticora.model.LineaTour" table="DETALLES_TOURS">
+		<id name="idDetalle" column="idDETALLE" unsaved-value="-1">
+			<generator class="native" />
+		</id>
+<!-- El fetch="join" parece no ser útil aquí?. -->
+		<many-to-one name="producto"
+				column="idPRODUCTO"
+				unique="true"
+				not-null="true"/>
+		<property name="dia"/>
+		<property name="secuencia"/>
+		<property name="tipoReserva" column="TIPO_RESERVA"/>
+		<property name="comidas"/>
+		<property name="comentario"/>
+	</class>
+	
+	<class name="rcp.manticora.model.DisponibilidadTour" table="DISP_TOURS">
+		<id name="idDisponibilidad" column="idDISP" unsaved-value="-1">
+			<generator class="native" />
+		</id>
+		<many-to-one name="tour" column="idTOUR" not-null="true"/>
+		<many-to-one name="hoja" column="idHOJA" not-null="false" unique="true"/>
+		<set name="listaReservas"
+			cascade="all" inverse="true">
+			<key column="idDISP" not-null="true"/>
+			<one-to-many class="rcp.manticora.model.ReservaTour"/>
+		</set>
+		<property name="idTour" insert="false" update="false"/>
+		<property name="fecha" type="date" column="FECHA"/>
+		<property name="capacidad"/>
+		<property name="ocupacion"
+			formula="(select sum(b.cantidad) from disp_tours a, reserva_tours b
+				where b.idDisp = a.idDisp and a.idDisp = idDisp)"/>
+		<property name="tipo"/>
+		<property name="comentario"/>
+		<!--  
+		<property name="dspProducto"
+			formula="(select p.descripcion from productos p, tours t
+				where p.idProducto = t.idProducto and t.idTour = idTour)"/>
+		-->
+	</class>
+</hibernate-mapping>

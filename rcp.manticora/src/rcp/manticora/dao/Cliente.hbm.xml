@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+	<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="rcp.manticora.model.Cliente" table="CLIENTES">
+		<id name="idCliente" column="idCLIENTE" unsaved-value="-1">
+			<generator class="native"/>
+		</id>
+		<property name="idTipo"/>
+		<property name="dspTipo"
+			formula="(select tp.descripcion from tipo_clientes tp
+				where tp.idTipo = idTipo)"/>
+		<property name="clase"/>
+		<property name="identificacion"/>
+		<property name="telefono"/>
+		<property name="telefono2"/>
+		<property name="email"/>
+		<property name="idPais"/>
+		<property name="dspPais"
+			formula="(select p.descripcion from paises p
+				where p.idPais = idPais)"/>
+		<property name="ciudad"/>
+		<property name="apartado"/>
+		<property name="direccion1"/>
+		<property name="direccion2"/>
+		<property name="direccion3"/>
+		<property name="comentario"/>
+		<property name="comision" column="comision_yn"/>
+		<property name="estado"/>
+		<property name="fuente"/>
+		<property name="formaPago" column="FORMA_PAGO"/>
+		<joined-subclass name="rcp.manticora.model.ClienteNatural" table="NATURALES">
+			<key column="idCLIENTE"/>
+			<property name="nombre"/>
+			<property name="apellido"/>
+			<property name="fechaNacimiento" type="date" column="FECHA_NACIMIENTO"/>
+			<property name="sexo"/>
+			<property name="peso"/>
+		</joined-subclass>
+		<joined-subclass name="rcp.manticora.model.ClienteJuridico" table="JURIDICOS">
+			<key column="idCLIENTE"/>
+			<property name="nombreCia" column="NOMBRE"/>
+			<property name="referencia"/>
+			<property name="contacto"/>
+		</joined-subclass>
+	</class>
+</hibernate-mapping>

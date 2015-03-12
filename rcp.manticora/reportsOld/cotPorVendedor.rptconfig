@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.17" id="1">
+    <list-property name="configVars">
+        <structure>
+            <property name="name">__isdisplay__aaaa_34_0</property>
+            <property name="value">2009</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__mes_35_1</property>
+            <property name="value">Enero</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__estado_36_2</property>
+            <property name="value">Activa</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__ordenarPor_37_3</property>
+            <property name="value">Cotización</property>
+        </structure>
+        <structure>
+            <property name="name">aaaa_34_4</property>
+            <property name="value">2009</property>
+        </structure>
+        <structure>
+            <property name="name">aaaa_34_type_</property>
+            <property name="value">integer</property>
+        </structure>
+        <structure>
+            <property name="name">aaaa_34_expr_</property>
+            <property name="value">dataSetRow["yyyy"]</property>
+        </structure>
+        <structure>
+            <property name="name">ordenarPor_37_5</property>
+            <property name="value">idcotizacion</property>
+        </structure>
+        <structure>
+            <property name="name">ordenarPor_37_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">mes_35_6</property>
+            <property name="value">1</property>
+        </structure>
+        <structure>
+            <property name="name">mes_35_type_</property>
+            <property name="value">integer</property>
+        </structure>
+        <structure>
+            <property name="name">estado_36_7</property>
+            <property name="value">A</property>
+        </structure>
+        <structure>
+            <property name="name">estado_36_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">estado_36_expr_</property>
+            <property name="value">dataSetRow["CODIGO"]</property>
+        </structure>
+    </list-property>
+</report>

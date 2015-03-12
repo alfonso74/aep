@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+	<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="rcp.manticora.model.Keyword" table="KEYWORDS">
+		<id name="idKeyword" column="idKEYWORD" unsaved-value="-1">
+			<generator class="native"/>
+		</id>
+		<property name="codigo"/>
+		<property name="descripcion"/>
+		<property name="tipo"/>
+	</class>
+	
+</hibernate-mapping>

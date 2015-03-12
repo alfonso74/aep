@@ -1,0 +1,1192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="rcp.manticora.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="rcp.manticora.AdminPerspective"
+            icon="icons/view.gif"
+            id="manticora.adminPerspective"
+            name="Menú de administración">
+      </perspective>
+      <perspective
+            class="rcp.manticora.VentasPerspective"
+            icon="icons/view.gif"
+            id="manticora.ventasPerspective"
+            name="Menú de ventas">
+      </perspective>
+      <perspective
+            class="rcp.manticora.OperacionesPerspective"
+            icon="icons/view.gif"
+            id="manticora.operacionesPerspective"
+            name="Menú de operaciones">
+      </perspective>
+      <perspective
+            class="rcp.manticora.ContabilidadPerspective"
+            icon="icons/view.gif"
+            id="rcp.manticora.contabilidadPerspective"
+            name="Menú de contabilidad">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="rcp.manticora.NavigationView5"
+            id="manticora.navigationView"
+            name="Menú de administración">
+      </view>
+      <view
+            class="rcp.manticora.MenuVentasView"
+            id="manticora.menuVentasView"
+            name="Menú de ventas">
+      </view>
+      <view
+            class="rcp.manticora.MenuOperacionesView"
+            id="manticora.menuOperacionesView"
+            name="Menú de operaciones">
+      </view>
+      <view
+            class="rcp.manticora.MenuContabilidadView"
+            id="rcp.manticora.menuContabilidadView"
+            name="Menú de contabilidad">
+      </view>
+      <view
+            class="rcp.manticora.views.TipoProductosView"
+            id="manticora.tipoProductosView"
+            name="Tipo de productos">
+      </view>
+      <view
+            class="rcp.manticora.views.ProductosView"
+            id="manticora.productosView"
+            name="Productos">
+      </view>
+      <view
+            class="rcp.manticora.views.CotizacionesView"
+            id="manticora.cotizacionesView"
+            name="Cotizaciones">
+      </view>
+      <view
+            class="rcp.manticora.views.CotizacionesActivasView"
+            id="manticora.cotizacionesActivasView"
+            name="Cot. activas">
+      </view>
+      <view
+            class="rcp.manticora.views.CotizacionesProcesadasView"
+            id="manticora.cotizacionesProcesadasView"
+            name="Cot. procesadas">
+      </view>
+      <view
+            class="rcp.manticora.views.CotizacionesCanceladasView"
+            id="manticora.cotizacionesCanceladasView"
+            name="Cot. canceladas">
+      </view>
+      <view
+            class="rcp.manticora.views.CotizacionesParcialView"
+            id="manticora.cotizacionesParcialView"
+            name="Pagos parciales">
+      </view>
+      <view
+            class="rcp.manticora.views.CotizacionesContabilidadView"
+            id="manticora.cotizacionesContabilidadView"
+            name="Cotizaciones (todas)">
+      </view>
+      <view
+            class="rcp.manticora.views.CotizacionesRegistradasView"
+            id="manticora.cotizacionesRegistradasView"
+            name="Cot. registradas">
+      </view>
+      <view
+            class="rcp.manticora.views.ClientesView"
+            id="manticora.views.clientesView"
+            name="Clientes">
+      </view>
+      <view
+            class="rcp.manticora.views.ClientesComView"
+            id="manticora.views.clientesComView"
+            name="Compañías">
+      </view>
+      <view
+            class="rcp.manticora.views.PaisesView"
+            id="manticora.paisesView"
+            name="Países">
+      </view>
+      <view
+            class="rcp.manticora.views.TemplatesView"
+            id="manticora.templatesView"
+            name="Templates">
+      </view>
+      <view
+            class="rcp.manticora.views.TipoClientesView"
+            id="manticora.tipoClientesView"
+            name="Tipo de clientes">
+      </view>
+      <view
+            allowMultiple="true"
+            class="rcp.manticora.views.SolicitudesView"
+            id="manticora.solicitudesView"
+            name="Solicitudes">
+      </view>
+      <view
+            class="rcp.manticora.views.SolicitudesNuevasView"
+            id="manticora.solicitudesNuevasView"
+            name="Sol. nuevas">
+      </view>
+      <view
+            class="rcp.manticora.views.SolicitudesAsignadasView"
+            id="manticora.solicitudesAsignadasView"
+            name="Sol. asignadas">
+      </view>
+      <view
+            class="rcp.manticora.views.SolicitudesProcesadasView"
+            id="manticora.solicitudesProcesadasView"
+            name="Sol. procesadas">
+      </view>
+      <view
+            class="rcp.manticora.views.SolicitudesCanceladasView"
+            id="manticora.solicitudesCanceladasView"
+            name="Sol. canceladas">
+      </view>
+      <view
+            class="rcp.manticora.views.VendedoresView"
+            id="manticora.vendedoresView"
+            name="Vendedores">
+      </view>
+      <view
+            class="rcp.manticora.views.TransportesView"
+            id="manticora.transportesView"
+            name="Transportes">
+      </view>
+      <view
+            class="rcp.manticora.views.KeywordsView"
+            id="manticora.keywordsView"
+            name="Keywords">
+      </view>
+      <view
+            class="rcp.manticora.views.HojasView"
+            id="manticora.hojasView"
+            name="Hojas de servicio">
+      </view>
+      <view
+            class="rcp.manticora.views.HojasVentasNuevasView"
+            id="manticora.hojasVentasNuevasView"
+            name="Hojas nuevas">
+      </view>
+      <view
+            class="rcp.manticora.views.HojasOpsNuevasView"
+            id="manticora.hojasOpsNuevasView"
+            name="Hojas nuevas">
+      </view>
+      <view
+            class="rcp.manticora.views.HojasEnProcesoView"
+            id="manticora.hojasEnProcesoView"
+            name="Hojas en proceso">
+      </view>
+      <view
+            class="rcp.manticora.views.HojasFinalizadasView"
+            id="manticora.hojasFinalizadasView"
+            name="Hojas finalizadas">
+      </view>
+      <view
+            class="rcp.manticora.views.ToursView"
+            id="manticora.toursView"
+            name="Tours">
+      </view>
+      <view
+            class="rcp.manticora.views.GuiasView"
+            id="manticora.guiasView"
+            name="Guías">
+      </view>
+      <view
+            class="rcp.manticora.views.TipoHabitacionesView"
+            id="manticora.views.tipoHabitaciones"
+            name="Tipo de habitaciones">
+      </view>
+      <view
+            class="rcp.manticora.views.HabitacionesView"
+            id="manticora.views.habitaciones"
+            name="Habitaciones">
+      </view>
+      <view
+            class="rcp.manticora.views.RolesView"
+            id="manticora.rolesView"
+            name="Roles">
+      </view>
+      <view
+            class="rcp.manticora.views.UsuariosView"
+            id="manticora.usuariosView"
+            name="Usuarios">
+      </view>
+      <view
+            class="rcp.manticora.views.ReservaToursView"
+            id="manticora.reservaToursView"
+            name="Res. de tours">
+      </view>
+      <view
+            class="rcp.manticora.views.RedesView"
+            id="rcp.manticora.views.RedesView"
+            name="Redes de viajes">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.viewActions">
+      <viewContribution
+            id="manticora.clientesViewContribution"
+            targetID="manticora.views.clientesView">
+         <action
+               class="rcp.manticora.acciones.BorrarElementoAction"
+               icon="icons/borrar.gif"
+               id="manticora.borrarCliente"
+               label="Borrar cliente"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Elimina un cliente del sistema">
+         </action>
+         <action
+               class="rcp.manticora.acciones.NuevoClienteAction"
+               disabledIcon="icons/agregar.gif"
+               helpContextId="cotizacionNueva"
+               hoverIcon="icons/agregar.gif"
+               icon="icons/agregar.gif"
+               id="manticora.crearCliente"
+               label="Nuevo cliente"
+               state="true"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Crea un nuevo cliente">
+         </action>
+         <action
+               class="rcp.manticora.acciones.FiltrarClientesNatAction"
+               icon="icons/lupa3.gif"
+               id="manticora.filtrarClienteNat"
+               label="Buscar cliente (persona natural)"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Busca los clientes que cumplan con los criterios indicados">
+         </action>
+      </viewContribution>
+      <viewContribution
+            id="manticora.clientesComViewContribution"
+            targetID="manticora.views.clientesComView">
+         <action
+               class="rcp.manticora.acciones.BorrarElementoAction"
+               icon="icons/borrar.gif"
+               id="manticora.borrarCliente"
+               label="Borrar cliente"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Elimina un cliente del sistema">
+         </action>
+         <action
+               class="rcp.manticora.acciones.NuevoClienteComAction"
+               icon="icons/agregar.gif"
+               id="manticora.crearClienteCom"
+               label="Nuevo cliente jurídico"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Crea un nuevo cliente juridico">
+         </action>
+         <action
+               class="rcp.manticora.acciones.FiltrarClientesComAction"
+               icon="icons/lupa3.gif"
+               id="manticora.filtrarClienteCom"
+               label="Buscar cliente (comercial)"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Busca los clientes que cumplan con los criterios indicados">
+         </action>
+      </viewContribution>
+      <viewContribution
+            id="manticora.paisesViewContribution"
+            targetID="manticora.paisesView">
+         <action
+               class="rcp.manticora.acciones.BorrarElementoAction"
+               icon="icons/borrar.gif"
+               id="manticora.borrarPais"
+               label="Borrar país"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Elimina un país del sistema">
+         </action>
+         <action
+               class="rcp.manticora.acciones.NuevoElementoAction"
+               icon="icons/agregar.gif"
+               id="manticora.nuevoPais"
+               label="Nuevo país"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Agrega un país al sistema">
+         </action>
+      </viewContribution>
+      <viewContribution
+            id="manticora.templatesViewContribution"
+            targetID="manticora.templatesView">
+         <action
+               class="rcp.manticora.acciones.BorrarElementoAction"
+               icon="icons/borrar.gif"
+               id="manticora.borrarTemplate"
+               label="Borrar template"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Elimina un template del sistema">
+         </action>
+         <action
+               class="rcp.manticora.acciones.NuevoElementoAction"
+               icon="icons/agregar.gif"
+               id="manticora.nuevoTemplate"
+               label="Nuevo template"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Agrega un template de cotizaciones al sistema">
+         </action>
+      </viewContribution>
+      <viewContribution
+            id="manticora.productosViewContribution"
+            targetID="manticora.productosView">
+         <action
+               class="rcp.manticora.acciones.BorrarElementoAction"
+               icon="icons/borrar.gif"
+               id="manticora.borrarProducto"
+               label="Borrar producto"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Elimina un producto del sistema">
+         </action>
+         <action
+               class="rcp.manticora.acciones.NuevoElementoAction"
+               icon="icons/agregar.gif"
+               id="manticora.nuevoProducto"
+               label="Nuevo producto"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Agrega un producto al sistema">
+         </action>
+         <action
+               class="rcp.manticora.acciones.FiltrarProductos"
+               id="manticora.Filtro"
+               label="Filtrar x tipo"
+               menubarPath="filtros"
+               style="toggle"
+               tooltip="Muestra los productos del tipo seleccionado">
+         </action>
+         <action
+               class="rcp.manticora.acciones.ImprimirProductosAction"
+               icon="icons/imprimir.gif"
+               id="rcp.manticora.reporte01Birt"
+               label="Imprimir listado de productos"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Imprime un listado de los productos">
+         </action>
+      </viewContribution>
+      <viewContribution
+            id="manticora.tipoProductosViewContribution"
+            targetID="manticora.tipoProductosView">
+         <action
+               class="rcp.manticora.acciones.BorrarElementoAction"
+               icon="icons/borrar.gif"
+               id="manticora.borrarTipoProducto"
+               label="Borrar tipo de producto"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Elimina un tipo de producto del sistema">
+         </action>
+         <action
+               class="rcp.manticora.acciones.NuevoElementoAction"
+               icon="icons/agregar.gif"
+               id="manticora.nuevoTipoProducto"
+               label="Nuevo tipo de producto"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Agrega un tipo de producto al sistema">
+         </action>
+      </viewContribution>
+      <viewContribution
+            id="manticora.tipoClientesViewContribution"
+            targetID="manticora.tipoClientesView">
+         <action
+               class="rcp.manticora.acciones.BorrarElementoAction"
+               icon="icons/borrar.gif"
+               id="manticora.borrarTipoCliente"
+               label="Borrar tipo de cliente"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Elimina un tipo de cliente del sistema">
+         </action>
+         <action
+               class="rcp.manticora.acciones.NuevoElementoAction"
+               icon="icons/agregar.gif"
+               id="manticora.nuevoTipoCliente"
+               label="Nuevo tipo de cliente"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Agrega un nuevo tipo de cliente al sistema">
+         </action>
+      </viewContribution>
+      <viewContribution
+            id="manticora.solicitudesViewContribution"
+            targetID="manticora.solicitudesView">
+         <action
+               class="rcp.manticora.acciones.BorrarElementoAction"
+               icon="icons/borrar.gif"
+               id="manticora.borrarSolicitud"
+               label="Borrar solicitud"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Botón temporal - sólo desarrollo (las solicitudes se crean por web)">
+         </action>
+         <action
+               class="rcp.manticora.acciones.NuevoElementoAction"
+               icon="icons/agregar.gif"
+               id="manticora.nuevaSolicitud"
+               label="Nueva solicitud"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Botón temporal - sólo desarrollo (las solicitudes se crean por web)">
+         </action>
+      </viewContribution>
+      <viewContribution
+            id="manticora.cotizacionesViewContribution"
+            targetID="manticora.cotizacionesView">
+         <action
+               class="rcp.manticora.acciones.BorrarElementoAction"
+               icon="icons/borrar.gif"
+               id="manticora.borrarCotizacion"
+               label="Borrar cotización"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Elimina una cotización del sistema">
+         </action>
+         <action
+               class="rcp.manticora.acciones.NuevoElementoAction"
+               icon="icons/agregar.gif"
+               id="manticora.nuevaCotizacion"
+               label="Nueva cotización"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Crea una nueva cotización en el sistema">
+         </action>
+         <action
+               class="rcp.manticora.acciones.FiltrarCotizacionAction"
+               icon="icons/lupa3.gif"
+               id="manticora.buscarCotizacion"
+               label="Buscar cotizaciones"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Realiza una búsqueda de cotizaciones en el sistema">
+         </action>
+      </viewContribution>
+      <viewContribution
+            id="manticora.cotizacionesContabilidadViewContribution"
+            targetID="manticora.cotizacionesContabilidadView">
+         <action
+               class="rcp.manticora.acciones.RegistrarCotizacionAction"
+               enablesFor="1"
+               icon="icons/ganchito.gif"
+               id="manticora.marcarCotizacion"
+               label="Registrar cotización"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Marca una cotización para indicar que ha sido registrada en contabilidad">
+         </action>
+         <action
+               class="rcp.manticora.acciones.FiltrarCotizacionAction"
+               icon="icons/lupa3.gif"
+               id="manticora.buscarCotizacion"
+               label="Buscar cotizaciones"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Realiza una búsqueda de cotizaciones en el sistema">
+         </action>
+      </viewContribution>
+      <viewContribution
+            id="manticora.vendedoresViewContribution"
+            targetID="manticora.vendedoresView">
+         <action
+               class="rcp.manticora.acciones.BorrarElementoAction"
+               icon="icons/borrar.gif"
+               id="manticora.borrarVendedor"
+               label="Borrar vendedor"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Elimina un vendedor del sistema">
+         </action>
+         <action
+               class="rcp.manticora.acciones.NuevoElementoAction"
+               icon="icons/agregar.gif"
+               id="manticora.nuevoVendedor"
+               label="Nuevo vendedor"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Crea un nuevo vendedor en el sistema">
+         </action>
+      </viewContribution>
+      <viewContribution
+            id="manticora.transportesViewContribution"
+            targetID="manticora.transportesView">
+         <action
+               class="rcp.manticora.acciones.BorrarElementoAction"
+               icon="icons/borrar.gif"
+               id="manticora.borrarTransporte"
+               label="Borrar transporte"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Elimina un transporte del sistema">
+         </action>
+         <action
+               class="rcp.manticora.acciones.NuevoElementoAction"
+               icon="icons/agregar.gif"
+               id="manticora.nuevoTransporte"
+               label="Nuevo transporte"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Crea un nuevo transporte en el sistema">
+         </action>
+      </viewContribution>
+      <viewContribution
+            id="manticora.keywordsViewContribution"
+            targetID="manticora.keywordsView">
+         <action
+               class="rcp.manticora.acciones.BorrarElementoAction"
+               icon="icons/borrar.gif"
+               id="manticora.borrarKeyword"
+               label="Borrar keyword"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Elimina un keyword del sistema">
+         </action>
+         <action
+               class="rcp.manticora.acciones.NuevoElementoAction"
+               icon="icons/agregar.gif"
+               id="manticora.nuevoKeyword"
+               label="Nuevo keyword"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Crea un nuevo keyword en el sistema">
+         </action>
+      </viewContribution>
+      <viewContribution
+            id="manticora.hojasViewContribution"
+            targetID="manticora.hojasView">
+         <action
+               class="rcp.manticora.acciones.BorrarElementoAction"
+               icon="icons/borrar.gif"
+               id="manticora.borrarHoja"
+               label="Borrar hoja de servicio"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Elimina una hoja de servicio del sistema">
+         </action>
+         <action
+               class="rcp.manticora.acciones.NuevoElementoAction"
+               icon="icons/agregar.gif"
+               id="manticora.nuevaHoja"
+               label="Nueva hoja de servicio"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Crea una nueva hoja de servicio en el sistema">
+         </action>
+      </viewContribution>
+      <viewContribution
+            id="manticora.hojasVentasNuevasViewContribution"
+            targetID="manticora.hojasVentasNuevasView">
+      </viewContribution>
+      <viewContribution
+            id="manticora.hojasOpsNuevasViewContribution"
+            targetID="manticora.hojasOpsNuevasView">
+         <action
+               class="rcp.manticora.acciones.NuevoElementoAction"
+               icon="icons/agregar.gif"
+               id="manticora.nuevaHoja"
+               label="Nueva hoja de servicio (operaciones)"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Crea una nueva hoja de servicio (de operaciones) en el sistema">
+         </action>
+      </viewContribution>
+      <viewContribution
+            id="manticora.cotizacionesActivasViewContribution"
+            targetID="manticora.cotizacionesActivasView">
+         <action
+               class="rcp.manticora.acciones.NuevoElementoAction"
+               icon="icons/agregar.gif"
+               id="manticora.nuevaCotizacionActiva"
+               label="Nueva cotización"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Crea una nueva cotización en el sistema">
+         </action>
+         <action
+               class="rcp.manticora.acciones.FiltrarCotizacionAction"
+               icon="icons/lupa3.gif"
+               id="manticora.buscarCotizacion"
+               label="Buscar cotizaciones"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Realiza una búsqueda de cotizaciones en el sistema">
+         </action>
+      </viewContribution>
+      <viewContribution
+            id="manticora.solicitudesNuevasViewContribution"
+            targetID="manticora.solicitudesNuevasView">
+         <action
+               class="rcp.manticora.acciones.BorrarElementoAction"
+               icon="icons/borrar.gif"
+               id="manticora.borrarSolicitudNueva"
+               label="Borrar solicitud"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Botón temporal - sólo desarrollo (las solicitudes se crean por web)">
+         </action>
+         <action
+               class="rcp.manticora.acciones.NuevoElementoAction"
+               icon="icons/agregar.gif"
+               id="manticora.nuevaSolicitudNuevas"
+               label="Nueva solicitud"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Botón temporal - sólo desarrollo (las solicitudes se crean por web)">
+         </action>
+      </viewContribution>
+      <viewContribution
+            id="manticora.toursViewContribution"
+            targetID="manticora.toursView">
+         <action
+               class="rcp.manticora.acciones.BorrarElementoAction"
+               icon="icons/borrar.gif"
+               id="manticora.borrarTour"
+               label="Borrar tour"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Elimina un tour del sistema">
+         </action>
+         <action
+               class="rcp.manticora.acciones.NuevoElementoAction"
+               icon="icons/agregar.gif"
+               id="manticora.nuevoTour"
+               label="Nuevo tour"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Crea un nuevo tour en el sistema">
+         </action>
+      </viewContribution>
+      <viewContribution
+            id="manticora.guiasViewContribution"
+            targetID="manticora.guiasView">
+         <action
+               class="rcp.manticora.acciones.BorrarElementoAction"
+               icon="icons/borrar.gif"
+               id="manticora.borrarGira"
+               label="Borrar guía"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Elimina un guía del sistema">
+         </action>
+         <action
+               class="rcp.manticora.acciones.NuevoElementoAction"
+               icon="icons/agregar.gif"
+               id="manticora.nuevoGuia"
+               label="Nuevo guía"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Crea un nuevo guía en el sistema">
+         </action>
+      </viewContribution>
+      <viewContribution
+            id="manticora.tipoHabitacionesViewContribution"
+            targetID="manticora.views.tipoHabitaciones">
+         <action
+               class="rcp.manticora.acciones.BorrarElementoAction"
+               enablesFor="1"
+               icon="icons/borrar.gif"
+               id="manticora.borrarGira"
+               label="Borrar tipo de habitación"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Elimina un tipo de habitación">
+         </action>
+         <action
+               class="rcp.manticora.acciones.NuevoElementoAction"
+               icon="icons/agregar.gif"
+               id="manticora.acciones.nuevoTipoHabitacion"
+               label="Nuevo tipo de habitación"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Crea un nuevo tipo de habitación para el hotel indicado">
+         </action>
+      </viewContribution>
+      <viewContribution
+            id="manticora.habitacionesViewContribution"
+            targetID="manticora.views.habitaciones">
+         <action
+               class="rcp.manticora.acciones.BorrarElementoAction"
+               enablesFor="1"
+               icon="icons/borrar.gif"
+               id="manticora.borrarHabitacion"
+               label="Borrar tipo de habitación"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Elimina una habitación">
+         </action>
+         <action
+               class="rcp.manticora.acciones.NuevoElementoAction"
+               icon="icons/agregar.gif"
+               id="manticora.acciones.nuevaHabitacion"
+               label="Nueva habitación (AEP)"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Define una nueva habitación para un hotel de AEP">
+         </action>
+      </viewContribution>
+      <viewContribution
+            id="manticora.rolesViewContribution"
+            targetID="manticora.rolesView">
+         <action
+               class="rcp.manticora.acciones.BorrarElementoAction"
+               icon="icons/borrar.gif"
+               id="manticora.borrarRol"
+               label="Borrar rol"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Elimina un rol">
+         </action>
+         <action
+               class="rcp.manticora.acciones.NuevoElementoAction"
+               icon="icons/agregar.gif"
+               id="manticora.acciones.nuevoRol"
+               label="Nuevo rol"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Crea un nuevo rol para la aplicación">
+         </action>
+      </viewContribution>
+      <viewContribution
+            id="manticora.usuariosViewContribution"
+            targetID="manticora.usuariosView">
+         <action
+               class="rcp.manticora.acciones.BorrarElementoAction"
+               icon="icons/borrar.gif"
+               id="manticora.borrarUsuario"
+               label="Borrar usuario"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Elimina un usuario">
+         </action>
+         <action
+               class="rcp.manticora.acciones.NuevoElementoAction"
+               icon="icons/agregar.gif"
+               id="manticora.acciones.nuevoUsuario"
+               label="Nuevo usuario"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Crea un nuevo usuario y permite asignar sus roles">
+         </action>
+      </viewContribution>
+      <viewContribution
+            id="manticora.reservaToursViewContribution"
+            targetID="manticora.reservaToursView">
+         <action
+               class="rcp.manticora.acciones.BuscarResToursAction"
+               icon="icons/filtro.gif"
+               id="manticora.buscarResTour"
+               label="Buscar reservas de tours"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Realiza una búsqueda de reservas de tours en el sistema">
+         </action>
+      </viewContribution>
+      <viewContribution
+            id="rcp.manticora.views.RedesViewContribution"
+            targetID="rcp.manticora.views.RedesView">
+         <action
+               class="rcp.manticora.acciones.BorrarElementoAction"
+               icon="icons/borrar.gif"
+               id="manticora.borrarRed"
+               label="Borrar red"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Elimina una red de viajes">
+         </action>
+         <action
+               class="rcp.manticora.acciones.NuevoElementoAction"
+               icon="icons/agregar.gif"
+               id="manticora.acciones.nuevaRed"
+               label="Nueva red"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Crea una nueva red de viajes">
+         </action>
+      </viewContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="rcp.manticora.editors.ClientesEditor"
+            default="false"
+            icon="icons/cliente.gif"
+            id="manticora.editors.clientes"
+            name="Clientes">
+      </editor>
+      <editor
+            class="rcp.manticora.editors.ClientesComEditor"
+            default="false"
+            icon="icons/cliente.gif"
+            id="manticora.editors.clientesCom"
+            name="ClientesJuridicos">
+      </editor>
+      <editor
+            class="rcp.manticora.editors.PaisesEditor"
+            default="false"
+            icon="icons/macroSave.gif"
+            id="manticora.editors.paises"
+            name="Países">
+      </editor>
+      <editor
+            class="rcp.manticora.editors.TemplatesEditor"
+            default="false"
+            icon="icons/infoGeneral.gif"
+            id="manticora.editors.templates"
+            name="Templates">
+      </editor>
+      <editor
+            class="rcp.manticora.editors.ProductosEditor"
+            default="false"
+            icon="icons/productos.gif"
+            id="manticora.editors.productos"
+            name="Productos">
+      </editor>
+      <editor
+            class="rcp.manticora.editors.TipoProductosEditor"
+            default="false"
+            icon="icons/productos.gif"
+            id="manticora.editors.tipoProductos"
+            name="Tipo de productos">
+      </editor>
+      <editor
+            class="rcp.manticora.editors.TipoClientesEditor"
+            default="false"
+            icon="icons/macroSave.gif"
+            id="manticora.editors.tipoClientes"
+            name="Tipo de clientes">
+      </editor>
+      <editor
+            class="rcp.manticora.editors.SolicitudesEditor"
+            default="false"
+            icon="icons/solicitudes.gif"
+            id="manticora.editors.solicitudes"
+            name="Solicitudes">
+      </editor>
+      <editor
+            class="rcp.manticora.editors.CotizacionesEditor"
+            default="false"
+            icon="icons/macroSave.gif"
+            id="manticora.editors.cotizaciones"
+            name="Cotizaciones">
+      </editor>
+      <editor
+            class="rcp.manticora.editors.VendedoresEditor"
+            default="false"
+            icon="icons/macroSave.gif"
+            id="manticora.editors.vendedores"
+            name="Vendedores">
+      </editor>
+      <editor
+            class="rcp.manticora.editors.TransportesEditor"
+            default="false"
+            icon="icons/macroSave.gif"
+            id="manticora.editors.transportes"
+            name="Transportes">
+      </editor>
+      <editor
+            class="rcp.manticora.editors.KeywordsEditor"
+            default="false"
+            icon="icons/macroSave.gif"
+            id="manticora.editors.keywords"
+            name="Keywords">
+      </editor>
+      <editor
+            class="rcp.manticora.editors.HojaVentasEditor"
+            default="false"
+            icon="icons/macroSave.gif"
+            id="manticora.editors.hojaVentas"
+            name="Hoja de serv. (ventas)">
+      </editor>
+      <editor
+            class="rcp.manticora.editors.HojaOpsEditor"
+            default="false"
+            icon="icons/macroSave.gif"
+            id="manticora.editors.hojaOperaciones"
+            name="Hoja de serv. (tours)">
+      </editor>
+      <editor
+            class="rcp.manticora.editors.ToursEditor"
+            default="false"
+            icon="icons/macroSave.gif"
+            id="manticora.editors.tours"
+            name="Tours">
+      </editor>
+      <editor
+            class="rcp.manticora.editors.GuiasEditor"
+            default="false"
+            icon="icons/macroSave.gif"
+            id="manticora.editors.guias"
+            name="Guías">
+      </editor>
+      <editor
+            class="rcp.manticora.editors.TipoHabitacionesEditor"
+            default="false"
+            icon="icons/macroSave.gif"
+            id="manticora.editors.tipoHabitaciones"
+            name="Tipo de habitación">
+      </editor>
+      <editor
+            class="rcp.manticora.editors.HabitacionesEditor"
+            default="false"
+            icon="icons/macroSave.gif"
+            id="manticora.editors.habitaciones"
+            name="Habitación">
+      </editor>
+      <editor
+            class="rcp.manticora.editors.RolesEditor"
+            default="false"
+            icon="icons/macroSave.gif"
+            id="manticora.editors.roles"
+            name="Roles">
+      </editor>
+      <editor
+            class="rcp.manticora.editors.UsuariosEditor"
+            default="false"
+            icon="icons/macroSave.gif"
+            id="manticora.editors.usuarios"
+            name="Usuarios">
+      </editor>
+      <editor
+            class="rcp.manticora.editors.Reporte01Editor"
+            default="false"
+            icon="icons/infoGeneral.gif"
+            id="manticora.editors.reporte"
+            name="Reporte">
+      </editor>
+      <editor
+            class="rcp.manticora.editors.RedesEditor"
+            icon="icons/macroSave.gif"
+            id="rcp.manticora.editors.RedesEditor"
+            name="Red de viajes">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editorActions">
+      <editorContribution
+            id="manticora.templatesEditorContribution"
+            targetID="manticora.editors.templates">
+         <action
+               class="rcp.manticora.acciones.NuevaActividadAction"
+               icon="icons/agregar.gif"
+               id="manticora.nuevaActividad"
+               label="Nueva actividad"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Borrador de editor actions">
+         </action>
+      </editorContribution>
+      <editorContribution
+            id="manticora.solicitudesEditorContribution"
+            targetID="manticora.editors.solicitudes">
+         <action
+               class="rcp.manticora.acciones.CancelarSolicitudAction"
+               icon="icons/borrarDoc2.gif"
+               id="manticora.cancelarSolicitud"
+               label="Cancelar solicitud"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Cancela la solicitud">
+         </action>
+         <action
+               class="rcp.manticora.acciones.GenerarCotizacionAction"
+               icon="icons/generarDoc3.gif"
+               id="manticora.generarCotizacion"
+               label="Generar cotización"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Genera una cotización a partir de la solicitud">
+         </action>
+         <action
+               class="rcp.manticora.acciones.AsignarVendedorAction"
+               icon="icons/asignarVendedor.gif"
+               id="manticora.asignarVendedor"
+               label="Asignar vendedor"
+               style="push"
+               toolbarPath="aditions"
+               tooltip="Asigna la solicitud a un vendedor">
+         </action>
+      </editorContribution>
+      <editorContribution
+            id="manticora.cotizacionesEditorContribution"
+            targetID="manticora.editors.cotizaciones">
+         <action
+               class="rcp.manticora.acciones.CancelarCotizacionAction"
+               icon="icons/borrarDoc2.gif"
+               id="manticora.cancelarCotizacion"
+               label="Cancelar cotización"
+               style="push"
+               toolbarPath="toolbar"
+               tooltip="Cancela la cotización">
+         </action>
+         <action
+               class="rcp.manticora.acciones.GenerarHojaAction"
+               icon="icons/generarDoc3.gif"
+               id="manticora.generarHojaServicios"
+               label="Generar hoja de servicio"
+               style="push"
+               toolbarPath="toolbar"
+               tooltip="Genera una hoja de servicio a partir de la cotización">
+         </action>
+         <action
+               class="rcp.manticora.acciones.GenerarPdfCotizacion"
+               icon="icons/pdf16r.gif"
+               id="manticora.generarCotizacionPDFResumida"
+               label="Generar cotización en PDF (resumida)"
+               style="push"
+               toolbarPath="toolbar"
+               tooltip="Genera una cotización resumida en formato PDF">
+         </action>
+         <action
+               class="rcp.manticora.acciones.GenerarPdfCotizacion"
+               icon="icons/pdf16.gif"
+               id="manticora.generarCotizacionPDF"
+               label="Generar cotización en PDF"
+               style="push"
+               toolbarPath="toolbar"
+               tooltip="Genera una cotización en formato PDF">
+         </action>
+         <action
+               class="rcp.manticora.acciones.EjecutarRefreshAction"
+               icon="icons/refresh.gif"
+               id="manticora.Refresh"
+               label="Actualizar campos calculados"
+               menubarPath="manticora/level2/level3"
+               toolbarPath="additions"
+               tooltip="Actualiza los campos calculados en la cotización">
+         </action>
+         <action
+               class="rcp.manticora.acciones.CuadrarCotizacionAction"
+               icon="icons/cuadrar.gif"
+               id="manticora.CuadrarCotizacion"
+               label="Cuadrar cotización"
+               menubarPath="manticora/level2/level3"
+               style="push"
+               tooltip="Ayuda a cuadrar las cotizaciones">
+         </action>
+      </editorContribution>
+      <editorContribution
+            id="manticora.hojaVentasEditorContribution"
+            targetID="manticora.editors.hojaVentas">
+         <action
+               class="rcp.manticora.acciones.FormalizarHojaAction"
+               icon="icons/generarDoc3.gif"
+               id="manticora.formalizarHojaServicios"
+               label="Pasar la hoja de servicio a operaciones"
+               style="push"
+               toolbarPath="toolbar"
+               tooltip="Pasa la hoja de servicio a operaciones">
+         </action>
+      </editorContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="rcp.manticora.GeneralPreferencePage"
+            id="manticora.preferences.general"
+            name="General">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            id="rcp.manticora.actionSet1"
+            label="Manticora Tools">
+         <menu
+               id="manticora.menu.tools"
+               label="&amp;Tools"
+               path="manticora">
+            <groupMarker
+                  name="LevelX">
+            </groupMarker>
+         </menu>
+         <action
+               class="rcp.manticora.acciones.CuadrarCotizacionActionSet"
+               icon="icons/cuadrar.gif"
+               id="manticora.CuadrarCotizacion2"
+               label="Cuadrar cotización"
+               style="push"
+               tooltip="Ayuda a cuadrar cotizaciones">
+         </action>
+      </actionSet>
+      <actionSet
+            id="rcp.manticora.actionSet2"
+            label="Actionset para password"
+            visible="true">
+         <action
+               class="rcp.manticora.acciones.EditarPasswordAction"
+               id="rcp.manticora.editarPassword"
+               label="Password..."
+               menubarPath="manticora/additions2">
+         </action>
+      </actionSet>
+   </extension>
+   <extension
+         point="org.eclipse.ui.actionSetPartAssociations">
+      <actionSetPartAssociation
+            targetID="manticora.actionSet1">
+         <part
+               id="manticora.editors.cotizaciones">
+         </part>
+      </actionSetPartAssociation>
+   </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="rcp.manticora.application"
+            name="Ancon Expeditions of Panama">
+         <property
+               name="appName"
+               value="Ancon Expeditions of Panama">
+         </property>
+         <property
+               name="preferenceCustomization"
+               value="plugin_customization.ini">
+         </property>
+         <property
+               name="windowImages"
+               value="icons/aep16.gif">
+         </property>
+      </product>
+   </extension>
+   <extension
+         point="org.eclipse.equinox.preferences.preferences">
+      <initializer
+            class="rcp.manticora.PreferenceInitializer">
+      </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.splashHandlers">
+      <splashHandler
+            class="rcp.manticora.splashHandlers.InteractiveSplashHandler"
+            id="rcp.manticora.splashHandlers.interactive">
+      </splashHandler>
+      <splashHandlerProductBinding
+            productId="rcp.manticora.product"
+            splashId="rcp.manticora.splashHandlers.interactive">
+      </splashHandlerProductBinding>
+   </extension>
+
+</plugin>
