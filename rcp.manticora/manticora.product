@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Ancon Expeditions of Panama" id="rcp.manticora.product" application="rcp.manticora.application" version="1.7.5" useFeatures="false" includeLaunchers="true">
+<product name="Ancon Expeditions of Panama" id="rcp.manticora.product" application="rcp.manticora.application" version="1.7.7" useFeatures="false" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>
 
    <launcherArgs>
+      <programArgs>-clearPersistedState
+      </programArgs>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
       </vmArgsMac>
    </launcherArgs>
@@ -33,7 +35,6 @@
    <plugins>
       <plugin id="com.ibm.icu"/>
       <plugin id="com.lowagie.itext"/>
-      <plugin id="com.lowagie.text"/>
       <plugin id="com.mysql.jdbc"/>
       <plugin id="javax.annotation"/>
       <plugin id="javax.el"/>
@@ -62,10 +63,12 @@
       <plugin id="org.apache.jasper.glassfish"/>
       <plugin id="org.apache.lucene.analysis"/>
       <plugin id="org.apache.lucene.core"/>
-      <plugin id="org.apache.xerces"/>
-      <plugin id="org.apache.xml.resolver"/>
-      <plugin id="org.apache.xml.serializer"/>
       <plugin id="org.eclipse.birt.axis.overlay" fragment="true"/>
+      <plugin id="org.eclipse.birt.chart.device.extension"/>
+      <plugin id="org.eclipse.birt.chart.device.svg"/>
+      <plugin id="org.eclipse.birt.chart.engine"/>
+      <plugin id="org.eclipse.birt.chart.engine.extension"/>
+      <plugin id="org.eclipse.birt.chart.reportitem"/>
       <plugin id="org.eclipse.birt.core"/>
       <plugin id="org.eclipse.birt.data"/>
       <plugin id="org.eclipse.birt.data.aggregation"/>
@@ -79,6 +82,7 @@
       <plugin id="org.eclipse.birt.report.engine.emitter.pdf"/>
       <plugin id="org.eclipse.birt.report.engine.fonts"/>
       <plugin id="org.eclipse.birt.report.engine.script.javascript"/>
+      <plugin id="org.eclipse.birt.report.item.crosstab.core"/>
       <plugin id="org.eclipse.birt.report.model"/>
       <plugin id="org.eclipse.birt.report.viewer"/>
       <plugin id="org.eclipse.core.commands"/>
@@ -163,7 +167,6 @@
       <plugin id="org.junit"/>
       <plugin id="org.mozilla.javascript"/>
       <plugin id="org.w3c.css.sac"/>
-      <plugin id="org.w3c.dom.events"/>
       <plugin id="org.w3c.dom.smil"/>
       <plugin id="org.w3c.dom.svg"/>
       <plugin id="org.w3c.sac"/>
