@@ -187,7 +187,7 @@ public class MenuVentasView extends ViewPart {
 		TreeParent p1 = new TreeParent("Consultas");
 		p1.addChild(new TreeObject("Productos", ProductosView.ID, IImageKeys.CONFIG));
 		p1.addChild(new TreeObject("Clientes", ClientesView.ID, IImageKeys.CONFIG));
-		p1.addChild(new TreeObject("CompaÒÌas", ClientesComView.ID, IImageKeys.CONFIG));
+		p1.addChild(new TreeObject("Compa√±√≠as", ClientesComView.ID, IImageKeys.CONFIG));
 		
 		TreeParent p2 = new TreeParent("Solicitudes");
 		p2.addChild(new TreeObject("Nuevas", SolicitudesNuevasView.ID, "icons/menuVentas.gif"));
@@ -207,10 +207,10 @@ public class MenuVentasView extends ViewPart {
 		p4.addChild(new TreeObject("Finalizadas", HojasFinalizadasView.ID, "icons/menuOperaciones.gif"));
 		
 		TreeParent p5 = new TreeParent("Reservas");
-//		p5.addChild(new TreeObject("GuÌas", "", "icons/menuReservas.gif"));
+//		p5.addChild(new TreeObject("Gu√≠as", "", "icons/menuReservas.gif"));
 		p5.addChild(new TreeObject("Transporte", "", "icons/menuReservas.gif"));
 		p5.addChild(new TreeObject("Hospedaje", "", "icons/menuReservas.gif"));
-//		p5.addChild(new TreeObject("AlimentaciÛn", "", "icons/menuReservas.gif"));
+//		p5.addChild(new TreeObject("Alimentaci√≥n", "", "icons/menuReservas.gif"));
 		
 		TreeParent root = new TreeParent("");
 		root.addChild(p1);
@@ -258,7 +258,7 @@ public class MenuVentasView extends ViewPart {
 				} else {
 					if (vista.equals("")) {
 						// si seleccion tiene valor, pero vista es "", => vista no habilitada
-						MessageDialog.openInformation(window.getShell(), "Aviso", "La vista " + seleccion + " no est· habilitada.");
+						MessageDialog.openInformation(window.getShell(), "Aviso", "La vista " + seleccion + " no est√° habilitada.");
 					}
 				}
 

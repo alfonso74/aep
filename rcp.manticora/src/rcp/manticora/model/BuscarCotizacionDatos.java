@@ -27,10 +27,10 @@ public class BuscarCotizacionDatos {
 	
 	
 	/**
-	 * Genera un objeto Criteria de Hibernate de acuerdo con los par·metros introducidos
-	 * en la pantalla de buscar cotizaciÛn.
-	 * @param session SesiÛn de hibernate que se utilizar· para generar el Criteria
-	 * @return Criteria adecuado a los par·metros de b˙squeda
+	 * Genera un objeto Criteria de Hibernate de acuerdo con los par√°metros introducidos
+	 * en la pantalla de buscar cotizaci√≥n.
+	 * @param session Sesi√≥n de hibernate que se utilizar√° para generar el Criteria
+	 * @return Criteria adecuado a los par√°metros de b√∫squeda
 	 */
 	public Criteria generarCriteria(Session session) {
 		
@@ -130,7 +130,7 @@ public class BuscarCotizacionDatos {
 	}
 	
 	
-// ********************************* mÈtodos de apoyo ****************************************
+// ********************************* m√©todos de apoyo ****************************************
 	
 	public boolean hasNoCotizacion() {
 		if (noCotizacion != null && noCotizacion.longValue() != 0) return true;

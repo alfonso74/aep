@@ -72,7 +72,7 @@ public class ReservaVueloDialog extends AbstractAEPTitleAreaDialog implements
 		GridData gridData;
 		
 		l = new Label(composite, SWT.NONE);
-		l.setText("L韓ea:");
+		l.setText("L铆nea:");
 		comboLinea = new Combo(composite, SWT.NONE);
 		comboLinea.setItems(new String[] {"AeroPerlas", "AirPanama"});
 		gridData = new GridData(150, 15);
@@ -142,7 +142,7 @@ public class ReservaVueloDialog extends AbstractAEPTitleAreaDialog implements
 			setTitle("Editando reserva de vuelo");
 			setMessage("Por favor, especifique los detalles de la reserva", IMessageProvider.INFORMATION);
 			
-			System.out.println("Cargando informaci髇 de campos...");
+			System.out.println("Cargando informaci贸n de campos...");
 			txtLocalizador.setText(valor2Txt(reserva.getLocalizador()));
 			comboLinea.setText(valor2Txt(reserva.getAerolinea()));
 			txtVuelo.setText(valor2Txt(reserva.getVuelo()));
@@ -188,32 +188,32 @@ public class ReservaVueloDialog extends AbstractAEPTitleAreaDialog implements
 		String pHora = txtHora.getText().trim();
 		
 		if (pLocalizador.length() == 0) {
-			MessageDialog.openInformation(shell, "Validaci髇 de campo",
+			MessageDialog.openInformation(shell, "Validaci贸n de campo",
 					"El campo de \"Localizador\" no puede quedar en blanco.");
 			return false;
 		} else if (pLocalizador.length() > 30) {
-			MessageDialog.openInformation(shell, "Validaci髇 de campo",
+			MessageDialog.openInformation(shell, "Validaci贸n de campo",
 					"El campo de \"Localizador\" no puede superar los 30 caracteres (" + pLocalizador.length() + ").");
 			return false;
 		}
 		if (pAerolinea.length() == 0) {
-			MessageDialog.openInformation(shell, "Validaci髇 de campo",
-					"El campo de \"L韓ea\" no puede quedar en blanco.");
+			MessageDialog.openInformation(shell, "Validaci贸n de campo",
+					"El campo de \"L铆nea\" no puede quedar en blanco.");
 			return false;
 		}
 		if (pVuelo.length() == 0) {
-			MessageDialog.openInformation(shell, "Validaci髇 de campo",
+			MessageDialog.openInformation(shell, "Validaci贸n de campo",
 					"El campo de \"Vuelo\" no puede quedar en blanco.");
 			return false;
 		}
 		
 		if (FechaUtil.toDate(pFecha) == null) {
-			MessageDialog.openInformation(shell, "Validaci髇 de campos",
+			MessageDialog.openInformation(shell, "Validaci贸n de campos",
 				"El formato de la fecha debe ser dd-MM-yyyy (Ejemplo: \"25-11-2008\").");
 			return false;
 		}
 		if (FechaUtil.toHour(pHora) == null) {
-			MessageDialog.openInformation(shell, "Validaci髇 de campos",
+			MessageDialog.openInformation(shell, "Validaci贸n de campos",
 					"El formato de hora debe ser hh:mm aa (Ejemplo: \"11:45 AM\").");
 			return false;
 		}

@@ -146,11 +146,11 @@ public abstract class AbstractEditorHXXX extends EditorPart {
 		return valorTxt;
 	}
 	
-// presentación de valores numéricos con formato en los formularios
+// presentaciÃ³n de valores numÃ©ricos con formato en los formularios
 	protected String valor2Txt(Object valorCampo, String formato) {
 		if (valorCampo != null) {
 			NumberFormat nf = NumberFormat.getInstance();
-			//System.out.println("Número cargado: " + nf.format(valorCampo));
+			//System.out.println("NÃºmero cargado: " + nf.format(valorCampo));
 		}
 		// formato usualmente se especifica para new DecimalFormat(".00")
 		String valorTxt = (valorCampo == null ? "" : new DecimalFormat(formato).format(valorCampo));

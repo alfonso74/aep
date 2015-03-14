@@ -75,7 +75,7 @@ public class TransportesView extends ViewPart implements IRefreshView {
 	}
 	
 	public void contar() {
-		System.out.println("Tamaño: " + controller.getListadoTransportes().length);
+		System.out.println("TamaÃ±o: " + controller.getListadoTransportes().length);
 	}
 	
 	private void hookDoubleClickListener(Composite parent) {

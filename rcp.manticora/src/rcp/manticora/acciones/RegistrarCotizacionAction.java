@@ -29,7 +29,7 @@ public class RegistrarCotizacionAction implements IViewActionDelegate {
 
 	public void run(IAction action) {
 //		Shell shell = view.getViewSite().getShell();
-//		InputDialog d = new InputDialog(shell, "Asignaci髇 de factura a cotizaci髇", "Por favor, introduzca el n鷐ero de la factura", "", null);
+//		InputDialog d = new InputDialog(shell, "Asignaci贸n de factura a cotizaci贸n", "Por favor, introduzca el n煤mero de la factura", "", null);
 //		int respuesta = d.open();
 //		if (respuesta == InputDialog.OK) {
 //			Cotizacion c = (Cotizacion) seleccion;
@@ -42,7 +42,7 @@ public class RegistrarCotizacionAction implements IViewActionDelegate {
 //		}
 		
 		Shell shell = view.getViewSite().getShell();
-		boolean respuesta = MessageDialog.openConfirm(shell, "Confirmaci髇", "Desea marcar la cotizaci髇 como registrada en contabilidad?");
+		boolean respuesta = MessageDialog.openConfirm(shell, "Confirmaci贸n", "Desea marcar la cotizaci贸n como registrada en contabilidad?");
 		if (respuesta) {
 			Cotizacion c = (Cotizacion) seleccion;
 			System.out.println("Fecha de registro: " + new Date());

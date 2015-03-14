@@ -141,7 +141,7 @@ public class ProductosView extends ViewPart implements IRefreshView {
 		});
 		
 		column = new TableColumn(tabla, SWT.RIGHT, 1);
-		column.setText("Cód.");
+		column.setText("CÃ³d.");
 		column.setWidth(50);
 		column.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
@@ -151,7 +151,7 @@ public class ProductosView extends ViewPart implements IRefreshView {
 		});
 		
 		column = new TableColumn(tabla, SWT.LEFT, 2);
-		column.setText("Descripción");
+		column.setText("DescripciÃ³n");
 		column.setWidth(235);
 		column.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
@@ -171,7 +171,7 @@ public class ProductosView extends ViewPart implements IRefreshView {
 		});
 		
 		column = new TableColumn(tabla, SWT.RIGHT, 4);
-		column.setText("Público");
+		column.setText("PÃºblico");
 		column.setWidth(65);
 		
 		column = new TableColumn(tabla, SWT.RIGHT, 5);

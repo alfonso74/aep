@@ -103,7 +103,7 @@ public class ClientesView extends ViewPart implements IRefreshView, IViewFilter 
 		tabla.setHeaderVisible(true);
 		
 		TableColumn column = new TableColumn(tabla, SWT.RIGHT, 0);
-		column.setText("Código");
+		column.setText("CÃ³digo");
 		column.setWidth(50);
 		column.setAlignment(SWT.RIGHT);  // aparentemente esto es ignorado
 		column.addSelectionListener(new SelectionAdapter() {

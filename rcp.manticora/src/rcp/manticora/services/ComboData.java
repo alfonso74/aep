@@ -18,7 +18,7 @@ public class ComboData {
 	/**
 	 * Agrega una entrada (item) al combo data.
 	 * @param texto texto que se presenta en el combodata
-	 * @param key valor o código que representa al texto
+	 * @param key valor o cÃ³digo que representa al texto
 	 */
 	public void agregarItem(String texto, String key) {
 		vTexto.addElement(texto);
@@ -28,7 +28,7 @@ public class ComboData {
 	/**
 	 * Agrega una entrada (item) al combo data.
 	 * @param texto texto que se presenta en el combodata
-	 * @param key valor o código que representa al texto
+	 * @param key valor o cÃ³digo que representa al texto
 	 */
 	public void agregarItem(String texto, Long key) {
 		vTexto.addElement(texto);
@@ -38,8 +38,8 @@ public class ComboData {
 	/**
 	 * Agrega una entrada (item) al combo data.
 	 * @param texto texto que se presenta en el combodata
-	 * @param key valor o código que representa al texto
-	 * @param obj objeto de donde se sacó el texto y el código de la entrada
+	 * @param key valor o cÃ³digo que representa al texto
+	 * @param obj objeto de donde se sacÃ³ el texto y el cÃ³digo de la entrada
 	 */
 	public void agregarItem(String texto, Long key, Object obj) {
 		vTexto.addElement(texto);
@@ -50,8 +50,8 @@ public class ComboData {
 	/**
 	 * Agrega una entrada (item) al combo data.
 	 * @param texto texto que se presenta en el combodata
-	 * @param key valor o código que representa al texto
-	 * @param obj objeto de donde se sacó el texto y el código de la entrada
+	 * @param key valor o cÃ³digo que representa al texto
+	 * @param obj objeto de donde se sacÃ³ el texto y el cÃ³digo de la entrada
 	 */
 	public void agregarItem(String texto, String key, Object obj) {
 		vTexto.addElement(texto);
@@ -60,11 +60,11 @@ public class ComboData {
 	}
 	
 	/**
-	 * Agrega una entrada (item) al combo data en la posición indicada (en base a 0).
+	 * Agrega una entrada (item) al combo data en la posiciÃ³n indicada (en base a 0).
 	 * @param texto texto que se presenta en el combodata
-	 * @param key valor o código que representa al texto
-	 * @param obj objeto de donde se sacó el texto y el código de la entrada
-	 * @param atPosition posición donde se va a agregar el item
+	 * @param key valor o cÃ³digo que representa al texto
+	 * @param obj objeto de donde se sacÃ³ el texto y el cÃ³digo de la entrada
+	 * @param atPosition posiciÃ³n donde se va a agregar el item
 	 */
 	public void agregarItemAt(String texto, String key, Object obj, int atPosition) {
 //		vTexto.addElement(texto);
@@ -84,9 +84,9 @@ public class ComboData {
 	}
 	
 	/**
-	 * Retorna la Descripción del elemento indicado en el índice
-	 * @param indice Posición a retornar
-	 * @return Descripción (como String) o null si el índice es -1
+	 * Retorna la DescripciÃ³n del elemento indicado en el Ã­ndice
+	 * @param indice PosiciÃ³n a retornar
+	 * @return DescripciÃ³n (como String) o null si el Ã­ndice es -1
 	 */
 	public String getTextoByIndex(int indice) {
 		if (indice != -1) {
@@ -97,9 +97,9 @@ public class ComboData {
 	}
 	
 	/**
-	 * Retorna la Descripción del elemento seleccionado
-	 * @param valor Código a buscar (de tipo Long)
-	 * @return Descripción (como String) o null (si no encuentra nada)
+	 * Retorna la DescripciÃ³n del elemento seleccionado
+	 * @param valor CÃ³digo a buscar (de tipo Long)
+	 * @return DescripciÃ³n (como String) o null (si no encuentra nada)
 	 */
 	public String getTextoByKey(Long valor) {
 		Long v;
@@ -114,9 +114,9 @@ public class ComboData {
 	}
 
 	/**
-	 * Retorna la Descripción del elemento seleccionado
-	 * @param codigo Código a buscar
-	 * @return Descripción (como String) o null (si no encuentra nada)
+	 * Retorna la DescripciÃ³n del elemento seleccionado
+	 * @param codigo CÃ³digo a buscar
+	 * @return DescripciÃ³n (como String) o null (si no encuentra nada)
 	 */
 	public String getTextoByKey(String codigo) {
 		String v;
@@ -132,9 +132,9 @@ public class ComboData {
 	}
 
 	/**
-	 * Retorna el código del elemento seleccionado
-	 * @param indice posición del elemento a utilizar
-	 * @return código (como String) o null si no encuentra nada.
+	 * Retorna el cÃ³digo del elemento seleccionado
+	 * @param indice posiciÃ³n del elemento a utilizar
+	 * @return cÃ³digo (como String) o null si no encuentra nada.
 	 */
 	public String getCodeByIndex(int indice) {
 		if (indice != -1) {
@@ -145,9 +145,9 @@ public class ComboData {
 	}
 
 	/**
-	 * Retorna el código del elemento con el texto (Descripción) suministrado
-	 * @param texto Descripción a buscar
-	 * @return código (como String) o null si no encuentra nada
+	 * Retorna el cÃ³digo del elemento con el texto (DescripciÃ³n) suministrado
+	 * @param texto DescripciÃ³n a buscar
+	 * @return cÃ³digo (como String) o null si no encuentra nada
 	 */
 	public String getCodeByName(String texto) {
 		for (int n = 0; n < vKey.size(); n++) {
@@ -159,9 +159,9 @@ public class ComboData {
 	}
 
 	/**
-	 * Retorna el código o el id del elemento indicado como un valor de tipo Long
-	 * @param indice posición del elemento a retornar
-	 * @return código o id (transformado a Long)
+	 * Retorna el cÃ³digo o el id del elemento indicado como un valor de tipo Long
+	 * @param indice posiciÃ³n del elemento a retornar
+	 * @return cÃ³digo o id (transformado a Long)
 	 */
 	public Long getKeyAsLongByIndex(int indice) {
 		if (indice == -1) return 0L;
@@ -171,9 +171,9 @@ public class ComboData {
 	}
 	
 	/**
-	 * Retorna el código del elemento con el texto (Descripción) suministrado, como un valor de tipo Long
-	 * @param texto Descripción a buscar
-	 * @return código (como Long) o -1L si no encuentra nada
+	 * Retorna el cÃ³digo del elemento con el texto (DescripciÃ³n) suministrado, como un valor de tipo Long
+	 * @param texto DescripciÃ³n a buscar
+	 * @return cÃ³digo (como Long) o -1L si no encuentra nada
 	 */
 	public Long getKeyAsLongByTexto(String texto) {
 		for (int n = 0; n < vKey.size(); n++) {

@@ -131,7 +131,7 @@ public abstract class AbstractEditorH extends EditorPart {
 		int puntoFinal = nombre.indexOf(".") + 1;
 		int arroba = nombre.indexOf("@");
 		MessageDialog.openError(shell, "Error en " + nombre.substring(puntoFinal, arroba), "Error: " + e.toString() + "\n\nStack trace: " + e.getStackTrace()[0] + "\n" + e.getStackTrace()[1]);
-		//MessageDialog.openError(shell, "Error en la aplicación", "Error: " + e.toString() + "\n\nStack trace: " + e.getStackTrace()[0]);
+		//MessageDialog.openError(shell, "Error en la aplicaciÃ³n", "Error: " + e.toString() + "\n\nStack trace: " + e.getStackTrace()[0]);
 	}
 
 	protected ModifyListener createModifyListener() {

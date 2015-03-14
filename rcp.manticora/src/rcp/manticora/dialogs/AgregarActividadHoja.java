@@ -148,7 +148,7 @@ public class AgregarActividadHoja extends AbstractAEPTitleAreaDialog {
 		gridData.heightHint = 40;
 		txtComentario.setLayoutData(gridData);
 		
-// *********************** Secci髇 de alimentaci髇 ****************************
+// *********************** Secci贸n de alimentaci贸n ****************************
 		
 		l = new Label(composite, SWT.SEPARATOR | SWT.HORIZONTAL);
 	    gridData = new GridData(GridData.FILL, GridData.CENTER, false, false);
@@ -157,7 +157,7 @@ public class AgregarActividadHoja extends AbstractAEPTitleAreaDialog {
 		l.setLayoutData(gridData);
 		
 		l = new Label(composite, SWT.NONE);
-		l.setText("Alimentaci髇:");
+		l.setText("Alimentaci贸n:");
 		gridData = new GridData();
 		l.setLayoutData(gridData);
 		
@@ -241,7 +241,7 @@ public class AgregarActividadHoja extends AbstractAEPTitleAreaDialog {
 			} else if (linea.getComidas() == null || linea.getComidas().equals("")) {
 				cComidas.setText("No aplica");
 			} else if (linea.getComidas().equals("X")) {
-				// la X implica que aunque la actividad puede tener comidas, no se ofrece por alg鷑 motivo
+				// la X implica que aunque la actividad puede tener comidas, no se ofrece por alg煤n motivo
 				cComidas.setText("Sin comidas");
 			}
 		} else {
@@ -256,9 +256,9 @@ public class AgregarActividadHoja extends AbstractAEPTitleAreaDialog {
 		int pos;
 		Long seleccion;
 		pos = comboTipo.getSelectionIndex();
-		// obtenemos la posici髇 del elemento seleccionado
+		// obtenemos la posici贸n del elemento seleccionado
 		pos = comboProducto.getSelectionIndex();
-		// obtenemos el c骴igo del producto seleccionado
+		// obtenemos el c贸digo del producto seleccionado
 		seleccion = productos.getIdProductoByIndex(pos);
 		Producto pProducto = productos.getProductoByIdProducto(seleccion);
 		System.out.println("Pos: " + pos + ",  seleccion: " + seleccion);
@@ -286,7 +286,7 @@ public class AgregarActividadHoja extends AbstractAEPTitleAreaDialog {
 		hora = txtHora.getText().trim();
 		if (!hora.equals("")) {
 			if (FechaUtil.toHour(hora) == null) {
-				MessageDialog.openInformation(shell, "Validaci髇 de campos",
+				MessageDialog.openInformation(shell, "Validaci贸n de campos",
 				"El formato de hora debe ser hh:mm aa (Ejemplo: \"11:45 AM\").");
 				return false;
 			}

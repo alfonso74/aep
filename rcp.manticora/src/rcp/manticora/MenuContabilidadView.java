@@ -18,7 +18,7 @@ public class MenuContabilidadView extends AbstractMenuView {
 		p1 = new TreeParent("Consultas");
 		p1.addChild(new TreeObject("Productos", ProductosView.ID, IImageKeys.CONFIG));
 		p1.addChild(new TreeObject("Clientes", ClientesView.ID, IImageKeys.CONFIG));
-		p1.addChild(new TreeObject("Compañías", ClientesComView.ID, IImageKeys.CONFIG));
+		p1.addChild(new TreeObject("CompaÃ±Ã­as", ClientesComView.ID, IImageKeys.CONFIG));
 		
 		TreeParent p2 = new TreeParent("Cotizaciones");
 		p2.addChild(new TreeObject("Todas", CotizacionesContabilidadView.ID, "icons/menuVentas.gif"));

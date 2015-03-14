@@ -29,7 +29,7 @@ public class GenericSorterV1 extends ViewerSorter {
 	public final static int FECHAHORA = 3;
 	private int columnaDefault = 0;
 	private int column;
-	private int tipo = AUTOMATICO;   // 0 es numérico, 1 es alfanumérico, -1 es automático
+	private int tipo = AUTOMATICO;   // 0 es numÃ©rico, 1 es alfanumÃ©rico, -1 es automÃ¡tico
 	private int direccion = -1;  // 0 es sin ordenar, 1 es ascendente, 2 es descendente
 	private boolean indicador = true;
 	
@@ -40,10 +40,10 @@ public class GenericSorterV1 extends ViewerSorter {
 	/**
 	 * Clase utilizada para permitir ordenamiento de columnas en un viewer.
 	 * Por default ordena en base a la primera columna del viewer, pero
-	 * el parámetro columna permite indicar la columna default a utilizar para
+	 * el parÃ¡metro columna permite indicar la columna default a utilizar para
 	 * el ordenamiento.
 	 * @param viewer Viewer al que se aplica el sorter
-	 * @param columna Número de columna que rige el ordenamiento (en base a 0)
+	 * @param columna NÃºmero de columna que rige el ordenamiento (en base a 0)
 	 */
 
 	public GenericSorterV1(TableViewer viewer, int columna) {
@@ -62,7 +62,7 @@ public class GenericSorterV1 extends ViewerSorter {
 	/**
 	 * Clase utilizada para permitir ordenamiento de columnas en un viewer.
 	 * Por default ordena en base a la primera columna del viewer, pero
-	 * con el método doSort() se puede indicar la columna a utilizar para el
+	 * con el mÃ©todo doSort() se puede indicar la columna a utilizar para el
 	 * ordenamiento y el tipo de datos de la misma.
 	 * @param viewer Viewer al que se aplica el sorter
 	 */
@@ -94,7 +94,7 @@ public class GenericSorterV1 extends ViewerSorter {
 	 * Utilizado para permitir ordenamiento de columnas en un viewer.
 	 * Se debe especificar la columna y el tipo de la misma para realizar
 	 * el ordenamiento.
-	 * @param column Número de columna que rige el ordenamiento (en base a 0)
+	 * @param column NÃºmero de columna que rige el ordenamiento (en base a 0)
 	 * @param tipo Tipo de datos que contiene la columna
 	 */
 	public GenericSorterV1(TableViewer viewer, int column, int tipo) {
@@ -105,7 +105,7 @@ public class GenericSorterV1 extends ViewerSorter {
 			t = null;
 			tc = null;
 		}
-		// en lugar de llamar a aplicarDefault() suministramos los parámetros
+		// en lugar de llamar a aplicarDefault() suministramos los parÃ¡metros
 		// de acuerdo a la columna y tipo indicado
 		this.direccion = 0;
 		this.column = column;
@@ -125,7 +125,7 @@ public class GenericSorterV1 extends ViewerSorter {
 	
 	/**
 	 * Ordena al viewer en base a la columna y al tipo de datos especificado
-	 * @param column Número de columna que rige el ordenamiento (en base a 0)
+	 * @param column NÃºmero de columna que rige el ordenamiento (en base a 0)
 	 * @param tipo Tipo de datos que contiene la columna
 	 */
 	public void doSort(int column, int tipo) {
@@ -150,10 +150,10 @@ public class GenericSorterV1 extends ViewerSorter {
 	
 	/**
 	 * Ordena al viewer en base a la columna y tipo de datos especificado,
-	 * en la dirección indicada.
-	 * @param column Número de columna que rige el ordenamiento (en base a 0)
+	 * en la direcciÃ³n indicada.
+	 * @param column NÃºmero de columna que rige el ordenamiento (en base a 0)
 	 * @param tipo Tipo de datos que contiene la columna
-	 * @param direccion Dirección inicial de ordenamiento (0 - sin ordenar, 1 - ascendente, 2 - descendente)
+	 * @param direccion DirecciÃ³n inicial de ordenamiento (0 - sin ordenar, 1 - ascendente, 2 - descendente)
 	 */
 	public void doSort(int column, int tipo, int direccionInicial) {
 		//indicador = true;
@@ -164,7 +164,7 @@ public class GenericSorterV1 extends ViewerSorter {
 			this.column = column;
 			direccion = direccionInicial;
 		} else {
-		// si no, determinamos la nueva dirección de ordenamiento
+		// si no, determinamos la nueva direcciÃ³n de ordenamiento
 			if (direccion == 0) {
 				direccion = 1;
 			} else if (direccion == 1) {
@@ -180,11 +180,11 @@ public class GenericSorterV1 extends ViewerSorter {
 	
 	/**
 	 * Ordena al viewer en base a la columna y tipo de datos especificado,
-	 * en la dirección indicada.
-	 * @param column Número de columna que rige el ordenamiento (en base a 0)
+	 * en la direcciÃ³n indicada.
+	 * @param column NÃºmero de columna que rige el ordenamiento (en base a 0)
 	 * @param tipo Tipo de datos que contiene la columna
-	 * @param direccion Dirección inicial de ordenamiento (0 - sin ordenar, 1 - ascendente, 2 - descendente)
-	 * @param indicador Flag que indica si se debe mostrar la dirección de ordenamiento de la columna
+	 * @param direccion DirecciÃ³n inicial de ordenamiento (0 - sin ordenar, 1 - ascendente, 2 - descendente)
+	 * @param indicador Flag que indica si se debe mostrar la direcciÃ³n de ordenamiento de la columna
 	 */
 	public void doSort(int column, int tipo, int direccionInicial, boolean mostrarIndicador) {
 		this.tipo = tipo;
@@ -195,7 +195,7 @@ public class GenericSorterV1 extends ViewerSorter {
 			direccion = direccionInicial;
 			indicador = mostrarIndicador;
 		} else {
-		// si no, determinamos la nueva dirección de ordenamiento
+		// si no, determinamos la nueva direcciÃ³n de ordenamiento
 			if (direccion == 0) {
 				direccion = 1;
 			} else if (direccion == 1) {
@@ -206,7 +206,7 @@ public class GenericSorterV1 extends ViewerSorter {
 				direccion = direccionInicial;
 			}
 		}
-		// si el indicador está habilitado, lo presentamos en la columna
+		// si el indicador estÃ¡ habilitado, lo presentamos en la columna
 		if (indicador) {
 			tc = t.getColumn(column);
 			t.setSortColumn(tc);
@@ -265,7 +265,7 @@ public class GenericSorterV1 extends ViewerSorter {
 		int resultado = 0;
 		int cat1 = category(e1);
 		int cat2 = category(e2);
-		//System.out.println("Categorías: " + cat1 + ", " + cat2);
+		//System.out.println("CategorÃ­as: " + cat1 + ", " + cat2);
 		if (cat1 != cat2) return cat1 - cat2;
 		String name1, name2;
 		if (viewer == null || !(viewer instanceof ContentViewer)) {
@@ -289,12 +289,12 @@ public class GenericSorterV1 extends ViewerSorter {
 		
 		// si no se ha indicado un tipo, entonces determinamos el tipo de la columna default
 		if (tipo == AUTOMATICO) {
-			System.out.println("Detección automática de tipo de columna");
+			System.out.println("DetecciÃ³n automÃ¡tica de tipo de columna");
 			tipo = determinarTipoColumna(name1);
 		}
 		
 		if (tipo == NUMERO) {
-			// transformamos y comparamos en base a números
+			// transformamos y comparamos en base a nÃºmeros
 			NumberFormat nf = NumberFormat.getInstance();
 			double numero1 = 0;
 			double numero2 = 0;
@@ -302,7 +302,7 @@ public class GenericSorterV1 extends ViewerSorter {
 				numero1 = nf.parse(name1).doubleValue();
 				numero2 = nf.parse(name2).doubleValue();
 			} catch (ParseException e) {
-				System.out.println("Error en transformación de números");
+				System.out.println("Error en transformaciÃ³n de nÃºmeros");
 			}
 			//double numero1 = Double.parseDouble(name1);
 			//double numero2 = Double.parseDouble(name2);
@@ -321,7 +321,7 @@ public class GenericSorterV1 extends ViewerSorter {
 					Date fecha1 = FechaUtil.toDateHour(name1);
 					Date fecha2 = FechaUtil.toDateHour(name2);
 					// puede que aunque la columna sea fecha-hora en algunos casos solamente haya 
-					// una fecha (ej. actividades en hojas de ventas como hospedaje) así que verificamos esto
+					// una fecha (ej. actividades en hojas de ventas como hospedaje) asÃ­ que verificamos esto
 					if (fecha1 == null) fecha1 = FechaUtil.toDate(name1);
 					if (fecha2 == null) fecha2 = FechaUtil.toDate(name2);
 					long time1 = fecha1.getTime();
@@ -349,8 +349,8 @@ public class GenericSorterV1 extends ViewerSorter {
 
 	/*
 	private int determinarTipoColumna(String cadena) {
-		int tipoColumna = TEXTO;  // default de tipo alfanumérico
-		if (isNumber(cadena)) {  // cadena numérica
+		int tipoColumna = TEXTO;  // default de tipo alfanumÃ©rico
+		if (isNumber(cadena)) {  // cadena numÃ©rica
 			tipoColumna = NUMERO;
 		} else if (isDate(cadena)) {  // es una cadena de fecha
 			tipoColumna = FECHA;
@@ -363,7 +363,7 @@ public class GenericSorterV1 extends ViewerSorter {
 	*/
 	
 	private int determinarTipoColumna(String cadena) {
-		int tipoColumna = TEXTO;  // default de tipo alfanumérico
+		int tipoColumna = TEXTO;  // default de tipo alfanumÃ©rico
 		if (isDate(cadena)) {  // es una cadena de fecha
 			tipoColumna = FECHA;
 			if (isDateHour(cadena)) {  // cadena de fecha y hora

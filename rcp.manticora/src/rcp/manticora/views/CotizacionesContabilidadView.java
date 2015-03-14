@@ -91,7 +91,7 @@ public class CotizacionesContabilidadView extends AbstractViewH implements IView
 		});
 		
 		column = new TableColumn(tabla, SWT.LEFT, 4);
-		column.setText("Número");
+		column.setText("NÃºmero");
 		column.setWidth(75);
 		column.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {

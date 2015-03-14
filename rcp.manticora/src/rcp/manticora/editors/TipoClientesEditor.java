@@ -51,7 +51,7 @@ public class TipoClientesEditor extends AbstractEditorH {
 		txtTipo.setEditable(false);
 		
 		l = new Label(parent, SWT.NONE);
-		l.setText("Descripción:");
+		l.setText("DescripciÃ³n:");
 		txtDescripcion = new Text(parent, SWT.BORDER);
 		txtDescripcion.setLayoutData(new GridData(180,15));
 		txtDescripcion.addModifyListener(this.createModifyListener());

@@ -48,7 +48,7 @@ public class Solicitud implements IEditableDocument {
 	}
 	
 	
-// ************************ métodos especiales ******************************
+// ************************ mÃ©todos especiales ******************************
 
 	public String getTituloDocumento() {
 		String tituloDocumento = "Nuevo";

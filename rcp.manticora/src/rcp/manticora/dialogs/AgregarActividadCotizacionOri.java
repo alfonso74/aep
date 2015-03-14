@@ -78,7 +78,7 @@ public class AgregarActividadCotizacionOri extends TitleAreaDialog implements IC
 	 linea = new LineaCotizacion();
 	 }*/
 	
-	// constructor utilizado para crear l韓eas
+	// constructor utilizado para crear l铆neas
 	public AgregarActividadCotizacionOri(Shell parentShell, LineaCotizacion linea) {
 		super(parentShell);
 		this.shell = parentShell;
@@ -88,7 +88,7 @@ public class AgregarActividadCotizacionOri extends TitleAreaDialog implements IC
 		formUtils = new FormUtils();
 	}
 	
-	// constructor utilizado para editar l韓eas
+	// constructor utilizado para editar l铆neas
 	public AgregarActividadCotizacionOri(Shell parentShell, Set<LineaCotizacion> lineas) {
 		super(parentShell);
 		this.shell = parentShell;
@@ -219,7 +219,7 @@ public class AgregarActividadCotizacionOri extends TitleAreaDialog implements IC
 
 		listaTipoPrecio = new List(composite, SWT.SINGLE | SWT.BORDER);
 		listaTipoPrecio.setLayoutData(gridData);
-		listaTipoPrecio.setItems(new String[] {"Comisionable", "Operador", "P鷅lico"});
+		listaTipoPrecio.setItems(new String[] {"Comisionable", "Operador", "P煤blico"});
 		listaTipoPrecio.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				obtenerPrecio(listaTipoPrecio.getSelection()[0]);
@@ -256,7 +256,7 @@ public class AgregarActividadCotizacionOri extends TitleAreaDialog implements IC
 		l.setLayoutData(gridData);
 		/*
 		l = new Label(composite, SWT.NONE);
-		l.setText("Alimentaci髇:");
+		l.setText("Alimentaci贸n:");
 		gridData = new GridData();
 		l.setLayoutData(gridData);
 		
@@ -324,7 +324,7 @@ public class AgregarActividadCotizacionOri extends TitleAreaDialog implements IC
 	
 	private void llenarCampos() {
 		String texto;
-		if (lineas.isEmpty()) {    // estamos creando una nueva l韓ea
+		if (lineas.isEmpty()) {    // estamos creando una nueva l铆nea
 			txtFecha.setText(fechaDefault);
 			txtDias.setText("1");
 			listaTipoPrecio.setEnabled(false);
@@ -354,9 +354,9 @@ public class AgregarActividadCotizacionOri extends TitleAreaDialog implements IC
 		Long seleccion;
 		int noDias;
 		pos = comboTipo.getSelectionIndex();
-		// obtenemos la posici髇 del elemento seleccionado
+		// obtenemos la posici贸n del elemento seleccionado
 		pos = comboProducto.getSelectionIndex();
-		// obtenemos el c骴igo del producto seleccionado
+		// obtenemos el c贸digo del producto seleccionado
 		seleccion = productos.getIdProductoByIndex(pos);
 		System.out.println("Pos: " + pos + ",  seleccion: " + seleccion);
 		noDias = Integer.parseInt(txtDias.getText());
@@ -367,8 +367,8 @@ public class AgregarActividadCotizacionOri extends TitleAreaDialog implements IC
 		for (int n=0; n < noDias; n++) {
 			fechaLinea = FechaUtil.ajustarFecha(fechaBase, n);
 			if (n == 0 && !lineas.isEmpty()) {
-// si iniciamos el ciclo y la lista de l韓eas tiene informaci髇, entonces estamos editando
-				System.out.println("Editando l韓ea de cotizaci髇...");
+// si iniciamos el ciclo y la lista de l铆neas tiene informaci贸n, entonces estamos editando
+				System.out.println("Editando l铆nea de cotizaci贸n...");
 			} else {
 				linea = new LineaCotizacion();
 			}

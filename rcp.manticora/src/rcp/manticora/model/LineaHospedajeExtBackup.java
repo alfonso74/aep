@@ -21,7 +21,7 @@ public class LineaHospedajeExtBackup implements ILineaHospedaje {
 	}
 	
 	
-//	 *************************** mÈtodos especiales ***************************
+//	 *************************** m√©todos especiales ***************************
 	
 	@Override
 	public String toString() {
@@ -29,8 +29,8 @@ public class LineaHospedajeExtBackup implements ILineaHospedaje {
 	}
 	
 	/**
-	 * Permite especificar los paxs que est·n asignados esta lÌnea de hospedaje
-	 * @param paxs Listado (Set) de paxs que duermen en la habitaciÛn
+	 * Permite especificar los paxs que est√°n asignados esta l√≠nea de hospedaje
+	 * @param paxs Listado (Set) de paxs que duermen en la habitaci√≥n
 	 */
 	public void asignarListaPaxs(Set<Pax> paxs) {
 		listaPaxs.clear();

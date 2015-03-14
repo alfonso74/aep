@@ -49,7 +49,7 @@ public class Cliente implements IEditableDocument, ICliente {
 		this.estado = estado;
 	}
 	
-//	************************* métodos especiales ****************************
+//	************************* mÃ©todos especiales ****************************
 
 	/* (non-Javadoc)
 	 * @see manticora.model.ICliente#getTituloDocumento()

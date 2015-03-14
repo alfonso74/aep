@@ -11,10 +11,10 @@ public class ReservaAlimento extends ReservaAdapter {
 	private Date fecha;
 	private String comentario;
 	
-	private String tipoReserva = "Alimentación";
+	private String tipoReserva = "AlimentaciÃ³n";
 	
 	
-// *************************** Métodos especiales *************************
+// *************************** MÃ©todos especiales *************************
 
 	public String getTituloDocumento() {
 		return "Reserva " + getIdReserva();

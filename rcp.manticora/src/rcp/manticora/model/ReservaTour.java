@@ -24,7 +24,7 @@ public class ReservaTour extends ReservaAdapter {
 	}
 	
 
-// **************************** mÈtodos especiales ***************************
+// **************************** m√©todos especiales ***************************
 
 	public String getTituloDocumento() {
 		return "Reserva " + getIdReserva();
@@ -37,7 +37,7 @@ public class ReservaTour extends ReservaAdapter {
 	}
 	
 	/**
-	 * Permite obtener la fecha para la que se est· reservando el tour
+	 * Permite obtener la fecha para la que se est√° reservando el tour
 	 * @return Fecha de reserva (tipo Date)
 	 */
 	public Date getFecha() {
@@ -68,7 +68,7 @@ public class ReservaTour extends ReservaAdapter {
 		this.estado = estado;
 	}
 	
-	/*  TODO: borrar con nueva versiÛn de reservas
+	/*  TODO: borrar con nueva versi√≥n de reservas
 	public LineaActividad getActividad() {
 		return actividad;
 	}
@@ -83,8 +83,8 @@ public class ReservaTour extends ReservaAdapter {
 	}
 
 	public void setDisponibilidadX(DisponibilidadTour disponibilidad) {
-		// si la reserva est· asociada a una disponibilidad entonces
-		// eliminamos la asociaciÛn y LUEGO asignamos la nueva disponibilidad
+		// si la reserva est√° asociada a una disponibilidad entonces
+		// eliminamos la asociaci√≥n y LUEGO asignamos la nueva disponibilidad
 		if (getDisponibilidad() != null) {
 			getDisponibilidad().eliminarReserva(this);
 		}

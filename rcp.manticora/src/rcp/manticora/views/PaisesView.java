@@ -74,7 +74,7 @@ public class PaisesView extends ViewPart implements IRefreshView {
 		viewer.setLabelProvider(new ViewLabelProvider());
 		viewer.setInput(controller.getListadoPaises());
 		
-		// registramos el tableviewer como un selection provider (botones de acción)
+		// registramos el tableviewer como un selection provider (botones de acciÃ³n)
 		getSite().setSelectionProvider(viewer);
 		
 		// habilitamos listener para doubleclick
@@ -96,7 +96,7 @@ public class PaisesView extends ViewPart implements IRefreshView {
 		column.setWidth(35);
 		
 		column = new TableColumn(tabla, SWT.LEFT, 1);
-		column.setText("Descripción");
+		column.setText("DescripciÃ³n");
 		column.setWidth(180);
 		
 		column = new TableColumn(tabla, SWT.LEFT, 2);

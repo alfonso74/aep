@@ -13,7 +13,7 @@ public class DisponibilidadTour {
 	private String tipo;
 	private String comentario;
 	
-	//private String dspProducto;      // usado en AgregarTour2Hoja, si lo borro tambi閚 quitar del mapeo
+	//private String dspProducto;      // usado en AgregarTour2Hoja, si lo borro tambi茅n quitar del mapeo
 	private Tour tour;
 	private HojaServicioTour hoja;
 	private Set<ReservaTour> listaReservas;
@@ -22,7 +22,7 @@ public class DisponibilidadTour {
 		listaReservas = new HashSet<ReservaTour>();
 	}
 	
-// ************************* m閠odos especiales **************************
+// ************************* m茅todos especiales **************************
 	
 	@Override
 	public String toString() {
@@ -54,7 +54,7 @@ public class DisponibilidadTour {
 		this.listaReservas.add((ReservaTour) reserva);
 	}
 	
-	// ocupaci髇 es un campo de lectura proveniente de una f髍mula
+	// ocupaci贸n es un campo de lectura proveniente de una f贸rmula
 	public Integer getOcupacion() {
 		if (ocupacion == null) {
 			return 0;
@@ -62,7 +62,7 @@ public class DisponibilidadTour {
 		return ocupacion;
 	}
 
-	// ocupaci髇 es un campo de lectura proveniente de una f髍mula
+	// ocupaci贸n es un campo de lectura proveniente de una f贸rmula
 	public void setOcupacion(Integer ocupacion) {
 		this.ocupacion = ocupacion;
 	}
@@ -74,7 +74,7 @@ public class DisponibilidadTour {
 	
 	/**
 	 * Retorna un string que representa la disponibilidad actual del tour.
-	 * @return String con ocupaci髇 y capacidad.
+	 * @return String con ocupaci贸n y capacidad.
 	 */
 	public String getResumenDisp() {
 		String cadena = "";

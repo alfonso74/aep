@@ -85,7 +85,7 @@ public class ReservaHospExtDialog extends AbstractAEPDialog {
 		listaPaxsHoja = reserva.getHoja().getListaPaxs();
 	}
 
-//TODO: borrar esto luego de repasar la transformaci髇 de set a array de string[]
+//TODO: borrar esto luego de repasar la transformaci贸n de set a array de string[]
 /*
 	public void setListaPaxs(Set<Pax> listaPaxs) {
 		String[] listaTmp = new String[listaPaxs.size()];
@@ -115,7 +115,7 @@ public class ReservaHospExtDialog extends AbstractAEPDialog {
 		composite.setLayout(layout);
 		
 		Group grupo01 = new Group(composite, SWT.NULL);
-		grupo01.setText(" Detalles de la habitaci髇 ");
+		grupo01.setText(" Detalles de la habitaci贸n ");
 		layout = new GridLayout(6, false);
 		layout.marginWidth = 10;
 		layout.marginHeight = 10;
@@ -197,10 +197,10 @@ public class ReservaHospExtDialog extends AbstractAEPDialog {
 		bFechaHasta.setImage(image.createImage());
 		bFechaHasta.addSelectionListener(this.crearCalendario(shell, txtFechaHasta, txtFechaDesde));
 		
-// ***************************** asignaci髇 de paxs a la habitaci髇 ******************
+// ***************************** asignaci贸n de paxs a la habitaci贸n ******************
 		
 		Group grupoPax = new Group(composite, SWT.NONE);
-		grupoPax.setText(" Asignaci髇 de paxs ");
+		grupoPax.setText(" Asignaci贸n de paxs ");
 		layout = new GridLayout(2, false);
 		layout.marginWidth = 10;
 		layout.marginHeight = 10;
@@ -261,7 +261,7 @@ public class ReservaHospExtDialog extends AbstractAEPDialog {
 			txtFechaDesde.setText(FechaUtil.toString(reserva.getFechaDesde()));
 			txtFechaHasta.setText(FechaUtil.toString(reserva.getFechaHasta()));
 		} else {
-			System.out.println("Cargando informaci髇 de campos...");
+			System.out.println("Cargando informaci贸n de campos...");
 			comboTipoHab.setText(linea.getTipoHabitacion().getDescripcion());
 			//txtNoReserva.setText(linea.getReserva().getNoReserva());
 			txtComentarios.setText(linea.getComentario());
@@ -282,7 +282,7 @@ public class ReservaHospExtDialog extends AbstractAEPDialog {
 		if (buttonId == IDialogConstants.OK_ID) {
 			try {
 				if (validarCampos()) {
-					// si pasa las validaciones, creamos el registro y cerramos el di醠ogo
+					// si pasa las validaciones, creamos el registro y cerramos el di谩logo
 					guardarHospedajeExterno();
 					super.buttonPressed(buttonId);
 				}
@@ -301,22 +301,22 @@ public class ReservaHospExtDialog extends AbstractAEPDialog {
 		String pFechaHasta = txtFechaHasta.getText();
 		
 		if (comboTipoHab.getSelectionIndex() == -1) {
-			MessageDialog.openError(shell, "Validaci髇 de campos",
-					"No se ha seleccionado el tipo de la habitaci髇.");
+			MessageDialog.openError(shell, "Validaci贸n de campos",
+					"No se ha seleccionado el tipo de la habitaci贸n.");
 			return false;
 		}
 		if (pComentarios.length() > 100) {
-			MessageDialog.openError(shell, "Validaci髇 de campos",
+			MessageDialog.openError(shell, "Validaci贸n de campos",
 				"El campo de comentarios no puede superar los 100 caracteres (" + pComentarios.length() + ").");
 			return false;
 		}
 		if (pFechaDesde.length() == 0) {
-			MessageDialog.openError(shell, "Validaci髇 de campos",
+			MessageDialog.openError(shell, "Validaci贸n de campos",
 				"El campo de fecha \"Desde\" no puede quedar en blanco");
 			return false;
 		}
 		if (pFechaHasta.length() == 0) {
-			MessageDialog.openError(shell, "Validaci髇 de campos",
+			MessageDialog.openError(shell, "Validaci贸n de campos",
 				"El campo de fecha \"Hasta\" no puede quedar en blanco");
 			return false;
 		}

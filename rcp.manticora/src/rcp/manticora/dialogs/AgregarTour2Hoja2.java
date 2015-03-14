@@ -82,7 +82,7 @@ public class AgregarTour2Hoja2 extends AbstractAEPTitleAreaDialog {
 		Label l;
 		GridData gridData;
 		
-// ***************** secci髇 de filtro (tipo, producto y fechas) ****************
+// ***************** secci贸n de filtro (tipo, producto y fechas) ****************
 		l = new Label(composite, SWT.NONE);
 		l.setText("Tipo:");
 		comboTipo = new Combo(composite, SWT.READ_ONLY);
@@ -97,9 +97,9 @@ public class AgregarTour2Hoja2 extends AbstractAEPTitleAreaDialog {
 				int indice = comboTipo.getSelectionIndex();
 				if (indice != -1 && indice != 0) {
 					Long seleccionado = cdTipo.getKeyAsLongByIndex(indice-1);
-					productos.filtrarByTipo(seleccionado, true);   // filtramos si hay alg鷑 tipo de prod. seleccionado
+					productos.filtrarByTipo(seleccionado, true);   // filtramos si hay alg煤n tipo de prod. seleccionado
 				} else {
-					productos.filtrarTours(true);  // si no hay selecci髇 de tipo, mostramos todos los productos tipo tour
+					productos.filtrarTours(true);  // si no hay selecci贸n de tipo, mostramos todos los productos tipo tour
 				}
 				comboProducto.setItems(productos.getTexto());
 				comboProducto.add("Todos", 0);
@@ -174,7 +174,7 @@ public class AgregarTour2Hoja2 extends AbstractAEPTitleAreaDialog {
 			}
 		});
 		
-// ************************ secci髇 de lista de tours **************************
+// ************************ secci贸n de lista de tours **************************
 		
 		Composite compLista = new Composite(composite, SWT.NULL);
 		layout = new GridLayout(1, false);
@@ -200,7 +200,7 @@ public class AgregarTour2Hoja2 extends AbstractAEPTitleAreaDialog {
 		setTitle("Agregar tour a hoja de servicios");
 		setMessage("Por favor, seleccione el tour a incluir en la hoja de servicios", IMessageProvider.INFORMATION);
 		
-		// por default, est醤 seleccionados todos los tipos de tours disponibles para el siguiente d韆
+		// por default, est谩n seleccionados todos los tipos de tours disponibles para el siguiente d铆a
 		Date fechaSiguiente = FechaUtil.ajustarFecha(new Date(), 1);
 		comboTipo.select(0);
 		comboProducto.select(0);
@@ -214,7 +214,7 @@ public class AgregarTour2Hoja2 extends AbstractAEPTitleAreaDialog {
 		return new ISelectionChangedListener() {
 			public void selectionChanged(SelectionChangedEvent event) {
 				seleccion = (DisponibilidadTour) ((IStructuredSelection) event.getSelection()).getFirstElement();
-				System.out.println("Nueva selecci髇: " + seleccion);
+				System.out.println("Nueva selecci贸n: " + seleccion);
 			}
 		};
 	}

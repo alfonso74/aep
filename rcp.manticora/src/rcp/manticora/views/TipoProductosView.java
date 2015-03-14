@@ -106,7 +106,7 @@ public class TipoProductosView extends ViewPart implements IRefreshView {
 		column.setAlignment(SWT.RIGHT);  // aparentemente esto es ignorado
 		
 		column = new TableColumn(tabla, SWT.CENTER, 1);
-		column.setText("Descripción");
+		column.setText("DescripciÃ³n");
 		column.setWidth(180);
 		column.setAlignment(SWT.LEFT);
 	}

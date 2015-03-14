@@ -21,7 +21,7 @@ public class CancelarDocumentoDialog extends Dialog {
 	
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
-		newShell.setText("Acción de cancelar");
+		newShell.setText("AcciÃ³n de cancelar");
 	}
 
 	protected Control createDialogArea(Composite parent) {
@@ -33,7 +33,7 @@ public class CancelarDocumentoDialog extends Dialog {
 		GridData gridData;
 
 		l = new Label(composite, SWT.NONE);
-		l.setText("Por favor, indique el motivo de cancelación:");
+		l.setText("Por favor, indique el motivo de cancelaciÃ³n:");
 		gridData = new GridData();
 		gridData.horizontalSpan = 1;
 		l.setLayoutData(gridData);

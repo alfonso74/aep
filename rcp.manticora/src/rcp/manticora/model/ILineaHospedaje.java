@@ -5,7 +5,7 @@ import java.util.Set;
 
 public interface ILineaHospedaje {
 	
-	// métodos especiales
+	// mÃ©todos especiales
 	
 	public void asignarListaPaxs(Set<Pax> paxs);
 	
@@ -14,7 +14,7 @@ public interface ILineaHospedaje {
 	public String getNombresPaxAsignados();
 	
 	// getters y setters
-	// en las interfases, los métodos son implícitamente abstract
+	// en las interfases, los mÃ©todos son implÃ­citamente abstract
 	
 	public abstract Long getIdLinea();
 	

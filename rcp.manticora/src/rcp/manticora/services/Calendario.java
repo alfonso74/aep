@@ -37,7 +37,7 @@ public class Calendario extends SelectionAdapter {
 
 	public void widgetSelected(SelectionEvent e) {
 		final SWTCalendarDialog cal = new SWTCalendarDialog(shell.getDisplay());
-		// determinamos la posición donde queremos ubicar el calendario
+		// determinamos la posiciÃ³n donde queremos ubicar el calendario
 		Point pos = txtCampo.toDisplay(0,0);
 		int altura = txtCampo.getSize().y;
 		cal.setLocation(pos.x, pos.y + altura);
@@ -67,7 +67,7 @@ public class Calendario extends SelectionAdapter {
 	 * Crea un KeyAdapter que responde a las flechas de arriba y abajo para
 	 * incrementar/decrementar la fecha.  En caso de no haber una fecha, se
 	 * verifica el campo campoFechaDefault para un valor default, y si tampoco
-	 * hay fecha default, entonces se utiliza el día actual como default 
+	 * hay fecha default, entonces se utiliza el dÃ­a actual como default 
 	 * @param campo el campo donde se especifica la fecha
 	 */
 	public KeyAdapter crearKeyAdapter(final Text campo, final Text campoFechaDefault) {
@@ -89,7 +89,7 @@ public class Calendario extends SelectionAdapter {
 					default: System.out.println(e.character);
 					}
 				} else {
-					// verificamos si el campo de fecha default tiene algún valor y sino
+					// verificamos si el campo de fecha default tiene algÃºn valor y sino
 					// agarramos la fecha actual del sistema
 					if (campoFechaDefault != null && !campoFechaDefault.equals("")) {
 						campo.setText(campoFechaDefault.getText());

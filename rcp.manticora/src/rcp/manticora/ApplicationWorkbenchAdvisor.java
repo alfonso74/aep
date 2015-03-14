@@ -20,7 +20,7 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 	private Usuario usuario;
 	private Shell shell;
 
-    // mÈtodo agregado para cambiar los tabs de cl·sico a redondeados
+    // m√©todo agregado para cambiar los tabs de cl√°sico a redondeados
 	public void initialize(IWorkbenchConfigurer configurer) {
 		super.initialize(configurer);
 		PlatformUI.getPreferenceStore().setValue(IWorkbenchPreferenceConstants.SHOW_TRADITIONAL_STYLE_TABS, false);
@@ -58,7 +58,7 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 	public String getInitialWindowPerspectiveId() {
 		// inicializamos el shell que utilizaremos para presentar los errores o mensajes de Hibernate
 		HibernateUtil.setShell(shell);
-		// y verificamos los roles del usuario para determinar quÈ perspectiva presentar
+		// y verificamos los roles del usuario para determinar qu√© perspectiva presentar
 		usuario = AutenticacionUtil.getUsuario();
 		if (usuario == null) {
 			System.out.println("Usuario no especificado");

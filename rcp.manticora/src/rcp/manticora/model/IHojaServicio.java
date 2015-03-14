@@ -84,7 +84,7 @@ public interface IHojaServicio {
 	 * Si pongo ICliente entonces genera error
 	 * @return
 	 */
-	// Si pongo ICliente se genera error porque no est· mapeada la interface
+	// Si pongo ICliente se genera error porque no est√° mapeada la interface
 	public abstract Cliente getCliente();
 
 	public abstract void setCliente(ICliente cliente);

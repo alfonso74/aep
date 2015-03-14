@@ -58,7 +58,7 @@ public class KeywordsView extends ViewPart implements IRefreshView {
 		column.setAlignment(SWT.RIGHT);  // aparentemente esto es ignorado
 		
 		column = new TableColumn(tabla, SWT.LEFT, 1);
-		column.setText("Código");
+		column.setText("CÃ³digo");
 		column.setWidth(45);
 		
 		column = new TableColumn(tabla, SWT.LEFT, 2);

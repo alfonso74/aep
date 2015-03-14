@@ -43,7 +43,7 @@ public class ComboDataController extends ViewController {
 	/**
 	 * Retorna un ComboData de habitaciones para el hotel indicado.  Este hotel
 	 * siempre va a ser interno (de AEP), porque las habitaciones se definen
-	 * únicamente para hoteles internos.
+	 * Ãºnicamente para hoteles internos.
 	 * @param hotel del cual queremos obtener las habitaciones
 	 * @return ComboData con listado de habitaciones
 	 */
@@ -95,8 +95,8 @@ public class ComboDataController extends ViewController {
 	}
 	
 	/**
-	 * En un ComboData usualmente solo nos interesan los países activos
-	 * @return ComboData con países activos
+	 * En un ComboData usualmente solo nos interesan los paÃ­ses activos
+	 * @return ComboData con paÃ­ses activos
 	 */
 	public ComboData getComboDataPaises() {
 		ComboData data = new ComboData();
@@ -144,7 +144,7 @@ public class ComboDataController extends ViewController {
 	}
 	
 	/**
-	 * Retorna un listado de productos.  El parámetro indica si se deben traer
+	 * Retorna un listado de productos.  El parÃ¡metro indica si se deben traer
 	 * productos que sean o no sean tours.
 	 * @param flagTour
 	 * @return Objeto ComboData

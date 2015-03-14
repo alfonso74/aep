@@ -36,7 +36,7 @@ public class LineaActividad {
 	}
 	
 	
-// *************************** mÈtodos especiales ***************************
+// *************************** m√©todos especiales ***************************
 	@Override
 	public String toString() {
 		if (hasReservas()) {
@@ -207,27 +207,27 @@ public class LineaActividad {
 		return other;
 	}
 
-	// esta propiedad es seteada autom·ticamente por el mÈtodo setComidas()
+	// esta propiedad es seteada autom√°ticamente por el m√©todo setComidas()
 	private void setBreakfast(boolean breakfast) {
 		this.breakfast = breakfast;
 	}
 
-	// esta propiedad es seteada autom·ticamente por el mÈtodo setComidas()
+	// esta propiedad es seteada autom√°ticamente por el m√©todo setComidas()
 	private void setDinner(boolean dinner) {
 		this.dinner = dinner;
 	}
 
-	// esta propiedad es seteada autom·ticamente por el mÈtodo setComidas()
+	// esta propiedad es seteada autom√°ticamente por el m√©todo setComidas()
 	private void setLunch(boolean lunch) {
 		this.lunch = lunch;
 	}
 	
-	// esta propiedad es seteada autom·ticamente por el mÈtodo setComidas()
+	// esta propiedad es seteada autom√°ticamente por el m√©todo setComidas()
 	private void setWelcomeCocktail(boolean welcomeCocktail) {
 		this.welcomeCocktail = welcomeCocktail;
 	}
 	
-	// esta propiedad es seteada autom·ticamente por el mÈtodo setComidas()
+	// esta propiedad es seteada autom√°ticamente por el m√©todo setComidas()
 	private void setOther(boolean other) {
 		this.other = other;
 	}

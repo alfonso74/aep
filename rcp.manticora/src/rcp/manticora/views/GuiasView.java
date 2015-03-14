@@ -21,9 +21,9 @@ import rcp.manticora.model.Guia;
 import rcp.manticora.services.HibernateUtil;
 
 /**
- * Clase utilizada para presentar los datos de un guía.  Especial porque en lugar de utilizar
- * un controller, accesa los datos a través de un DAO.  Por ahora no parece muy prometedor,
- * sigue pareciendo más útil y flexible el uso del controller.
+ * Clase utilizada para presentar los datos de un guÃ­a.  Especial porque en lugar de utilizar
+ * un controller, accesa los datos a travÃ©s de un DAO.  Por ahora no parece muy prometedor,
+ * sigue pareciendo mÃ¡s Ãºtil y flexible el uso del controller.
  * @author Carlos Alfonso
  */
 

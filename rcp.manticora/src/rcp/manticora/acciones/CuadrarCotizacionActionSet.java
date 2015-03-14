@@ -21,7 +21,7 @@ public class CuadrarCotizacionActionSet implements IWorkbenchWindowActionDelegat
 	}
 
 	public void run(IAction action) {
-		CuadrarCotizacionDialog c = new CuadrarCotizacionDialog(window.getShell(), null, "Cuadrar precios de cotización");
+		CuadrarCotizacionDialog c = new CuadrarCotizacionDialog(window.getShell(), null, "Cuadrar precios de cotizaciÃ³n");
 		c.open();
 	}
 

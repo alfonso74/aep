@@ -10,8 +10,8 @@ public class HabitacionesController extends AbstractControllerNew<Habitacion> {
 	
 	/**
 	 * Crea una instancia de este controller
-	 * @param editorID:  nombre del editor que será utilizado para identificar
-	 * de manera única la sesión de este controller.
+	 * @param editorID:  nombre del editor que serÃ¡ utilizado para identificar
+	 * de manera Ãºnica la sesiÃ³n de este controller.
 	 */
 	public HabitacionesController(String editorId) {
 		super(editorId, new HabitacionDAO());
@@ -21,8 +21,8 @@ public class HabitacionesController extends AbstractControllerNew<Habitacion> {
 	/**
 	 * Obtiene un Producto de acuerdo a su id.  Usado en el doSave() de
 	 * Habitaciones.
-	 * @param id código del producto
-	 * @return El Producto correspondiente al código
+	 * @param id cÃ³digo del producto
+	 * @return El Producto correspondiente al cÃ³digo
 	 */
 	public Producto getProductoById(Long id) {
 		Productos productos = new Productos();

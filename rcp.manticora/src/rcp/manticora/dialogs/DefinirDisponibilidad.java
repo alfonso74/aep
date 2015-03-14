@@ -110,10 +110,10 @@ public class DefinirDisponibilidad extends AbstractAEPTitleAreaDialog {
 		gridData.verticalIndent = 5;
 		gFechas.setLayout(layout);
 		gFechas.setLayoutData(gridData);
-		gFechas.setText(" Selección de días que no aplican ");
+		gFechas.setText(" SelecciÃ³n de dÃ­as que no aplican ");
 	
 		l = new Label(gFechas, SWT.NONE);
-		l.setText("Excluir días:");
+		l.setText("Excluir dÃ­as:");
 		
 		Composite grupoSemana = new Composite(gFechas, SWT.NONE);
 		layout = new GridLayout(7, true);
@@ -131,7 +131,7 @@ public class DefinirDisponibilidad extends AbstractAEPTitleAreaDialog {
 		bMartes.setToolTipText("Martes");
 		bMiercoles = new Button(grupoSemana, SWT.CHECK);
 		bMiercoles.setText("M");
-		bMiercoles.setToolTipText("Miércoles");
+		bMiercoles.setToolTipText("MiÃ©rcoles");
 		bJueves = new Button(grupoSemana, SWT.CHECK);
 		bJueves.setText("J");
 		bJueves.setToolTipText("Jueves");
@@ -140,7 +140,7 @@ public class DefinirDisponibilidad extends AbstractAEPTitleAreaDialog {
 		bViernes.setToolTipText("Viernes");
 		bSabado = new Button(grupoSemana, SWT.CHECK);
 		bSabado.setText("S");
-		bSabado.setToolTipText("Sábado");
+		bSabado.setToolTipText("SÃ¡bado");
 		bDomingo = new Button(grupoSemana, SWT.CHECK);
 		bDomingo.setText("D");
 		bDomingo.setToolTipText("Domingo");
@@ -172,7 +172,7 @@ public class DefinirDisponibilidad extends AbstractAEPTitleAreaDialog {
 	}
 
 	protected void llenarCampos() {
-		setTitle("Definición de disponibilidad");
+		setTitle("DefiniciÃ³n de disponibilidad");
 		setMessage("Por favor, defina la fecha o rangos de disponibilidad del tour.", IMessageProvider.INFORMATION);
 		
 		String pCapacidad = valor2Txt(tour.getCapacidad());
@@ -198,8 +198,8 @@ public class DefinirDisponibilidad extends AbstractAEPTitleAreaDialog {
 					linea.setComentario(txtComentario.getText());
 
 					if (vDisponibilidad.contains(linea)) {
-						// esto nunca debería suceder... pero just in case...
-						MessageDialog.openInformation(shell, "Definición de disponibilidad",
+						// esto nunca deberÃ­a suceder... pero just in case...
+						MessageDialog.openInformation(shell, "DefiniciÃ³n de disponibilidad",
 								"No se pudo habilitar la disponibilidad para la siguiente fecha: " + FechaUtil.toString(linea.getFecha()));
 					} else {
 						vDisponibilidad.add(linea);
@@ -209,8 +209,8 @@ public class DefinirDisponibilidad extends AbstractAEPTitleAreaDialog {
 				fechaInicial = FechaUtil.ajustarFecha(fechaInicial, 1);
 			}	
 		} else {
-			MessageDialog.openError(shell, "Definición de disponibilidad", 
-					"El rango definido es inválido.  Ya se ha definido la disponibilidad para\n" +
+			MessageDialog.openError(shell, "DefiniciÃ³n de disponibilidad", 
+					"El rango definido es invÃ¡lido.  Ya se ha definido la disponibilidad para\n" +
 					"algunas de las fechas dentro del rango suministrado.");
 		}
 	}
@@ -219,12 +219,12 @@ public class DefinirDisponibilidad extends AbstractAEPTitleAreaDialog {
 	 * Indica si la fecha suministrada puede habilitarse para hacer reservas 
 	 * de tour.
 	 * @param fecha
-	 * @return true si es válida, false si no debe habilitarse
+	 * @return true si es vÃ¡lida, false si no debe habilitarse
 	 */
 	private boolean diaSemanaHabilitado(Date fecha) {
 		int noDia = FechaUtil.getDiaSemana(fecha);
-		// cuando está check significa que el día está excluido, así que
-		// negamos la selección.
+		// cuando estÃ¡ check significa que el dÃ­a estÃ¡ excluido, asÃ­ que
+		// negamos la selecciÃ³n.
 		if (noDia == 1) return !bDomingo.getSelection();
 		if (noDia == 2) return !bLunes.getSelection();
 		if (noDia == 3) return !bMartes.getSelection();
@@ -237,7 +237,7 @@ public class DefinirDisponibilidad extends AbstractAEPTitleAreaDialog {
 	
 	
 	/**
-	 * Método encargado de determinar si el rango especificado ya tiene alguna fecha
+	 * MÃ©todo encargado de determinar si el rango especificado ya tiene alguna fecha
 	 * definida a nivel de disponibilidad
 	 * @return
 	 */
@@ -266,7 +266,7 @@ public class DefinirDisponibilidad extends AbstractAEPTitleAreaDialog {
 			long fechaLinea = linea.getFecha().getTime();
 			System.out.println("FL: " + fechaLinea + ", FI: " + fechaInicial.getTime() + ", FF: " + fechaFinal.getTime());
 			if (fechaLinea >= fechaInicial.getTime() && fechaLinea <= fechaFinal.getTime()) {
-				// TODO código para verificar que la línea se puede borrar
+				// TODO cÃ³digo para verificar que la lÃ­nea se puede borrar
 				vBorrar.add(linea);
 			}
 		}
@@ -286,9 +286,9 @@ public class DefinirDisponibilidad extends AbstractAEPTitleAreaDialog {
 	
 	
 	/*
-	 * No queremos que la ventana se cierre con cualquier botón como sucede
-	 * con el buttonPressed default.  Así que implementamos un buttonPressed
-	 * que solamente cierra la ventana al seleccionar el botón de "Cerrar".
+	 * No queremos que la ventana se cierre con cualquier botÃ³n como sucede
+	 * con el buttonPressed default.  AsÃ­ que implementamos un buttonPressed
+	 * que solamente cierra la ventana al seleccionar el botÃ³n de "Cerrar".
 	 */
 	protected void buttonPressed(int buttonId) {
 		try {
@@ -305,7 +305,7 @@ public class DefinirDisponibilidad extends AbstractAEPTitleAreaDialog {
 				close();
 			}
 		} catch (Exception e) {
-			//MessageDialog.openError(shell, "Error en la aplicación", "Error: " + e.toString() + "\n\nStack trace: " + e.getStackTrace()[0]);
+			//MessageDialog.openError(shell, "Error en la aplicaciÃ³n", "Error: " + e.toString() + "\n\nStack trace: " + e.getStackTrace()[0]);
 			mensajeError(shell, e);
 		}
 	}
@@ -318,25 +318,25 @@ public class DefinirDisponibilidad extends AbstractAEPTitleAreaDialog {
 		int pTipo = comboTipo.getSelectionIndex();
 		
 		if (pDesde == null || pDesde.equals("")) {
-			MessageDialog.openInformation(shell, "Validación de campos",
+			MessageDialog.openInformation(shell, "ValidaciÃ³n de campos",
 				"Debe indicar la fecha inicial de disponibilidad.");
 			txtFechaIni.setFocus();
 			return false;
 		}
 		if (pHasta == null || pHasta.equals("")) {
-			MessageDialog.openInformation(shell, "Validación de campos",
+			MessageDialog.openInformation(shell, "ValidaciÃ³n de campos",
 				"Debe indicar la fecha final de disponibilidad.");
 			txtFechaFin.setFocus();
 			return false;
 		}
 		if (pCapacidad.equals("")) {
-			MessageDialog.openInformation(shell, "Validación de campos",
+			MessageDialog.openInformation(shell, "ValidaciÃ³n de campos",
 				"Debe indicar la capacidad de paxs para la fecha o rango indicado.");
 			txtCapacidad.setFocus();
 			return false;
 		}
 		if (pTipo == -1) {
-			MessageDialog.openInformation(shell, "Validación de campos",
+			MessageDialog.openInformation(shell, "ValidaciÃ³n de campos",
 				"Debe indicar el tipo de la disponibilidad.");
 			comboTipo.setFocus();
 			return false;

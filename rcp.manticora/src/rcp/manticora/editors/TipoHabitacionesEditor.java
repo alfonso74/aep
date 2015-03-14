@@ -47,7 +47,7 @@ public class TipoHabitacionesEditor extends AbstractEditorH {
 		comboHotel.addModifyListener(this.createModifyListener());
 		
 		l = new Label(parent, SWT.NONE);
-		l.setText("Tipo habitación:");
+		l.setText("Tipo habitaciÃ³n:");
 		comboTipo = new Combo(parent, SWT.NONE);
 		comboTipo.setItems(new String[] {"Single", "Doble", "Triple"});
 		gridData = new GridData(75,15);
@@ -108,7 +108,7 @@ public class TipoHabitacionesEditor extends AbstractEditorH {
 	protected void llenarControles() {
 		isNewDoc = getEditorInput().isNewDoc;
 		if (isNewDoc) {
-			System.out.println("Creando nuevo tipo de habitación...");
+			System.out.println("Creando nuevo tipo de habitaciÃ³n...");
 			registro = new TipoHabitacion();
 			this.setPartName(registro.getTituloDocumento());
 			getEditorInput().setName(registro.getTituloDocumento());

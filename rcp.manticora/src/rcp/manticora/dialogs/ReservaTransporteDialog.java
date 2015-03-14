@@ -124,7 +124,7 @@ public class ReservaTransporteDialog extends AbstractAEPTitleAreaDialog
 		gridData.horizontalSpan = 1;
 		l.setLayoutData(gridData);
 		comboTipo = new Combo(composite, SWT.READ_ONLY);
-		cdKeyword = controller.getComboDataKeyword("Tipo de vehículo");
+		cdKeyword = controller.getComboDataKeyword("Tipo de vehÃ­culo");
 		comboTipo.setItems(cdKeyword.getTexto());
 		
 		l = new Label(composite, SWT.NONE);
@@ -167,7 +167,7 @@ public class ReservaTransporteDialog extends AbstractAEPTitleAreaDialog
 			txtFechaDestino = FechaUtil.toString(new Date());
 			txtHoraIni.setText("01:00 PM");
 		} else {
-			System.out.println("Cargando información de campos...");
+			System.out.println("Cargando informaciÃ³n de campos...");
 			txtOrigen.setText(valor2Txt(reserva.getOrigen()));
 			txtDestino.setText(valor2Txt(reserva.getDestino()));
 			txtFechaOrigen = FechaUtil.toString(reserva.getFechaOrigen(), FechaUtil.formatoFecha);
@@ -221,12 +221,12 @@ public class ReservaTransporteDialog extends AbstractAEPTitleAreaDialog
 		String pHoraDestino = txtHoraFin.getText().trim();
 		
 		if (FechaUtil.toHour(pHoraOrigen) == null) {
-			MessageDialog.openInformation(shell, "Validación de campos",
+			MessageDialog.openInformation(shell, "ValidaciÃ³n de campos",
 					"El formato de la hora de origen debe ser hh:mm aa (Ejemplo: \"11:45 AM\").");
 			return false;
 		}
 		if (FechaUtil.toHour(pHoraDestino) == null) {
-			MessageDialog.openInformation(shell, "Validación de campos",
+			MessageDialog.openInformation(shell, "ValidaciÃ³n de campos",
 					"El formato de hora de destino debe ser hh:mm aa (Ejemplo: \"11:45 AM\").");
 			return false;
 		}

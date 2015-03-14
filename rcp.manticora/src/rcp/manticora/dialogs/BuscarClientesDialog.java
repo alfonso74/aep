@@ -79,9 +79,9 @@ public class BuscarClientesDialog extends TitleAreaDialog {
 	protected Control createContents(Composite parent) {
 		Control contents = super.createContents(parent);
 		// Set the title
-		setTitle("Búsqueda de cliente existente");
+		setTitle("BÃºsqueda de cliente existente");
 		// Set the message
-		setMessage("Por favor, introduzca los criterios de búsqueda", IMessageProvider.INFORMATION);
+		setMessage("Por favor, introduzca los criterios de bÃºsqueda", IMessageProvider.INFORMATION);
 		return contents;
 	}
 	
@@ -101,17 +101,17 @@ public class BuscarClientesDialog extends TitleAreaDialog {
 		l = new Label(composite, SWT.NONE);
 		l.setText("Tipo:");
 		comboTipo = new Combo(composite, SWT.READ_ONLY);
-		comboTipo.setItems(new String[] {"Persona", "Compañía"});
+		comboTipo.setItems(new String[] {"Persona", "CompaÃ±Ã­a"});
 		comboTipo.setLayoutData(new GridData(60,15));
 		comboTipo.select(0);
 		comboTipo.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				String pTipo = comboTipo.getText();
-				if (pTipo.equals("Compañía")) {
+				if (pTipo.equals("CompaÃ±Ã­a")) {
 					comboCampos.setItems(new String[] {"Nombre"});
 					comboCampos.select(0);
 				} else {
-					comboCampos.setItems(new String[] {"Nombre", "Apellido", "Identificación"});
+					comboCampos.setItems(new String[] {"Nombre", "Apellido", "IdentificaciÃ³n"});
 				}
 			}
 		});
@@ -123,7 +123,7 @@ public class BuscarClientesDialog extends TitleAreaDialog {
 		l.setAlignment(SWT.RIGHT);
 		l.setText("Buscar por:");
 		comboCampos = new Combo(composite, SWT.READ_ONLY);
-		comboCampos.setItems(new String[] {"Nombre", "Apellido", "Identificación"});
+		comboCampos.setItems(new String[] {"Nombre", "Apellido", "IdentificaciÃ³n"});
 		gridData = new GridData(100,15);
 		gridData.horizontalSpan = 2;
 		comboCampos.setLayoutData(gridData);
@@ -143,7 +143,7 @@ public class BuscarClientesDialog extends TitleAreaDialog {
 		bBuscar.addSelectionListener(new SelectionAdapter() {
 			@SuppressWarnings("unchecked")
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("Botón de buscar cliente...");
+				System.out.println("BotÃ³n de buscar cliente...");
 				lista = buscarCliente(comboTipo.getText());
 				listadoClientes.removeAllElements();
 				listadoClientes.addAll(lista);
@@ -186,7 +186,7 @@ public class BuscarClientesDialog extends TitleAreaDialog {
 		return new ISelectionChangedListener() {
 			public void selectionChanged(SelectionChangedEvent event) {
 				seleccion = ((IStructuredSelection) event.getSelection()).getFirstElement();
-				System.out.println("Cambio de selección");
+				System.out.println("Cambio de selecciÃ³n");
 			}
 		};
 	}
@@ -202,7 +202,7 @@ public class BuscarClientesDialog extends TitleAreaDialog {
 	}
 	
 	private List buscarCliente(String tipoCliente) {
-		if (tipoCliente.equals("Compañía")) {
+		if (tipoCliente.equals("CompaÃ±Ã­a")) {
 			return buscarClienteJuridico();
 		} else {
 			return buscarClienteNatural();
@@ -231,7 +231,7 @@ public class BuscarClientesDialog extends TitleAreaDialog {
 		if (pCampos.equals("Apellido")) {
 			criteria.add(Restrictions.like("apellido", "%" + pCadena + "%"));
 		}
-		if (pCampos.equals("Identificación")) {
+		if (pCampos.equals("IdentificaciÃ³n")) {
 			criteria.add(Restrictions.like("identificacion", "%" + pCadena + "%"));
 		}
 		return criteria.list();
@@ -282,7 +282,7 @@ public class BuscarClientesDialog extends TitleAreaDialog {
 		tabla.setLayoutData(gridData);
 		
 		TableColumn column = new TableColumn(tabla, SWT.RIGHT, 0);
-		column.setText("Código");
+		column.setText("CÃ³digo");
 		column.setWidth(50);
 		column.setAlignment(SWT.RIGHT);  // aparentemente esto es ignorado
 		

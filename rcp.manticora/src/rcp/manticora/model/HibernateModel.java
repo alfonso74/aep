@@ -12,7 +12,7 @@ public class HibernateModel {
 		try {
 			Class.forName("rcp.manticora.services.HibernateUtil");
 		} catch (ClassNotFoundException e) {
-			System.out.println("No se encontró la clase HibernateUtil");
+			System.out.println("No se encontrÃ³ la clase HibernateUtil");
 			e.printStackTrace();
 		}
 	}
@@ -24,6 +24,6 @@ public class HibernateModel {
 	
 	public void close() {
 		HibernateUtil.getSessionFactory().close();
-		System.out.println("Sesión de Hibernate cerrada");
+		System.out.println("SesiÃ³n de Hibernate cerrada");
 	}
 }

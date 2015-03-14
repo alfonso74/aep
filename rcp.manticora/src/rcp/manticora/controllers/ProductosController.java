@@ -9,8 +9,8 @@ public class ProductosController extends AbstractControllerNew<Producto> {
 	
 	/**
 	 * Crea una instancia de este controller
-	 * @param editorID:  nombre del editor que será utilizado para identificar
-	 * de manera única la sesión de este controller.
+	 * @param editorID:  nombre del editor que serÃ¡ utilizado para identificar
+	 * de manera Ãºnica la sesiÃ³n de este controller.
 	 */
 	public ProductosController(String editorId) {
 		super(editorId, new ProductoDAO());
@@ -19,7 +19,7 @@ public class ProductosController extends AbstractControllerNew<Producto> {
 	
 	/**
 	 * Obtiene el precio de un producto
-	 * @param idProducto código del producto
+	 * @param idProducto cÃ³digo del producto
 	 * @param tipoPrecio tipo de precio que se desea obtener
 	 * @return el precio del producto
 	 */

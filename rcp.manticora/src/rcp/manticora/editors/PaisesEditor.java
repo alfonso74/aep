@@ -55,7 +55,7 @@ public class PaisesEditor extends AbstractEditorH {
 
 	protected void agregarControles(Composite parent) {
 		Label l = new Label(parent, SWT.NONE);
-		l.setText("Código:");
+		l.setText("CÃ³digo:");
 		txtCodigo = new Text(parent, SWT.BORDER);
 		txtCodigo.setLayoutData(new GridData(40,15));
 		txtCodigo.setEditable(false);
@@ -76,7 +76,7 @@ public class PaisesEditor extends AbstractEditorH {
 	protected void llenarControles() {
 		isNewDoc = getEditorInput().isNewDoc;
 		if (isNewDoc) {
-			System.out.println("Creando nuevo país");
+			System.out.println("Creando nuevo paÃ­s");
 			registro = new Pais();
 			this.setPartName(registro.getTituloDocumento());
 			getEditorInput().setName(registro.getTituloDocumento());

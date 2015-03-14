@@ -23,7 +23,7 @@ public class Usuario implements IEditableDocument {
 	}
 	
 	
-// ******************************** mÈtodos especiales ********************************
+// ******************************** m√©todos especiales ********************************
 
 	public String getTituloDocumento() {
 		String titulo = "Nuevo usuario";
@@ -65,7 +65,7 @@ public class Usuario implements IEditableDocument {
 	
 	/**
 	 * Determina si el usuario tiene asignado el rol indicado
-	 * @param rol Rol que queremos determinar si est· asignado al usuario
+	 * @param rol Rol que queremos determinar si est√° asignado al usuario
 	 * @return true o false
 	 */
 	public boolean hasRol(String rol) {

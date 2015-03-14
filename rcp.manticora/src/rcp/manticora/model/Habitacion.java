@@ -13,12 +13,12 @@ public class Habitacion implements IEditableDocument {
 	private String dspEstado;
 	private String condiciones;
 
-// **************************** mÈtodos especiales **************************
+// **************************** m√©todos especiales **************************
 	
 	public String getTituloDocumento() {
 		String tituloDocumento = "Nuevo";
 		if (getNombre() == null) {
-			tituloDocumento = "Nueva habitaciÛn";
+			tituloDocumento = "Nueva habitaci√≥n";
 		} else {
 			tituloDocumento = "Habit: " + getNombre();
 		}
@@ -27,11 +27,11 @@ public class Habitacion implements IEditableDocument {
 	
 	@Override
 	public String toString() {
-		return "HabitaciÛn (id-hotel-tipo): " + idHabitacion  + "-" + hotel.getIdProducto() + "-" + tipo.getDescripcion();
+		return "Habitaci√≥n (id-hotel-tipo): " + idHabitacion  + "-" + hotel.getIdProducto() + "-" + tipo.getDescripcion();
 	}
 	
 	public String[] getListaCondiciones() {
-		// separaciÛn por comas
+		// separaci√≥n por comas
 		if (getCondiciones() == null) {
 			System.out.println("Condiciones: NULL");
 			return new String[]{};
@@ -42,8 +42,8 @@ public class Habitacion implements IEditableDocument {
 	
 	public void setListaCondiciones(String[] listaCondiciones) {
 		String cadena = "";
-		// Si no se detallan condiciones, listaCondiciones tendr· largo 1
-		// y su valor ser· ""
+		// Si no se detallan condiciones, listaCondiciones tendr√° largo 1
+		// y su valor ser√° ""
 		for (int n = 0; n < listaCondiciones.length; n++) {
 			if (cadena.equals("")) {
 				cadena = listaCondiciones[n];

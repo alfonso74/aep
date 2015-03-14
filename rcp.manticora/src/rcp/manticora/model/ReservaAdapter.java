@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * <p>Implementa los métodos comunes de la interfase IReserva.</p>
+ * <p>Implementa los mÃ©todos comunes de la interfase IReserva.</p>
  * Incluye las propiedades:<br>
  * 		- Long idReserva<br>
  * 		- HojaServicio hoja<br>

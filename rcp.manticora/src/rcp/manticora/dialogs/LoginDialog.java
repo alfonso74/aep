@@ -53,12 +53,12 @@ public class LoginDialog extends Dialog {
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
 		newShell.setText("AEP Login");
-//		carga la imagen de la ventana desde la definiciÛn del producto
+//		carga la imagen de la ventana desde la definici√≥n del producto
 		IProduct product = Platform.getProduct();
 		if (product != null) {
 			System.out.println("Obteniendo objeto producto...");
-			System.out.println("Nombre de aplicaciÛn: " + product.getApplication());
-			System.out.println("Im·genes: " + product.getProperty(IProductConstants.WINDOW_IMAGES));
+			System.out.println("Nombre de aplicaci√≥n: " + product.getApplication());
+			System.out.println("Im√°genes: " + product.getProperty(IProductConstants.WINDOW_IMAGES));
 			String[] imageURLs = parseCSL(product.getProperty(IProductConstants.WINDOW_IMAGES));
 			if (imageURLs != null && imageURLs.length > 0) {
 				images = new Image[imageURLs.length];
@@ -102,7 +102,7 @@ public class LoginDialog extends Dialog {
 		GridData gridData;
 		
 		l = new Label(composite, SWT.NONE);
-		l.setText("Por favor, introduzca los datos de conexiÛn");
+		l.setText("Por favor, introduzca los datos de conexi√≥n");
 		gridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1);
 		l.setLayoutData(gridData);
 		
@@ -173,18 +173,18 @@ public class LoginDialog extends Dialog {
 		String servidor = txtServidor.getText().trim();
 		
 		if (usuario.equals("")) {
-			MessageDialog.openError(getShell(), "Error de validaciÛn",
+			MessageDialog.openError(getShell(), "Error de validaci√≥n",
 			"El campo de usuario no puede quedar en blanco.");
 			txtUsuario.setFocus();
 			return;
 		}
 		if (servidor.equals("")) {
-			MessageDialog.openError(getShell(), "Error de validaciÛn",
+			MessageDialog.openError(getShell(), "Error de validaci√≥n",
 			"El campo de servidor no puede quedar en blanco.");
 			txtServidor.setFocus();
 			return;
 		}
-		// si txtServidor est· habilitado, guardar los valores introducidos
+		// si txtServidor est√° habilitado, guardar los valores introducidos
 		if (txtServidor.getEnabled()) {
 			ScopedPreferenceStore store = new ScopedPreferenceStore(new ConfigurationScope(), Application.PLUGIN_ID);
 			store.setValue("servidor", txtServidor.getText());
@@ -199,7 +199,7 @@ public class LoginDialog extends Dialog {
 		}
 		
 		datos = new ConnectionData(usuario, password, servidor);
-		super.okPressed();       // requerido porque sino no funciona el botÛn OK
+		super.okPressed();       // requerido porque sino no funciona el bot√≥n OK
 	}
 	
 	

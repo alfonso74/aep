@@ -37,7 +37,7 @@ public class FormalizarHojaAction implements IEditorActionDelegate {
 
 	public void run(IAction action) {
 		if (targetEditor.isDirty()) {
-			MessageDialog.openWarning(targetEditor.getSite().getShell(), "Información",
+			MessageDialog.openWarning(targetEditor.getSite().getShell(), "InformaciÃ³n",
 					"Debe guardar los cambios antes de generar la hoja de servicio.");
 			return;
 		};
@@ -89,13 +89,13 @@ public class FormalizarHojaAction implements IEditorActionDelegate {
 						hoja.setEstado("N");
 						hoja.setFechaCreacion(new Date());
 						
-						System.out.println("Importando líneas...");
+						System.out.println("Importando lÃ­neas...");
 						hsController.importarLineasFromTour(hoja, tour);
 					}
 					System.out.println("Grabando...");
 					hsController.doSave(hoja);
 					System.out.println("Hoja generada: " + hoja);
-					// indicamos que la línea de actividad tiene una hoja de servicio de operaciones (tour) asociada
+					// indicamos que la lÃ­nea de actividad tiene una hoja de servicio de operaciones (tour) asociada
 					linea.setHojaTour(hoja);
 				}
 			}

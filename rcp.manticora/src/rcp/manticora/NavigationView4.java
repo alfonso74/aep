@@ -181,14 +181,14 @@ public class NavigationView4 extends ViewPart {
 	private TreeObject crearMenu() {
 		p1 = new TreeParent("Mantenimientos");
 		TreeObject to11 = new TreeObject("Keywords", "icons/mantenimiento.gif");
-		TreeObject to12 = new TreeObject("Países", IImageKeys.CONFIG);
+		TreeObject to12 = new TreeObject("PaÃ­ses", IImageKeys.CONFIG);
 		TreeObject to13 = new TreeObject("Tipo clientes", IImageKeys.CONFIG);
 		TreeObject to14 = new TreeObject("Clientes", IImageKeys.CONFIG);
-		TreeObject to15 = new TreeObject("Compañías", IImageKeys.CONFIG);
+		TreeObject to15 = new TreeObject("CompaÃ±Ã­as", IImageKeys.CONFIG);
 		TreeObject to16 = new TreeObject("Tipo productos", IImageKeys.CONFIG);
 		TreeObject to17 = new TreeObject("Productos", IImageKeys.CONFIG);
 		TreeObject to18 = new TreeObject("Vendedores", IImageKeys.CONFIG);
-		TreeObject to19 = new TreeObject("Guías", IImageKeys.CONFIG);
+		TreeObject to19 = new TreeObject("GuÃ­as", IImageKeys.CONFIG);
 		TreeObject to20 = new TreeObject("Transportistas", IImageKeys.CONFIG);
 		
 		TreeParent p2 = new TreeParent("Ventas");
@@ -206,8 +206,8 @@ public class NavigationView4 extends ViewPart {
 		TreeObject to41 = new TreeObject("Tours", "icons/menuReservas.gif");
 		TreeObject to42 = new TreeObject("Transporte", "icons/menuReservas.gif");
 		TreeObject to43 = new TreeObject("Hospedaje", "icons/menuReservas.gif");
-		TreeObject to44 = new TreeObject("Alimentación", "icons/menuReservas.gif");
-		TreeObject to45 = new TreeObject("Guías", "icons/menuReservas.gif");
+		TreeObject to44 = new TreeObject("AlimentaciÃ³n", "icons/menuReservas.gif");
+		TreeObject to45 = new TreeObject("GuÃ­as", "icons/menuReservas.gif");
 		
 		p1.addChild(to11);
 		p1.addChild(to12);
@@ -280,13 +280,13 @@ public class NavigationView4 extends ViewPart {
 					vista = ProductosView.ID;
 				} else if (seleccion.equals("Keywords")) {
 					vista = KeywordsView.ID;
-				} else if (seleccion.equals("Categorías")) {
+				} else if (seleccion.equals("CategorÃ­as")) {
 					vista = TipoProductosView.ID;
-				} else if (seleccion.equals("Países")) {
+				} else if (seleccion.equals("PaÃ­ses")) {
 					vista = PaisesView.ID;
 				} else if (seleccion.equals("Vendedores")) {
 					vista = VendedoresView.ID;
-				} else if (seleccion.equals("Guías")) {
+				} else if (seleccion.equals("GuÃ­as")) {
 					vista = GuiasView.ID;
 				} else if (seleccion.equals("Transportistas")) {
 					vista = TransportesView.ID;
@@ -298,7 +298,7 @@ public class NavigationView4 extends ViewPart {
 					vista = TipoClientesView.ID;
 				} else if (seleccion.equals("Clientes")) {
 					vista = ClientesView.ID;
-				} else if (seleccion.equals("Compañías")) {
+				} else if (seleccion.equals("CompaÃ±Ã­as")) {
 					vista = ClientesComView.ID;
 				} else if (seleccion.equals("Solicitudes")) {
 					vista = SolicitudesView.ID;
@@ -315,7 +315,7 @@ public class NavigationView4 extends ViewPart {
 				} else if (seleccion.equals("")) {
 					vista = "";
 				} else {
-					MessageDialog.openInformation(window.getShell(), "Aviso", "La vista " + seleccion + " no está habilitada.");
+					MessageDialog.openInformation(window.getShell(), "Aviso", "La vista " + seleccion + " no estÃ¡ habilitada.");
 				};
 
 				if (!vista.equals("")) {

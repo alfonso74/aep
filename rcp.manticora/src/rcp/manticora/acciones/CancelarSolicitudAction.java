@@ -28,7 +28,7 @@ public class CancelarSolicitudAction implements IEditorActionDelegate {
 			((SolicitudesEditor) targetEditor).setTxtEstado("Cancelada");
 			((SolicitudesEditor) targetEditor).addDirtyFlag();
 		} else {
-			MessageDialog.openInformation(targetEditor.getSite().getShell(), "Información", "La acción ha sido cancelada.");
+			MessageDialog.openInformation(targetEditor.getSite().getShell(), "InformaciÃ³n", "La acciÃ³n ha sido cancelada.");
 			return;
 		}
 	}

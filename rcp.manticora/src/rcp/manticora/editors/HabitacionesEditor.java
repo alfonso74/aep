@@ -98,7 +98,7 @@ public class HabitacionesEditor extends AbstractEditorH {
 		txtNombre.addModifyListener(this.createModifyListener());
 		
 		l = new Label(parent, SWT.NONE);
-		l.setText("N鷐ero:");
+		l.setText("N煤mero:");
 		txtNumero = new Text(parent, SWT.BORDER);
 		gridData = new GridData(30, 15);
 		gridData.horizontalSpan = 1;
@@ -203,32 +203,32 @@ public class HabitacionesEditor extends AbstractEditorH {
 		String pPiso = txtPiso.getText();
 		
 		if (comboHotel.getSelectionIndex() == -1) {
-			MessageDialog.openInformation(getSite().getShell(), "Validaci髇 de campos",
+			MessageDialog.openInformation(getSite().getShell(), "Validaci贸n de campos",
 				"El campo de \"Hotel\" no puede quedar en blanco");
 			return false;
 		}
 		if (comboStatus.getSelectionIndex() == -1) {
-			MessageDialog.openInformation(getSite().getShell(), "Validaci髇 de campos",
+			MessageDialog.openInformation(getSite().getShell(), "Validaci贸n de campos",
 				"El campo de \"Status\" no puede quedar en blanco");
 			return false;
 		}
 		if (comboTipoHab.getSelectionIndex() == -1) {
-			MessageDialog.openInformation(getSite().getShell(), "Validaci髇 de campos",
+			MessageDialog.openInformation(getSite().getShell(), "Validaci贸n de campos",
 				"El campo de \"Tipo hab.\" no puede quedar en blanco");
 			return false;
 		}
 		if (pNombre.equals("")) {
-			MessageDialog.openInformation(getSite().getShell(), "Validaci髇 de campos",
+			MessageDialog.openInformation(getSite().getShell(), "Validaci贸n de campos",
 				"El campo de \"Nombre\" no puede quedar en blanco");
 			return false;
 		}
 		if (pNumero.equals("")) {
-			MessageDialog.openInformation(getSite().getShell(), "Validaci髇 de campos",
-				"El campo de \"N鷐ero\" no puede quedar en blanco");
+			MessageDialog.openInformation(getSite().getShell(), "Validaci贸n de campos",
+				"El campo de \"N煤mero\" no puede quedar en blanco");
 			return false;
 		}
 		if (pPiso.equals("")) {
-			MessageDialog.openInformation(getSite().getShell(), "Validaci髇 de campos",
+			MessageDialog.openInformation(getSite().getShell(), "Validaci贸n de campos",
 				"El campo de \"Piso\" no puede quedar en blanco");
 			return false;
 		}
@@ -240,7 +240,7 @@ public class HabitacionesEditor extends AbstractEditorH {
 	protected void llenarControles() {
 		isNewDoc = getEditorInput().isNewDoc;
 		if (isNewDoc) {
-			System.out.println("Creando nueva habitaci髇 (Hospedaje AEP)...");
+			System.out.println("Creando nueva habitaci贸n (Hospedaje AEP)...");
 			registro = new Habitacion();
 			this.setPartName(registro.getTituloDocumento());
 			getEditorInput().setName(registro.getTituloDocumento());

@@ -15,21 +15,21 @@ public class Pais implements IEditableDocument {
 	}
 	
 	
-// *************************** métodos especiales ****************************
+// *************************** mÃ©todos especiales ****************************
 	
 	public String getTituloDocumento() {
 		String tituloDocumento = "Nuevo";
 		if (descripcion == null) {
-			tituloDocumento = "Nuevo país";
+			tituloDocumento = "Nuevo paÃ­s";
 		} else {
-			tituloDocumento = "País: " + descripcion;
+			tituloDocumento = "PaÃ­s: " + descripcion;
 		}
 		return tituloDocumento;
 	}
 	
 	@Override
 	public String toString() {
-		return "País (id-desc): " + getIdPais() + "-" + getDescripcion();
+		return "PaÃ­s (id-desc): " + getIdPais() + "-" + getDescripcion();
 	}
 	
 	

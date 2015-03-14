@@ -10,11 +10,11 @@
 		<id name="idReserva" column="idRESERVA" unsaved-value="-1">
 			<generator class="increment"/>
 		</id>
-<!-- una reserva solo puede estar asignada a una hoja, y esta asociación es opcional -->
+<!-- una reserva solo puede estar asignada a una hoja, y esta asociaciÃ³n es opcional -->
 		<many-to-one name="hoja"
 				column="idHoja"
 				unique="true" not-null="false"/>
-<!-- una reserva puede tener 0 o más asignaciones -->
+<!-- una reserva puede tener 0 o mÃ¡s asignaciones -->
 		<set name="listaAsignaciones"
 			cascade="all,delete-orphan" inverse="true">
 			<key column="idReserva" not-null="true"/>
@@ -23,7 +23,7 @@
 		
 		<union-subclass name="rcp.manticora.model.ReservaTransporte" table="RESERVA_TRANSPORTES">
 <!-- para tener acceso a los valores de idHoja, sino retorna siempre 0 -->
-<!-- insert y update false reflejan que la columna es de lectura y está definida como llave -->
+<!-- insert y update false reflejan que la columna es de lectura y estÃ¡ definida como llave -->
 			<property name="idHoja" insert="false" update="false"/>
 			<property name="origen"/>
 			<property name="destino"/>
@@ -93,7 +93,7 @@
 		<id name="idLinea" type="long" column="idDETALLE">
 			<generator class="native"/>
 		</id>
-<!-- una linea de detalle solo puede estar asignada a una reserva, y esta asociación es obligatoria -->
+<!-- una linea de detalle solo puede estar asignada a una reserva, y esta asociaciÃ³n es obligatoria -->
 		<many-to-one name="reserva"
 				column="idRESERVA"
 				unique="true" not-null="true"/>

@@ -13,24 +13,24 @@ public class TourNumberValidator {
 
 		if (tourNumber != null) {
 			if (tourNumber.equalsIgnoreCase("")) {
-				messageList.add("Debe suministrar un número de gira.");
+				messageList.add("Debe suministrar un nÃºmero de gira.");
 			}
 			
 			if (!hasOnlyNumbersAndDash(tourNumber)) {
-				messageList.add("El número de gira tiene caracteres inválidos (no numéricos).");
+				messageList.add("El nÃºmero de gira tiene caracteres invÃ¡lidos (no numÃ©ricos).");
 			}
 
 			if (!validarFormato(tourNumber)) {
-				messageList.add("El número de gira tiene un formato incorrecto.  Debe ser del tipo ####-####.");
+				messageList.add("El nÃºmero de gira tiene un formato incorrecto.  Debe ser del tipo ####-####.");
 			}
 
 			if (messageList.isEmpty()) {
 				if (!hasValidMonth(tourNumber)) {
-					messageList.add("Debe seleccionar un mes válido para el número de gira.");
+					messageList.add("Debe seleccionar un mes vÃ¡lido para el nÃºmero de gira.");
 				}
 
 				if (!hasValidSequence(tourNumber)) {
-					messageList.add("La secuencia no puede tener más de cuatro dígitos.");
+					messageList.add("La secuencia no puede tener mÃ¡s de cuatro dÃ­gitos.");
 				}
 			}
 

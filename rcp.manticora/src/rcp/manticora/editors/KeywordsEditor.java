@@ -57,13 +57,13 @@ public class KeywordsEditor extends AbstractEditorH {
 		txtId.setEditable(false);
 		
 		l = new Label(parent, SWT.NONE);
-		l.setText("Código:");
+		l.setText("CÃ³digo:");
 		txtCodigo = new Text(parent, SWT.SINGLE | SWT.BORDER);
 		txtCodigo.setLayoutData(new GridData(120,15));
 		txtCodigo.addModifyListener(this.createModifyListener());
 		
 		l = new Label(parent, SWT.NONE);
-		l.setText("Descripción:");
+		l.setText("DescripciÃ³n:");
 		txtDescripcion = new Text(parent, SWT.SINGLE | SWT.BORDER);
 		txtDescripcion.setLayoutData(new GridData(120,15));
 		txtDescripcion.addModifyListener(this.createModifyListener());
@@ -71,7 +71,7 @@ public class KeywordsEditor extends AbstractEditorH {
 		l = new Label(parent, SWT.NONE);
 		l.setText("Tipo:");
 		comboTipo = new Combo(parent, SWT.READ_ONLY);
-		comboTipo.setItems(new String[] {"Forma de pago", "Sexo", "Status de cotizaciones", "Status general", "Status hoja de servicios", "Status de solicitudes", "Tipo de avión", "Tipo de impuesto", "Tipo de vehículo"});
+		comboTipo.setItems(new String[] {"Forma de pago", "Sexo", "Status de cotizaciones", "Status general", "Status hoja de servicios", "Status de solicitudes", "Tipo de aviÃ³n", "Tipo de impuesto", "Tipo de vehÃ­culo"});
 		comboTipo.addModifyListener(this.createModifyListener());
 	}
 

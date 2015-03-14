@@ -39,7 +39,7 @@ public class LineaCotizacion {
 	}
 	
 
-// ************************** métodos especiales ******************************
+// ************************** mÃ©todos especiales ******************************
 	
 	@Override
 	public String toString() {

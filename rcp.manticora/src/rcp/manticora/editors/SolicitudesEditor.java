@@ -176,7 +176,7 @@ public class SolicitudesEditor extends AbstractEditorH {
 			getEditorInput().setName(registro.getTituloDocumento());
 			txtEstado.setText("Nueva");
 		} else {
-			System.out.println("Ejecutando código para cargar datos...");
+			System.out.println("Ejecutando cÃ³digo para cargar datos...");
 			registro = (Solicitud) ((CommonEditorInput) this.getEditorInput()).getElemento();
 			txtNumero.setText(valor2Txt(registro.getIdSolicitud()));
 			txtEstado.setText(comboKeyword.getTextoByKey(registro.getEstado()));
@@ -228,13 +228,13 @@ public class SolicitudesEditor extends AbstractEditorH {
 		txtApellido.addModifyListener(this.createModifyListener());
 		
 		l = new Label(grupoCliente, SWT.NONE);
-		l.setText("Teléfono:");
+		l.setText("TelÃ©fono:");
 		txtTelefono = new Text(grupoCliente, SWT.SINGLE | SWT.BORDER);
 		txtTelefono.setLayoutData(new GridData(80, 15));
 		txtTelefono.addModifyListener(this.createModifyListener());
 		
 		l = new Label(grupoCliente, SWT.NONE);
-		l.setText("Teléfono2:");
+		l.setText("TelÃ©fono2:");
 		txtCelular = new Text(grupoCliente, SWT.SINGLE | SWT.BORDER);
 		txtCelular.setLayoutData(new GridData(80, 15));
 		txtCelular.addModifyListener(this.createModifyListener());
@@ -246,7 +246,7 @@ public class SolicitudesEditor extends AbstractEditorH {
 		txtEmail.addModifyListener(this.createModifyListener());
 		
 		l = new Label(grupoCliente, SWT.NONE);
-		l.setText("País:");
+		l.setText("PaÃ­s:");
 		comboPais = new Combo(grupoCliente, SWT.READ_ONLY);
 		comboPais.setItems(cdPaises.getTexto());
 		comboPais.setLayoutData(new GridData(80,15));
@@ -266,7 +266,7 @@ public class SolicitudesEditor extends AbstractEditorH {
 		gridData.horizontalSpan = 2;
 		grupoTour.setLayout(gridLayout);
 		grupoTour.setLayoutData(gridData);
-		//grupoTour.setText("Información de la gira");
+		//grupoTour.setText("InformaciÃ³n de la gira");
 		
 		l = new Label(grupoTour, SWT.NONE);
 		l.setText("Interesado en:");

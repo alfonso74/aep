@@ -27,7 +27,7 @@ public class CambiarPasswordDialog extends AbstractAEPDialog {
 
 	
 	public CambiarPasswordDialog(Shell parentShell) {
-		super(parentShell, "Actualizaci髇 de password");
+		super(parentShell, "Actualizaci贸n de password");
 		this.shell = parentShell;
 		controller = new UsuariosController(ID);
 	}
@@ -84,12 +84,12 @@ public class CambiarPasswordDialog extends AbstractAEPDialog {
 					// actualizar password y guardar registro del usuario
 					usuario.setPassword(pPassword);
 					controller.doSave(usuario);
-					// confirmar cambio y cerrar di醠ogo
-					MessageDialog.openInformation(shell, "Actualizaci髇 de password", "El password se ha actualizado exitosamente.");
-					System.out.println("Actualizar registro y cerrar di醠ogo.");
+					// confirmar cambio y cerrar di谩logo
+					MessageDialog.openInformation(shell, "Actualizaci贸n de password", "El password se ha actualizado exitosamente.");
+					System.out.println("Actualizar registro y cerrar di谩logo.");
 					super.okPressed();
 				} else {
-					MessageDialog.openError(shell, "Error de validaci髇", "El password introducido en el campo de \"Password actual\" no coincide\ncon el password del usuario.  Por favor verifique.");
+					MessageDialog.openError(shell, "Error de validaci贸n", "El password introducido en el campo de \"Password actual\" no coincide\ncon el password del usuario.  Por favor verifique.");
 				}
 			}
 		}catch (Exception e) {
@@ -104,22 +104,22 @@ public class CambiarPasswordDialog extends AbstractAEPDialog {
 		String pPassConf = txtPasswordConf.getText();
 		
 		if (pPassViejo.equals("")) {
-			MessageDialog.openError(shell, "Error de validaci髇", "El campo de \"Password actual\" no puede quedar en blanco.");
+			MessageDialog.openError(shell, "Error de validaci贸n", "El campo de \"Password actual\" no puede quedar en blanco.");
 			txtPasswordViejo.setFocus();
 			return false;
 		}
 		if (pPassNuevo == "") {
-			MessageDialog.openError(shell, "Error de validaci髇", "El campo de \"Password nuevo\" no puede quedar en blanco.");
+			MessageDialog.openError(shell, "Error de validaci贸n", "El campo de \"Password nuevo\" no puede quedar en blanco.");
 			txtPasswordNuevo.setFocus();
 			return false;
 		}
 		if (pPassConf == "") {
-			MessageDialog.openError(shell, "Error de validaci髇", "El campo de \"Confirmar password\" no puede quedar en blanco.");
+			MessageDialog.openError(shell, "Error de validaci贸n", "El campo de \"Confirmar password\" no puede quedar en blanco.");
 			txtPasswordConf.setFocus();
 			return false;
 		}
 		if (!pPassNuevo.equals(pPassConf)) {
-			MessageDialog.openError(shell, "Error de validaci髇", "El nuevo password no ha sido confirmado correctamente (Campo de \"Confirmar password\").");
+			MessageDialog.openError(shell, "Error de validaci贸n", "El nuevo password no ha sido confirmado correctamente (Campo de \"Confirmar password\").");
 			txtPasswordConf.setFocus();
 			return false;
 		}

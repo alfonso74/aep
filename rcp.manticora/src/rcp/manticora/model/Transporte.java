@@ -20,7 +20,7 @@ public class Transporte implements IEditableDocument {
 	}
 	
 	
-// **************************** métodos especiales ***************************
+// **************************** mÃ©todos especiales ***************************
 
 	public String getTituloDocumento() {
 		String tituloDocumento = "Nuevo";

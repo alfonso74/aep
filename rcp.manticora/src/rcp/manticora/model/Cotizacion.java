@@ -72,12 +72,12 @@ public class Cotizacion implements IEditableDocument {
 		listaPaxs = new HashSet<Pax>();
 	}
 
-// ***************************** m閠odos especiales **************************
+// ***************************** m茅todos especiales **************************
 	
 	public String getTituloDocumento() {
 		String tituloDocumento = "Nuevo";
 		if (getNombre() == null) {
-			tituloDocumento = "Nueva cotizaci髇";
+			tituloDocumento = "Nueva cotizaci贸n";
 		} else {
 			tituloDocumento = "Cot: " + getNombre();
 		}
@@ -86,7 +86,7 @@ public class Cotizacion implements IEditableDocument {
 	
 	@Override
 	public String toString() {
-		return "Cotizaci髇 (id-nombre): " + getIdCotizacion() + "-" + getNombre();
+		return "Cotizaci贸n (id-nombre): " + getIdCotizacion() + "-" + getNombre();
 	}
 		
 	public void resetListaActividades() {
@@ -95,16 +95,16 @@ public class Cotizacion implements IEditableDocument {
 
 	public void agregarActividad(LineaCotizacion linea) {
 		if (linea.getFecha() == null) {
-			System.err.println("La l韓ea de cotizaci髇 tiene la fecha en blanco: " + linea);
+			System.err.println("La l铆nea de cotizaci贸n tiene la fecha en blanco: " + linea);
 		} else if (linea.getSecuencia() == null) {
-			System.err.println("La l韓ea de cotizaci髇 no tiene secuencia: " + linea);
+			System.err.println("La l铆nea de cotizaci贸n no tiene secuencia: " + linea);
 		} else {
 			listaActividades.add(linea);
 		}
 	}
 
 	public void eliminarActividad(LineaCotizacion linea) {
-		System.out.println("Removiendo l韓ea: " + linea);
+		System.out.println("Removiendo l铆nea: " + linea);
 		listaActividades.remove(linea);
 	}
 

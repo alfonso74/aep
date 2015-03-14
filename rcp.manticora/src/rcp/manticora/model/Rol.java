@@ -11,7 +11,7 @@ public class Rol implements IEditableDocument {
 	public Rol() {
 	}
 	
-// **************************** métodos especiales *****************************
+// **************************** mÃ©todos especiales *****************************
 	
 	public String getTituloDocumento() {
 		String titulo = "Nuevo rol";

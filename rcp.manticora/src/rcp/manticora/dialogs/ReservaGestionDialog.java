@@ -11,9 +11,9 @@ import org.eclipse.swt.widgets.Shell;
 
 import rcp.manticora.model.LineaActividad;
 /**
- * <p>Dialogo para capturar la acci髇 que el usuario desea realizar con relaci髇 a las reservas.</p>
+ * <p>Dialogo para capturar la acci贸n que el usuario desea realizar con relaci贸n a las reservas.</p>
  * 
- * @param parentShell shell para dibujar el di醠ogo
+ * @param parentShell shell para dibujar el di谩logo
  * @param linea actividad sobre la que vamos a trabajar
  *
  */
@@ -32,7 +32,7 @@ public class ReservaGestionDialog extends AbstractAEPTitleAreaDialog {
 	
 	/**
 	 * Constructor
-	 * @param parentShell shell para dibujar el di醠ogo
+	 * @param parentShell shell para dibujar el di谩logo
 	 * @param linea actividad sobre la que vamos a trabajar
 	 */
 	public ReservaGestionDialog(Shell parentShell, LineaActividad linea) {
@@ -55,7 +55,7 @@ public class ReservaGestionDialog extends AbstractAEPTitleAreaDialog {
 		GridData gridData;
 		
 		l = new Label(composite, SWT.NONE);
-		l.setText("Seleccione una acci髇:");
+		l.setText("Seleccione una acci贸n:");
 		
 		l = new Label(composite, SWT.SEPARATOR | SWT.HORIZONTAL);
 		gridData = new GridData(GridData.FILL, GridData.CENTER, false, false);
@@ -71,7 +71,7 @@ public class ReservaGestionDialog extends AbstractAEPTitleAreaDialog {
 		bOpcion3 = new Button(composite, SWT.RADIO);
 		bOpcion3.setText("Consultar reserva asignada");
 		bOpcion4 = new Button(composite, SWT.RADIO);
-		bOpcion4.setText("Borrar asignaci髇 de reserva");
+		bOpcion4.setText("Borrar asignaci贸n de reserva");
 		bOpcion1.setEnabled(false);
 		bOpcion2.setEnabled(false);
 		bOpcion3.setEnabled(false);
@@ -85,8 +85,8 @@ public class ReservaGestionDialog extends AbstractAEPTitleAreaDialog {
 	
 	@Override
 	protected void llenarCampos() {
-		setTitle("Gesti髇 de reservas");
-		setMessage("Por favor, indique el tipo de acci髇 a realizar");
+		setTitle("Gesti贸n de reservas");
+		setMessage("Por favor, indique el tipo de acci贸n a realizar");
 		
 		if (linea.hasReservas()) {
 			bOpcion3.setEnabled(true);
@@ -116,7 +116,7 @@ public class ReservaGestionDialog extends AbstractAEPTitleAreaDialog {
 			// estamos asignando una reserva existente
 			accion = "asignar";
 		} else if (bOpcion3.getSelection()) {
-			// queremos borrar una asignaci髇 de reserva
+			// queremos borrar una asignaci贸n de reserva
 			accion = "consultar";
 		} else if (bOpcion4.getSelection()) {
 			accion = "borrar";

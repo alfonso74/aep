@@ -20,7 +20,7 @@ public class FiltrarClientesComAction implements IViewActionDelegate {
 	public void init(IViewPart view) {
 		this.view = view;
 		shell = view.getSite().getShell();
-		System.out.println("INIT de acción: " + this.getClass().getName());
+		System.out.println("INIT de acciÃ³n: " + this.getClass().getName());
 	}
 
 	public void run(IAction action) {
@@ -43,7 +43,7 @@ public class FiltrarClientesComAction implements IViewActionDelegate {
 	}
 	
 	protected void mensajeError(Shell shell, Exception e) {
-		MessageDialog.openError(shell, "Error en la acción", "Error: " + e.toString() + "\n\nStack trace: " + e.getStackTrace()[0]);
+		MessageDialog.openError(shell, "Error en la acciÃ³n", "Error: " + e.toString() + "\n\nStack trace: " + e.getStackTrace()[0]);
 		e.printStackTrace();
 	}
 

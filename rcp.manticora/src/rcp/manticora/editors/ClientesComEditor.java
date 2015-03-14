@@ -77,7 +77,7 @@ public class ClientesComEditor extends AbstractEditorH {
 		String pTelefono2 = "";
 		String pEmail = txtEmail.getText().trim();
 		Long pIdPais = cdPais.getKeyAsLongByIndex(comboPais.getSelectionIndex());
-		System.out.println("Valor de pa韘: " + pIdPais);
+		System.out.println("Valor de pa铆s: " + pIdPais);
 		String pDireccion1 = txtDireccion1.getText().trim();
 		String pDireccion2 = txtDireccion2.getText().trim();
 		String pDireccion3 = txtDireccion3.getText().trim();
@@ -129,28 +129,28 @@ public class ClientesComEditor extends AbstractEditorH {
 		String pContacto = txtContacto.getText();
 		
 		if (comboTipoCliente.getSelectionIndex() == -1) {
-			MessageDialog.openInformation(getSite().getShell(), "Validaci髇 de campos",
+			MessageDialog.openInformation(getSite().getShell(), "Validaci贸n de campos",
 				"El campo de \"Tipo cliente\" no puede quedar en blanco");
 			return false;
 		}
 		if (pNombre.length() == 0) {
-			MessageDialog.openInformation(getSite().getShell(), "Validaci髇 de campos",
+			MessageDialog.openInformation(getSite().getShell(), "Validaci贸n de campos",
 					"El campo de \"Nombre\" no puede quedar en blanco.");
 			return false;
 		}
 		if (pNombre.length() > 50) {
-			MessageDialog.openInformation(getSite().getShell(), "Validaci髇 de campos",
+			MessageDialog.openInformation(getSite().getShell(), "Validaci贸n de campos",
 					"El nombre del cliente no puede superar los 50 caracteres (" + pNombre.length() + ").");
 			return false;
 		}
 		if (pContacto.length() > 50) {
-			MessageDialog.openInformation(getSite().getShell(), "Validaci髇 de campos",
+			MessageDialog.openInformation(getSite().getShell(), "Validaci贸n de campos",
 					"El nombre del contacto no puede superar los 50 caracteres (" + pContacto.length() + ").");
 			return false;
 		}
 		if (comboPais.getSelectionIndex() == -1) {
-			MessageDialog.openInformation(getSite().getShell(), "Validaci髇 de campos",
-				"El campo de \"Pa韘\" no puede quedar en blanco");
+			MessageDialog.openInformation(getSite().getShell(), "Validaci贸n de campos",
+				"El campo de \"Pa铆s\" no puede quedar en blanco");
 			return false;
 		}
 		return true;
@@ -184,7 +184,7 @@ public class ClientesComEditor extends AbstractEditorH {
 		GridLayout gridLayout;
 		
 		l = new Label(parent, SWT.NONE);
-		l.setText("C骴igo:");
+		l.setText("C贸digo:");
 		txtCodigo = new Text(parent, SWT.BORDER);
 		gridData = new GridData(40,15);
 		gridData.horizontalSpan = 1;
@@ -254,7 +254,7 @@ public class ClientesComEditor extends AbstractEditorH {
 		txtContacto.addModifyListener(this.createModifyListener());
 		
 		l = new Label(parent, SWT.NONE);
-		l.setText("Tel閒ono:");
+		l.setText("Tel茅fono:");
 		txtTelefono = new Text(parent, SWT.BORDER);
 		txtTelefono.setLayoutData(new GridData(80,15));
 		txtTelefono.setTextLimit(15);
@@ -278,7 +278,7 @@ public class ClientesComEditor extends AbstractEditorH {
 		label.setLayoutData(gd_label);
 		
 		l = new Label(parent, SWT.NONE);
-		l.setText("Pa韘:");
+		l.setText("Pa铆s:");
 		comboPais = new Combo(parent, SWT.READ_ONLY);
 		gridData = new GridData(120,15);
 		gridData.horizontalSpan = 1;
@@ -293,7 +293,7 @@ public class ClientesComEditor extends AbstractEditorH {
 		l.setLayoutData(gridData);
 		
 		l = new Label(parent, SWT.NONE);
-		l.setText("Direcci髇:");
+		l.setText("Direcci贸n:");
 		gridData = new GridData();
 		gridData.verticalAlignment = SWT.TOP;
 		gridData.verticalIndent = 7;
@@ -333,7 +333,7 @@ public class ClientesComEditor extends AbstractEditorH {
 			this.setPartName(registro.getTituloDocumento());
 			getEditorInput().setName(registro.getTituloDocumento());
 		} else {
-			System.out.println("Ejecutando c骴igo para cargar datos...");
+			System.out.println("Ejecutando c贸digo para cargar datos...");
 			registro = (Cliente) ((CommonEditorInput) this.getEditorInput()).getElemento();
 			System.out.println("Pais: " + registro.getDspPais());
 			txtCodigo.setText(valor2Txt(registro.getIdCliente()));

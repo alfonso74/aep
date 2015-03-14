@@ -76,7 +76,7 @@ public class UsuariosEditor extends AbstractEditorH {
 		GridData gridData;
 		
 		l = new Label(parent, SWT.NONE);
-		l.setText("C骴igo:");
+		l.setText("C贸digo:");
 		txtCodigo = new Text(parent, SWT.BORDER);
 		gridData = new GridData(40, 15);
 		gridData.horizontalSpan = 2;
@@ -206,32 +206,32 @@ public class UsuariosEditor extends AbstractEditorH {
 		String pApellido = txtApellido.getText();
 		String pUserName = txtUserName.getText();
 		if (pNombre.equals("")) {
-			MessageDialog.openInformation(getSite().getShell(), "Validaci髇 de campos",
+			MessageDialog.openInformation(getSite().getShell(), "Validaci贸n de campos",
 				"El campo 'Nombre' no puede quedar en blanco.");
 			return false;
 		}
 		if (pNombre.length() > 25) {
-			MessageDialog.openInformation(getSite().getShell(), "Validaci髇 de campos",
+			MessageDialog.openInformation(getSite().getShell(), "Validaci贸n de campos",
 					"El nombre del usuario no puede superar los 25 caracteres (" + pNombre.length() + ").");
 			return false;
 		}
 		if (pApellido.equals("")) {
-			MessageDialog.openInformation(getSite().getShell(), "Validaci髇 de campos",
+			MessageDialog.openInformation(getSite().getShell(), "Validaci贸n de campos",
 				"El campo 'Apellido' no puede quedar en blanco.");
 			return false;
 		}
 		if (pApellido.length() > 25) {
-			MessageDialog.openInformation(getSite().getShell(), "Validaci髇 de campos",
+			MessageDialog.openInformation(getSite().getShell(), "Validaci贸n de campos",
 					"El apellido del usuario no puede superar los 25 caracteres (" + pApellido.length() + ").");
 			return false;
 		}
 		if (pUserName.equals("")) {
-			MessageDialog.openInformation(getSite().getShell(), "Validaci髇 de campos",
+			MessageDialog.openInformation(getSite().getShell(), "Validaci贸n de campos",
 				"El campo 'Username' no puede quedar en blanco.");
 			return false;
 		}
 		if (pUserName.length() > 20) {
-			MessageDialog.openInformation(getSite().getShell(), "Validaci髇 de campos",
+			MessageDialog.openInformation(getSite().getShell(), "Validaci贸n de campos",
 					"El campo de 'Username' no puede superar los 20 caracteres (" + pUserName.length() + ").");
 			return false;
 		}
@@ -250,7 +250,7 @@ public class UsuariosEditor extends AbstractEditorH {
 			//viewerRoles.setInput(editorController.getListadoRoles());      // retorna array de roles
 			viewerRoles.setInput(editorController.getListaRoles());
 		} else {
-			System.out.println("Ejecutando c骴igo para cargar datos...");
+			System.out.println("Ejecutando c贸digo para cargar datos...");
 			registro = (Usuario) ((CommonEditorInput) this.getEditorInput()).getElemento();
 			editorController.getSession().refresh(registro);
 			// carga de datos del registro existente

@@ -18,7 +18,7 @@ public class Pax {
 	public Pax() {}
 	
 	
-// ***************************** métodos especiales **************************
+// ***************************** mÃ©todos especiales **************************
 	
 	@Override
 	public String toString() {

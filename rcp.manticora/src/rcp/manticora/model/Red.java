@@ -11,7 +11,7 @@ public class Red implements IEditableDocument {
 	public Red() {
 	}
 
-	// **************************** métodos especiales *****************************
+	// **************************** mÃ©todos especiales *****************************
 	
 	public String getTituloDocumento() {
 		String titulo = "Nueva red de viajes";

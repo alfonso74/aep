@@ -39,7 +39,7 @@ public class ReservaTransporte extends ReservaAdapter {
 	}
 	*/
 	
-// *************************** métodos especiales ***********************
+// *************************** mÃ©todos especiales ***********************
 
 	public String getTituloDocumento() {
 		return "Reserva " + getIdReserva();
@@ -141,7 +141,7 @@ public class ReservaTransporte extends ReservaAdapter {
 	}
 	*/
 
-	/*  TODO: borrar estos métodos (nueva forma de reserva)
+	/*  TODO: borrar estos mÃ©todos (nueva forma de reserva)
 	public LineaActividad getActividad() {
 		return actividad;
 	}

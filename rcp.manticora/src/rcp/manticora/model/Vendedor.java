@@ -7,7 +7,7 @@ public class Vendedor implements IEditableDocument {
 	private String nombre;
 	private String apellido;
 	private String estado;
-	// variable utilizada solamente para display el texto del código de estado
+	// variable utilizada solamente para display el texto del cÃ³digo de estado
 	private String dspEstado;
 
 	public Vendedor() {
@@ -21,7 +21,7 @@ public class Vendedor implements IEditableDocument {
 	}
 
 
-// **************************** métodos especiales ****************************
+// **************************** mÃ©todos especiales ****************************
 	
 	public String getTituloDocumento() {
 		String tituloDocumento = "Nuevo";

@@ -63,7 +63,7 @@ public class AgregarGuiaHoja extends AbstractAEPTitleAreaDialog {
 		GridData gridData;
 		
 		l = new Label(composite, SWT.NONE);
-		l.setText("Nombre del guía:");
+		l.setText("Nombre del guÃ­a:");
 		comboGuia = new Combo(composite, SWT.READ_ONLY);
 		gridData = new GridData(200,15);
 		gridData.horizontalSpan = 5;
@@ -108,9 +108,9 @@ public class AgregarGuiaHoja extends AbstractAEPTitleAreaDialog {
 	@Override
 	protected void llenarCampos() {
 // Set the title
-		setTitle("Agregar guía");	
+		setTitle("Agregar guÃ­a");	
 // Set the message
-		setMessage("Por favor, introduzca los detalles de la asignación del guía", IMessageProvider.INFORMATION);
+		setMessage("Por favor, introduzca los detalles de la asignaciÃ³n del guÃ­a", IMessageProvider.INFORMATION);
 		
 		String texto = "";
 		if (reserva.getGuia() != null) {
@@ -138,18 +138,18 @@ public class AgregarGuiaHoja extends AbstractAEPTitleAreaDialog {
 		Date pFechaDesde = FechaUtil.toDate(txtFechaDesde.getText());
 		Date pFechaHasta = FechaUtil.toDate(txtFechaDesde.getText());
 		if (comboGuia.getSelectionIndex() == -1) {
-			MessageDialog.openInformation(shell, "Validación de campos",
-				"Debe seleccionar un guía para realizar la asignación.");
+			MessageDialog.openInformation(shell, "ValidaciÃ³n de campos",
+				"Debe seleccionar un guÃ­a para realizar la asignaciÃ³n.");
 			return false;
 		}
 		if (pFechaDesde == null) {
-			MessageDialog.openInformation(shell, "Validación de campos",
-				"El campo de fecha inicial tiene una fecha no válida.");
+			MessageDialog.openInformation(shell, "ValidaciÃ³n de campos",
+				"El campo de fecha inicial tiene una fecha no vÃ¡lida.");
 			return false;
 		}
 		if (pFechaHasta == null) {
-			MessageDialog.openInformation(shell, "Validación de campos",
-				"El campo de fecha final tiene una fecha no válida.");
+			MessageDialog.openInformation(shell, "ValidaciÃ³n de campos",
+				"El campo de fecha final tiene una fecha no vÃ¡lida.");
 			return false;
 		}
 		return true;

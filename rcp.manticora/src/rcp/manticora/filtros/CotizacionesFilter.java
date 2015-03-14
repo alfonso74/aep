@@ -43,7 +43,7 @@ public class CotizacionesFilter extends ViewerFilter {
 		}
 		if (noCliente != null && noCliente.longValue() != 0) {
 			Cliente cliente = c.getCliente();
-			// si la cotización tiene cliente verificamos el número de cliente
+			// si la cotizaciÃ³n tiene cliente verificamos el nÃºmero de cliente
 			if (cliente != null) {
 				if (cliente.getIdCliente().longValue() != noCliente) return false;
 			} else {  // y si no tiene, no califica
@@ -54,7 +54,7 @@ public class CotizacionesFilter extends ViewerFilter {
 			if (!c.getNombre().toLowerCase().contains(nombre)) return false;
 		}
 		if (vendedor != null && !vendedor.equals("")) {
-			// si alguna cotización no tiene vendedor entonces será retornada
+			// si alguna cotizaciÃ³n no tiene vendedor entonces serÃ¡ retornada
 			// (si cumple con los otros criterios)
 			if (c.getDspVendedor() != null && !c.getDspVendedor().equals(vendedor)) return false;
 		}

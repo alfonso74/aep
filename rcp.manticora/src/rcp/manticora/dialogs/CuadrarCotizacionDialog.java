@@ -177,7 +177,7 @@ public class CuadrarCotizacionDialog extends AbstractAEPDialog {
 
 		Float base = txt2Float(txtPrecio.getText());
 		
-//TODO: validación de campos numéricos y usar BigDecimal por float/double
+//TODO: validaciÃ³n de campos numÃ©ricos y usar BigDecimal por float/double
 		/*
 		ParsePosition pp = new ParsePosition(0);
 		NumberFormat nf = NumberFormat.getNumberInstance();
@@ -256,11 +256,11 @@ public class CuadrarCotizacionDialog extends AbstractAEPDialog {
 			txtUnidades.setText("1");
 		}
 		if (txtPrecio.getText() == "") {
-			MessageDialog.openError(shell, "Error de validación", "El campo de \"Paquete\" no puede quedar en blanco.");
+			MessageDialog.openError(shell, "Error de validaciÃ³n", "El campo de \"Paquete\" no puede quedar en blanco.");
 			return false;
 		}
 		if (txtHospedaje.getText() == "") {
-			MessageDialog.openError(shell, "Error de validación", "El campo de \"Hospedaje\" no puede quedar en blanco.");
+			MessageDialog.openError(shell, "Error de validaciÃ³n", "El campo de \"Hospedaje\" no puede quedar en blanco.");
 			return false;
 		}
 		return true;

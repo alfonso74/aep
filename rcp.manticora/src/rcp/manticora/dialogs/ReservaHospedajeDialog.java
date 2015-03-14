@@ -208,7 +208,7 @@ public class ReservaHospedajeDialog extends AbstractAEPTitleAreaDialog
 		viewer.setLabelProvider(new ViewLabelProviderHab());
 		
 		
-// ************************* Botones de acciÛn ****************************
+// ************************* Botones de acci√≥n ****************************
 		
 		Composite botones = new Composite(habitaciones, SWT.NONE);
 		layout = new GridLayout(3, false);
@@ -268,7 +268,7 @@ public class ReservaHospedajeDialog extends AbstractAEPTitleAreaDialog
 		bAgregar.setText("Agregar");
 		bAgregar.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				guardarReservaHospedaje();    // para que las fechas de la reserva pasen al di·logo que se est· abriendo
+				guardarReservaHospedaje();    // para que las fechas de la reserva pasen al di√°logo que se est√° abriendo
 				if (hospedaje.isHotelAEP()) {
 					System.out.println("Hospedaje AEP");
 					ReservaHospIntDialog dialog = new ReservaHospIntDialog(shell,
@@ -313,7 +313,7 @@ public class ReservaHospedajeDialog extends AbstractAEPTitleAreaDialog
 					}
 				} else {
 					MessageDialog.openError(shell, "Editar detalle",
-						"No se ha seleccionado ninguna lÌnea de detalle.");
+						"No se ha seleccionado ninguna l√≠nea de detalle.");
 				}
 			}
 		});
@@ -330,7 +330,7 @@ public class ReservaHospedajeDialog extends AbstractAEPTitleAreaDialog
 					viewer.refresh();
 				} else {
 					MessageDialog.openError(shell, "Borrar detalle",
-							"No se ha seleccionado ninguna lÌnea de detalle.");
+							"No se ha seleccionado ninguna l√≠nea de detalle.");
 				}
 			}
 		});
@@ -353,7 +353,7 @@ public class ReservaHospedajeDialog extends AbstractAEPTitleAreaDialog
 			setTitle("Editando reserva de hospedaje");
 			setMessage("Por favor, especifique los detalles de la reserva", IMessageProvider.INFORMATION);
 			
-			System.out.println("Cargando informaciÛn de campos...");
+			System.out.println("Cargando informaci√≥n de campos...");
 			txtHotel.setText(reserva.getProducto().getDescripcion());
 			txtNoReserva.setText(reserva.getNoReserva());
 			txtFechaDesde.setText(FechaUtil.toString(reserva.getFechaDesde()));
@@ -451,7 +451,7 @@ public class ReservaHospedajeDialog extends AbstractAEPTitleAreaDialog
 	}
 	
 	/**
-	 * Retorna la lÌnea de detalle que ha sido seleccionada. Si no hay selecciÛn
+	 * Retorna la l√≠nea de detalle que ha sido seleccionada. Si no hay selecci√≥n
 	 * retorna null.
 	 * @return ILineaHospedaje que ha sido seleccionada por el usuario.
 	 */

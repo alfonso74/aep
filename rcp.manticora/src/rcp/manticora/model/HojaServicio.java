@@ -34,7 +34,7 @@ public abstract class HojaServicio implements IHojaServicio, IEditableDocument {
 	}
 	
 	
-//	************** mÈtodos adicionales para manejar lÌneas de actividad ***********
+//	************** m√©todos adicionales para manejar l√≠neas de actividad ***********
 	
 	public void resetListaActividades() {
 		this.listaActividades.clear();
@@ -91,7 +91,7 @@ public abstract class HojaServicio implements IHojaServicio, IEditableDocument {
 	}
 	
 	
-// ******************* fin de mÈtodos adicionales ************************
+// ******************* fin de m√©todos adicionales ************************
 
 	public String getEstado() {
 		return estado;
@@ -193,7 +193,7 @@ public abstract class HojaServicio implements IHojaServicio, IEditableDocument {
 	 * Si pongo ICliente entonces genera error
 	 * @return
 	 */
-	// Si pongo ICliente se genera error porque no est· mapeada la interface
+	// Si pongo ICliente se genera error porque no est√° mapeada la interface
 	public Cliente getCliente() {
 		return (Cliente) cliente;
 	}

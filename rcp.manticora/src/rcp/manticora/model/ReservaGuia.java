@@ -14,7 +14,7 @@ public class ReservaGuia implements IEditableDocument {
 	private Date fechaHasta;
 	
 	
-// *************************** Métodos especiales *************************
+// *************************** MÃ©todos especiales *************************
 	
 	public String getTituloDocumento() {
 		return "Reserva " + getIdReserva();

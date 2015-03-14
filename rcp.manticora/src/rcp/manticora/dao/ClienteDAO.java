@@ -58,7 +58,7 @@ public class ClienteDAO extends NewGenericDAOImpl<ICliente, Long> {
 		if (campo.equals("Apellido")) {
 			c = Restrictions.like("apellido", "%" + cadena + "%");
 		}
-		if (campo.equals("Identificación")) {
+		if (campo.equals("IdentificaciÃ³n")) {
 			c = Restrictions.like("identificacion", "%" + cadena + "%");
 		}
 		List<ICliente> resultados = findByOrderedCriteria("nombre", true, c);
@@ -66,7 +66,7 @@ public class ClienteDAO extends NewGenericDAOImpl<ICliente, Long> {
 	}
 	
 	public List buscarClienteJuridico(String campo, String cadena) {
-		Criterion c = Restrictions.eq("clase", "C");            // solamente buscamos clientes jurídicos (compañías)
+		Criterion c = Restrictions.eq("clase", "C");            // solamente buscamos clientes jurÃ­dicos (compaÃ±Ã­as)
 		if (campo.equals("Nombre")) {
 			c = Restrictions.like("nombreCia", "%" + cadena + "%");
 		}

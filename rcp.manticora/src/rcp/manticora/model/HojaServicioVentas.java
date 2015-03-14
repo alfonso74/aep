@@ -11,7 +11,7 @@ public class HojaServicioVentas extends HojaServicio {
 	}
 	
 	
-// ***************************** métodos especiales *************************
+// ***************************** mÃ©todos especiales *************************
 	
 	@Override
 	public String toString() {

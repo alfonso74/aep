@@ -20,21 +20,21 @@ public class Guia implements IEditableDocument {
 	}
 	
 
-// *************************** métodos especiales *****************************
+// *************************** mÃ©todos especiales *****************************
 
 	public String getTituloDocumento() {
 		String tituloDocumento = "Nuevo";
 		if (nombre == null && apellido == null) {
-			tituloDocumento = "Nuevo guía";
+			tituloDocumento = "Nuevo guÃ­a";
 		} else {
-			tituloDocumento = "Guía: " + nombre + " " + apellido;
+			tituloDocumento = "GuÃ­a: " + nombre + " " + apellido;
 		}
 		return tituloDocumento;
 	}
 
 	@Override
 	public String toString() {
-		return "Guía (id-nombre): " + getIdGuia() + "-" + getNombre();
+		return "GuÃ­a (id-nombre): " + getIdGuia() + "-" + getNombre();
 	}
 	
 	public String getNombreCompleto() {

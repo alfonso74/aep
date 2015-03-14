@@ -26,7 +26,7 @@ public class ReservaTourDAO extends NewGenericDAOImpl<ReservaTour, Long> {
 		if (result.size() > 0) {
 			return (ReservaTour) result.get(0);
 		} else {
-			System.out.println("No se encontró el tour " + idReserva);
+			System.out.println("No se encontrÃ³ el tour " + idReserva);
 			return null;
 		}
 	}

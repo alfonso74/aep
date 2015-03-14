@@ -23,7 +23,7 @@ public class ClienteJuridico extends Cliente {
 	}
 	
 	
-// ****************************** métodos especiales **************************
+// ****************************** mÃ©todos especiales **************************
 	
 	public String getNombreCliente() {
 		return getNombreCia();
@@ -32,16 +32,16 @@ public class ClienteJuridico extends Cliente {
 	public String getTituloDocumento() {
 		String tituloDocumento = "Nuevo";
 		if (getNombreCia() == null) {
-			tituloDocumento = "Nueva compañía";
+			tituloDocumento = "Nueva compaÃ±Ã­a";
 		} else {
-			tituloDocumento = "Compañía: " + getNombreCliente();
+			tituloDocumento = "CompaÃ±Ã­a: " + getNombreCliente();
 		}
 		return tituloDocumento;
 	}
 	
 	@Override
 	public String toString() {
-		return "Cliente jurídico (id-nombre): " + getIdCliente() + "-" + getNombreCliente();
+		return "Cliente jurÃ­dico (id-nombre): " + getIdCliente() + "-" + getNombreCliente();
 	}
 	
 	

@@ -7,7 +7,7 @@ import rcp.manticora.IEditableDocument;
 
 public interface IReserva extends IEditableDocument {
 	
-//	 en las interfases, los métodos son implícitamente abstract
+//	 en las interfases, los mÃ©todos son implÃ­citamente abstract
 	
 	public abstract Long getIdReserva();
 	
@@ -45,9 +45,9 @@ public interface IReserva extends IEditableDocument {
 	public abstract String getTipoReserva();
 	
 	/**
-	 * Prepara la fecha de la reserva para presentarla en un viewer o impresión.
+	 * Prepara la fecha de la reserva para presentarla en un viewer o impresiÃ³n.
 	 * Cada tipo de reserva tiene su propio formato (algunas incluyen hasta horas),
-	 * y es requerido que todas implementen este método.
+	 * y es requerido que todas implementen este mÃ©todo.
 	 * @return Fecha de la reserva con su formato particular.
 	 */
 	public String getFechaDspReserva();

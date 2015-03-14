@@ -27,7 +27,7 @@ public class Template implements IEditableDocument {
 	}
 	
 
-// ************************** métodos especiales *****************************
+// ************************** mÃ©todos especiales *****************************
 	
 	public String getTituloDocumento() {
 		String tituloDocumento = "Nuevo";
@@ -44,7 +44,7 @@ public class Template implements IEditableDocument {
 		return "Template (id-nombre): " + getIdTemplate() + "-" + getNombre();
 	}
 	
-// ************** métodos adicionales para el manejo de los templates *************
+// ************** mÃ©todos adicionales para el manejo de los templates *************
 	
 	public void agregarActividad(LineaTemplate linea) {
 		listaActividades.add(linea);

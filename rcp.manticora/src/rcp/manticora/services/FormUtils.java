@@ -13,7 +13,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
 /*
- * MÈtodos para facilitar la presentaciÛn de datos en un formulario y el envÌo de
+ * M√©todos para facilitar la presentaci√≥n de datos en un formulario y el env√≠o de
  * datos hacia la base de datos
  */
 
@@ -67,7 +67,7 @@ public class FormUtils {
 		return valorTxt;
 	}
 	
-	/** presentaciÛn de valores numÈricos con formato en los formularios
+	/** presentaci√≥n de valores num√©ricos con formato en los formularios
 	 * 
 	 * @param valorCampo
 	 * @param formato ejm: "0.00", "#,##0.00"
@@ -77,7 +77,7 @@ public class FormUtils {
 		/*
 		if (valorCampo != null) {
 			NumberFormat nf = NumberFormat.getInstance();
-			System.out.println("N˙mero cargado: " + nf.format(valorCampo));
+			System.out.println("N√∫mero cargado: " + nf.format(valorCampo));
 		}
 		*/
 		// formato usualmente se especifica para new DecimalFormat(".00")
@@ -96,8 +96,8 @@ public class FormUtils {
 	}
 	
 	/**
-	 * Genera un calendario para asignar gr·ficamente una fecha.  Utiliza como
-	 * default la fecha que haya sido introducida en el par·metro txtCampo
+	 * Genera un calendario para asignar gr√°ficamente una fecha.  Utiliza como
+	 * default la fecha que haya sido introducida en el par√°metro txtCampo
 	 * Si no se ha introducido ninguna fecha, el calendario selecciona la
 	 * fecha actual.
 	 */
@@ -106,8 +106,8 @@ public class FormUtils {
 	}
 	
 	/**
-	 * Genera un calendario para asignar gr·ficamente una fecha.  Utiliza como
-	 * default la fecha que haya sido introducida en el par·metro txtCampo o
+	 * Genera un calendario para asignar gr√°ficamente una fecha.  Utiliza como
+	 * default la fecha que haya sido introducida en el par√°metro txtCampo o
 	 * la fecha indicada en txtFechaDefault.
 	 * Si no se ha introducido ninguna fecha, el calendario selecciona la
 	 * fecha actual.
@@ -119,7 +119,7 @@ public class FormUtils {
 	/**
 	 * Crea un KeyAdapter que responde a las flechas de arriba y abajo para
 	 * incrementar/decrementar la fecha.  En caso de no haber una fecha, se
-	 * utiliza el dÌa de hoy como default 
+	 * utiliza el d√≠a de hoy como default 
 	 * @param campo el campo donde se especifica la fecha
 	 */
 	public KeyAdapter crearKeyAdapter(final Text campo) {

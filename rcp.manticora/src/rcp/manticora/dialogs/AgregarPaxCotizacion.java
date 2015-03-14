@@ -116,7 +116,7 @@ public class AgregarPaxCotizacion extends AbstractAEPTitleAreaDialog {
 		txtPeso.setTextLimit(3);
 
 		l = new Label(composite, SWT.NONE);
-		l.setText("IdentificaciÛn:");
+		l.setText("Identificaci√≥n:");
 		txtIdent = new Text(composite, SWT.BORDER);
 		gridData = new GridData(120,15);
 		gridData.horizontalSpan = 4;
@@ -124,7 +124,7 @@ public class AgregarPaxCotizacion extends AbstractAEPTitleAreaDialog {
 		txtIdent.setTextLimit(20);
 
 		l = new Label(composite, SWT.NONE);
-		l.setText("PaÌs:");
+		l.setText("Pa√≠s:");
 		comboPais = new Combo(composite, SWT.READ_ONLY);
 		comboPais.setItems(cdPais.getTexto());
 		gridData = new GridData(80,15);
@@ -140,13 +140,13 @@ public class AgregarPaxCotizacion extends AbstractAEPTitleAreaDialog {
 		l.setLayoutData(gridData);
 
 		l = new Label(composite, SWT.NONE);
-		l.setText("Condiciones especiales, historial mÈdico, dietas:");
+		l.setText("Condiciones especiales, historial m√©dico, dietas:");
 		gridData = new GridData();
 		gridData.horizontalSpan = 3;
 		l.setLayoutData(gridData);
 
 		bCondiciones1 = new Button(composite, SWT.RADIO);
-		bCondiciones1.setText("SÌ");
+		bCondiciones1.setText("S√≠");
 		bCondiciones1.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				txtCondiciones.setEnabled(true);
@@ -220,7 +220,7 @@ public class AgregarPaxCotizacion extends AbstractAEPTitleAreaDialog {
 
 	public boolean close() {
 		if (getReturnCode() == IDialogConstants.OK_ID) {
-			// si pasan las validaciones se guarda la lÌnea y se cierra la ventana
+			// si pasan las validaciones se guarda la l√≠nea y se cierra la ventana
 			if (validarCampos()) {
 				guardarLineaActividad();
 			} else {
@@ -237,23 +237,23 @@ public class AgregarPaxCotizacion extends AbstractAEPTitleAreaDialog {
 		String pApellido = txtApellido.getText();
 		
 		if (pNombre.length() == 0) {
-			MessageDialog.openInformation(shell, "ValidaciÛn de campos",
+			MessageDialog.openInformation(shell, "Validaci√≥n de campos",
 					"El campo de \"Nombre\" no puede quedar en blanco.");
 			return false;
 		}
 		if (pApellido.length() == 0) {
-			MessageDialog.openInformation(shell, "ValidaciÛn de campos",
+			MessageDialog.openInformation(shell, "Validaci√≥n de campos",
 					"El campo de \"Apellido\" no puede quedar en blanco.");
 			return false;
 		}
 		if (comboPais.getSelectionIndex() == -1) {
-			MessageDialog.openInformation(shell, "ValidaciÛn de campos",
-			"El campo de \"PaÌs\" no puede quedar en blanco");
+			MessageDialog.openInformation(shell, "Validaci√≥n de campos",
+			"El campo de \"Pa√≠s\" no puede quedar en blanco");
 			return false;
 		}
 		if (bCondiciones1.getSelection()) {
 			if (txtCondiciones.getText().equals("")) {
-				MessageDialog.openInformation(shell, "ValidaciÛn de campos",
+				MessageDialog.openInformation(shell, "Validaci√≥n de campos",
 						"El campo de condiciones especiales es requerido");
 				txtCondiciones.setFocus();
 				return false;
@@ -262,8 +262,8 @@ public class AgregarPaxCotizacion extends AbstractAEPTitleAreaDialog {
 		return true;
 	}
 
-	// si el par·metro linea pasa como null al constructor debemos usar este
-	// mÈtodo para obtener la nueva lÌnea (Pax) 
+	// si el par√°metro linea pasa como null al constructor debemos usar este
+	// m√©todo para obtener la nueva l√≠nea (Pax) 
 	public Pax getLinea() {
 		return linea;
 	}

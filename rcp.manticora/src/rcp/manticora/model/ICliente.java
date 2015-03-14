@@ -9,7 +9,7 @@ public interface ICliente extends IEditableDocument {
 	public abstract String getNombreCliente();
 	
 
-	// métodos modificados
+	// mÃ©todos modificados
 	
 	Boolean getComision();
 	

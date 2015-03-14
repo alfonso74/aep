@@ -101,7 +101,7 @@ public class SolicitudesAsignadasView extends ViewPart implements IRefreshView {
 		tabla.setHeaderVisible(true);
 		
 		TableColumn column = new TableColumn(tabla, SWT.RIGHT, 0);
-		column.setText("Fecha creación");
+		column.setText("Fecha creaciÃ³n");
 		column.setWidth(115);
 		column.setAlignment(SWT.RIGHT);  // aparentemente esto es ignorado
 		
@@ -111,7 +111,7 @@ public class SolicitudesAsignadasView extends ViewPart implements IRefreshView {
 		column.setAlignment(SWT.LEFT);
 		
 		column = new TableColumn(tabla, SWT.CENTER, 2);
-		column.setText("País");
+		column.setText("PaÃ­s");
 		column.setWidth(90);
 		column.setAlignment(SWT.LEFT);
 		

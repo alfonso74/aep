@@ -6,14 +6,14 @@ public class Condicion implements IEditableDocument {
 	private Long idCondicion = new Long(-1);
 	private String descripcion;
 
-// **************************** métodos especiales **************************
+// **************************** mÃ©todos especiales **************************
 	
 	public String getTituloDocumento() {
 		String tituloDocumento = "Nuevo";
 		if (getDescripcion() == null) {
-			tituloDocumento = "Nueva condición";
+			tituloDocumento = "Nueva condiciÃ³n";
 		} else {
-			tituloDocumento = "Condición: " + getDescripcion();
+			tituloDocumento = "CondiciÃ³n: " + getDescripcion();
 		}
 		return tituloDocumento;
 	}

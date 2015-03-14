@@ -9,11 +9,11 @@ import rcp.manticora.dao.NewGenericDAOImpl;
 import rcp.manticora.services.HibernateUtil;
 
 /**
- * El controller tiene la responsabilidad de obtener la sesiÛn de hibernate, pas·rsela al dao
+ * El controller tiene la responsabilidad de obtener la sesi√≥n de hibernate, pas√°rsela al dao
  * y manejar cualquier error de Hibernate.
  * @author Carlos Alfonso
  *
- * @param <X> Objeto de negocios que compone al dao y que utilizar· este controller.
+ * @param <X> Objeto de negocios que compone al dao y que utilizar√° este controller.
  */
 
 public abstract class AbstractCommonController<X> {
@@ -21,8 +21,8 @@ public abstract class AbstractCommonController<X> {
 	private NewGenericDAOImpl<X, Number> dao;
 	
 	/**
-	 * Inicializa una sesiÛn de hibernate en base al editor indicado
-	 * @param id que se asociar· a la nueva sesiÛn
+	 * Inicializa una sesi√≥n de hibernate en base al editor indicado
+	 * @param id que se asociar√° a la nueva sesi√≥n
 	 */
 	public AbstractCommonController(NewGenericDAOImpl<X, Number> dao) {
 		this.dao = dao;
@@ -45,7 +45,7 @@ public abstract class AbstractCommonController<X> {
 		/*
 		session.beginTransaction();
 		dao.makePersistent(registro);
-		dao.flush();                     // extiende las modificaciones al cachÈ
+		dao.flush();                     // extiende las modificaciones al cach√©
 		session.getTransaction().commit();
 		*/
 		try {
@@ -83,18 +83,18 @@ public abstract class AbstractCommonController<X> {
 	}
 	
 	/**
-	 * Finaliza una sesiÛn de hibernate
+	 * Finaliza una sesi√≥n de hibernate
 	 * 
 	 */
 	public void finalizarSesion() {
-		System.out.println("Finalizando sesiÛn: " + session);
+		System.out.println("Finalizando sesi√≥n: " + session);
 		HibernateUtil.closeSession();     // graba en la base de datos
 	}
 
 	
 	/**
-	 * Retorna la sesiÛn que ha sida creada para este editor
-	 * @return sesiÛn de hibernate
+	 * Retorna la sesi√≥n que ha sida creada para este editor
+	 * @return sesi√≥n de hibernate
 	 */
 	public Session getSession() {
 		return session;

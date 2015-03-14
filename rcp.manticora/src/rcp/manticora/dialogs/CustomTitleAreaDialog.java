@@ -24,7 +24,7 @@ public class CustomTitleAreaDialog extends TitleAreaDialog {
 		Control contents = super.createContents(parent);
 
 	    // Set the title
-	    setTitle("Definición de cliente");
+	    setTitle("DefiniciÃ³n de cliente");
 
 	    // Set the message
 	    setMessage("Por favor, introduzca los detalles del cliente", IMessageProvider.INFORMATION);
@@ -66,14 +66,14 @@ public class CustomTitleAreaDialog extends TitleAreaDialog {
 	    txtApellido.setLayoutData(new GridData(120,15));
 	    
 	    l = new Label(grupoTop, SWT.NONE);
-	    l.setText("Identificación:");
+	    l.setText("IdentificaciÃ³n:");
 	    Text txtIdent = new Text(grupoTop, SWT.BORDER);
 	    gridData = new GridData(80,15);
 	    gridData.horizontalSpan = 3;
 	    txtIdent.setLayoutData(gridData);
 	    
 	    l = new Label(grupoTop, SWT.NONE);
-	    l.setText("País:");
+	    l.setText("PaÃ­s:");
 	    Text txtPais = new Text(grupoTop, SWT.BORDER);
 	    gridData = new GridData(80,15);
 	    gridData.horizontalSpan = 3;

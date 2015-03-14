@@ -49,7 +49,7 @@ public class BuscarClientesNatDialog extends AbstractAEPDialog {
 		gridData = new GridData();
 		gridData.horizontalSpan = 2;
 		l.setLayoutData(gridData);
-		l.setText("Por favor, introduzca los criterios de búsqueda");
+		l.setText("Por favor, introduzca los criterios de bÃºsqueda");
 		
 		l = new Label(composite, SWT.SEPARATOR | SWT.HORIZONTAL);
 	    gridData = new GridData(GridData.FILL, GridData.CENTER, false, false, 5, 1);
@@ -58,7 +58,7 @@ public class BuscarClientesNatDialog extends AbstractAEPDialog {
 		l.setLayoutData(gridData);
 		
 		l = new Label(composite, SWT.NONE);
-		l.setText("Código:");
+		l.setText("CÃ³digo:");
 		txtCodigo = new Text(composite, SWT.BORDER);
 		gridData = new GridData(40, 15);
 		gridData.horizontalSpan = 1;
@@ -79,14 +79,14 @@ public class BuscarClientesNatDialog extends AbstractAEPDialog {
 		txtApellido.setLayoutData(gridData);
 		
 		l = new Label(composite, SWT.NONE);
-		l.setText("Identificación:");
+		l.setText("IdentificaciÃ³n:");
 		txtIdentificacion = new Text(composite, SWT.BORDER);
 		gridData = new GridData(80, 15);
 		gridData.horizontalSpan = 1;
 		txtIdentificacion.setLayoutData(gridData);
 		
 		l = new Label(composite, SWT.NONE);
-		l.setText("País:");
+		l.setText("PaÃ­s:");
 		comboPais = new Combo(composite, SWT.NONE);
 		comboPais.setItems(cdPais.getTexto());
 		gridData = new GridData();

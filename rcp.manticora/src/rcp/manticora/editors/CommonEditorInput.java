@@ -8,17 +8,17 @@ import org.eclipse.ui.IPersistableElement;
 import rcp.manticora.IEditableDocument;
 
 /**
- * Permite abrir un editor.  Provee funciones para asignar t韙ulos y determinar si 
+ * Permite abrir un editor.  Provee funciones para asignar t铆tulos y determinar si 
  * hay otro editor con el mismo nombre abierto.
  * <p>
- * Tambi閚 abre editores para PDFs, en cuyo caso se debe inicializar el nombre (setName) y
+ * Tambi茅n abre editores para PDFs, en cuyo caso se debe inicializar el nombre (setName) y
  * la ruta del reporte (setRutaReporte).
  *
  */
 public class CommonEditorInput implements IEditorInput {
 	private Object elemento;
 	private String nombre;
-	private String rutaReporte;    // usado en generaci髇 de reportes
+	private String rutaReporte;    // usado en generaci贸n de reportes
 	public boolean isNewDoc = true;
 
 	public CommonEditorInput() {
@@ -55,15 +55,15 @@ public class CommonEditorInput implements IEditorInput {
 		this.nombre = nombre;
 	}
 	
-	// usado en generaci髇 de reportes de BIRT
+	// usado en generaci贸n de reportes de BIRT
 	public String getRutaReporte() {
 		if (rutaReporte == null) {
-			System.err.println("Error: No se ha especificado la ruta del reporte (usar funci髇 getRutaReporte())");
+			System.err.println("Error: No se ha especificado la ruta del reporte (usar funci贸n getRutaReporte())");
 		}
 		return rutaReporte;
 	}
 	
-	// usado en generaci髇 de reportes de BIRT
+	// usado en generaci贸n de reportes de BIRT
 	public void setRutaReporte(String rutaReporte) {
 		this.rutaReporte = rutaReporte;
 	}

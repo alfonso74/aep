@@ -12,7 +12,7 @@ public class LineaHospedajeExt extends LineaHospedajeAdapter {
 	*/
 	
 	
-//	 *************************** métodos especiales ***************************
+//	 *************************** mÃ©todos especiales ***************************
 	
 	@Override
 	public String toString() {

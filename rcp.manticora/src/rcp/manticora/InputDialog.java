@@ -76,7 +76,7 @@ public class InputDialog extends Dialog {
 		gridData.horizontalSpan = 2;
 		text.setLayoutData(gridData);
 		
-		// agregar botón OK y handler para setear el input al valor introducido
+		// agregar botÃ³n OK y handler para setear el input al valor introducido
 		Button ok = new Button(shell, SWT.PUSH);
 		ok.setText("OK");
 		gridData = new GridData(GridData.FILL_HORIZONTAL);
@@ -88,7 +88,7 @@ public class InputDialog extends Dialog {
 			}
 		});
 		
-		// botón de Cancel
+		// botÃ³n de Cancel
 		Button cancel = new Button(shell, SWT.PUSH);
 		cancel.setText("Cancel");
 		gridData = new GridData(GridData.FILL_HORIZONTAL);
@@ -100,7 +100,7 @@ public class InputDialog extends Dialog {
 			}
 		});
 		
-		// botón de OK como default
+		// botÃ³n de OK como default
 		shell.setDefaultButton(ok);
 	}
 

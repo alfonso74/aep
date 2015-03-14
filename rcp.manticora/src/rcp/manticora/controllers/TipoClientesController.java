@@ -7,8 +7,8 @@ public class TipoClientesController extends AbstractControllerNew<TipoCliente> {
 
 	/**
 	 * Crea una instancia de este controller
-	 * @param editorID:  nombre del editor que será utilizado para identificar
-	 * de manera única la sesión de este controller.
+	 * @param editorID:  nombre del editor que serÃ¡ utilizado para identificar
+	 * de manera Ãºnica la sesiÃ³n de este controller.
 	 */
 	public TipoClientesController(String editorId) {
 		super(editorId, new TipoClienteDAO());

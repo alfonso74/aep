@@ -31,7 +31,7 @@ public class ProductosEditor extends AbstractEditorH {
 	private Combo comboStatus;
 	private Text txtDescripcion;
 	private Text txtCosto;
-	private Text txtVenta0;     // precio mínimo de venta
+	private Text txtVenta0;     // precio mÃ­nimo de venta
 	private Text txtVenta1;     // publico
 	private Text txtVenta2;		// operador
 	private Text txtVenta3;		// comisionable
@@ -116,7 +116,7 @@ public class ProductosEditor extends AbstractEditorH {
 // actualizamos la vista de productos para reflejar el nuevo producto
 		actualizarVista(ProductosView.ID);
 		removeDirtyFlag();
-		MessageDialog.openInformation(getSite().getShell(), "Información", "El registro ha sido guardado exitosamente");
+		MessageDialog.openInformation(getSite().getShell(), "InformaciÃ³n", "El registro ha sido guardado exitosamente");
 	}
 	
 	private boolean validarSave() {
@@ -127,27 +127,27 @@ public class ProductosEditor extends AbstractEditorH {
 		String pComentarios = txtComentario.getText();
 		
 		if (comboCategoria.getSelectionIndex() == -1) {
-			MessageDialog.openInformation(getSite().getShell(), "Validación de campos",
+			MessageDialog.openInformation(getSite().getShell(), "ValidaciÃ³n de campos",
 					"El campo de \"Tipo de producto\" no puede quedar en blanco");
 			return false;
 		}
 		if (pCosto.length() == 0) {
-			MessageDialog.openInformation(getSite().getShell(), "Validación de campos",
+			MessageDialog.openInformation(getSite().getShell(), "ValidaciÃ³n de campos",
 					"El campo de \"Precio costo\" no puede quedar en blanco");
 			return false;
 		}
 		if (pModificable.equals("Si") && pMinimoVenta.length() == 0) {
-			MessageDialog.openInformation(getSite().getShell(), "Validación de campos",
-					"El campo de \"Mínimo de venta\" no puede quedar en blanco");
+			MessageDialog.openInformation(getSite().getShell(), "ValidaciÃ³n de campos",
+					"El campo de \"MÃ­nimo de venta\" no puede quedar en blanco");
 			return false;
 		}
 		if (pDescripcion.length() > 45) {
-			MessageDialog.openInformation(getSite().getShell(), "Validación de campos",
+			MessageDialog.openInformation(getSite().getShell(), "ValidaciÃ³n de campos",
 					"El nombre del producto no puede superar los 45 caracteres (" + pDescripcion.length() + ").");
 			return false;
 		}
 		if (pComentarios.length() > 200) {
-			MessageDialog.openInformation(getSite().getShell(), "Validación de campos",
+			MessageDialog.openInformation(getSite().getShell(), "ValidaciÃ³n de campos",
 					"El texto de los comentarios no puede superar los 200 caracteres (" + pComentarios.length() + ").");
 			return false;
 		}
@@ -179,7 +179,7 @@ public class ProductosEditor extends AbstractEditorH {
 		comboCategoria.addModifyListener(this.createModifyListener());
 
 		l = new Label(parent, SWT.None);
-		l.setText("Cód. producto:");
+		l.setText("CÃ³d. producto:");
 		txtProducto = new Text(parent, SWT.BORDER);
 		gridData = new GridData(40, 15);
 		gridData.horizontalSpan = 2;
@@ -196,7 +196,7 @@ public class ProductosEditor extends AbstractEditorH {
 		comboStatus.addModifyListener(this.createModifyListener());
 		
 		l = new Label(parent, SWT.None);
-		l.setText("Descripción:");
+		l.setText("DescripciÃ³n:");
 		txtDescripcion = new Text(parent, SWT.BORDER);
 		gridData = new GridData(200,15);
 		gridData.horizontalSpan = 2;
@@ -220,7 +220,7 @@ public class ProductosEditor extends AbstractEditorH {
 		txtCosto.addModifyListener(this.createModifyListener());
 		
 		l = new Label(parent, SWT.NONE);
-		l.setText("Precio público:");
+		l.setText("Precio pÃºblico:");
 		txtVenta1 = new Text(parent, SWT.BORDER);
 		txtVenta1.setLayoutData(new GridData(45,15));
 		txtVenta1.setTextLimit(9);
@@ -244,7 +244,7 @@ public class ProductosEditor extends AbstractEditorH {
 		
 		/*
 		l = new Label(parent, SWT.NONE);
-		l.setText("Mínimo de venta:");
+		l.setText("MÃ­nimo de venta:");
 		txtVenta0 = new Text(parent, SWT.BORDER);
 		gridData = new GridData(45,15);
 		gridData.horizontalSpan = 1;
@@ -290,7 +290,7 @@ public class ProductosEditor extends AbstractEditorH {
 		});
 
 		labelModificable = new Label(parent, SWT.NONE);
-		labelModificable.setText("Mínimo de venta:");
+		labelModificable.setText("MÃ­nimo de venta:");
 		labelModificable.setEnabled(false);
 		txtVenta0 = new Text(parent, SWT.BORDER);
 		gridData = new GridData(45,15);
@@ -304,7 +304,7 @@ public class ProductosEditor extends AbstractEditorH {
 		l = new Label(parent, SWT.NONE);
 		l.setText("Tipo reserva:");
 		comboReserva = new Combo(parent, SWT.READ_ONLY);
-		comboReserva.setItems(new String[] {"No aplica", "Alimentación", "Boletos", "Bote", "Hospedaje", "Transporte", "Tour", "Vuelo"});
+		comboReserva.setItems(new String[] {"No aplica", "AlimentaciÃ³n", "Boletos", "Bote", "Hospedaje", "Transporte", "Tour", "Vuelo"});
 		comboReserva.select(0);
 		comboReserva.addModifyListener(this.createModifyListener());
 		comboReserva.addModifyListener(new ModifyListener() {
@@ -366,8 +366,8 @@ public class ProductosEditor extends AbstractEditorH {
 			Long idTipo = registro.getIdTipo();
 			String tipoProd = cdTipoProducto.getTextoByKey(idTipo);
 			if (tipoProd == null) {
-				MessageDialog.openWarning(getSite().getShell(), "Información",
-				"No se encontró el tipo de producto " + idTipo);
+				MessageDialog.openWarning(getSite().getShell(), "InformaciÃ³n",
+				"No se encontrÃ³ el tipo de producto " + idTipo);
 			} else {
 				comboCategoria.select(comboCategoria.indexOf(tipoProd));
 			};

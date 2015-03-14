@@ -6,7 +6,7 @@ import org.hibernate.Session;
 import rcp.manticora.services.HibernateUtil;
 
 // Clase para generalizar el borrado de documentos.  En vez de tener en el 
-// controller un método "deleteX" para cada clase que se maneja, generalizamos
+// controller un mÃ©todo "deleteX" para cada clase que se maneja, generalizamos
 // y logramos una sola clase que maneja todas las borradas
 
 public class GenericDAOImpl implements IGenericDAO {

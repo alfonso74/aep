@@ -53,7 +53,7 @@ public class ImportarTemplate2Tour extends AbstractAEPDialog {
 		gridData.horizontalSpan = 2;
 		l.setLayoutData(gridData);
 		
-// listado de templates para selección del usuario final
+// listado de templates para selecciÃ³n del usuario final
 		cdTemplates = cdController.getComboDataTemplates();
 		listaTemplates = new List(composite, SWT.SINGLE | SWT.BORDER | SWT.V_SCROLL);
 		listaTemplates.setItems(cdTemplates.getTexto());

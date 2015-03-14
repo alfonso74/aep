@@ -89,7 +89,7 @@ public class AgregarLineaTour extends AbstractAEPTitleAreaDialog {
 		comboProducto.setLayoutData(new GridData(125,15));
 		
 		l = new Label(composite, SWT.NONE);
-		l.setText("D韆 no.:");
+		l.setText("D铆a no.:");
 		txtDia = new Text(composite, SWT.BORDER);
 		txtDia.setLayoutData(new GridData(35, 15));
 		
@@ -110,7 +110,7 @@ public class AgregarLineaTour extends AbstractAEPTitleAreaDialog {
 		gridData.heightHint = 40;
 		txtComentario.setLayoutData(gridData);
 		
-// *********************** Secci髇 de alimentaci髇 ****************************
+// *********************** Secci贸n de alimentaci贸n ****************************
 		
 		l = new Label(composite, SWT.SEPARATOR | SWT.HORIZONTAL);
 	    gridData = new GridData(GridData.FILL, GridData.CENTER, false, false);
@@ -119,7 +119,7 @@ public class AgregarLineaTour extends AbstractAEPTitleAreaDialog {
 		l.setLayoutData(gridData);
 		
 		l = new Label(composite, SWT.NONE);
-		l.setText("Alimentaci髇:");
+		l.setText("Alimentaci贸n:");
 		gridData = new GridData();
 		l.setLayoutData(gridData);
 		
@@ -160,7 +160,7 @@ public class AgregarLineaTour extends AbstractAEPTitleAreaDialog {
 	
 	
 	protected void llenarCampos() {
-		setTitle("Adici髇 de actividades");
+		setTitle("Adici贸n de actividades");
 		setMessage("Por favor, introduzca los detalles de la actividad", IMessageProvider.INFORMATION);
 		if (linea.getProducto() != null) {
 			String pTipo = productos.getProductoByIdProducto(linea.getIdProducto()).getDspTipo();
@@ -179,7 +179,7 @@ public class AgregarLineaTour extends AbstractAEPTitleAreaDialog {
 				bCocktail.setSelection(linea.hasWelcomeCocktail());
 				bOtros.setSelection(linea.hasOther());
 			} else if (linea.getComidas().equals("X")) {
-				// la X implica que aunque la actividad puede tener comidas, no se ofrece por alg鷑 motivo
+				// la X implica que aunque la actividad puede tener comidas, no se ofrece por alg煤n motivo
 				cComidas.setText("Sin comidas");
 			} else {
 				cComidas.setText("No aplica");
@@ -203,9 +203,9 @@ public class AgregarLineaTour extends AbstractAEPTitleAreaDialog {
 		int pos;
 		Long seleccion;
 		
-		// obtenemos la posici髇 del elemento seleccionado
+		// obtenemos la posici贸n del elemento seleccionado
 		pos = comboProducto.getSelectionIndex();
-		// obtenemos el c骴igo del producto seleccionado
+		// obtenemos el c贸digo del producto seleccionado
 		seleccion = productos.getIdProductoByIndex(pos);
 		System.out.println("Pos: " + pos + ",  seleccion: " + seleccion);
 		Producto p = productos.getProductoByIdProducto(seleccion);

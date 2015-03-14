@@ -59,7 +59,7 @@ public abstract class NewGenericDAOImpl<T, ID extends Serializable>
 	/**
 	 * Retorna resultados ordenados de acuerdo al campo y al orden indicado
 	 * @param field Campo usado para ordenar
-	 * @param ascending Dirección de ordenamiento (true: ascendente)
+	 * @param ascending DirecciÃ³n de ordenamiento (true: ascendente)
 	 * @param criterion
 	 * @return
 	 */
@@ -78,7 +78,7 @@ public abstract class NewGenericDAOImpl<T, ID extends Serializable>
 	}
 	
 	
-// **************** Métodos heredados de la interface *****************
+// **************** MÃ©todos heredados de la interface *****************
 	
 
 	public List<T> findAll() {
@@ -157,7 +157,7 @@ public abstract class NewGenericDAOImpl<T, ID extends Serializable>
 	
 // ****************** Agregado por yo!! para pruebas *******************
 	
-	// TODO: Método temporal.  Si lo dejo, quitar el try-catch, ya que esto debe manejarlo el controller.
+	// TODO: MÃ©todo temporal.  Si lo dejo, quitar el try-catch, ya que esto debe manejarlo el controller.
 	public void doDelete(T entity) {
 		try {
 			getSession().beginTransaction();

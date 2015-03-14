@@ -43,13 +43,13 @@ public class RolesEditor extends AbstractEditorH {
 		Label l;
 		
 		l = new Label(parent, SWT.NONE);
-		l.setText("C骴igo:");
+		l.setText("C贸digo:");
 		txtCodigo = new Text(parent, SWT.SINGLE | SWT.BORDER);
 		txtCodigo.setLayoutData(new GridData(40,15));
 		txtCodigo.setEditable(false);
 		
 		l = new Label(parent, SWT.NONE);
-		l.setText("Descripci髇:");
+		l.setText("Descripci贸n:");
 		txtDescripcion = new Text(parent, SWT.SINGLE | SWT.BORDER);
 		txtDescripcion.setLayoutData(new GridData(120,15));
 		txtDescripcion.addModifyListener(this.createModifyListener());
@@ -96,12 +96,12 @@ public class RolesEditor extends AbstractEditorH {
 	private boolean validarSave() {
 		String pDescripcion = txtDescripcion.getText();
 		if (pDescripcion.equals("")) {
-			MessageDialog.openInformation(getSite().getShell(), "Validaci髇 de campos",
-				"El campo 'Descripci髇' no puede quedar en blanco.");
+			MessageDialog.openInformation(getSite().getShell(), "Validaci贸n de campos",
+				"El campo 'Descripci贸n' no puede quedar en blanco.");
 			return false;
 		}
 		if (pDescripcion.length() > 15) {
-			MessageDialog.openInformation(getSite().getShell(), "Validaci髇 de campos",
+			MessageDialog.openInformation(getSite().getShell(), "Validaci贸n de campos",
 					"El nombre del rol no puede superar los 15 caracteres (" + pDescripcion.length() + ").");
 			return false;
 		}
@@ -118,7 +118,7 @@ public class RolesEditor extends AbstractEditorH {
 			this.setPartName(registro.getTituloDocumento());
 			getEditorInput().setName(registro.getTituloDocumento());
 		} else {
-			System.out.println("Ejecutando c骴igo para cargar datos...");
+			System.out.println("Ejecutando c贸digo para cargar datos...");
 			registro = (Rol) ((CommonEditorInput) this.getEditorInput()).getElemento();
 			txtCodigo.setText(valor2Txt(registro.getIdRol()));
 			txtDescripcion.setText(valor2Txt(registro.getDescripcion()));

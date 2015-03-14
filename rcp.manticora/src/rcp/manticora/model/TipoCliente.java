@@ -14,7 +14,7 @@ public class TipoCliente implements IEditableDocument {
 		this.descripcion = descripcion;
 	}
 	
-// ************************** métodos especiales *****************************
+// ************************** mÃ©todos especiales *****************************
 	
 	public String getTituloDocumento() {
 		String tituloDocumento = "Nuevo";

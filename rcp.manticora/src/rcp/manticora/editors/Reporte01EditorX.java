@@ -49,7 +49,7 @@ public class Reporte01EditorX extends EditorPart {
 			throws PartInitException {
 		setSite(site);
 	    setInput(input);
-	    setPartName(input.getName());  // para presentar un título en el editor
+	    setPartName(input.getName());  // para presentar un tÃ­tulo en el editor
 	    setRutaReporte(((CommonEditorInput) input).getRutaReporte()); 
 	}
 

@@ -5,7 +5,7 @@ public class LineaHospedajeInt extends LineaHospedajeAdapter {
 	private Habitacion habitacion;
 	
 	
-//	 *************************** métodos especiales ***************************
+//	 *************************** mÃ©todos especiales ***************************
 	
 	@Override
 	public String toString() {

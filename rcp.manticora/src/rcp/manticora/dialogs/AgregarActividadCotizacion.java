@@ -62,7 +62,7 @@ public class AgregarActividadCotizacion extends AbstractAEPTitleAreaDialog {
 	private ComboData cdTipoProductos;
 	private Shell shell;
 	
-	// constructor utilizado para crear líneas
+	// constructor utilizado para crear lÃ­neas
 	/*
 	public AgregarActividadCotizacion(Shell parentShell, LineaCotizacion linea) {
 		super(parentShell);
@@ -73,7 +73,7 @@ public class AgregarActividadCotizacion extends AbstractAEPTitleAreaDialog {
 	}
 	*/
 	
-	// constructor utilizado para editar líneas
+	// constructor utilizado para editar lÃ­neas
 	public AgregarActividadCotizacion(Shell parentShell, Set<LineaCotizacion> lineas) {
 		super(parentShell);
 		this.shell = parentShell;
@@ -258,7 +258,7 @@ public class AgregarActividadCotizacion extends AbstractAEPTitleAreaDialog {
 
 		listaTipoPrecio = new List(composite, SWT.SINGLE | SWT.BORDER);
 		listaTipoPrecio.setLayoutData(gridData);
-		listaTipoPrecio.setItems(new String[] {"Comisionable", "Operador", "Público"});
+		listaTipoPrecio.setItems(new String[] {"Comisionable", "Operador", "PÃºblico"});
 		listaTipoPrecio.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				obtenerPrecio(listaTipoPrecio.getSelection()[0]);
@@ -294,7 +294,7 @@ public class AgregarActividadCotizacion extends AbstractAEPTitleAreaDialog {
 		bCuadrar.setImage(image.createImage());
 		bCuadrar.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("Botón de cuadrar...");
+				System.out.println("BotÃ³n de cuadrar...");
 				cuadrarCotizacion();
 			}
 		});	
@@ -320,7 +320,7 @@ public class AgregarActividadCotizacion extends AbstractAEPTitleAreaDialog {
 		l = new Label(composite, SWT.NONE);
 		
 		l = new Label(composite, SWT.NONE);
-		l.setText("Un \"*\" al inicio del comentario mostrará el mismo en el PDF de la cotización.");
+		l.setText("Un \"*\" al inicio del comentario mostrarÃ¡ el mismo en el PDF de la cotizaciÃ³n.");
 		gridData = new GridData();
 		gridData.horizontalSpan = 4;
 		l.setLayoutData(gridData);
@@ -352,7 +352,7 @@ public class AgregarActividadCotizacion extends AbstractAEPTitleAreaDialog {
 	protected void llenarCampos() {
 		setTitle("Agregar actividad");
 		setMessage("Por favor, introduzca los detalles de la actividad");
-		if (lineas.isEmpty()) {    // estamos creando una nueva línea
+		if (lineas.isEmpty()) {    // estamos creando una nueva lÃ­nea
 			txtFecha.setText(fechaDefault);
 			txtCantidad.setText("1");
 			txtEspacios.setText(espaciosDefault);
@@ -381,7 +381,7 @@ public class AgregarActividadCotizacion extends AbstractAEPTitleAreaDialog {
 				txtComentario.setText(linea.getComentario());
 				//txtComentario.setText(linea.getSecuencia().toString());
 			} catch (Exception e) {
-				mensajeError(shell, "Inicialización de campos", e);
+				mensajeError(shell, "InicializaciÃ³n de campos", e);
 			}
 		}
 	}
@@ -389,9 +389,9 @@ public class AgregarActividadCotizacion extends AbstractAEPTitleAreaDialog {
 	private void guardarLineaActividad() throws Exception {
 		int pos;
 		Long pIdProducto;
-		// obtenemos la posición del elemento seleccionado
+		// obtenemos la posiciÃ³n del elemento seleccionado
 		pos = comboProducto.getSelectionIndex();
-		// obtenemos el código del producto seleccionado
+		// obtenemos el cÃ³digo del producto seleccionado
 		pIdProducto = productos.getIdProductoByIndex(pos);
 		Producto pProducto = productos.getProductoByIdProducto(pIdProducto);
 		System.out.println("Pos: " + pos + ",  seleccion: " + pIdProducto);
@@ -404,15 +404,15 @@ public class AgregarActividadCotizacion extends AbstractAEPTitleAreaDialog {
 		Boolean pVisible = bVisible.getSelection();
 		String pComentario = txtComentario.getText();
 		
-// originalmente se generaban varias líneas a partir este editor, específicamente en
-// el caso de hospedajes, pero ahora solo se genera una línea.
+// originalmente se generaban varias lÃ­neas a partir este editor, especÃ­ficamente en
+// el caso de hospedajes, pero ahora solo se genera una lÃ­nea.
 		for (int n=0; n < 1; n++) {
 			pFechaLinea = FechaUtil.ajustarFecha(fechaBase, n);
 			if (n == 0 && !lineas.isEmpty()) {
-// si iniciamos el ciclo y la lista de líneas tiene información, entonces estamos editando
-				System.out.println("Editando línea de cotización...");
+// si iniciamos el ciclo y la lista de lÃ­neas tiene informaciÃ³n, entonces estamos editando
+				System.out.println("Editando lÃ­nea de cotizaciÃ³n...");
 // si al editar, la fecha ha sido modificada, reseteamos la secuencia a 999 para evitar
-// conflictos en la reenumeración (que la secuencia coincida en otra fecha).
+// conflictos en la reenumeraciÃ³n (que la secuencia coincida en otra fecha).
 				if (pFechaLinea.getTime() != linea.getFecha().getTime()) {
 					linea.setSecuencia(999);
 				}
@@ -436,27 +436,27 @@ public class AgregarActividadCotizacion extends AbstractAEPTitleAreaDialog {
 	
 	private boolean validarSave() {
 		if (comboTipo.getSelectionIndex() == -1) {
-			MessageDialog.openInformation(shell, "Validación de campos",
+			MessageDialog.openInformation(shell, "ValidaciÃ³n de campos",
 					"Debe seleccionar el tipo de la actividad.");
 			return false;
 		}
 		if (comboProducto.getSelectionIndex() == -1) {
-			MessageDialog.openInformation(shell, "Validación de campos",
+			MessageDialog.openInformation(shell, "ValidaciÃ³n de campos",
 					"Debe seleccionar una actividad.");
 			return false;
 		}
 		Float pPrecio = txt2Float(txtPrecio.getText());
 		System.out.println("P1: " + pPrecio + ", p2: " + precioMinimo);
 		if (isModificable && pPrecio.floatValue() < precioMinimo.floatValue()) {
-			MessageDialog.openInformation(shell, "Validación de campos",
-					"El precio introducido no es válido.  El mínimo permitido es "  + valor2Txt(precioMinimo, "#,##0.00") + ".");
+			MessageDialog.openInformation(shell, "ValidaciÃ³n de campos",
+					"El precio introducido no es vÃ¡lido.  El mÃ­nimo permitido es "  + valor2Txt(precioMinimo, "#,##0.00") + ".");
 			return false;
 		}
 		return true;
 	}
 	
 	public boolean close() {
-		// si el botón presionado es OK validamos, guardamos y cerramos
+		// si el botÃ³n presionado es OK validamos, guardamos y cerramos
 		if (getReturnCode() == IDialogConstants.OK_ID) {
 			try {
 				if (validarSave()) {
@@ -474,7 +474,7 @@ public class AgregarActividadCotizacion extends AbstractAEPTitleAreaDialog {
 	}
 	
 	private void cuadrarCotizacion() {
-		CuadrarCotizacionDialog c = new CuadrarCotizacionDialog(shell, this, "Cuadrar precios de cotización");
+		CuadrarCotizacionDialog c = new CuadrarCotizacionDialog(shell, this, "Cuadrar precios de cotizaciÃ³n");
 		c.open();
 	}
 	

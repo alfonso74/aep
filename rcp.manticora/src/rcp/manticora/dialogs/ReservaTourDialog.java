@@ -57,10 +57,10 @@ public class ReservaTourDialog extends AbstractAEPTitleAreaDialog implements
 	private DisponibilidadTour dispTour;
 	
 	/**
-	 * Constructor utilizado para crear/editar reservas a partir de una lÌnea
+	 * Constructor utilizado para crear/editar reservas a partir de una l√≠nea
 	 * de actividades (usualmente en un tab de actividades).
 	 * @param parentShell shell
-	 * @param linea linea de actividades que seleccionÛ el usuario
+	 * @param linea linea de actividades que seleccion√≥ el usuario
 	 * @param reserva reserva a ser editada o null en caso de no existir
 	 */
 	public ReservaTourDialog(Shell parentShell, HojaServicioController editorController,
@@ -181,7 +181,7 @@ public class ReservaTourDialog extends AbstractAEPTitleAreaDialog implements
 		b.setText("X");
 		b.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("BotÛn X");
+				System.out.println("Bot√≥n X");
 				tmpReservarTour();
 			}
 		});
@@ -205,12 +205,12 @@ public class ReservaTourDialog extends AbstractAEPTitleAreaDialog implements
 			reserva.setHoja(linea.getHoja());
 			reserva.setEstado("A");
 			// si el primer item tiene valor -1, indica que no se ha definido disponibilidad, y
-			// seleccionamos el elemento para que el usuario vea inmediatamente esta condiciÛn
+			// seleccionamos el elemento para que el usuario vea inmediatamente esta condici√≥n
 			if (cdToursDisponibles.getKeyAsLongByIndex(0) == -1) {
 				comboToursDisponibles.select(0);
 			}
 		} else {
-			System.out.println("Cargando informaciÛn de campos...");
+			System.out.println("Cargando informaci√≥n de campos...");
 			/*
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			session.refresh(reserva);
@@ -242,17 +242,17 @@ public class ReservaTourDialog extends AbstractAEPTitleAreaDialog implements
 	
 	private boolean validarSave() {
 		if (comboToursDisponibles.getSelectionIndex() == -1) {
-			MessageDialog.openInformation(shell, "ValidaciÛn de campos",
+			MessageDialog.openInformation(shell, "Validaci√≥n de campos",
 				"Debe seleccionar el tour a ser reservado.");
 			return false;
 		}
 		if (cdToursDisponibles.getKeyAsLongByIndex(0) == -1L) {
-			MessageDialog.openInformation(shell, "ValidaciÛn de campos",
-				"El tour no est· habilitado para la fecha indicada.");
+			MessageDialog.openInformation(shell, "Validaci√≥n de campos",
+				"El tour no est√° habilitado para la fecha indicada.");
 			return false;
 		}
 		if (txtPaxs.getText() == "") {
-			MessageDialog.openInformation(shell, "ValidaciÛn de campos",
+			MessageDialog.openInformation(shell, "Validaci√≥n de campos",
 				"Debe indicar la cantidad de espacios a reservar.");
 			return false;
 		}
@@ -292,21 +292,21 @@ public class ReservaTourDialog extends AbstractAEPTitleAreaDialog implements
 	
 	
 	
-	// Usado por el botÛn X
+	// Usado por el bot√≥n X
 	private void tmpReservarTour() {
 		List<DisponibilidadTour> dispTours = editorController.findDisponibilidadTourByFecha(linea.getIdProducto(), linea.getFecha());
 		Iterator<DisponibilidadTour> it = dispTours.iterator();
 		System.out.println("Cantidad de tours: " + dispTours.size());
 		while (it.hasNext()) {
 			Long n = editorController.getOcupacionTour((DisponibilidadTour) it.next());
-			System.out.println("OcupaciÛn: " + n);
+			System.out.println("Ocupaci√≥n: " + n);
 		}
 	}
 	
 	
 	/**
-	 * Inicializa el listado de tours que est·n disponibles para el producto 
-	 * y fecha de la actividad, y que aparecer·n en un listado para ser
+	 * Inicializa el listado de tours que est√°n disponibles para el producto 
+	 * y fecha de la actividad, y que aparecer√°n en un listado para ser
 	 * seleccionados por el usuario
 	 */
 	private ComboData inicializarComboDisponibilidad() {

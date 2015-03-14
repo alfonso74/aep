@@ -31,7 +31,7 @@ public class LineaTemplate {
 	public LineaTemplate() {}
 
 	
-// **************************** métodos especiales ****************************
+// **************************** mÃ©todos especiales ****************************
 	
 	@Override
 	public String toString() {

@@ -25,7 +25,7 @@ public class ReservaHospedaje extends ReservaAdapter {
 	private Set<ILineaHospedaje> listaHabitaciones = new HashSet<ILineaHospedaje>();
 	
 	
-//	 **************************** métodos especiales ***************************
+//	 **************************** mÃ©todos especiales ***************************
 	
 	public String getTituloDocumento() {
 		return "Reserva: " + getIdReserva();

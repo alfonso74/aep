@@ -242,7 +242,7 @@ public class InteractiveSplashHandlerNew extends AbstractSplashHandler {
 		// Crear barra de progreso
 		createProgressInfo();
 		
-		// asignamos el foco al campo de username, y ponemos como default al botón "OK"
+		// asignamos el foco al campo de username, y ponemos como default al botÃ³n "OK"
 		fTextUsername.setFocus();
 		getSplash().setDefaultButton(fButtonOK);
 	}		
@@ -430,7 +430,7 @@ public class InteractiveSplashHandlerNew extends AbstractSplashHandler {
 	    loginStatus = -1;
 	    MessageDialog.openError(
 	        getSplash(),
-	        "Falla de autenticación",
+	        "Falla de autenticaciÃ³n",
 	        "Usuario no autenticado correctamente: " + fTextUsername.getText());
 	}
 	

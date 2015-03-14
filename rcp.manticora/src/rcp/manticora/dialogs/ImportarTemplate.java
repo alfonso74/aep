@@ -102,7 +102,7 @@ public class ImportarTemplate extends Dialog implements IFormUtils {
 		gridData.horizontalSpan = 2;
 		l.setLayoutData(gridData);
 
-// listado de templates para selecci髇 del usuario final
+// listado de templates para selecci贸n del usuario final
 		cdTemplate = cdController.getComboDataTemplates();
 		listaTemplates = new List(composite, SWT.SINGLE | SWT.BORDER | SWT.V_SCROLL);
 		listaTemplates.setItems(cdTemplate.getTexto());
@@ -131,7 +131,7 @@ public class ImportarTemplate extends Dialog implements IFormUtils {
 		layout = new GridLayout(4, false);
 		bottom.setLayout(layout);
 		
-// selecci髇 de fecha base
+// selecci贸n de fecha base
 		l = new Label(bottom, SWT.NONE);
 		l.setText("Fecha base:");
 
@@ -161,15 +161,15 @@ public class ImportarTemplate extends Dialog implements IFormUtils {
 		l.setText("Tipo de precio:");
 
 		comboTipoPrecio = new Combo(bottom, SWT.READ_ONLY);
-		comboTipoPrecio.setItems(new String[] {"Comisionable", "Operador", "P鷅lico"});
+		comboTipoPrecio.setItems(new String[] {"Comisionable", "Operador", "P煤blico"});
 		gridData = new GridData();
 		gridData.horizontalSpan = 3;
 		comboTipoPrecio.setLayoutData(gridData);
 		
-// valores default del di醠ogo
+// valores default del di谩logo
 		llenarControles();
 		
-// inicializaci髇 de la ventana
+// inicializaci贸n de la ventana
 		shell.open();
 		Display display = getParent().getDisplay();
 		while (!shell.isDisposed()) {
@@ -216,22 +216,22 @@ public class ImportarTemplate extends Dialog implements IFormUtils {
 		String pPaxs = txtPaxs.getText();
 		
 		if (listaTemplates.getSelectionIndex() == -1) {
-			MessageDialog.openWarning(shell, "Validaci髇 de campos",
-				"Debe seleccionar el template a ser utilizado para la importaci髇.");
+			MessageDialog.openWarning(shell, "Validaci贸n de campos",
+				"Debe seleccionar el template a ser utilizado para la importaci贸n.");
 			return false;
 		}
 		if (pFecha.length() == 0) {
-			MessageDialog.openWarning(shell, "Validaci髇 de campos",
+			MessageDialog.openWarning(shell, "Validaci贸n de campos",
 				"El campo de \"Fecha base\" no puede quedar en blanco.");
 			return false;
 		}
 		if (pPaxs.length() == 0) {
-			MessageDialog.openWarning(shell, "Validaci髇 de campos",
+			MessageDialog.openWarning(shell, "Validaci贸n de campos",
 				"El campo de \"No. de pax(s)\" no puede quedar en blanco.");
 			return false;
 		}
 		if (pPaxs.equals("0")) {
-			MessageDialog.openWarning(shell, "Validaci髇 de campos",
+			MessageDialog.openWarning(shell, "Validaci贸n de campos",
 				"El campo de \"No. de pax(s)\" no puede tener valor 0.");
 			return false;
 		}

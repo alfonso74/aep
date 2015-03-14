@@ -10,8 +10,8 @@ public class Producto implements IEditableDocument {
 	private Long idTipo;
 	private String descripcion;
 	private Float costo;
-	private Float venta0;       // precio mínimo de venta
-	private Float venta1;       // precio público
+	private Float venta0;       // precio mÃ­nimo de venta
+	private Float venta1;       // precio pÃºblico
 	private Float venta2;       // precio operador
 	private Float venta3;       // precio comisionable
 	private String tipoReserva;
@@ -65,7 +65,7 @@ public class Producto implements IEditableDocument {
 		this.fechaModificacion = this.fechaCreacion;
 	}
 	
-// ************************** métodos especiales ****************************
+// ************************** mÃ©todos especiales ****************************
 	
 	public String getTituloDocumento() {
 		String tituloDocumento = "Nuevo";
@@ -90,7 +90,7 @@ public class Producto implements IEditableDocument {
 		if (tipoPrecio.equals("Operador")) {
 			precio = getVenta2();
 		}
-		if (tipoPrecio.equals("Público")) {
+		if (tipoPrecio.equals("PÃºblico")) {
 			precio = getVenta1();
 		}
 		return precio;
@@ -102,7 +102,7 @@ public class Producto implements IEditableDocument {
 	}
 	
 	/**
-	 * Retorna la descripción de un producto más el texto "Night(s) at" al inicio del mismo.  Solo
+	 * Retorna la descripciÃ³n de un producto mÃ¡s el texto "Night(s) at" al inicio del mismo.  Solo
 	 * tiene sentido usarlo con hoteles.
 	 * @return Nombre del producto, incluyendo "Night(s) at ".
 	 */
@@ -110,7 +110,7 @@ public class Producto implements IEditableDocument {
 		String descripcion = getDescripcion();
 		// Si el producto es de tipo "Hospedaje"
 		if (getIdTipo() == 4) {
-			if (getDescripcion().indexOf("Night") == -1) {  // y no tiene el texto "Night" x ningún lado
+			if (getDescripcion().indexOf("Night") == -1) {  // y no tiene el texto "Night" x ningÃºn lado
 				descripcion = "Night(s) at " + descripcion;
 			}
 		}

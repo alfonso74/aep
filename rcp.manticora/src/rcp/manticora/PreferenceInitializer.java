@@ -10,13 +10,13 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 
 	@Override
 	public void initializeDefaultPreferences() {
-		//La definición default para la conexión se pasó a la clase LoginDialog, en el evento createDialogArea
-		// pero si queremos inicializar algo, aquí puede ser el lugar correcto
+		//La definiciÃ³n default para la conexiÃ³n se pasÃ³ a la clase LoginDialog, en el evento createDialogArea
+		// pero si queremos inicializar algo, aquÃ­ puede ser el lugar correcto
 		/*
 		IEclipsePreferences defaults = new DefaultScope().getNode(Application.PLUGIN_ID);
 		defaults.put("servidor", "servidor");
 		defaults.put("schema", "test");
 		*/
-		System.out.println("Preferencias default inicializadas (via extensión)");
+		System.out.println("Preferencias default inicializadas (via extensiÃ³n)");
 	}
 }

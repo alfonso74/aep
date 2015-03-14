@@ -44,7 +44,7 @@ public class XApplicationActionBarAdvisor extends ActionBarAdvisor {
     	appMenu1.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
     	//appMenu1.add(new Separator());
     	appMenu1.add(preferencesAction);
-    	MenuManager appMenuL2 = new MenuManager("Cotización", "level2");
+    	MenuManager appMenuL2 = new MenuManager("CotizaciÃ³n", "level2");
     	MenuManager appMenuL3 = new MenuManager(null, "level3");
     	//appMenuLvl2.add(preferencesAction);
     	appMenuL2.add(appMenuL3);
@@ -54,7 +54,7 @@ public class XApplicationActionBarAdvisor extends ActionBarAdvisor {
     	MenuManager helpMenu = new MenuManager("&Ayuda", "ayuda");
     	helpMenu.add(aboutAction);
     	menuBar.add(appMenu1);
-    	// placeholder de "additions" (aparece entre Aplicación y Ayuda)
+    	// placeholder de "additions" (aparece entre AplicaciÃ³n y Ayuda)
     	menuBar.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
     	menuBar.add(helpMenu);
     }

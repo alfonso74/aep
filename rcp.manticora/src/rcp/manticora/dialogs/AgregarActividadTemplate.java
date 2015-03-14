@@ -51,11 +51,11 @@ public class AgregarActividadTemplate extends AbstractAEPTitleAreaDialog {
 	private Shell shell;
 	
 	/**
-	 * Agrega o modifica una lÌnea de template
-	 * @param parentShell el shell utilizado para dibujar el di·logo
-	 * @param linea si es null, se crea una nueva lÌnea para el template,
-	 *              en caso contrario se editan los contenidos de la lÌnea
-	 *              pasada como par·metro.
+	 * Agrega o modifica una l√≠nea de template
+	 * @param parentShell el shell utilizado para dibujar el di√°logo
+	 * @param linea si es null, se crea una nueva l√≠nea para el template,
+	 *              en caso contrario se editan los contenidos de la l√≠nea
+	 *              pasada como par√°metro.
 	 */
 	public AgregarActividadTemplate(Shell parentShell, LineaTemplate linea) {
 		super(parentShell);
@@ -63,8 +63,8 @@ public class AgregarActividadTemplate extends AbstractAEPTitleAreaDialog {
 		cdController = new ComboDataController();
 		productos = new Productos();
 		if (linea == null) {
-			// si se pasÛ null como par·metro para LineaTemplate, para tener 
-			// acceso al objeto linea fuera del di·logo debemos usar getLinea() 
+			// si se pas√≥ null como par√°metro para LineaTemplate, para tener 
+			// acceso al objeto linea fuera del di√°logo debemos usar getLinea() 
 			linea = new LineaTemplate();
 			isNewLinea = true;
 		}
@@ -117,7 +117,7 @@ public class AgregarActividadTemplate extends AbstractAEPTitleAreaDialog {
 		comboProducto.setLayoutData(new GridData(120,15));
 		comboProducto.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				// obtenemos el cÛdigo del producto seleccionado
+				// obtenemos el c√≥digo del producto seleccionado
 				Long idProducto = productos.getIdProductoByIndex(comboProducto.getSelectionIndex());
 				Producto p = productos.getProductoByIdProducto(idProducto);
 				comboReserva.setText(p.getTipoReserva());
@@ -125,7 +125,7 @@ public class AgregarActividadTemplate extends AbstractAEPTitleAreaDialog {
 		});
 		
 		l = new Label(composite, SWT.NONE);
-		l.setText("DÌa:");
+		l.setText("D√≠a:");
 		txtDia = new Text(composite, SWT.BORDER);
 		gridData = new GridData(35, 15);
 		txtDia.setLayoutData(gridData);
@@ -149,7 +149,7 @@ public class AgregarActividadTemplate extends AbstractAEPTitleAreaDialog {
 		l = new Label(composite, SWT.NONE);
 		l.setText("Reserva:");
 		comboReserva = new Combo(composite, SWT.READ_ONLY);
-		comboReserva.setItems(new String[] {"No aplica", "AlimentaciÛn", "Bote", "Hospedaje", "Transporte", "Ticket", "Tour", "Vuelo"});
+		comboReserva.setItems(new String[] {"No aplica", "Alimentaci√≥n", "Bote", "Hospedaje", "Transporte", "Ticket", "Tour", "Vuelo"});
 		comboReserva.select(0);
 		gridData = new GridData();
 		gridData.horizontalSpan = 5;
@@ -165,7 +165,7 @@ public class AgregarActividadTemplate extends AbstractAEPTitleAreaDialog {
 		txtComentario.setLayoutData(gridData);
 		
 		
-// *********************** SecciÛn de alimentaciÛn ****************************
+// *********************** Secci√≥n de alimentaci√≥n ****************************
 		
 		l = new Label(composite, SWT.SEPARATOR | SWT.HORIZONTAL);
 	    gridData = new GridData(GridData.FILL, GridData.CENTER, false, false);
@@ -174,7 +174,7 @@ public class AgregarActividadTemplate extends AbstractAEPTitleAreaDialog {
 		l.setLayoutData(gridData);
 		
 		l = new Label(composite, SWT.NONE);
-		l.setText("AlimentaciÛn:");
+		l.setText("Alimentaci√≥n:");
 		gridData = new GridData();
 		l.setLayoutData(gridData);
 		
@@ -264,7 +264,7 @@ public class AgregarActividadTemplate extends AbstractAEPTitleAreaDialog {
 				bDinner.setSelection(linea.isDinner());
 				txtComentario.setText(linea.getComentario());
 			} catch(Exception e) {
-				mensajeError(shell, "InicializaciÛn de campos", e);
+				mensajeError(shell, "Inicializaci√≥n de campos", e);
 			}
 		}
 	}
@@ -274,9 +274,9 @@ public class AgregarActividadTemplate extends AbstractAEPTitleAreaDialog {
 		int pos;
 		Long seleccion;
 		pos = comboTipo.getSelectionIndex();
-		// obtenemos la posiciÛn del elemento seleccionado
+		// obtenemos la posici√≥n del elemento seleccionado
 		pos = comboProducto.getSelectionIndex();
-		// obtenemos el cÛdigo del producto seleccionado
+		// obtenemos el c√≥digo del producto seleccionado
 		seleccion = productos.getIdProductoByIndex(pos);
 		Producto pProducto = productos.getProductoByIdProducto(seleccion);
 		//linea.setIdProducto(seleccion);
@@ -292,8 +292,8 @@ public class AgregarActividadTemplate extends AbstractAEPTitleAreaDialog {
 	}
 	
 	private String asignarSecuencia() {
-		// si no es una nueva lÌnea, y si el dÌa no ha sido modificado por el
-		// usuario final, retorna la misma seq del di·logo.  Si no, 999.
+		// si no es una nueva l√≠nea, y si el d√≠a no ha sido modificado por el
+		// usuario final, retorna la misma seq del di√°logo.  Si no, 999.
 		if (!isNewLinea && txtDia.getText().equals(diaDefault)) {
 			return txtSecuencia.getText();
 		} else {
@@ -311,12 +311,12 @@ public class AgregarActividadTemplate extends AbstractAEPTitleAreaDialog {
 	
 	private boolean validarSave() {
 		if (comboTipo.getSelectionIndex() == -1) {
-			MessageDialog.openInformation(shell, "ValidaciÛn de campos",
+			MessageDialog.openInformation(shell, "Validaci√≥n de campos",
 					"Debe seleccionar el tipo de la actividad.");
 			return false;
 		}
 		if (comboProducto.getSelectionIndex() == -1) {
-			MessageDialog.openInformation(shell, "ValidaciÛn de campos",
+			MessageDialog.openInformation(shell, "Validaci√≥n de campos",
 					"Debe seleccionar una actividad.");
 			return false;
 		}
@@ -331,7 +331,7 @@ public class AgregarActividadTemplate extends AbstractAEPTitleAreaDialog {
 				try {
 					guardarLineaTemplate();
 				} catch (Exception e) {
-					mensajeError(shell, "Guardando lÌnea", e);
+					mensajeError(shell, "Guardando l√≠nea", e);
 				}
 				
 			} else {
@@ -341,8 +341,8 @@ public class AgregarActividadTemplate extends AbstractAEPTitleAreaDialog {
 		return super.close();
 	}
 	
-	// si el par·metro linea pasa como null al constructor debemos usar este
-	// mÈtodo para obtener la nueva lÌnea (LineaTemplate) 
+	// si el par√°metro linea pasa como null al constructor debemos usar este
+	// m√©todo para obtener la nueva l√≠nea (LineaTemplate) 
 	public LineaTemplate getLinea() {
 		return linea;
 	}

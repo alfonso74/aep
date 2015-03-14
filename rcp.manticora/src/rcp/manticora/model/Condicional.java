@@ -2,7 +2,7 @@ package rcp.manticora.model;
 
 public enum Condicional {
 
-	SI(1, "true", "Sí"),
+	SI(1, "true", "SÃ­"),
 	NO(0, "false", "No");
 	
 	private int databaseId;

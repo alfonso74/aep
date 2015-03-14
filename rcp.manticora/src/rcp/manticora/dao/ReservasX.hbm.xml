@@ -15,7 +15,7 @@
 				not-null="true"/>
 		<union-subclass name="rcp.manticora.model.ReservaTransporte" table="RESERVA_TRANSPORTE">
 <!-- para tener acceso a los valores de idHoja, sino retorna siempre 0 -->
-<!-- insert y update false reflejan que la columna es de lectura y está definida como llave -->
+<!-- insert y update false reflejan que la columna es de lectura y estÃ¡ definida como llave -->
 			<property name="idHoja" insert="false" update="false"/>
 			<property name="idActividad" insert="false" update="false"/>
 			<property name="origen"/>

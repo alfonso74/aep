@@ -41,11 +41,11 @@ public abstract class AbstractAEPTitleAreaDialog extends TitleAreaDialog impleme
 	}
 	
 	protected void mensajeError(Shell shell, Exception e) {
-		MessageDialog.openError(shell, "Error en la aplicación", "Error: " + e.toString() + "\n\nStack trace: " + e.getStackTrace()[0]);
+		MessageDialog.openError(shell, "Error en la aplicaciÃ³n", "Error: " + e.toString() + "\n\nStack trace: " + e.getStackTrace()[0]);
 	}
 	
 	protected void mensajeError(Shell shell, String titulo, Exception e) {
-		MessageDialog.openError(shell, "Error en la aplicación: " + titulo, "Error: " + e.toString() + "\n\nStack trace: " + e.getStackTrace()[0]);
+		MessageDialog.openError(shell, "Error en la aplicaciÃ³n: " + titulo, "Error: " + e.toString() + "\n\nStack trace: " + e.getStackTrace()[0]);
 	}
 	
 	public Double txt2Currency(String valorCampo) {

@@ -29,9 +29,9 @@ import rcp.manticora.model.ReservaTransporte;
 import rcp.manticora.services.FechaUtil;
 
 /**
- * <p>Dialogo para asignar l韓eas de actividad a una reserva existente.</p>
+ * <p>Dialogo para asignar l铆neas de actividad a una reserva existente.</p>
  * 
- * @param parentShell shell para dibujar el di醠ogo
+ * @param parentShell shell para dibujar el di谩logo
  * @param linea de actividad sobre la que vamos a trabajar
  *
  */
@@ -48,7 +48,7 @@ public class ReservaAsignacionDialog extends AbstractAEPTitleAreaDialog
 	
 	/**
 	 * Constructor
-	 * @param parentShell shell para dibujar el di醠ogo
+	 * @param parentShell shell para dibujar el di谩logo
 	 * @param linea actividad sobre la que vamos a trabajar
 	 */
 	public ReservaAsignacionDialog(Shell parentShell, Set<IReserva> listaReservas) {
@@ -106,7 +106,7 @@ public class ReservaAsignacionDialog extends AbstractAEPTitleAreaDialog
 	
 	@Override
 	protected void llenarCampos() {
-		setTitle("Asignaci髇 de Reserva Existente");
+		setTitle("Asignaci贸n de Reserva Existente");
 		setMessage("Por favor, seleccione la reserva a asignar.", IMessageProvider.INFORMATION);
 		
 		viewer.setInput(listaReservas);
@@ -135,7 +135,7 @@ public class ReservaAsignacionDialog extends AbstractAEPTitleAreaDialog
 	
 	private boolean validarCampos() {
 		if (getReservaSeleccionada() == null) {
-			MessageDialog.openError(shell, "Selecci髇 de reserva",
+			MessageDialog.openError(shell, "Selecci贸n de reserva",
 				"No se ha seleccionado ninguna reserva.");
 			return false;
 		}
@@ -208,7 +208,7 @@ public class ReservaAsignacionDialog extends AbstractAEPTitleAreaDialog
 	}
 	
 	/**
-	 * Retorna la reserva que ha sido seleccionada. Si no hay selecci髇
+	 * Retorna la reserva que ha sido seleccionada. Si no hay selecci贸n
 	 * retorna null.
 	 * @return IReserva que ha sido seleccionada por el usuario.
 	 */
@@ -221,7 +221,7 @@ public class ReservaAsignacionDialog extends AbstractAEPTitleAreaDialog
 	
 	/**
 	 * Retorna la fecha para una reserva en particular.  Cada reserva tiene diferentes
-	 * formas de establecer las fechas, y esta funci髇 arma el formato adecuado.
+	 * formas de establecer las fechas, y esta funci贸n arma el formato adecuado.
 	 * @return Fecha de la reserva (tipo String)
 	 */
 	private String getFechaReservaTxt(IReserva reserva) {

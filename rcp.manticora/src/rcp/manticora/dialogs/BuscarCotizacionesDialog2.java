@@ -103,7 +103,7 @@ public class BuscarCotizacionesDialog2 extends AbstractAEPDialog {
 		gridData = new GridData();
 		gridData.horizontalSpan = 5;
 		l.setLayoutData(gridData);
-		l.setText("Por favor, introduzca los criterios de búsqueda");
+		l.setText("Por favor, introduzca los criterios de bÃºsqueda");
 		
 		l = new Label(composite, SWT.SEPARATOR | SWT.HORIZONTAL);
 	    gridData = new GridData(GridData.FILL, GridData.CENTER, false, false, 5, 1);
@@ -112,7 +112,7 @@ public class BuscarCotizacionesDialog2 extends AbstractAEPDialog {
 		l.setLayoutData(gridData);
 		
 		l = new Label(composite, SWT.NONE);
-		l.setText("No. de cotización:");
+		l.setText("No. de cotizaciÃ³n:");
 		txtCodigo = new Text(composite, SWT.BORDER);
 		gridData = new GridData(40, 15);
 		gridData.horizontalSpan = 4;
@@ -146,7 +146,7 @@ public class BuscarCotizacionesDialog2 extends AbstractAEPDialog {
 		l.setLayoutData(gridData);
 		
 		Group gFechas = new Group(composite, SWT.NONE);
-		gFechas.setText(" Fechas de inicio y finalización ");
+		gFechas.setText(" Fechas de inicio y finalizaciÃ³n ");
 		gridLayout = new GridLayout(6, false);
 		gridLayout.marginHeight = 10;
 		gFechas.setLayout(gridLayout);
@@ -212,9 +212,9 @@ public class BuscarCotizacionesDialog2 extends AbstractAEPDialog {
 		Label l;
 		GridData gridData;
 		
-// controles para búsqueda por nombre de cliente (natural o jurídico)
+// controles para bÃºsqueda por nombre de cliente (natural o jurÃ­dico)
 		Group gCliente = new Group(composite, SWT.NONE);
-		gCliente.setText(" Parámetros para búsqueda por cliente ");
+		gCliente.setText(" ParÃ¡metros para bÃºsqueda por cliente ");
 		gridLayout = new GridLayout(3, false);
 		gridLayout.marginHeight = 10;
 		gCliente.setLayout(gridLayout);
@@ -228,7 +228,7 @@ public class BuscarCotizacionesDialog2 extends AbstractAEPDialog {
 		txtNoCliente.setLayoutData(gridData);
 		
 		bClaseCliente = new Button(gCliente, SWT.CHECK);
-		bClaseCliente.setText("Compañía");
+		bClaseCliente.setText("CompaÃ±Ã­a");
 		gridData = new GridData(90, 15);
 		gridData.horizontalIndent = 15;
 		bClaseCliente.setLayoutData(gridData);
@@ -253,9 +253,9 @@ public class BuscarCotizacionesDialog2 extends AbstractAEPDialog {
 		gridData.horizontalSpan = 2;
 		txtApellidoCliente.setLayoutData(gridData);
 		
-// controles para la búsqueda por nombre/apellido de un pax
+// controles para la bÃºsqueda por nombre/apellido de un pax
 		Group gPax = new Group(composite, SWT.NONE);
-		gPax.setText(" Parámetros para búsqueda por pax ");
+		gPax.setText(" ParÃ¡metros para bÃºsqueda por pax ");
 		gridLayout = new GridLayout(2, false);
 		gridLayout.marginHeight = 10;
 		gPax.setLayout(gridLayout);

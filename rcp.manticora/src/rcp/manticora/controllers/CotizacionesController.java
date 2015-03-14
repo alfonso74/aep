@@ -39,7 +39,7 @@ public class CotizacionesController extends AbstractControllerNew<Cotizacion>{
 		Iterator<LineaTemplate> it = actividadesTemplate.iterator();
 		LineaTemplate lt = null;
 		LineaCotizacion lc = null;
-		int seq = 1000;    // la reenumeraciÛn asignar· la secuencia correcta 
+		int seq = 1000;    // la reenumeraci√≥n asignar√° la secuencia correcta 
 		while (it.hasNext()) {
 			lt = it.next();
 			lc = new LineaCotizacion();
@@ -76,10 +76,10 @@ public class CotizacionesController extends AbstractControllerNew<Cotizacion>{
 			if (fechaLinea.compareTo(fechaBase) == 0) {
 			//if (fechaLinea.getTime() == fechaBase.getTime()) {
 			//if (fechaLinea.equals(fechaBase)) {              // esta forma de comparar fechas no siempre se compara correctamente
-				System.out.println("Base igual a lÌnea (" + linea.getDspProducto() + "): " + fechaBase + ", " + fechaLinea);
+				System.out.println("Base igual a l√≠nea (" + linea.getDspProducto() + "): " + fechaBase + ", " + fechaLinea);
 				linea.setSecuencia(secuencia++);
 			} else {
-				System.out.println("Base diferente a lÌnea (" + linea.getDspProducto() + "): " + fechaBase + ", " + fechaLinea);
+				System.out.println("Base diferente a l√≠nea (" + linea.getDspProducto() + "): " + fechaBase + ", " + fechaLinea);
 				fechaBase = fechaLinea;
 				secuencia = secuenciaBase;
 				linea.setSecuencia(secuencia++);
@@ -90,9 +90,9 @@ public class CotizacionesController extends AbstractControllerNew<Cotizacion>{
 	
 	
 	/**
-	 * Permite agregar una o varias lÌneas de cotizaciÛn a la vez
-	 * @param registro CotizaciÛn a la que se agregan las lÌneas
-	 * @param lineas lÌnea(s) a ser agregadas (tipo Set)
+	 * Permite agregar una o varias l√≠neas de cotizaci√≥n a la vez
+	 * @param registro Cotizaci√≥n a la que se agregan las l√≠neas
+	 * @param lineas l√≠nea(s) a ser agregadas (tipo Set)
 	 */
 	public void agregarActividad(Cotizacion registro, Set<LineaCotizacion> lineas) {
 		for (LineaCotizacion linea : lineas) {

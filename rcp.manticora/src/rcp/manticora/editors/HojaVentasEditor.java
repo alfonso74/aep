@@ -174,12 +174,12 @@ public class HojaVentasEditor extends AbstractEditorH {
 		String pNombre = txtNombre.getText();
 		
 		if (pNombre.length() > 50) {
-			MessageDialog.openInformation(getSite().getShell(), "Validación de campos",
+			MessageDialog.openInformation(getSite().getShell(), "ValidaciÃ³n de campos",
 					"El nombre de la hoja no puede superar los 50 caracteres (" + pNombre.length() + ").");
 			return false;
 		}
 		if (registro.getListaActividades().size() == 0) {
-			MessageDialog.openInformation(getSite().getShell(), "Validación de campos",
+			MessageDialog.openInformation(getSite().getShell(), "ValidaciÃ³n de campos",
 					"Debe definir actividades antes de guardar la hoja de servicios.");
 			return false;
 		}
@@ -192,7 +192,7 @@ public class HojaVentasEditor extends AbstractEditorH {
 		tabFolder.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 		// tab de datos generales
 		TabItem tabGeneral = new TabItem(tabFolder, SWT.NONE);
-		tabGeneral.setText("Información general");
+		tabGeneral.setText("InformaciÃ³n general");
 		image = AbstractUIPlugin.imageDescriptorFromPlugin(pluginId, "icons/infoGeneral2.gif");
 		tabGeneral.setImage(image.createImage());
 		tabGeneral.setControl(getTabGeneralControl(tabFolder));
@@ -230,7 +230,7 @@ public class HojaVentasEditor extends AbstractEditorH {
 			this.setPartName(registro.getTituloDocumento());
 			getEditorInput().setName(registro.getTituloDocumento());
 		} else{
-			System.out.println("Ejecutando código para cargar datos...");
+			System.out.println("Ejecutando cÃ³digo para cargar datos...");
 			registro = (HojaServicioVentas) ((CommonEditorInput) this.getEditorInput()).getElemento();
 			
 			/*
@@ -239,7 +239,7 @@ public class HojaVentasEditor extends AbstractEditorH {
 			dao.setSession(session);
 			registro = dao.findById(registro.getIdHoja(), true);
 			*/
-			// obtenemos una sesión de hibernate para cargar las actividades y refrescar
+			// obtenemos una sesiÃ³n de hibernate para cargar las actividades y refrescar
 			// todos los objetos asociados
 			//Session session = HibernateUtil.getSessionFactory().openSession();
 			//registro = (HojaServicio) session.get(HojaServicio.class, registro.getIdHoja());
@@ -348,7 +348,7 @@ public class HojaVentasEditor extends AbstractEditorH {
 		GridData gridData;
 
 		Group grupoTop = new Group(parent, SWT.NONE);
-		//grupoTop.setText("Información General");
+		//grupoTop.setText("InformaciÃ³n General");
 		//Composite grupoTop = new Composite(parent, SWT.NONE);
 		gridLayout = new GridLayout();
 		gridLayout.numColumns = 6;
@@ -430,14 +430,14 @@ public class HojaVentasEditor extends AbstractEditorH {
 		txtEstado.setEditable(false);
 		
 		l = new Label(grupoStatus, SWT.None);
-		l.setText("Número HS:");
+		l.setText("NÃºmero HS:");
 		txtNumero = new Text(grupoStatus, SWT.SINGLE | SWT.BORDER);
 		gridData = new GridData(35,15);
 		txtNumero.setLayoutData(gridData);
 		txtNumero.setEditable(false);
 		
 		l = new Label(grupoStatus, SWT.NONE);
-		l.setText("Cotización:");
+		l.setText("CotizaciÃ³n:");
 		txtCotizacion = new Text(grupoStatus, SWT.SINGLE | SWT.BORDER);
 		gridData = new GridData(35,15);
 		txtCotizacion.setLayoutData(gridData);
@@ -490,7 +490,7 @@ public class HojaVentasEditor extends AbstractEditorH {
 		viewerAct2.setSorter(new GenericSorter(viewerAct2, 0, GenericSorter.FECHAHORA));
 		
 		//registramos al viewer como un selection provider para determinar
-		//qué elemento está seleccionado
+		//quÃ© elemento estÃ¡ seleccionado
 		getSite().setSelectionProvider(viewerAct2);
 	}
 	
@@ -508,7 +508,7 @@ public class HojaVentasEditor extends AbstractEditorH {
 		viewerAct.setSorter(new GenericSorter(viewerAct, 0, GenericSorter.FECHAHORA));
 		
 		//registramos al viewer como un selection provider para determinar
-		//qué elemento está seleccionado
+		//quÃ© elemento estÃ¡ seleccionado
 		getSite().setSelectionProvider(viewerAct);
 
 		Composite botones = new Composite(parent, SWT.NONE);
@@ -522,7 +522,7 @@ public class HojaVentasEditor extends AbstractEditorH {
 		bAgregar.setText("Agregar");
 		bAgregar.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("Botón de agregar...");
+				System.out.println("BotÃ³n de agregar...");
 				//AgregarLineaHS dialogo =new AgregarLineaHS(getSite().getShell(), "Agregar detalles");
 				//dialogo.open();
 				LineaActividad la = getActividadDefault(viewerAct);
@@ -542,7 +542,7 @@ public class HojaVentasEditor extends AbstractEditorH {
 		bEditar.setText("Editar");
 		bEditar.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("Botón de editar...");
+				System.out.println("BotÃ³n de editar...");
 				editarActividad(getSite().getShell(), getActividadSeleccionada(viewerAct));
 			}
 		});
@@ -560,7 +560,7 @@ public class HojaVentasEditor extends AbstractEditorH {
 		bBorrar.setText("Borrar");
 		bBorrar.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("Botón de borrar actividad...");
+				System.out.println("BotÃ³n de borrar actividad...");
 				borrarActividades();
 			}
 		});	
@@ -572,7 +572,7 @@ public class HojaVentasEditor extends AbstractEditorH {
 		bReserva.setText("Reserva");
 		bReserva.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("Botón de realizar reservas...");
+				System.out.println("BotÃ³n de realizar reservas...");
 				//gestionarReserva(getSite().getShell(), getActividadSeleccionada());
 				if (gestionarReserva(getSite().getShell(), getActividadesSeleccionadas(viewerAct))) {
 					viewerAct.refresh();
@@ -618,10 +618,10 @@ public class HojaVentasEditor extends AbstractEditorH {
 		bAgregar.setLayoutData(gridData);
 		bAgregar.setText("Agregar");
 		bAgregar.setEnabled(false);
-		// acción deshabilitada, no hacemos nada
+		// acciÃ³n deshabilitada, no hacemos nada
 		bAgregar.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("Botón de agregar...");
+				System.out.println("BotÃ³n de agregar...");
 				agregarPax(getSite().getShell());
 			}
 		});
@@ -633,7 +633,7 @@ public class HojaVentasEditor extends AbstractEditorH {
 		bEditar.setText("Editar");
 		bEditar.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("Botón de editar..." + getPaxSeleccionado().getNombre());
+				System.out.println("BotÃ³n de editar..." + getPaxSeleccionado().getNombre());
 				editarPax(getSite().getShell(), getPaxSeleccionado());
 			}
 		});
@@ -651,7 +651,7 @@ public class HojaVentasEditor extends AbstractEditorH {
 		bBorrar.setText("Excluir");
 		bBorrar.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("Botón de excluir...");
+				System.out.println("BotÃ³n de excluir...");
 				hsController.excluirPax(registro, getPaxSeleccionado());
 				viewerPaxs.refresh();
 				addDirtyFlag();
@@ -675,7 +675,7 @@ public class HojaVentasEditor extends AbstractEditorH {
 		((GenericSorter) viewerReservas.getSorter()).doSort(2, GenericSorter.NUMERO, 1);
 		
 		//registramos al viewer como un selection provider para determinar
-		//qué elemento está seleccionado
+		//quÃ© elemento estÃ¡ seleccionado
 		getSite().setSelectionProvider(viewerAct);
 
 		Composite botones = new Composite(parent, SWT.NONE);
@@ -691,7 +691,7 @@ public class HojaVentasEditor extends AbstractEditorH {
 		bEditar.setText("Editar");
 		bEditar.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("Botón de editar reserva...");
+				System.out.println("BotÃ³n de editar reserva...");
 				IReserva reserva = (IReserva) getElementoSeleccionado(viewerReservas);
 				editarReserva(getSite().getShell(), reserva);
 			}
@@ -711,12 +711,12 @@ public class HojaVentasEditor extends AbstractEditorH {
 		bBorrar.setText("Borrar");
 		bBorrar.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("Botón de borrar reserva...");
+				System.out.println("BotÃ³n de borrar reserva...");
 				IReserva reserva = (IReserva) getElementoSeleccionado(viewerReservas);
-				System.out.println("Selección: " + reserva);
+				System.out.println("SelecciÃ³n: " + reserva);
 				hsController.eliminarReserva(reserva);
 				viewerReservas.refresh();
-				addDirtyFlag();   // como borramos, indicamos que se ha modificado la cotización
+				addDirtyFlag();   // como borramos, indicamos que se ha modificado la cotizaciÃ³n
 			}
 		});	
 	}
@@ -736,7 +736,7 @@ public class HojaVentasEditor extends AbstractEditorH {
 		column.setWidth(22);
 		
 		column = new TreeColumn(v.getTree(),SWT.NONE);
-		column.setText("Descripción");
+		column.setText("DescripciÃ³n");
 		column.setWidth(170);
 		
 		column = new TreeColumn(v.getTree(),SWT.NONE);
@@ -766,7 +766,7 @@ public class HojaVentasEditor extends AbstractEditorH {
 		column.setWidth(22);
 		
 		column = new TableColumn(tablaAct, SWT.LEFT, 2);
-		column.setText("Descripción");
+		column.setText("DescripciÃ³n");
 		column.setWidth(170);
 		
 		column = new TableColumn(tablaAct, SWT.LEFT, 3);
@@ -804,7 +804,7 @@ public class HojaVentasEditor extends AbstractEditorH {
 		column.setAlignment(SWT.LEFT);
 		
 		column = new TableColumn(tablaPaxs, SWT.CENTER, 3);
-		column.setText("País");
+		column.setText("PaÃ­s");
 		column.setWidth(100);
 		column.setAlignment(SWT.LEFT);
 		
@@ -1094,7 +1094,7 @@ public class HojaVentasEditor extends AbstractEditorH {
 			String resultado = "";
 			IReserva reserva = (IReserva) obj;
 			/*
-			// este código presenta correctamente la columna clase de la reserva
+			// este cÃ³digo presenta correctamente la columna clase de la reserva
 			if (reserva instanceof HibernateProxy) {
 				reserva = (IReserva) ((HibernateProxy) reserva).getHibernateLazyInitializer().getImplementation();
 			}
@@ -1161,14 +1161,14 @@ public class HojaVentasEditor extends AbstractEditorH {
 		} else {
 			System.out.println("No hay actividades seleccionadas para borrar");
 		}
-		addDirtyFlag();   // como borramos, indicamos que se ha modificado la cotización
+		addDirtyFlag();   // como borramos, indicamos que se ha modificado la cotizaciÃ³n
 	}
 	
 	
 	/**
 	 * Retorna el elemento seleccionado por el usuario en un viewer.  Si
-	 * el usuario no ha seleccionado ningún elemento, se retorna el
-	 * último.
+	 * el usuario no ha seleccionado ningÃºn elemento, se retorna el
+	 * Ãºltimo.
 	 * @param viewer Objeto tipo TableViewer o TreeViewer
 	 * @return Objeto de tipo LineaActividad
 	 */
@@ -1185,10 +1185,10 @@ public class HojaVentasEditor extends AbstractEditorH {
 				System.out.println("Cantidad de actividades: " + n);
 				if (n > 0) {
 					TreeItem ti = ((TreeViewer) viewer).getTree().getItem(n - 1);
-					// seleccionamos el último elemento para poder extraerlo del viewer
+					// seleccionamos el Ãºltimo elemento para poder extraerlo del viewer
 					((TreeViewer) viewer).getTree().setSelection(ti);
 					linea = getActividadSeleccionada(viewer);
-					// el usuario no ha seleccionado ningún elemento, así que regresamos al viewer a ese estado
+					// el usuario no ha seleccionado ningÃºn elemento, asÃ­ que regresamos al viewer a ese estado
 					((TreeViewer) viewer).getTree().deselectAll();
 				}
 			}
@@ -1282,13 +1282,13 @@ public class HojaVentasEditor extends AbstractEditorH {
 // ******************************* manejo de reservas *****************************
 	
 	private boolean gestionarReserva(Shell shell, Set<LineaActividad> lineas) {
-		// verificamos que esté seleccionada una actividad
+		// verificamos que estÃ© seleccionada una actividad
 		if (lineas.isEmpty() || lineas.size() == 0) {
-			MessageDialog.openInformation(getSite().getShell(), "Información", "Debe seleccionar una actividad para gestionar las reservas.");
+			MessageDialog.openInformation(getSite().getShell(), "InformaciÃ³n", "Debe seleccionar una actividad para gestionar las reservas.");
 			return false;
 		}
 		
-		// si se ha seleccionado más de una actividad, verificamos que no tengan reservas asignadas y que
+		// si se ha seleccionado mÃ¡s de una actividad, verificamos que no tengan reservas asignadas y que
 		// todas sean del mismo tipo.
 		LineaActividad linea = null;
 		if (lineas.size() > 1) {
@@ -1305,21 +1305,21 @@ public class HojaVentasEditor extends AbstractEditorH {
 					linea = actividad;
 				} else {
 					if (!actividad.getTipoReserva().equals(tipoReserva)) {
-						mensajeTxt = "La asignación de reservas a múltiples actividades requiere que todas las actividades sean del mismo tipo.\n\nPor favor, verifique e intente nuevamente.";
+						mensajeTxt = "La asignaciÃ³n de reservas a mÃºltiples actividades requiere que todas las actividades sean del mismo tipo.\n\nPor favor, verifique e intente nuevamente.";
 						grupoValido = false;
 					}
 				}
 			}
 			if (!grupoValido) {
-				MessageDialog.openInformation(getSite().getShell(), "Información", mensajeTxt);
+				MessageDialog.openInformation(getSite().getShell(), "InformaciÃ³n", mensajeTxt);
 				return false;
 			}
 		} else {
-			System.out.println("Una sola línea seleccionada");
+			System.out.println("Una sola lÃ­nea seleccionada");
 			linea = lineas.iterator().next();
 			if (linea.getTipoReserva().equals("") || linea.getTipoReserva().equals("No aplica")) {
-				String mensajeTxt = "La actividad seleccionada no requiere asignación de reservas.";
-				MessageDialog.openInformation(getSite().getShell(), "Información", mensajeTxt);
+				String mensajeTxt = "La actividad seleccionada no requiere asignaciÃ³n de reservas.";
+				MessageDialog.openInformation(getSite().getShell(), "InformaciÃ³n", mensajeTxt);
 				return false;
 			}
 		}
@@ -1331,20 +1331,20 @@ public class HojaVentasEditor extends AbstractEditorH {
 		}
 		
 		if (accion.equals("crear")) {
-			// llamamos al diálogo adecuado dependiendo de tipo de reserva
+			// llamamos al diÃ¡logo adecuado dependiendo de tipo de reserva
 			agregarReserva(shell, lineas);
 		} else if (accion.equals("asignar")) {
-			// diálogo que presenta el listado de reservas y permite asignar una de las mismas a la actividad
+			// diÃ¡logo que presenta el listado de reservas y permite asignar una de las mismas a la actividad
 			asignarReservaExistente(shell, lineas);
 		} else if (accion.equals("consultar")) {
 			// permite ver y editar la reserva asignada a la actividad
 			// por ahora asumimos que una actividad solamente tiene una reserva, aunque
-			// el diseño permite tener varias reservas.
+			// el diseÃ±o permite tener varias reservas.
 			IReserva reserva = linea.getListaAsignaciones().iterator().next().getReserva();
 			editarReserva(shell, reserva);
 		} else if (accion.equals("borrar")) {
 			// presenta el listado de reservas asociadas para poder borrar
-			// dialog.open();  // diálogo de asignaciones que se pueden borrar
+			// dialog.open();  // diÃ¡logo de asignaciones que se pueden borrar
 			// AsignacionReserva asignacion = dialog.getAsignacion();
 			// hsController.eliminarAsignacionReserva(asignacion);
 			// inicialmente podemos borrar simplemente todo lo que encontremos asociado  :)
@@ -1367,10 +1367,10 @@ public class HojaVentasEditor extends AbstractEditorH {
 					return;
 				}
 			}
-			// Creamos las nuevas asignaciones entre las líneas de actividad y la reserva seleccionada
+			// Creamos las nuevas asignaciones entre las lÃ­neas de actividad y la reserva seleccionada
 			for (LineaActividad actividad : lineas) {
 				AsignacionReserva a = hsController.agregarAsignacionReserva(actividad, reserva);
-				System.out.println("Asignación: " + a);
+				System.out.println("AsignaciÃ³n: " + a);
 			}
 			addDirtyFlag();
 		}
@@ -1388,7 +1388,7 @@ public class HojaVentasEditor extends AbstractEditorH {
 				dialogo = new ReservaVueloDialog(shell, linea, null);
 			} else if (tipo.equals("Boletos")) {
 				dialogo = new ReservaBoletosDialog(shell, linea, null); 
-			} else if (tipo.equals("Alimentación")) {
+			} else if (tipo.equals("AlimentaciÃ³n")) {
 				dialogo = new ReservaAlimentacionDialog(shell, linea, null);
 			} else if (tipo.equals("Tour")) {
 				dialogo = new ReservaTourDialog(shell, hsController, linea, null);
@@ -1401,7 +1401,7 @@ public class HojaVentasEditor extends AbstractEditorH {
 			
 			if (dialogo.open() == IDialogConstants.OK_ID) {
 				IReserva reserva = ((IReservaDialog) dialogo).getReserva();
-				// Creamos las asignaciones y establecemos la relación entre cada línea de actividad
+				// Creamos las asignaciones y establecemos la relaciÃ³n entre cada lÃ­nea de actividad
 				// seleccionada y la nueva reserva.
 				for (LineaActividad actividad : lineas) {
 					AsignacionReserva a = hsController.agregarAsignacionReserva(actividad, reserva);
@@ -1422,12 +1422,12 @@ public class HojaVentasEditor extends AbstractEditorH {
 		try {
 			if (reserva == null) {
 				MessageDialog.openInformation(shell, "Editar reserva",
-						"Debe seleccionar una reserva para ejecutar esta acción.");
+						"Debe seleccionar una reserva para ejecutar esta acciÃ³n.");
 				return;
 			}
 			AbstractAEPTitleAreaDialog dialogo = null;
 			System.out.println("Tipo de reserva: " + reserva.getTipoReserva());
-// Martillo chévere para cargar el objeto correcto en memoria, y evitar el problema con los proxys
+// Martillo chÃ©vere para cargar el objeto correcto en memoria, y evitar el problema con los proxys
 // de hibernate.
 // TODO: buscar forma de evitar este problema con los proxys
 			if (reserva instanceof HibernateProxy) {
@@ -1496,8 +1496,8 @@ public class HojaVentasEditor extends AbstractEditorH {
 	}
 	
 	/**
-	 * Retorna el id de sesión generado para Hibernate.  Utilizado en FormalizarHojaAction.java
-	 * @return id de la sesión de Hibernate.
+	 * Retorna el id de sesiÃ³n generado para Hibernate.  Utilizado en FormalizarHojaAction.java
+	 * @return id de la sesiÃ³n de Hibernate.
 	 */
 	public String getIdSession() {
 		return idSession;

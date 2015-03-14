@@ -21,7 +21,7 @@ public class HibernateUtil {
 
 	static {
 		try {
-			// obtenemos las preferencias de conexiÛn (servidor y base de datos)
+			// obtenemos las preferencias de conexi√≥n (servidor y base de datos)
 			IPreferencesService service = Platform.getPreferencesService();
 			String servidor = service.getString(Application.PLUGIN_ID, "servidor", "servidorX", null);
 			String schema = service.getString(Application.PLUGIN_ID, "schema", "testX", null);
@@ -34,14 +34,14 @@ public class HibernateUtil {
 				schema = "test2x";
 			}
 			String url = "jdbc:mysql://" + servidor + ":3306/" + schema;
-			System.out.println("URL de conexiÛn (HibernateUtil.java): " + url);
+			System.out.println("URL de conexi√≥n (HibernateUtil.java): " + url);
 			// inicializamos hibernate via xml (hibernate.cfg.xml) y seteamos las propiedades
 			// obtenidas del preference store de Eclipse
 			Configuration config = new Configuration().configure();
 			config.setProperty("hibernate.connection.url", url);
 			sessionFactory = config.buildSessionFactory();
 		} catch (Throwable ex) {
-			System.err.println("Error durante inicio de sesiÛn: " + ex);
+			System.err.println("Error durante inicio de sesi√≥n: " + ex);
 			throw new ExceptionInInitializerError(ex);
 		}
 	}
@@ -55,10 +55,10 @@ public class HibernateUtil {
 	
 	
 	/**
-	 * Permite obtener la sesiÛn de hibernate asociada a un editorID.  Si el editor
-	 * no tiene una sesiÛn asociada se crea una nueva sesiÛn.
+	 * Permite obtener la sesi√≥n de hibernate asociada a un editorID.  Si el editor
+	 * no tiene una sesi√≥n asociada se crea una nueva sesi√≥n.
 	 * @param editor ID del editor
-	 * @return sesiÛn existente que est· asociada al editor, o una nueva sesiÛn
+	 * @return sesi√≥n existente que est√° asociada al editor, o una nueva sesi√≥n
 	 * @throws HibernateException
 	 */
 	public static Session getEditorSession(String editor) throws HibernateException {
@@ -82,19 +82,19 @@ public class HibernateUtil {
 	
 	public static void verSesiones() {
 		for (String s : sessionMap.keySet()) {
-			System.out.println("SesiÛn: " + s);
+			System.out.println("Sesi√≥n: " + s);
 		}
 	}
 	
 	
-// *********************Inicio del cÛdigo copiado de la web **********************
+// *********************Inicio del c√≥digo copiado de la web **********************
 	
 	public static final ThreadLocal<Session> session = new ThreadLocal<Session>();
 	
 	/**
-	 * Obtiene la sesiÛn asociada a este thread, y si no existe se crea.
+	 * Obtiene la sesi√≥n asociada a este thread, y si no existe se crea.
 	 * Debe usarse en conjunto con closeSession().
-	 * @return SesiÛn de Hibernate
+	 * @return Sesi√≥n de Hibernate
 	 * @throws HibernateException
 	 */
 	public static Session currentSession() throws HibernateException {

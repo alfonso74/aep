@@ -109,7 +109,7 @@ public class ReservaHospIntDialog extends AbstractAEPDialog {
 		grupo01.setLayout(layout);
 		
 		Label l = new Label(grupo01, SWT.NONE);
-		l.setText("Habitaci髇:");
+		l.setText("Habitaci贸n:");
 		comboHabitaciones = new Combo(grupo01, SWT.READ_ONLY);
 		comboHabitaciones.setItems(cdHabitacion.getTexto());
 		gridData = new GridData(80, 15);
@@ -183,10 +183,10 @@ public class ReservaHospIntDialog extends AbstractAEPDialog {
 		bFechaHasta.setImage(image.createImage());
 		bFechaHasta.addSelectionListener(this.crearCalendario(shell, txtFechaHasta, txtFechaDesde));
 		
-// ***************************** asignaci髇 de paxs a la habitaci髇 ******************
+// ***************************** asignaci贸n de paxs a la habitaci贸n ******************
 		
 		Group grupoPax = new Group(composite, SWT.NONE);
-		grupoPax.setText(" Asignaci髇 de paxs ");
+		grupoPax.setText(" Asignaci贸n de paxs ");
 		layout = new GridLayout(2, false);
 		layout.marginWidth = 10;
 		layout.marginHeight = 10;
@@ -234,7 +234,7 @@ public class ReservaHospIntDialog extends AbstractAEPDialog {
 		if (isNuevaLinea) {
 			viewerPaxs.setInput(listaPaxsHoja);
 		} else {
-			System.out.println("Cargando informaci髇 de campos...");
+			System.out.println("Cargando informaci贸n de campos...");
 			comboHabitaciones.setText(linea.getHabitacion().getNombre());
 			//txtNoReserva.setText(linea.getReserva().getNoReserva());
 			txtComentarios.setText(linea.getComentario());
@@ -255,7 +255,7 @@ public class ReservaHospIntDialog extends AbstractAEPDialog {
 		if (buttonId == IDialogConstants.OK_ID) {
 			try {
 				if (validarCampos()) {
-					// si pasa las validaciones, creamos el registro y cerramos el di醠ogo
+					// si pasa las validaciones, creamos el registro y cerramos el di谩logo
 					guardarHospedajeExterno();
 					super.buttonPressed(buttonId);
 				}
@@ -274,22 +274,22 @@ public class ReservaHospIntDialog extends AbstractAEPDialog {
 		String pFechaHasta = txtFechaHasta.getText();
 		
 		if (comboHabitaciones.getSelectionIndex() == -1) {
-			MessageDialog.openError(shell, "Validaci髇 de campos",
-					"No se ha seleccionado el tipo de la habitaci髇.");
+			MessageDialog.openError(shell, "Validaci贸n de campos",
+					"No se ha seleccionado el tipo de la habitaci贸n.");
 			return false;
 		}
 		if (pComentarios.length() > 100) {
-			MessageDialog.openError(shell, "Validaci髇 de campos",
+			MessageDialog.openError(shell, "Validaci贸n de campos",
 				"El campo de comentarios no puede superar los 100 caracteres (" + pComentarios.length() + ").");
 			return false;
 		}
 		if (pFechaDesde.length() == 0) {
-			MessageDialog.openError(shell, "Validaci髇 de campos",
+			MessageDialog.openError(shell, "Validaci贸n de campos",
 				"El campo de fecha \"Desde\" no puede quedar en blanco");
 			return false;
 		}
 		if (pFechaHasta.length() == 0) {
-			MessageDialog.openError(shell, "Validaci髇 de campos",
+			MessageDialog.openError(shell, "Validaci贸n de campos",
 				"El campo de fecha \"Hasta\" no puede quedar en blanco");
 			return false;
 		}

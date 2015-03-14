@@ -30,9 +30,9 @@ public class Productos {
 	 * @param resetFiltro permite mantener o eliminar los filtros previos.
 	 */
 	public void filtrarByTipo(Long tipo, boolean resetFiltro) {
-		// un producto no puede tener varios tipos, así que no tiene sentido filtrar por un tipo y luego
-		// filtrar por otro tipo, ya que el resultado sería nada.  Solo tiene sentido si filtramos primero
-		// los tours y luego filtramos por un tipo de producto específico.
+		// un producto no puede tener varios tipos, asÃ­ que no tiene sentido filtrar por un tipo y luego
+		// filtrar por otro tipo, ya que el resultado serÃ­a nada.  Solo tiene sentido si filtramos primero
+		// los tours y luego filtramos por un tipo de producto especÃ­fico.
 		if (resetFiltro)
 			resetFiltro();
 		listaProdFiltrados = getProductosByTipo(tipo);
@@ -86,7 +86,7 @@ public class Productos {
 		if (indice > -1 && indice < listaProdFiltrados.length) {
 			return listaId[indice];
 		} else {
-			System.err.println("No se encontró el producto con el índice suministrado (" + indice + ")");
+			System.err.println("No se encontrÃ³ el producto con el Ã­ndice suministrado (" + indice + ")");
 			return -1L;
 		}
 	}
@@ -98,7 +98,7 @@ public class Productos {
 				return listaProdFiltrados[i].getIdProducto();
 			}
 		}
-		System.err.println("No se encontró el producto con el nombre suministrado (" + nombre + ")");
+		System.err.println("No se encontrÃ³ el producto con el nombre suministrado (" + nombre + ")");
 		return -1L;
 	}
 	

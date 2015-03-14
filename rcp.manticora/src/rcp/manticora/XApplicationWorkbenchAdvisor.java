@@ -17,7 +17,7 @@ public class XApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 	private String perspectiva;
 	private Usuario usuario;
 
-    // mÈtodo agregado para cambiar los tabs de cl·sico a redondeados
+    // m√©todo agregado para cambiar los tabs de cl√°sico a redondeados
 	public void initialize(IWorkbenchConfigurer configurer) {
 		//super.initialize(configurer);
 		//PlatformUI.getPreferenceStore().setValue(IWorkbenchPreferenceConstants.SHOW_TRADITIONAL_STYLE_TABS, false);

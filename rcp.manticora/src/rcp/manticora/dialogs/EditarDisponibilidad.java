@@ -100,7 +100,7 @@ public class EditarDisponibilidad extends AbstractAEPTitleAreaDialog {
 	@Override
 	protected void llenarCampos() {
 		setTitle("Editar registro");
-		setMessage("Por favor, indique los par·metros de la disponibilidad.", IMessageProvider.INFORMATION);
+		setMessage("Por favor, indique los par√°metros de la disponibilidad.", IMessageProvider.INFORMATION);
 		
 		String pFecha = FechaUtil.toString(linea.getFecha());
 		String pCapacidad = valor2Txt(linea.getCapacidad());
@@ -116,7 +116,7 @@ public class EditarDisponibilidad extends AbstractAEPTitleAreaDialog {
 
 	@Override
 	public boolean close() {
-		// si el botÛn presionado es OK validamos, guardamos y cerramos
+		// si el bot√≥n presionado es OK validamos, guardamos y cerramos
 		if (getReturnCode() == IDialogConstants.OK_ID) {
 			try {
 				if (validarSave()) {

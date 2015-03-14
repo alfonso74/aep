@@ -52,7 +52,7 @@ public class GeneralPreferencePage extends FieldEditorPreferencePage implements
 	protected void createFieldEditors() {
 		
 		Group grupoConexion = new Group(getFieldEditorParent(), SWT.NONE);
-		grupoConexion.setText("Conexi髇 a Base de Datos");
+		grupoConexion.setText("Conexi贸n a Base de Datos");
 		GridLayout layoutConn = new GridLayout(3, false);
 		
 		StringFieldEditor strServidor = new StringFieldEditor("servidor", "Nombre del servidor:", 20, grupoConexion);
@@ -66,20 +66,20 @@ public class GeneralPreferencePage extends FieldEditorPreferencePage implements
 		addField(strServidor);
 		addField(strSchema);
 
-		// la asignaci髇 de layout debe ir luego de los addField porque estos 
-		// modifican los m醨genes a 0
+		// la asignaci贸n de layout debe ir luego de los addField porque estos 
+		// modifican los m谩rgenes a 0
 		//layoutConn.numColumns = 1;
 		grupoConexion.setLayout(layoutConn);
 		grupoConexion.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 3, 1));		
 		
 		
 		Group grupoPdf = new Group(getFieldEditorParent(), SWT.NONE);
-		grupoPdf.setText("Generaci髇 de PDF");
+		grupoPdf.setText("Generaci贸n de PDF");
 		GridLayout layoutPdf = new GridLayout(3, false);
 		
-		DirectoryFieldEditor strRutaPdf = new DirectoryFieldEditor("rutaPdf", "Ruta de generaci髇:", grupoPdf);
+		DirectoryFieldEditor strRutaPdf = new DirectoryFieldEditor("rutaPdf", "Ruta de generaci贸n:", grupoPdf);
 		addField(strRutaPdf);
-		// asignaci髇 de layouts
+		// asignaci贸n de layouts
 		//layoutPdf.numColumns = 3;
 		grupoPdf.setLayout(layoutPdf);
 		grupoPdf.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 3, 1));

@@ -23,7 +23,7 @@ public class MenuOperacionesView extends AbstractMenuView {
 		p1 = new TreeParent("Consultas");
 		p1.addChild(new TreeObject("Productos", ProductosView.ID, IImageKeys.CONFIG));
 		p1.addChild(new TreeObject("Clientes", ClientesView.ID, IImageKeys.CONFIG));
-		p1.addChild(new TreeObject("Compañías", ClientesComView.ID, IImageKeys.CONFIG));
+		p1.addChild(new TreeObject("CompaÃ±Ã­as", ClientesComView.ID, IImageKeys.CONFIG));
 		p1.addChild(new TreeObject("Tipos de habit.", TipoHabitacionesView.ID, IImageKeys.CONFIG));
 		p1.addChild(new TreeObject("Habitaciones", HabitacionesView.ID, IImageKeys.CONFIG));
 		
@@ -39,10 +39,10 @@ public class MenuOperacionesView extends AbstractMenuView {
 		p4.addChild(new TreeObject("Tours", ToursView.ID, "icons/menuOperaciones.gif"));
 		
 		TreeParent p5 = new TreeParent("Reservas");
-		p5.addChild(new TreeObject("Guías", "", "icons/menuReservas.gif"));
+		p5.addChild(new TreeObject("GuÃ­as", "", "icons/menuReservas.gif"));
 		p5.addChild(new TreeObject("Transporte", "", "icons/menuReservas.gif"));
 		p5.addChild(new TreeObject("Hospedaje", "", "icons/menuReservas.gif"));
-		p5.addChild(new TreeObject("Alimentación", "", "icons/menuReservas.gif"));
+		p5.addChild(new TreeObject("AlimentaciÃ³n", "", "icons/menuReservas.gif"));
 		
 		TreeParent root = new TreeParent("");
 		root.addChild(p1);

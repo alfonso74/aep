@@ -57,8 +57,8 @@ public class ViewController {
 	 * getCurrentSession() solo requiere un s.getTransaction.commit() y no necesita el s.close()
 	 * openSession() requiere s.getTransaction.commit() y luego un s.close()
 	 * 
-	 * El session.getTransaction().commit() evalúa todos los setCampoXXX y actualiza el valor de acuerdo con
-	 * la lógica del set.  En otras palabras, si quiero agregar a todos los tipos de producto la letra "A" al
+	 * El session.getTransaction().commit() evalÃºa todos los setCampoXXX y actualiza el valor de acuerdo con
+	 * la lÃ³gica del set.  En otras palabras, si quiero agregar a todos los tipos de producto la letra "A" al
 	 * inicio, entonces modifico el setDescripcion() para que haga un ("A" + descripcion) y al ejecutar el
 	 * session.getTransaction().commit() se actualizan todas las descripciones en la tabla.
 	 * Para evitar que se ejecute el setCampoXXX puedo reemplazar el commit() x un session.close().
@@ -225,13 +225,13 @@ public class ViewController {
 	}
 	
 	public Pais[] getListadoPaises() {
-		System.out.println("Cargando listado de países...");
+		System.out.println("Cargando listado de paÃ­ses...");
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		PaisDAO dao = new PaisDAO();
 		dao.setSession(session);
 		List<Pais> resultados = dao.findAllAscending();
-		System.out.println("Total de países: " + resultados.size());
+		System.out.println("Total de paÃ­ses: " + resultados.size());
 		session.getTransaction().commit();
 		return (Pais[]) resultados.toArray(new Pais[resultados.size()]);
 	}
@@ -367,8 +367,8 @@ public class ViewController {
 		dao.setSession(session);
 		List<TipoProducto> resultados = dao.findAll();
 		/**
-		 * El session.getTransaction().commit() evalúa todos los setCampoXXX y actualiza el valor de acuerdo con
-		 * la lógica del set.  En otras palabras, si quiero agregar a todos los tipos de producto la letra "A" al
+		 * El session.getTransaction().commit() evalÃºa todos los setCampoXXX y actualiza el valor de acuerdo con
+		 * la lÃ³gica del set.  En otras palabras, si quiero agregar a todos los tipos de producto la letra "A" al
 		 * inicio, entonces modifico el setDescripcion() para que haga un ("A" + descripcion) y al ejecutar el
 		 * session.getTransaction().commit() se actualizan todas las descripciones en la tabla.
 		 * Para evitar que se ejecute el setCampoXXX puedo reemplazar el commit() x un session.close().
@@ -441,8 +441,8 @@ public class ViewController {
 	 * Retorna un listado array de tours disponibles para el producto y rango de fechas indicadas.
 	 * @param producto Tour a mostrar, si queda en blanco se muestran todos los tours
 	 * @param fechaInicial fecha a partir de la cual se debe mostrar la disponibilidad
-	 * @param dias cantidad de días que se muestran a partir de la fecha inicial
-	 * @param reservas indica si solamente se deben mostrar tours con reservas realizadas o también tours sin reservas
+	 * @param dias cantidad de dÃ­as que se muestran a partir de la fecha inicial
+	 * @param reservas indica si solamente se deben mostrar tours con reservas realizadas o tambiÃ©n tours sin reservas
 	 * @return
 	 */
 	public DisponibilidadTour[] getListadoReservasTours(String producto, Date fechaInicial, Integer dias, boolean reservas) {

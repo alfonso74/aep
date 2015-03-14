@@ -9,7 +9,7 @@ public class TipoHabitacion implements IEditableDocument {
 	private String comentario;
 	private String condiciones;
 
-// **************************** mÈtodos especiales **************************
+// **************************** m√©todos especiales **************************
 	
 	public String getTituloDocumento() {
 		String tituloDocumento = "Nuevo";
@@ -23,11 +23,11 @@ public class TipoHabitacion implements IEditableDocument {
 	
 	@Override
 	public String toString() {
-		return "TipoHabitaciÛn (id-Prod-Desc): " + idTipoHabitacion + "-" + hotel.getIdProducto() + "-" + descripcion;
+		return "TipoHabitaci√≥n (id-Prod-Desc): " + idTipoHabitacion + "-" + hotel.getIdProducto() + "-" + descripcion;
 	}
 
 	public String[] getListaCondiciones() {
-		// separaciÛn por comas
+		// separaci√≥n por comas
 		if (getCondiciones() == null) {
 			return new String[]{};
 		} else {
@@ -37,8 +37,8 @@ public class TipoHabitacion implements IEditableDocument {
 	
 	public void setListaCondiciones(String[] listaCondiciones) {
 		String cadena = "";
-		// Si no se detallan condiciones, listaCondiciones tendr· largo 1
-		// y su valor ser· ""
+		// Si no se detallan condiciones, listaCondiciones tendr√° largo 1
+		// y su valor ser√° ""
 		for (int n = 0; n < listaCondiciones.length; n++) {
 			if (cadena.equals("")) {
 				cadena = listaCondiciones[n];

@@ -146,16 +146,16 @@ public class CotizacionesEditor extends AbstractEditorH {
 	}
 	
 	public void doSave(IProgressMonitor monitor) {
-		// verificamos que el campo de impuesto tenga alg˙n valor
+		// verificamos que el campo de impuesto tenga alg√∫n valor
 		Float pPorcImpuesto = txt2Float(txtPorcImpuesto.getText());
 		if (pPorcImpuesto == null) {
-			MessageDialog.openInformation(getSite().getShell(), "ValidaciÛn de campos",
-				"Debe indicar el porcentaje de impuesto que se aplicar· a la cotizaciÛn.");
+			MessageDialog.openInformation(getSite().getShell(), "Validaci√≥n de campos",
+				"Debe indicar el porcentaje de impuesto que se aplicar√° a la cotizaci√≥n.");
 			return;
 		}
-		// realizamos el c·lculo del subtotal y total (impuestos de hospedaje y 5%)
+		// realizamos el c√°lculo del subtotal y total (impuestos de hospedaje y 5%)
 		calcularTotales();
-		// eliminamos espacios en blanco del n˙mero de gira
+		// eliminamos espacios en blanco del n√∫mero de gira
 		txtNumeroTour.setText(txtNumeroTour.getText().trim());
 		
 		if (!validarSave()) {
@@ -219,18 +219,18 @@ public class CotizacionesEditor extends AbstractEditorH {
 		
 		editorController.doSave(registro);
 		if (isNewDoc) {
-			System.out.println("Creando nueva cotizaciÛn...");
+			System.out.println("Creando nueva cotizaci√≥n...");
 			txtNumero.setText(valor2Txt(registro.getIdCotizacion()));
 			isNewDoc = false;
 		} else {
-			System.out.println("Actualizando cotizaciÛn no. " + registro.getIdCotizacion());
+			System.out.println("Actualizando cotizaci√≥n no. " + registro.getIdCotizacion());
 		}
 		
 // reflejamos el nombre en el tab
 		this.setPartName(registro.getTituloDocumento());
 // actualizamos el nombre del editorInput (para que deje de parecer "Nuevo")
 		((CommonEditorInput) this.getEditorInput()).setName(registro.getTituloDocumento());
-// hacemos un refresh de todas las vistas que estÈn abiertas
+// hacemos un refresh de todas las vistas que est√©n abiertas
 		actualizarVistas();
 		viewerAct.refresh();
 		removeDirtyFlag();
@@ -246,8 +246,8 @@ public class CotizacionesEditor extends AbstractEditorH {
 		Float pComision = txt2Float(txtComision.getText());
 		
 		if (pNombre.length() > 50) {
-			MessageDialog.openInformation(getSite().getShell(), "ValidaciÛn de campos",
-					"El nombre de la cotizaciÛn no puede superar los 50 caracteres (" + pNombre.length() + ").");
+			MessageDialog.openInformation(getSite().getShell(), "Validaci√≥n de campos",
+					"El nombre de la cotizaci√≥n no puede superar los 50 caracteres (" + pNombre.length() + ").");
 			// TODO ninguno funciona para el foco del campo
 			//setFocoInicial(txtANombreDe);
 			//txtANombreDe.forceFocus();
@@ -256,60 +256,60 @@ public class CotizacionesEditor extends AbstractEditorH {
 		}
 		TourNumberValidator validator = new TourNumberValidator();
 		if (!validator.validate(pNumeroTour)) {
-			MessageDialog.openInformation(getSite().getShell(), "ValidaciÛn de campos",
+			MessageDialog.openInformation(getSite().getShell(), "Validaci√≥n de campos",
 					validator.getMessage());
 			return false;
 		}
 		if (pNombreCliente.length() > 50) {
-			MessageDialog.openInformation(getSite().getShell(), "ValidaciÛn de campos",
+			MessageDialog.openInformation(getSite().getShell(), "Validaci√≥n de campos",
 					"El nombre del cliente no puede superar los 50 caracteres (" + pNombreCliente.length() + ").");
 			return false;
 		}
 		if (comboVendedor.getSelectionIndex() == -1) {
-			MessageDialog.openInformation(getSite().getShell(), "ValidaciÛn de campos",
-					"Debe seleccionar un vendedor para la cotizaciÛn.");
+			MessageDialog.openInformation(getSite().getShell(), "Validaci√≥n de campos",
+					"Debe seleccionar un vendedor para la cotizaci√≥n.");
 			return false;
 		}
 		if (pPago == null) {
-			MessageDialog.openInformation(getSite().getShell(), "ValidaciÛn de campos",
+			MessageDialog.openInformation(getSite().getShell(), "Validaci√≥n de campos",
 				"Debe indicar el monto del pago realizado.");
 			txtPago.setText("0.00");
 			return false;
 		}
 //		if (pPago.floatValue() == 0) {
-//			MessageDialog.openInformation(getSite().getShell(), "ValidaciÛn de campos",
+//			MessageDialog.openInformation(getSite().getShell(), "Validaci√≥n de campos",
 //				"Debe indicar el monto del pago que ha sido realizado.");
 //			return false;
 //		}
 		if (pPago.floatValue() > pTotal.floatValue()) {
-			MessageDialog.openInformation(getSite().getShell(), "ValidaciÛn de campos",
-				"El monto del pago parcial no puede ser mayor al total de la cotizaciÛn.");
+			MessageDialog.openInformation(getSite().getShell(), "Validaci√≥n de campos",
+				"El monto del pago parcial no puede ser mayor al total de la cotizaci√≥n.");
 			return false;
 		}
 		if (pInteres == null) {
-			MessageDialog.openInformation(getSite().getShell(), "ValidaciÛn de campos",
-				"Debe indicar el porcentaje de impuesto que se aplicar· a la cotizaciÛn.");
+			MessageDialog.openInformation(getSite().getShell(), "Validaci√≥n de campos",
+				"Debe indicar el porcentaje de impuesto que se aplicar√° a la cotizaci√≥n.");
 			return false;
 		}
 		if (comboReferido.getSelectionIndex() != -1) {
 			String comboText = comboReferido.getText();
 			if (!comboText.equalsIgnoreCase(REFERIDO_NONE)) {
 				if (pComision == null) {
-					MessageDialog.openInformation(getSite().getShell(), "ValidaciÛn de campos",
-							"Debe indicar el monto de la comisiÛn que ser· aplicada.");
+					MessageDialog.openInformation(getSite().getShell(), "Validaci√≥n de campos",
+							"Debe indicar el monto de la comisi√≥n que ser√° aplicada.");
 					return false;
 				}
 				if (pComision.floatValue() < 0) {
-					MessageDialog.openInformation(getSite().getShell(), "ValidaciÛn de campos",
-							"El monto de la comisiÛn debe ser igual o mayor a 0.");
+					MessageDialog.openInformation(getSite().getShell(), "Validaci√≥n de campos",
+							"El monto de la comisi√≥n debe ser igual o mayor a 0.");
 					return false;
 				}
 			}
 		}
-		System.out.println("InterÈs: " + pInteres);
+		System.out.println("Inter√©s: " + pInteres);
 		if (registro.getListaActividades().size() == 0) {
-			MessageDialog.openInformation(getSite().getShell(), "ValidaciÛn de campos",
-				"Debe definir actividades antes de guardar la cotizaciÛn.");
+			MessageDialog.openInformation(getSite().getShell(), "Validaci√≥n de campos",
+				"Debe definir actividades antes de guardar la cotizaci√≥n.");
 			return false;
 		}
 		return true;
@@ -319,13 +319,13 @@ public class CotizacionesEditor extends AbstractEditorH {
 		String pNombreCliente = txtNombreCliente.getText();
 		Integer pPAXs = txt2Integer(txtPaxs.getText());
 		if (pNombreCliente.equals("")) {
-			MessageDialog.openInformation(getSite().getShell(), "ValidaciÛn de campos",
+			MessageDialog.openInformation(getSite().getShell(), "Validaci√≥n de campos",
 					"Debe especificar el nombre del cliente.");
 			return false;
 		}
 		if (pPAXs.intValue() < 1) {
-			MessageDialog.openInformation(getSite().getShell(), "ValidaciÛn de campos",
-					"El n˙mero de paxs no puede ser menor de 1.");
+			MessageDialog.openInformation(getSite().getShell(), "Validaci√≥n de campos",
+					"El n√∫mero de paxs no puede ser menor de 1.");
 			return false;
 		}
 		return true;
@@ -338,23 +338,23 @@ public class CotizacionesEditor extends AbstractEditorH {
 		Integer pPAXs = txt2Integer(txtPaxs.getText());
 		int lineasPAXs = viewerPaxs.getTable().getItemCount();
 		if (pEstado.equals("P")) {
-			MessageDialog.openInformation(getSite().getShell(), "ValidaciÛn de campos",
+			MessageDialog.openInformation(getSite().getShell(), "Validaci√≥n de campos",
 					"No puede generar una hoja de servicio para cotizaciones en status " + txtEstado.getText());
 			return true;
 		}
 		if (pPago < 0 || pPago > pMonto) {
-			MessageDialog.openInformation(getSite().getShell(), "ValidaciÛn de campos",
-					"El valor del campo Pago es inv·lido");
+			MessageDialog.openInformation(getSite().getShell(), "Validaci√≥n de campos",
+					"El valor del campo Pago es inv√°lido");
 			return false;
 		}
 		if (pPAXs.intValue() != lineasPAXs) {
-			MessageDialog.openInformation(getSite().getShell(), "ValidaciÛn de campos",
-			"El n˙mero de PAXs no coincide con los detalles especificados.");
+			MessageDialog.openInformation(getSite().getShell(), "Validaci√≥n de campos",
+			"El n√∫mero de PAXs no coincide con los detalles especificados.");
 			return false;
 		}
 		if (registro.getCliente() == null) {
-			MessageDialog.openInformation(getSite().getShell(), "ValidaciÛn de campos",
-			"Debe asignar un cliente a la cotizaciÛn.");
+			MessageDialog.openInformation(getSite().getShell(), "Validaci√≥n de campos",
+			"Debe asignar un cliente a la cotizaci√≥n.");
 			return false;
 		}
 		return true;
@@ -369,7 +369,7 @@ public class CotizacionesEditor extends AbstractEditorH {
 		tabFolder.setLayoutData(new GridData(GridData.FILL, GridData.FILL, true, true));
 		// tab de datos generales
 		TabItem tabGeneral = new TabItem(tabFolder, SWT.NONE);
-		tabGeneral.setText("InformaciÛn general");
+		tabGeneral.setText("Informaci√≥n general");
 		image = AbstractUIPlugin.imageDescriptorFromPlugin(pluginId, "icons/infoGeneral2.gif");
 		tabGeneral.setImage(image.createImage());
 		tabGeneral.setControl(getTabGeneralControl(tabFolder));
@@ -408,7 +408,7 @@ public class CotizacionesEditor extends AbstractEditorH {
 		isNewDoc = getEditorInput().isNewDoc;
 		if (isNewDoc) {
 			
-			System.out.println("Creando nueva cotizaciÛn");
+			System.out.println("Creando nueva cotizaci√≥n");
 			registro = new Cotizacion();
 			this.setPartName(registro.getTituloDocumento());
 			getEditorInput().setName(registro.getTituloDocumento());
@@ -421,11 +421,11 @@ public class CotizacionesEditor extends AbstractEditorH {
 			viewerPaxs.setInput(registro.getListaPaxs());
 		} else {
 			
-			System.out.println("Ejecutando cÛdigo para cargar datos...");
+			System.out.println("Ejecutando c√≥digo para cargar datos...");
 			registro = (Cotizacion) ((CommonEditorInput) this.getEditorInput()).getElemento();
 			editorController.getSession().refresh(registro, LockMode.UPGRADE);
 			
-			// obtenemos una sesiÛn de hibernate para cargar las actividades y refrescar
+			// obtenemos una sesi√≥n de hibernate para cargar las actividades y refrescar
 			// todos los objetos asociados
 			//Session session = HibernateUtil.getSessionFactory().openSession();
 			//session.refresh(registro);
@@ -461,25 +461,25 @@ public class CotizacionesEditor extends AbstractEditorH {
 				txtNombreCliente.setText(valor2Txt(registro.getProspecto()));
 				txtNombreCliente.setEnabled(true);
 			}
-			// cargamos los totales de la cotizaciÛn
+			// cargamos los totales de la cotizaci√≥n
 			lSubtotal.setText(valor2Txt(registro.getSubtotal(), "0.00"));
 			//txtPorcHospedaje.setText(valor2Txt(registro.getPorcDescuento(), "0"));
 			lHospedaje.setText(valor2Txt(registro.getHospedaje(), "0.00"));
 			txtPorcImpuesto.setText(valor2Txt(registro.getPorcImpuesto(), "0"));
 			lImpuesto.setText(valor2Txt(registro.getImpuesto(), "0.00"));
 			lTotal.setText(valor2Txt(registro.getTotal(), "0.00"));
-			// carga de datos de la comisiÛn
+			// carga de datos de la comisi√≥n
 			Comision comision = registro.getComision();
 			if (comision == null) {
 				txtComision.setEnabled(false);
 			} else {
-				System.out.println("Cliente comisiÛn: " + comision.getCliente().getNombreCliente());
+				System.out.println("Cliente comisi√≥n: " + comision.getCliente().getNombreCliente());
 				comboReferido.setText(comision.getCliente().getNombreCliente());
 				txtComision.setText(valor2Txt(comision.getMonto(), "0.00"));
 			}
 
 			/*
-			// cargamos las lÌneas y los pasajeros
+			// cargamos las l√≠neas y los pasajeros
 			vLineasAct.addAll(registro.getListaActividades());
 			vLineasPax.addAll(registro.getListaPaxs());
 			*/
@@ -537,7 +537,7 @@ public class CotizacionesEditor extends AbstractEditorH {
 		parent.setEnabled(isEditable);
 
 		Group grupoTop = new Group(parent, SWT.NONE);
-		//grupoTop.setText("InformaciÛn General");
+		//grupoTop.setText("Informaci√≥n General");
 		gridLayout = new GridLayout();
 		gridLayout.numColumns = 8;
 		grupoTop.setLayout(gridLayout);
@@ -639,7 +639,7 @@ public class CotizacionesEditor extends AbstractEditorH {
 		grupoStatus.setLayout(new GridLayout(2, false));
 		
 		Label lblCotizacion = new Label(grupoStatus, SWT.None);
-		lblCotizacion.setText("CotizaciÛn:");
+		lblCotizacion.setText("Cotizaci√≥n:");
 		txtNumero = new Text(grupoStatus, SWT.SINGLE | SWT.BORDER);
 		GridData gd_txtNumero = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
 		gd_txtNumero.widthHint = 60;
@@ -674,10 +674,10 @@ public class CotizacionesEditor extends AbstractEditorH {
 		bPagos.setLayoutData(gridData);
 		//bPagos.setAlignment(SWT.LEFT);
 		bPagos.setImage(image.createImage());
-		bPagos.setToolTipText("Asigna como pago el monto total de la cotizaciÛn");
+		bPagos.setToolTipText("Asigna como pago el monto total de la cotizaci√≥n");
 		bPagos.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("BotÛn de asignar pagos...");
+				System.out.println("Bot√≥n de asignar pagos...");
 				txtPago.setText(lTotal.getText());
 				//lTotal.setText(new DecimalFormat("0.00").format(total));
 			}
@@ -696,7 +696,7 @@ public class CotizacionesEditor extends AbstractEditorH {
 		grupoCliente.setLayoutData(gdCliente);
 		
 		l = new Label(grupoCliente, SWT.NONE);
-		l.setText("CÛdigo:");
+		l.setText("C√≥digo:");
 		txtNoCliente = new Text(grupoCliente, SWT.SINGLE | SWT.BORDER);
 		gridData = new GridData(40, 15);
 		gridData.horizontalSpan = 1;
@@ -710,7 +710,7 @@ public class CotizacionesEditor extends AbstractEditorH {
 		bBuscar.setImage(image.createImage());
 		bBuscar.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("BotÛn de buscar cliente...");
+				System.out.println("Bot√≥n de buscar cliente...");
 				asignarCliente(getSite().getShell());
 			}
 		});
@@ -785,7 +785,7 @@ public class CotizacionesEditor extends AbstractEditorH {
 		gridData.horizontalAlignment = SWT.END;
 		lSubtotal.setLayoutData(gridData);
 		lSubtotal.setAlignment(SWT.RIGHT);
-		lSubtotal.pack();     // se computa el tamaÒo para usarlo abajo (lDescuento)
+		lSubtotal.pack();     // se computa el tama√±o para usarlo abajo (lDescuento)
 		
 		l = new Label(grupoTotal, SWT.NONE);
 		l.setText("Hospedaje (%):");
@@ -893,7 +893,7 @@ public class CotizacionesEditor extends AbstractEditorH {
 		viewerAct.setSorter(new GenericSorter(viewerAct));
 		
 		//registramos al viewer como un selection provider para determinar
-		//quÈ elemento est· seleccionado
+		//qu√© elemento est√° seleccionado
 		getSite().setSelectionProvider(viewerAct);
 
 		Composite botones = new Composite(parent, SWT.NONE);
@@ -909,7 +909,7 @@ public class CotizacionesEditor extends AbstractEditorH {
 		bAgregar.setText("Agregar");
 		bAgregar.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("BotÛn de agregar...");
+				System.out.println("Bot√≥n de agregar...");
 				LineaCotizacion lc = getActividadDefault();
 				if (lc != null) {
 					String fechaDefault = FechaUtil.toString(lc.getFecha());
@@ -927,7 +927,7 @@ public class CotizacionesEditor extends AbstractEditorH {
 		bEditar.setText("Editar");
 		bEditar.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("BotÛn de editar...");
+				System.out.println("Bot√≥n de editar...");
 				editarActividad(getSite().getShell(), getActividadSeleccionada());
 			}
 		});
@@ -940,9 +940,9 @@ public class CotizacionesEditor extends AbstractEditorH {
 		bBorrar.setText("Borrar");
 		bBorrar.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("BotÛn de borrar actividad...");
+				System.out.println("Bot√≥n de borrar actividad...");
 				LineaCotizacion linea = getActividadSeleccionada();
-				System.out.println("LÌnea a borrar: " + linea);
+				System.out.println("L√≠nea a borrar: " + linea);
 				System.out.println("NO1: " + registro.getListaActividades().size());
 				System.out.println("Existe: " + registro.getListaActividades().contains(linea));
 				editorController.eliminarActividad(registro, linea);
@@ -950,7 +950,7 @@ public class CotizacionesEditor extends AbstractEditorH {
 				reenumerarLineasCotizacion(registro);
 				System.out.println("NO3: " + registro.getListaActividades().size());
 				viewerAct.refresh();
-				addDirtyFlag();   // como borramos, indicamos que se ha modificado la cotizaciÛn
+				addDirtyFlag();   // como borramos, indicamos que se ha modificado la cotizaci√≥n
 			}
 		});	
 		
@@ -961,7 +961,7 @@ public class CotizacionesEditor extends AbstractEditorH {
 		bTemplate.setText("Templates");
 		bTemplate.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("BotÛn de importar templates...");
+				System.out.println("Bot√≥n de importar templates...");
 				ImportarTemplate dialogo = new ImportarTemplate(getSite().getShell(), txtInicio.getText(), txtPaxs.getText());
 				dialogo.setText("Importar template");
 				MyInputDialogData data = dialogo.open();
@@ -974,7 +974,7 @@ public class CotizacionesEditor extends AbstractEditorH {
 					reenumerarLineasCotizacion(registro);
 					addDirtyFlag();
 				} else {
-					MessageDialog.openInformation(getSite().getShell(), "InformaciÛn", "La acciÛn ha sido cancelada.");
+					MessageDialog.openInformation(getSite().getShell(), "Informaci√≥n", "La acci√≥n ha sido cancelada.");
 				}
 				viewerAct.refresh();
 			}
@@ -1006,7 +1006,7 @@ public class CotizacionesEditor extends AbstractEditorH {
 		gridData.horizontalAlignment = SWT.RIGHT;
 		gridData.grabExcessHorizontalSpace = true;
 		bArriba.setLayoutData(gridData);
-		bArriba.setToolTipText("Mueve el elemento seleccionado una lÌnea hacia arriba");
+		bArriba.setToolTipText("Mueve el elemento seleccionado una l√≠nea hacia arriba");
 		bArriba.setImage(image.createImage());
 		bArriba.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
@@ -1014,7 +1014,7 @@ public class CotizacionesEditor extends AbstractEditorH {
 				LineaCotizacion lineaTmp = lineaSeleccionada;
 				int posInicial = viewerAct.getTable().getSelectionIndex();
 				int posDestino = posInicial - 1;
-				System.out.println("PosiciÛn seleccionada: " + posInicial);
+				System.out.println("Posici√≥n seleccionada: " + posInicial);
 				
 				if (posInicial > 0) {
 					lineaTmp = (LineaCotizacion) viewerAct.getElementAt(posDestino);
@@ -1031,7 +1031,7 @@ public class CotizacionesEditor extends AbstractEditorH {
 					}
 					addDirtyFlag();
 				} else {
-					System.out.println("Omitiendo reenumeraciÛn de lÌneas");
+					System.out.println("Omitiendo reenumeraci√≥n de l√≠neas");
 				}
 				
 			}
@@ -1043,7 +1043,7 @@ public class CotizacionesEditor extends AbstractEditorH {
 		//gridData.grabExcessHorizontalSpace = true;
 		gridData.horizontalAlignment = SWT.RIGHT;
 		bAbajo.setLayoutData(gridData);
-		bAbajo.setToolTipText("Mueve el elemento seleccionado una lÌnea hacia abajo");
+		bAbajo.setToolTipText("Mueve el elemento seleccionado una l√≠nea hacia abajo");
 		bAbajo.setImage(image.createImage());
 		bAbajo.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
@@ -1051,26 +1051,26 @@ public class CotizacionesEditor extends AbstractEditorH {
 				LineaCotizacion lineaTmp = lineaSeleccionada;
 				int posInicial = viewerAct.getTable().getSelectionIndex();
 				int posDestino = posInicial + 1;
-				System.out.println("PosiciÛn seleccionada: " + posInicial);
+				System.out.println("Posici√≥n seleccionada: " + posInicial);
 				if (posInicial < (viewerAct.getTable().getItemCount() - 1)) {
 					lineaTmp = (LineaCotizacion) viewerAct.getElementAt(posDestino);
-					// si pertenecen al mismo dÌa, intercambiamos la secuencia
+					// si pertenecen al mismo d√≠a, intercambiamos la secuencia
 					if (lineaTmp.getFecha().getTime() == lineaSeleccionada.getFecha().getTime()) {
 						Integer tmpSeq = lineaTmp.getSecuencia();
 						lineaTmp.setSecuencia(lineaSeleccionada.getSecuencia());
 						lineaSeleccionada.setSecuencia(tmpSeq);
 						reenumerarLineasCotizacion(registro);
 					} else {
-						// asignamos el nuevo dia/seq (lineaSel ser· la primera del dÌa)
+						// asignamos el nuevo dia/seq (lineaSel ser√° la primera del d√≠a)
 						lineaSeleccionada.setFecha(lineaTmp.getFecha());
 						lineaSeleccionada.setSecuencia(0);
-						// y reenumeramos la secuencia de las lÌneas correspondientes
-						// al nuevo dÌa de la linea seleccionada
+						// y reenumeramos la secuencia de las l√≠neas correspondientes
+						// al nuevo d√≠a de la linea seleccionada
 						reenumerarLineasCotizacion(registro);
 					}
 					addDirtyFlag();
 				} else {
-					System.out.println("Omitiendo reenumeraciÛn de lÌneas");
+					System.out.println("Omitiendo reenumeraci√≥n de l√≠neas");
 				}
 			}
 		});
@@ -1127,7 +1127,7 @@ public class CotizacionesEditor extends AbstractEditorH {
 		bAgregar.setText("Agregar");
 		bAgregar.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("BotÛn de agregar...");
+				System.out.println("Bot√≥n de agregar...");
 				agregarPax(getSite().getShell());
 			}
 		});
@@ -1139,7 +1139,7 @@ public class CotizacionesEditor extends AbstractEditorH {
 		bEditar.setText("Editar");
 		bEditar.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("BotÛn de editar..." + getPaxSeleccionado().getNombre());
+				System.out.println("Bot√≥n de editar..." + getPaxSeleccionado().getNombre());
 				editarPax(getSite().getShell(), getPaxSeleccionado());
 			}
 		});
@@ -1151,7 +1151,7 @@ public class CotizacionesEditor extends AbstractEditorH {
 		bBorrar.setText("Borrar");
 		bBorrar.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("BotÛn de borrar...");
+				System.out.println("Bot√≥n de borrar...");
 				Pax linea = getPaxSeleccionado();
 				editorController.eliminarPax(registro, linea);
 				viewerPaxs.refresh();
@@ -1191,7 +1191,7 @@ public class CotizacionesEditor extends AbstractEditorH {
 		column.setWidth(34);
 		
 		column = new TableColumn(tablaAct, SWT.LEFT, 2);
-		column.setText("DescripciÛn");
+		column.setText("Descripci√≥n");
 		column.setWidth(195);
 		
 		column = new TableColumn(tablaAct, SWT.LEFT, 3);
@@ -1233,7 +1233,7 @@ public class CotizacionesEditor extends AbstractEditorH {
 		column.setAlignment(SWT.LEFT);
 		
 		column = new TableColumn(tablaPaxs, SWT.CENTER, 4);
-		column.setText("PaÌs");
+		column.setText("Pa√≠s");
 		column.setWidth(90);
 		column.setAlignment(SWT.LEFT);
 		
@@ -1346,11 +1346,11 @@ public class CotizacionesEditor extends AbstractEditorH {
 	/*
 	private void reenumerarLineasCotizacion(Set<LineaCotizacion> lineas) {
 		TreeSet<LineaCotizacion> ts = (TreeSet<LineaCotizacion>) editorController.reenumerarLineas(lineas);
-		// permite al viewer reflejar el nuevo orden de las lÌneas, ya que en el 
+		// permite al viewer reflejar el nuevo orden de las l√≠neas, ya que en el 
 		// TreeSet original (listaActividades) no se reordenan
-		// El nuevo TreeSet (ts) contiene las lÌneas reordenadas por lo que se
+		// El nuevo TreeSet (ts) contiene las l√≠neas reordenadas por lo que se
 		// actualiza el input del viewer con ts.
-		// Esto es requerido para intercambiar lÌneas, en el caso de agregar o
+		// Esto es requerido para intercambiar l√≠neas, en el caso de agregar o
 		// borrar no es indispensable, pero por efectos de uniformidad...
 		viewerAct.setInput(ts);
 		viewerAct.refresh();
@@ -1361,11 +1361,11 @@ public class CotizacionesEditor extends AbstractEditorH {
 	private void reenumerarLineasCotizacion(Cotizacion registro) {
 		Set<LineaCotizacion> lineas = registro.getListaActividades();
 		TreeSet<LineaCotizacion> ts = (TreeSet<LineaCotizacion>) editorController.reenumerarLineas(lineas);
-		// permite al viewer reflejar el nuevo orden de las lÌneas, ya que en el 
+		// permite al viewer reflejar el nuevo orden de las l√≠neas, ya que en el 
 		// TreeSet original (listaActividades) no se reordenan
-		// El nuevo TreeSet (ts) contiene las lÌneas reordenadas por lo que se
+		// El nuevo TreeSet (ts) contiene las l√≠neas reordenadas por lo que se
 		// actualiza el input del viewer con ts.
-		// Esto es requerido para intercambiar lÌneas, en el caso de agregar o
+		// Esto es requerido para intercambiar l√≠neas, en el caso de agregar o
 		// borrar no es indispensable, pero por efectos de uniformidad...
 		registro.getListaActividades().clear();
 		registro.getListaActividades().addAll(ts);
@@ -1376,7 +1376,7 @@ public class CotizacionesEditor extends AbstractEditorH {
 	
 	private void agregarActividad(Shell shell, String fechaDefault) {
 		// cuando agregamos actividades, lineas es usada para guardar la nueva 
-		// actividad o actividades(inicialmente est· null)
+		// actividad o actividades(inicialmente est√° null)
 		Set<LineaCotizacion> lineas = new HashSet<LineaCotizacion>();
 		AgregarActividadCotizacion dialogo = new AgregarActividadCotizacion(shell, lineas);
 		dialogo.setFechaDefault(fechaDefault);
@@ -1453,7 +1453,7 @@ public class CotizacionesEditor extends AbstractEditorH {
 			dialogo.setNombreDefault(txtNombreCliente.getText());
 		}
 		if (dialogo.open() == IDialogConstants.OK_ID) {
-			//MessageDialog.openInformation(getSite().getShell(), "InformaciÛn", "Se importan las actividades del template seleccionado.");
+			//MessageDialog.openInformation(getSite().getShell(), "Informaci√≥n", "Se importan las actividades del template seleccionado.");
 			cliente = seleccion.get(0);
 			System.out.println("Nombre de cliente3: " + cliente.getNombreCliente());
 			//registro.setCliente(cliente);
@@ -1475,11 +1475,11 @@ public class CotizacionesEditor extends AbstractEditorH {
 	@Override
 	public void dispose() {
 		// para evitar error:  "No row with the given identifier exists" porque
-		// se agregÛ una lÌnea a un collection y se sale sin salvar
+		// se agreg√≥ una l√≠nea a un collection y se sale sin salvar
 		if (this.isDirty()) {
 			actualizarVistas();
 		}
-		// si no finalizamos la sesiÛn asociada luego tendremos problemas.
+		// si no finalizamos la sesi√≥n asociada luego tendremos problemas.
 		// Ejm. creamos un doc, salvamos y salimos.  cuando volvemos a entrar nos da
 		// un error de failed to lazily initialize a collection... no session or session was closed.
 		editorController.finalizar(idSession);

@@ -72,7 +72,7 @@ public class BuscarResToursDialog extends AbstractAEPDialog {
 		gridData = new GridData();
 		gridData.horizontalSpan = 6;
 		l.setLayoutData(gridData);
-		l.setText("Por favor, introduzca los criterios de búsqueda");
+		l.setText("Por favor, introduzca los criterios de bÃºsqueda");
 		
 		l = new Label(composite, SWT.SEPARATOR | SWT.HORIZONTAL);
 	    gridData = new GridData(GridData.FILL, GridData.CENTER, false, false, 6, 1);
@@ -93,9 +93,9 @@ public class BuscarResToursDialog extends AbstractAEPDialog {
 				int indice = comboTipo.getSelectionIndex();
 				if (indice != -1 && indice != 0) {
 					Long seleccionado = cdTipo.getKeyAsLongByIndex(indice-1);
-					productos.filtrarByTipo(seleccionado, true);   // filtramos si hay algún tipo de prod. seleccionado
+					productos.filtrarByTipo(seleccionado, true);   // filtramos si hay algÃºn tipo de prod. seleccionado
 				} else {
-					productos.filtrarTours(true);  // si no hay selección de tipo, mostramos todos los productos tipo tour
+					productos.filtrarTours(true);  // si no hay selecciÃ³n de tipo, mostramos todos los productos tipo tour
 				}
 				comboProducto.setItems(productos.getTexto());
 				comboProducto.add("Todos", 0);
@@ -164,7 +164,7 @@ public class BuscarResToursDialog extends AbstractAEPDialog {
 	
 	
 	private void llenarCampos() {
-		// por default, están seleccionados todos los tipos de tours disponibles para la siguiente semana
+		// por default, estÃ¡n seleccionados todos los tipos de tours disponibles para la siguiente semana
 		Date fechaDesde = FechaUtil.ajustarFecha(new Date(), 1);
 		Date fechaHasta = FechaUtil.ajustarFecha(new Date(), 7);
 		comboTipo.select(0);

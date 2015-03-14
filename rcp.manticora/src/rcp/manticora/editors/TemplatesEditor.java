@@ -78,7 +78,7 @@ public class TemplatesEditor extends AbstractEditorH {
 			monitor.setCanceled(true);
 			return;
 		}
-		// obtenemos el código de producto
+		// obtenemos el cÃ³digo de producto
 		int pos = comboGira.getSelectionIndex();
 		Long codigoProducto = productos.getIdProductoByIndex(pos);
 		
@@ -105,12 +105,12 @@ public class TemplatesEditor extends AbstractEditorH {
 		String pNombre = txtNombre.getText();
 		
 		if (pNombre.length() > 30) {
-			MessageDialog.openInformation(getSite().getShell(), "Validación de campos",
+			MessageDialog.openInformation(getSite().getShell(), "ValidaciÃ³n de campos",
 					"El nombre del template no puede superar los 30 caracteres (" + pNombre.length() + ").");
 			return false;
 		}
 		if (registro.getListaActividades().size() == 0) {
-			MessageDialog.openInformation(getSite().getShell(), "Validación de campos",
+			MessageDialog.openInformation(getSite().getShell(), "ValidaciÃ³n de campos",
 					"Debe definir actividades antes de guardar el template.");
 			return false;
 		}
@@ -118,7 +118,7 @@ public class TemplatesEditor extends AbstractEditorH {
 	}
 	
 	/**
-	 * Asigna una nueva secuencia a las líneas pertenecientes a un mismo día
+	 * Asigna una nueva secuencia a las lÃ­neas pertenecientes a un mismo dÃ­a
 	 * 
 	 */
 	private void reenumerarLineasTemplate(TableViewer viewer, int posInicial) {
@@ -133,7 +133,7 @@ public class TemplatesEditor extends AbstractEditorH {
 	}
 	
 	/**
-	 * Reordena todas las líneas del template en base al día y secuencia
+	 * Reordena todas las lÃ­neas del template en base al dÃ­a y secuencia
 	 *
 	 */
 	private void reenumerarLineasTemplate(TableViewer viewer) {
@@ -148,10 +148,10 @@ public class TemplatesEditor extends AbstractEditorH {
 			//System.out.println(linea.getDspProducto());
 			diaLinea = linea.getDia().intValue();
 			if (diaLinea == diaBase) {
-				System.out.println("Base igual a línea (" + linea.getDspProducto() + "): " + diaBase + ", " + diaLinea);
+				System.out.println("Base igual a lÃ­nea (" + linea.getDspProducto() + "): " + diaBase + ", " + diaLinea);
 				linea.setSecuencia(secuencia++);
 			} else {
-				System.out.println("Base diferente a línea (" + linea.getDspProducto() + "): " + diaBase + ", " + diaLinea);
+				System.out.println("Base diferente a lÃ­nea (" + linea.getDspProducto() + "): " + diaBase + ", " + diaLinea);
 				diaBase = diaLinea;
 				secuencia = secuenciaBase;
 				linea.setSecuencia(secuencia++);
@@ -178,7 +178,7 @@ public class TemplatesEditor extends AbstractEditorH {
 		comboTipo.setItems(comboData.getTexto());
 		comboTipo.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-// Si se cambia la selección, se determina el tp seleccionado y se filtra el combo de productos
+// Si se cambia la selecciÃ³n, se determina el tp seleccionado y se filtra el combo de productos
 				int indice = comboTipo.getSelectionIndex();
 				if (indice != -1) {
 					long seleccionado = comboData.getKeyAsLongByIndex(indice);
@@ -189,7 +189,7 @@ public class TemplatesEditor extends AbstractEditorH {
 		});
 		comboTipo.addModifyListener(this.createModifyListener());
 		
-		// el combo de gira sólo contiene productos de tipo "TOUR"
+		// el combo de gira sÃ³lo contiene productos de tipo "TOUR"
 		l = new Label(parent, SWT.NONE);
 		l.setText("Gira:");
 		comboGira = new Combo(parent, SWT.READ_ONLY);
@@ -203,7 +203,7 @@ public class TemplatesEditor extends AbstractEditorH {
 		txtNombre.addModifyListener(this.createModifyListener());
 		
 		l = new Label(parent, SWT.NONE);
-		l.setText("Código:");
+		l.setText("CÃ³digo:");
 		txtCodigo = new Text(parent, SWT.BORDER);
 		txtCodigo.setLayoutData(new GridData(40,15));
 		txtCodigo.setEditable(false);
@@ -226,14 +226,14 @@ public class TemplatesEditor extends AbstractEditorH {
 			getEditorInput().setName(registro.getTituloDocumento());
 			viewer.setInput(registro.getListaActividades());
 		} else {
-			System.out.println("Ejecutando código para cargar datos...");
+			System.out.println("Ejecutando cÃ³digo para cargar datos...");
 			registro = (Template) ((CommonEditorInput) this.getEditorInput()).getElemento();
 			
 			// nos aseguramos de cargar el registro desde la base de datos para
-			// evitar problemas de caché
+			// evitar problemas de cachÃ©
 			//registro = editorController.getTemplateById(registro.getIdTemplate());
-			// el objeto registro está detached de hibernate, así que debemos abrir una sesión
-			// y asignársela (con refresh).
+			// el objeto registro estÃ¡ detached de hibernate, asÃ­ que debemos abrir una sesiÃ³n
+			// y asignÃ¡rsela (con refresh).
 			//Session session = HibernateUtil.getSessionFactory().openSession();
 			//session.refresh(registro);
 			editorController.getSession().refresh(registro);
@@ -250,7 +250,7 @@ public class TemplatesEditor extends AbstractEditorH {
 	
 	/**
 	 * Invocado durante el llenarControles y encargado de inicializar los campos de
-	 * comboTipoProd y comboProd para un template que se está editando. 
+	 * comboTipoProd y comboProd para un template que se estÃ¡ editando. 
 	 */
 	private void inicializarCamposProductos() {
 		comboTipo.setText(registro.getDspTipoProducto());
@@ -278,13 +278,13 @@ public class TemplatesEditor extends AbstractEditorH {
 		
 		TableColumn column;
 		column = new TableColumn(tabla, SWT.CENTER, 0);
-		column.setText("Día");
-		column.setToolTipText("Día en que es realizada la actividad (el primer día es 0)");
+		column.setText("DÃ­a");
+		column.setToolTipText("DÃ­a en que es realizada la actividad (el primer dÃ­a es 0)");
 		column.setWidth(33);
 		
 		column = new TableColumn(tabla, SWT.CENTER, 1);
 		column.setText("Sec");
-		column.setToolTipText("Secuencia de actividad en el día (iniciando en 0)");
+		column.setToolTipText("Secuencia de actividad en el dÃ­a (iniciando en 0)");
 		column.setWidth(33);
 		
 		column = new TableColumn(tabla, SWT.LEFT, 2);
@@ -323,7 +323,7 @@ public class TemplatesEditor extends AbstractEditorH {
 			public void widgetSelected(SelectionEvent e) {
 				LineaTemplate linea = null;
 				AgregarActividadTemplate dialogo = new AgregarActividadTemplate(getSite().getShell(), linea);
-				// si se presionó OK entonces refrescamos y marcamos para grabar
+				// si se presionÃ³ OK entonces refrescamos y marcamos para grabar
 				if (dialogo.open() == IDialogConstants.OK_ID) {
 					linea = dialogo.getLinea();
 					editorController.agregarActividad(registro, linea);
@@ -343,7 +343,7 @@ public class TemplatesEditor extends AbstractEditorH {
 				LineaTemplate linea = (LineaTemplate) seleccion;
 				AgregarActividadTemplate dialogo = new AgregarActividadTemplate(getSite().getShell(), linea);
 				if (dialogo.open() == IDialogConstants.OK_ID) {
-					viewer.refresh();  // refresh total (líneas se reordenan)
+					viewer.refresh();  // refresh total (lÃ­neas se reordenan)
 					reenumerarLineasTemplate(viewer);
 					addDirtyFlag();
 				}
@@ -355,7 +355,7 @@ public class TemplatesEditor extends AbstractEditorH {
 		bTemplate.setLayoutData(new GridData(70,20));
 		bTemplate.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				MessageDialog.openWarning(getSite().getShell(), "Información", "En construcción...");
+				MessageDialog.openWarning(getSite().getShell(), "InformaciÃ³n", "En construcciÃ³n...");
 			}
 		});
 		
@@ -366,7 +366,7 @@ public class TemplatesEditor extends AbstractEditorH {
 			public void widgetSelected(SelectionEvent e) {
 				LineaTemplate linea = getActividadSeleccionada();
 				editorController.eliminarActividad(registro, linea);
-				// debemos remover el registro del viewer porque sino tendríamos
+				// debemos remover el registro del viewer porque sino tendrÃ­amos
 				// que hacer un viewer.refresh() antes de reenumerar
 				viewer.remove(linea);
 				reenumerarLineasTemplate(viewer);
@@ -388,7 +388,7 @@ public class TemplatesEditor extends AbstractEditorH {
 		gridData.horizontalAlignment = SWT.RIGHT;
 		gridData.grabExcessHorizontalSpace = true;
 		bArriba.setLayoutData(gridData);
-		bArriba.setToolTipText("Mueve el elemento seleccionado una línea hacia arriba");
+		bArriba.setToolTipText("Mueve el elemento seleccionado una lÃ­nea hacia arriba");
 		bArriba.setImage(image.createImage());
 		bArriba.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
@@ -396,10 +396,10 @@ public class TemplatesEditor extends AbstractEditorH {
 				LineaTemplate lineaTmp = lineaSeleccionada;
 				int posInicial = viewer.getTable().getSelectionIndex();
 				int posDestino = posInicial - 1;
-				System.out.println("Posición seleccionada: " + posInicial);
+				System.out.println("PosiciÃ³n seleccionada: " + posInicial);
 				if (posInicial > 0) {
 					lineaTmp = (LineaTemplate) viewer.getElementAt(posDestino);
-					// si pertenecen al mismo día, intercambiamos la secuencia
+					// si pertenecen al mismo dÃ­a, intercambiamos la secuencia
 					if (lineaTmp.getDia().intValue() == lineaSeleccionada.getDia().intValue()) {
 						Integer tmpSeq = lineaTmp.getSecuencia();
 						lineaTmp.setSecuencia(lineaSeleccionada.getSecuencia());
@@ -409,13 +409,13 @@ public class TemplatesEditor extends AbstractEditorH {
 						// asignamos el nuevo dia/seq
 						lineaSeleccionada.setDia(lineaTmp.getDia());
 						lineaSeleccionada.setSecuencia(lineaTmp.getSecuencia() + 1);
-						// y reenumeramos la secuencia de las líneas que vienen
-						// luego (hacia abajo) de la línea que se seleccionó para mover
+						// y reenumeramos la secuencia de las lÃ­neas que vienen
+						// luego (hacia abajo) de la lÃ­nea que se seleccionÃ³ para mover
 						reenumerarLineasTemplate(viewer, posInicial + 1);
 					}
 					addDirtyFlag();
 				} else {
-					System.out.println("Omitiendo reenumeración de líneas");
+					System.out.println("Omitiendo reenumeraciÃ³n de lÃ­neas");
 				}
 			}
 		});
@@ -426,7 +426,7 @@ public class TemplatesEditor extends AbstractEditorH {
 		//gridData.grabExcessHorizontalSpace = true;
 		gridData.horizontalAlignment = SWT.RIGHT;
 		bAbajo.setLayoutData(gridData);
-		bAbajo.setToolTipText("Mueve el elemento seleccionado una línea hacia abajo");
+		bAbajo.setToolTipText("Mueve el elemento seleccionado una lÃ­nea hacia abajo");
 		bAbajo.setImage(image.createImage());
 		bAbajo.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
@@ -434,26 +434,26 @@ public class TemplatesEditor extends AbstractEditorH {
 				LineaTemplate lineaTmp = lineaSeleccionada;
 				int posInicial = viewer.getTable().getSelectionIndex();
 				int posDestino = posInicial + 1;
-				System.out.println("Posición seleccionada: " + posInicial);
+				System.out.println("PosiciÃ³n seleccionada: " + posInicial);
 				if (posInicial < (viewer.getTable().getItemCount() - 1)) {
 					lineaTmp = (LineaTemplate) viewer.getElementAt(posDestino);
-					// si pertenecen al mismo día, intercambiamos la secuencia
+					// si pertenecen al mismo dÃ­a, intercambiamos la secuencia
 					if (lineaTmp.getDia().intValue() == lineaSeleccionada.getDia().intValue()) {
 						Integer tmpSeq = lineaTmp.getSecuencia();
 						lineaTmp.setSecuencia(lineaSeleccionada.getSecuencia());
 						lineaSeleccionada.setSecuencia(tmpSeq);
 						viewer.refresh();
 					} else {
-						// asignamos el nuevo dia/seq (lineaSel será la primera del día)
+						// asignamos el nuevo dia/seq (lineaSel serÃ¡ la primera del dÃ­a)
 						lineaSeleccionada.setDia(lineaTmp.getDia());
 						lineaSeleccionada.setSecuencia(0);
-						// y reenumeramos la secuencia de las líneas correspondientes
-						// al nuevo día de la linea seleccionada
+						// y reenumeramos la secuencia de las lÃ­neas correspondientes
+						// al nuevo dÃ­a de la linea seleccionada
 						reenumerarLineasTemplate(viewer, posInicial);
 					}
 					addDirtyFlag();
 				} else {
-					System.out.println("Omitiendo reenumeración de líneas");
+					System.out.println("Omitiendo reenumeraciÃ³n de lÃ­neas");
 				}
 			}
 		});
@@ -544,7 +544,7 @@ public class TemplatesEditor extends AbstractEditorH {
 			} else if (dia0 < dia1) {
 				return -1;
 			} else {
-				// dia1 es igual a dia0, así que comparamos en base a la secuencia
+				// dia1 es igual a dia0, asÃ­ que comparamos en base a la secuencia
 				if (seq0 > seq1) {
 					return 1;
 				} else if (seq0 < seq1) {

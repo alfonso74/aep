@@ -71,14 +71,14 @@ public class HojaServicioController extends AbstractControllerNew<IHojaServicio>
 	*/
 	/*
 	public void finalizar(String editorId) {
-		System.out.println("Finalizando sesión: " + editorId);
+		System.out.println("Finalizando sesiÃ³n: " + editorId);
 		HibernateUtil.closeEditorSession(editorId);
 	}
 	
 	public void doSave(HojaServicio registro) {
 		session.beginTransaction();
 		dao.makePersistent(registro);
-		dao.flush();            // extiende las modificaciones al caché
+		dao.flush();            // extiende las modificaciones al cachÃ©
 		session.getTransaction().commit();
 	}
 	
@@ -103,7 +103,7 @@ public class HojaServicioController extends AbstractControllerNew<IHojaServicio>
 	}
 	
 	/**
-	 * Obtiene el número de puestos ocupados para el tour en la fecha indicada
+	 * Obtiene el nÃºmero de puestos ocupados para el tour en la fecha indicada
 	 * (DisponibilidadTour)
 	 * @param disp
 	 * @return
@@ -169,13 +169,13 @@ public class HojaServicioController extends AbstractControllerNew<IHojaServicio>
 	
 	public void eliminarActividad(IHojaServicio registro, LineaActividad linea) {
 		if (linea.hasReservas()) {
-			// para cada asignación que tiene la línea de actividad...
+			// para cada asignaciÃ³n que tiene la lÃ­nea de actividad...
 			for (AsignacionReserva asignacion : linea.getListaAsignaciones()) {
 				// obtenemos la reserva...
 				IReserva reserva = asignacion.getReserva();
-				// eliminamos la asignación del lado de la reserva...
+				// eliminamos la asignaciÃ³n del lado de la reserva...
 				reserva.eliminarAsignacion(asignacion);
-				// y eliminanos la asignación de lado de la línea de actividad
+				// y eliminanos la asignaciÃ³n de lado de la lÃ­nea de actividad
 				linea.eliminarAsignacionReserva(asignacion);
 				if (!reserva.hasActividades()) {
 					// si la reserva queda sin actividades asociadas se debe borrar
@@ -183,7 +183,7 @@ public class HojaServicioController extends AbstractControllerNew<IHojaServicio>
 				}
 			}
 		}
-		// y finalmente borramos la línea de actividad
+		// y finalmente borramos la lÃ­nea de actividad
 		registro.eliminarActividad(linea);
 	}
 	
@@ -193,7 +193,7 @@ public class HojaServicioController extends AbstractControllerNew<IHojaServicio>
 	
 	/**
 	 * Usado para "excluir" (no borrar) un pax de una hoja de servicio de
-	 * ventas u operaciones.  Solamente se elimina la asociación a esta hoja,
+	 * ventas u operaciones.  Solamente se elimina la asociaciÃ³n a esta hoja,
 	 * para borrar el pax se debe usar otro procedimiento.
 	 * @param registro Hoja de servicio con listado de paxs
 	 * @param pax Pax que se va a excluir
@@ -203,7 +203,7 @@ public class HojaServicioController extends AbstractControllerNew<IHojaServicio>
 	}
 	
 	/**
-	 * Elimina la asociación de una reserva a la hoja de servicio y a sus actividades
+	 * Elimina la asociaciÃ³n de una reserva a la hoja de servicio y a sus actividades
 	 * @param reserva Reserva que se va a "desasociar"
 	 */
 	public void eliminarReserva(IReserva reserva) {
@@ -211,15 +211,15 @@ public class HojaServicioController extends AbstractControllerNew<IHojaServicio>
 		if (reserva.hasActividades()) {
 			// en caso positivo, debemos borrar las asignaciones de las actividades hacia la reserva a ser borrada
 			for (AsignacionReserva asignacion : reserva.getListaAsignaciones()) {
-				// obtenemos la línea de actividad...
+				// obtenemos la lÃ­nea de actividad...
 				LineaActividad linea = asignacion.getActividad();
-				// y eliminamos la asociación hacia la reserva
+				// y eliminamos la asociaciÃ³n hacia la reserva
 				linea.eliminarAsignacionReserva(asignacion);
 				asignacion.setActividad(null);
 				asignacion.setReserva(null);
 			}
 		}
-		// habiendo eliminado las asociaciones, podemos proceder a eliminar la asociación reserva-hoja
+		// habiendo eliminado las asociaciones, podemos proceder a eliminar la asociaciÃ³n reserva-hoja
 		IHojaServicio hoja = reserva.getHoja();
 		hoja.eliminarReserva(reserva);
 		/*
@@ -228,7 +228,7 @@ public class HojaServicioController extends AbstractControllerNew<IHojaServicio>
 		System.out.println("Disp: " + ((ReservaTour) reserva).getDisponibilidad());
 		System.out.println("Asig (" + reserva.getListaAsignaciones().size() + "): " + reserva.getListaAsignaciones());
 		*/
-		// y finalmente, eliminamos la asociación a la disponibilidad (toda reserva de tour SIEMPRE tiene una disponibilidad)
+		// y finalmente, eliminamos la asociaciÃ³n a la disponibilidad (toda reserva de tour SIEMPRE tiene una disponibilidad)
 		if (reserva instanceof ReservaTour) {
 			((ReservaTour) reserva).getDisponibilidad().eliminarReserva(reserva);
 			((ReservaTour) reserva).setDisponibilidad(null);
@@ -239,9 +239,9 @@ public class HojaServicioController extends AbstractControllerNew<IHojaServicio>
 	
 	/*
 	public void eliminarReserva(HojaServicio registro, IReserva reserva) {
-		// borramos la asociación de la actividad hacia la reserva
+		// borramos la asociaciÃ³n de la actividad hacia la reserva
 		reserva.getActividad().eliminarReserva();
-		// y borramos la asociación de la hoja hacia la reserva
+		// y borramos la asociaciÃ³n de la hoja hacia la reserva
 		registro.eliminarReserva(reserva);
 	}
 	*/
@@ -255,13 +255,13 @@ public class HojaServicioController extends AbstractControllerNew<IHojaServicio>
 	 */
 	public AsignacionReserva agregarAsignacionReserva(LineaActividad actividad,
 			IReserva reserva) {
-		// se crea el objeto de asignación
+		// se crea el objeto de asignaciÃ³n
 		AsignacionReserva asignacion = new AsignacionReserva();
 		asignacion.setActividad(actividad);
 		asignacion.setReserva(reserva);
 		asignacion.setUsuario(AutenticacionUtil.getUsuario().getUserName());
 		asignacion.setFechaCreacion(new Date());
-		// se crea la asociación entre la reserva y la actividad
+		// se crea la asociaciÃ³n entre la reserva y la actividad
 		actividad.agregarAsignacionReserva(asignacion);
 		reserva.agregarAsignacion(asignacion);
 		// y se asocia la reserva a la hoja de servicio
@@ -272,10 +272,10 @@ public class HojaServicioController extends AbstractControllerNew<IHojaServicio>
 	/**
 	 * Elimina todas las asignaciones que tenga una actividad, pero no borra
 	 * las reservas.
-	 * @param actividad Actividad a la que deben borrársele las asignaciones
+	 * @param actividad Actividad a la que deben borrÃ¡rsele las asignaciones
 	 */
 	public void eliminarAsignacionesReserva(LineaActividad actividad) {
-		// borramos la asociación de la actividad hacia la reserva
+		// borramos la asociaciÃ³n de la actividad hacia la reserva
 		//actividad.eliminarAsignacionReserva(reserva);
 		for (AsignacionReserva asignacion : actividad.getListaAsignaciones()) {
 			//IReserva reserva = asignacion.getReserva();
@@ -286,9 +286,9 @@ public class HojaServicioController extends AbstractControllerNew<IHojaServicio>
 	}
 	
 	/**
-	 * Elimina una asignación de reserva en particular, y deja sin tocar la línea
+	 * Elimina una asignaciÃ³n de reserva en particular, y deja sin tocar la lÃ­nea
 	 * de actividad ni la reserva. 
-	 * @param asignacion Asignación de reserva a ser borrada
+	 * @param asignacion AsignaciÃ³n de reserva a ser borrada
 	 */
 	public void eliminarAsignacionReserva(AsignacionReserva asignacion) {
 		//LineaActividad linea = asignacion.getActividad();
@@ -300,9 +300,9 @@ public class HojaServicioController extends AbstractControllerNew<IHojaServicio>
 	
 	
 	/**
-	 * Agrega un guía a la hoja de operaciones
+	 * Agrega un guÃ­a a la hoja de operaciones
 	 * @param hoja Hoja de operaciones
-	 * @param reserva Reserva que se ha definido para el guía
+	 * @param reserva Reserva que se ha definido para el guÃ­a
 	 */
 	public void agregarGuia(HojaServicioTour hoja, ReservaGuia reserva) {
 		reserva.setHoja(hoja);
@@ -310,9 +310,9 @@ public class HojaServicioController extends AbstractControllerNew<IHojaServicio>
 	}
 	
 	/**
-	 * Permite eliminar la asignación de un guía a la hoja de operaciones
+	 * Permite eliminar la asignaciÃ³n de un guÃ­a a la hoja de operaciones
 	 * @param hoja Hoja de operaciones
-	 * @param reserva Reserva del guía
+	 * @param reserva Reserva del guÃ­a
 	 */
 	public void eliminarGuia(HojaServicioTour hoja, ReservaGuia reserva) {
 		hoja.eliminarReservaGuia(reserva);
@@ -373,30 +373,30 @@ public class HojaServicioController extends AbstractControllerNew<IHojaServicio>
 	}
 
 	/**
-	 * Genera el número de tour que corresponde a una reserva formalizada en operaciones
-	 * El número toma el año y mes del día en curso, y le agrega un secuencial, quedando
-	 * un formato de año, mes y secuencial.  Ejm:  0805-036 (año 2008, mes 05, secuencial 36).
-	 * @return Número de tour.  Ejm:  0805-037
+	 * Genera el nÃºmero de tour que corresponde a una reserva formalizada en operaciones
+	 * El nÃºmero toma el aÃ±o y mes del dÃ­a en curso, y le agrega un secuencial, quedando
+	 * un formato de aÃ±o, mes y secuencial.  Ejm:  0805-036 (aÃ±o 2008, mes 05, secuencial 36).
+	 * @return NÃºmero de tour.  Ejm:  0805-037
 	 */
 	public String generarNumeroTour() {
 		String numeroReserva = "";
 		String aa = String.valueOf(Calendar.getInstance().get(Calendar.YEAR)).substring(2);
 		String yy = ("00" + String.valueOf(Calendar.getInstance().get(Calendar.MONTH) + 1));
-		yy = yy.substring(yy.length() - 2);  // extraemos los dos últimos caracteres
+		yy = yy.substring(yy.length() - 2);  // extraemos los dos Ãºltimos caracteres
 		//String mm = ("00" + String.valueOf(Calendar.getInstance().get(Calendar.MINUTE))).substring(1);
 		//numeroReserva = aa + yy + "-" + mm;
 		Query q = getSession().createSQLQuery("select max(mid(numero, instr(numero, '-') + 1)) as max " +
 				"from hojas_servicios where clase = 'T' and numero is not null");
 		String secuenciaTxt = (String) q.uniqueResult();
-		if (secuenciaTxt == null) {  // solo ocurre si no hay registros en la tabla (ningún tour tiene número)
+		if (secuenciaTxt == null) {  // solo ocurre si no hay registros en la tabla (ningÃºn tour tiene nÃºmero)
 			secuenciaTxt = "0";
-		} else if (secuenciaTxt.equals("")) {  // esto no debería pasar, pero en pruebas lo logré, así que nos aseguramos  :(
+		} else if (secuenciaTxt.equals("")) {  // esto no deberÃ­a pasar, pero en pruebas lo logrÃ©, asÃ­ que nos aseguramos  :(
 			secuenciaTxt = "0";
 		}
 		Long secuencia = Long.valueOf(secuenciaTxt) + 1;
 		secuenciaTxt = "000" + secuencia.toString();
 		numeroReserva = aa + yy + "-" + secuenciaTxt.substring(secuenciaTxt.length() - 3);
-		System.out.println("Número de reserva generado: " + numeroReserva);
+		System.out.println("NÃºmero de reserva generado: " + numeroReserva);
 		return numeroReserva;
 	}
 	

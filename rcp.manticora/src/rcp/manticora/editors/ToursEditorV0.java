@@ -141,7 +141,7 @@ public class ToursEditorV0 extends AbstractEditorH {
 		tabFolder.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 		// tab de datos generales
 		TabItem tabGeneral = new TabItem(tabFolder, SWT.NONE);
-		tabGeneral.setText("Información general");
+		tabGeneral.setText("InformaciÃ³n general");
 		image = AbstractUIPlugin.imageDescriptorFromPlugin("manticora", "icons/infoGeneral2.gif");
 		tabGeneral.setImage(image.createImage());
 		tabGeneral.setControl(crearTabGeneral(tabFolder));
@@ -159,9 +159,9 @@ public class ToursEditorV0 extends AbstractEditorH {
 		image = AbstractUIPlugin.imageDescriptorFromPlugin("manticora", "icons/calendar.gif");
 		tabDisponibilidad.setImage(image.createImage());
 		tabDisponibilidad.setControl(crearTabDisponibilidad(tabFolder));
-		// tab de prueba de categorías (tableTreeViewer)
+		// tab de prueba de categorÃ­as (tableTreeViewer)
 		TabItem tabTreeViewer = new TabItem(tabFolder, SWT.NONE);
-		tabTreeViewer.setText("Categorías");
+		tabTreeViewer.setText("CategorÃ­as");
 		image = AbstractUIPlugin.imageDescriptorFromPlugin("manticora", "icons/aviso.gif");
 		tabTreeViewer.setImage(image.createImage());
 		tabTreeViewer.setControl(crearTabCategorias(tabFolder));
@@ -209,7 +209,7 @@ public class ToursEditorV0 extends AbstractEditorH {
 		Iterator<LineaTour> it = listado.iterator();
 		while (it.hasNext()) {
 			linea = it.next();
-			vDiasAct.add("Día " + linea.getDia().toString());
+			vDiasAct.add("DÃ­a " + linea.getDia().toString());
 		}
 		Iterator<String> it2 = vDiasAct.iterator();
 		while (it2.hasNext()) {
@@ -241,7 +241,7 @@ public class ToursEditorV0 extends AbstractEditorH {
 		txtNombre.addModifyListener(this.createModifyListener());
 		
 		l = new Label(composite, SWT.NONE);
-		l.setText("Código:");
+		l.setText("CÃ³digo:");
 		gridData = new GridData(SWT.RIGHT, SWT.CENTER, false, false, 2, 1);
 		l.setLayoutData(gridData);
 		txtCodigo = new Text(composite, SWT.SINGLE | SWT.BORDER);
@@ -291,7 +291,7 @@ public class ToursEditorV0 extends AbstractEditorH {
 // Filtra el comboProd de acuerdo al tipo de producto seleccionado
 		comboTipoProd.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("comboTipoProd: selección");
+				System.out.println("comboTipoProd: selecciÃ³n");
 				if (comboTipoProd.getSelectionIndex() != -1){
 					long seleccionado = cdTipoProd.getKeyAsLongByIndex(comboTipoProd.getSelectionIndex());
 					productos.filtrarByTipo(seleccionado, true);
@@ -335,13 +335,13 @@ public class ToursEditorV0 extends AbstractEditorH {
 		viewerAct.setContentProvider(new ViewContentProviderAct());
 		viewerAct.setLabelProvider(new ViewLabelProviderAct());
 		viewerAct.setInput(vLineasAct);
-		// aquí utilizamos ordenamiento del array y de la db para la relación
-		// de día y secuencia (usando la clase DaySeqComparer)
+		// aquÃ­ utilizamos ordenamiento del array y de la db para la relaciÃ³n
+		// de dÃ­a y secuencia (usando la clase DaySeqComparer)
 		// en crearTabDisponibilidad utilizamos el GenericSorter() porque es una sola columna
 		//viewerAct.setSorter(new GenericSorter());
 		
 		//registramos al viewer como un selection provider para determinar
-		//qué elemento está seleccionado
+		//quÃ© elemento estÃ¡ seleccionado
 		getSite().setSelectionProvider(viewerAct);
 
 		Composite botones = new Composite(composite, SWT.NONE);
@@ -357,7 +357,7 @@ public class ToursEditorV0 extends AbstractEditorH {
 		bAgregar.setText("Agregar");
 		bAgregar.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("Botón de agregar...");
+				System.out.println("BotÃ³n de agregar...");
 				agregarActividad(getSite().getShell());
 			}
 		});
@@ -369,7 +369,7 @@ public class ToursEditorV0 extends AbstractEditorH {
 		bEditar.setText("Editar");
 		bEditar.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("Botón de editar...");
+				System.out.println("BotÃ³n de editar...");
 				editarActividad(getSite().getShell());
 			}
 		});
@@ -381,10 +381,10 @@ public class ToursEditorV0 extends AbstractEditorH {
 		bBorrar.setText("Borrar");
 		bBorrar.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("Botón de borrar actividad...");
+				System.out.println("BotÃ³n de borrar actividad...");
 				vLineasAct.remove(getActividadSeleccionada());
 				viewerAct.refresh();
-				addDirtyFlag();   // como borramos, indicamos que se ha modificado la cotización
+				addDirtyFlag();   // como borramos, indicamos que se ha modificado la cotizaciÃ³n
 			}
 		});	
 		
@@ -396,16 +396,16 @@ public class ToursEditorV0 extends AbstractEditorH {
 		bTours.setToolTipText("Agrega un grupo de actividades predefinidas");
 		bTours.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("Botón de agregar template...");
+				System.out.println("BotÃ³n de agregar template...");
 				ImportarTemplate2Tour dialogo = new ImportarTemplate2Tour(getSite().getShell(), "Importar template (tour)");
 				if (dialogo.open() == IDialogConstants.OK_ID) {
 					Long idTemplate = dialogo.getIdTemplate();
-					System.out.println("Código template: " + idTemplate);
+					System.out.println("CÃ³digo template: " + idTemplate);
 					//importarActividades(idTemplate);
 					viewerAct.refresh();
 					addDirtyFlag();
 				} else {
-					MessageDialog.openInformation(getSite().getShell(), "Información", "La acción ha sido cancelada.");
+					MessageDialog.openInformation(getSite().getShell(), "InformaciÃ³n", "La acciÃ³n ha sido cancelada.");
 				}
 			}
 		});
@@ -424,7 +424,7 @@ public class ToursEditorV0 extends AbstractEditorH {
 		gridData.horizontalAlignment = SWT.RIGHT;
 		gridData.grabExcessHorizontalSpace = true;
 		bArriba.setLayoutData(gridData);
-		bArriba.setToolTipText("Mueve el elemento seleccionado una línea hacia arriba");
+		bArriba.setToolTipText("Mueve el elemento seleccionado una lÃ­nea hacia arriba");
 		bArriba.setImage(image.createImage());
 		bArriba.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
@@ -433,7 +433,7 @@ public class ToursEditorV0 extends AbstractEditorH {
 				int posInicial = vLineasAct.indexOf(lineaSeleccionada);
 				int posDestino = posInicial - 1;
 				System.out.println("Inicial: " + posInicial);
-// Si la línea seleccionada no es la primera del vector, entonces procedemos
+// Si la lÃ­nea seleccionada no es la primera del vector, entonces procedemos
 				if (lineaSeleccionada != vLineasAct.firstElement()) {
 					lineaTmp = vLineasAct.elementAt(posDestino);
 					if (lineaTmp.getDia().intValue() != lineaSeleccionada.getDia().intValue()) {
@@ -454,7 +454,7 @@ public class ToursEditorV0 extends AbstractEditorH {
 		//gridData.grabExcessHorizontalSpace = true;
 		gridData.horizontalAlignment = SWT.RIGHT;
 		bAbajo.setLayoutData(gridData);
-		bAbajo.setToolTipText("Mueve el elemento seleccionado una línea hacia abajo");
+		bAbajo.setToolTipText("Mueve el elemento seleccionado una lÃ­nea hacia abajo");
 		bAbajo.setImage(image.createImage());
 		bAbajo.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
@@ -462,8 +462,8 @@ public class ToursEditorV0 extends AbstractEditorH {
 				LineaTour lineaTmp = lineaSeleccionada;
 				int posInicial = vLineasAct.indexOf(lineaSeleccionada);
 				int posDestino = posInicial + 1;
-				System.out.println("Tamaño: " + vLineasAct.size() + ", sel: " + posInicial);
-// Si la línea seleccionada no es la última, entonces procedemos
+				System.out.println("TamaÃ±o: " + vLineasAct.size() + ", sel: " + posInicial);
+// Si la lÃ­nea seleccionada no es la Ãºltima, entonces procedemos
 				if (lineaSeleccionada != vLineasAct.lastElement()) {
 					lineaTmp = vLineasAct.elementAt(posDestino);
 					if (lineaTmp.getDia().intValue() != lineaSeleccionada.getDia().intValue()) {
@@ -491,7 +491,7 @@ public class ToursEditorV0 extends AbstractEditorH {
 		tablaAct.setLayoutData(gridData);
 		
 		TableColumn column = new TableColumn(tablaAct, SWT.CENTER, 0);
-		column.setText("Día");
+		column.setText("DÃ­a");
 		column.setWidth(33);
 		column.setAlignment(SWT.LEFT);
 		
@@ -575,7 +575,7 @@ public class ToursEditorV0 extends AbstractEditorH {
 		viewerDisp.setSorter(new GenericSorter(viewerDisp));
 		
 // registramos al viewer como un selection provider para determinar
-// qué elemento está seleccionado
+// quÃ© elemento estÃ¡ seleccionado
 		getSite().setSelectionProvider(viewerAct);
 
 		Composite botones = new Composite(composite, SWT.NONE);
@@ -587,7 +587,7 @@ public class ToursEditorV0 extends AbstractEditorH {
 		bFechas.setText("Definir fechas");
 		bFechas.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("Botón de definir fechas...");
+				System.out.println("BotÃ³n de definir fechas...");
 				definirDisponibilidad(getSite().getShell());
 			}
 		});
@@ -597,10 +597,10 @@ public class ToursEditorV0 extends AbstractEditorH {
 		bBorrar.setText("Borrar");
 		bBorrar.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("Botón de borrar...");
+				System.out.println("BotÃ³n de borrar...");
 				DisponibilidadTour linea = getDisponibilidadSeleccionada();
 				if (linea != null) {
-					System.out.println("Borrando línea...");
+					System.out.println("Borrando lÃ­nea...");
 					vLineasDisp.remove(linea);
 					viewerDisp.refresh();
 				}
@@ -636,7 +636,7 @@ public class ToursEditorV0 extends AbstractEditorH {
 		column.setAlignment(SWT.LEFT);
 
 		column = new TableColumn(tablaAct, SWT.CENTER, 2);
-		column.setText("Número de tour");
+		column.setText("NÃºmero de tour");
 		column.setWidth(90);
 		column.setAlignment(SWT.LEFT);
 		
@@ -737,7 +737,7 @@ public class ToursEditorV0 extends AbstractEditorH {
 		tablaAct.setLayoutData(gridData);
 		
 		TableColumn column = new TableColumn(tablaAct, SWT.LEFT, 0);
-		column.setText("Día");
+		column.setText("DÃ­a");
 		column.setWidth(50);
 		column.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
@@ -776,7 +776,7 @@ public class ToursEditorV0 extends AbstractEditorH {
 				Iterator<LineaTour> it = vLineasAct.iterator();
 				while (it.hasNext()) {
 					linea = it.next();
-					dia = "Día " + linea.getDia();
+					dia = "DÃ­a " + linea.getDia();
 					System.out.println("Dia base: " + diaBase + ", dia: " + dia);
 					if (dia.equals(diaBase)) {
 						System.out.println("Igual!!");
@@ -791,7 +791,7 @@ public class ToursEditorV0 extends AbstractEditorH {
 		}
 
 		public Object getParent(Object element) {
-			String dia = "Día " + ((LineaTour) element).getDia(); 
+			String dia = "DÃ­a " + ((LineaTour) element).getDia(); 
 			return dia;
 		}
 
@@ -933,7 +933,7 @@ public class ToursEditorV0 extends AbstractEditorH {
 	*/
 	
 	/**
-	 * Ordena las líneas del tour en base al día y secuencia
+	 * Ordena las lÃ­neas del tour en base al dÃ­a y secuencia
 	 *
 	 */
 	private void enumerarLineasTour() {
@@ -946,10 +946,10 @@ public class ToursEditorV0 extends AbstractEditorH {
 			linea = vLineasAct.elementAt(n);
 			diaLinea = linea.getDia();
 			if (diaLinea.intValue() == diaBase.intValue()) {
-				System.out.println("Base igual a línea: " + diaBase + ", " + diaLinea);
+				System.out.println("Base igual a lÃ­nea: " + diaBase + ", " + diaLinea);
 				linea.setSecuencia(secuencia++);
 			} else {
-				System.out.println("Base diferente a línea: " + diaBase + ", " + diaLinea);
+				System.out.println("Base diferente a lÃ­nea: " + diaBase + ", " + diaLinea);
 				diaBase = diaLinea;
 				secuencia = 1;
 				linea.setSecuencia(secuencia++);
@@ -968,7 +968,7 @@ public class ToursEditorV0 extends AbstractEditorH {
 			} else if (dia0 < dia1) {
 				return -1;
 			} else {
-				// dia1 es igual a dia0, así que comparamos en base a la secuencia
+				// dia1 es igual a dia0, asÃ­ que comparamos en base a la secuencia
 				if (seq0 > seq1) {
 					return 1;
 				} else if (seq0 < seq1) {

@@ -126,7 +126,7 @@ public class ReservaBoletosDialog extends AbstractAEPTitleAreaDialog
 			setTitle("Editando reserva de boletos");
 			setMessage("Por favor, especifique los detalles de la reserva", IMessageProvider.INFORMATION);
 			
-			System.out.println("Cargando informaci髇 de campos...");
+			System.out.println("Cargando informaci贸n de campos...");
 			txtLugar.setText(valor2Txt(reserva.getUbicacion()));
 			txtFecha.setText(FechaUtil.toString(reserva.getFecha()));
 			txtHora.setText(FechaUtil.toString(reserva.getFecha(), FechaUtil.formatoHora));
@@ -164,21 +164,21 @@ public class ReservaBoletosDialog extends AbstractAEPTitleAreaDialog
 		String pHora = txtHora.getText().trim();
 		
 		if (pLugar.length() == 0) {
-			MessageDialog.openInformation(shell, "Validaci髇 de campo",
+			MessageDialog.openInformation(shell, "Validaci贸n de campo",
 					"El campo de \"Lugar\" no puede quedar en blanco.");
 			return false;
 		} else if (pLugar.length() > 30) {
-			MessageDialog.openInformation(shell, "Validaci髇 de campo",
+			MessageDialog.openInformation(shell, "Validaci贸n de campo",
 					"El campo de \"Lugar\" no puede superar los 30 caracteres (" + pLugar.length() + ").");
 			return false;
 		}
 		if (FechaUtil.toDate(pFecha) == null) {
-			MessageDialog.openInformation(shell, "Validaci髇 de campos",
+			MessageDialog.openInformation(shell, "Validaci贸n de campos",
 				"El formato de la fecha debe ser dd-MM-yyyy (Ejemplo: \"25-11-2008\").");
 			return false;
 		}
 		if (FechaUtil.toHour(pHora) == null) {
-			MessageDialog.openInformation(shell, "Validaci髇 de campos",
+			MessageDialog.openInformation(shell, "Validaci贸n de campos",
 					"El formato de hora debe ser hh:mm aa (Ejemplo: \"11:45 AM\").");
 			return false;
 		}

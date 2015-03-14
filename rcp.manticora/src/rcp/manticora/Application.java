@@ -37,7 +37,7 @@ public class Application implements IApplication {
 		
 		try {
 			
-			// El código siguiente es utilizado para el login gris (sin splash screen)
+			// El cÃ³digo siguiente es utilizado para el login gris (sin splash screen)
 			/*
 			Platform.endSplash();
 			
@@ -53,7 +53,7 @@ public class Application implements IApplication {
 					System.out.println("Usuario autenticado: " + datos.getUsuario());
 				} else {
 					System.err.println("Usuario no autenticado correctamente: " + datos.getUsuario());
-					MessageDialog.openError(display.getActiveShell(), "Error de validación", "El password introducido es incorrecto, por favor verifique.");
+					MessageDialog.openError(display.getActiveShell(), "Error de validaciÃ³n", "El password introducido es incorrecto, por favor verifique.");
 					//return IApplication.EXIT_OK;
 				}
 			}
@@ -85,7 +85,7 @@ public class Application implements IApplication {
 	}
 	
 	private void mensajeError(Shell shell, Exception e) {
-		MessageDialog.openError(shell, "Error en la aplicación", "Error: " + e.toString() + "\n\nStack trace: " + e.getStackTrace()[0]);
+		MessageDialog.openError(shell, "Error en la aplicaciÃ³n", "Error: " + e.toString() + "\n\nStack trace: " + e.getStackTrace()[0]);
 	}
 	
 	

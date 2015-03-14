@@ -79,7 +79,7 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
     	appMenu1.add(saveAction);
     	// separador para grupo de additions
     	appMenu1.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
-    	MenuManager appMenuL2 = new MenuManager("Cotización", "level2");
+    	MenuManager appMenuL2 = new MenuManager("CotizaciÃ³n", "level2");
     	MenuManager appMenuL3 = new MenuManager(null, "level3");
     	appMenuL2.add(appMenuL3);
     	appMenu1.add(appMenuL2);
@@ -105,9 +105,9 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
     	MenuManager helpMenu = new MenuManager("&Ayuda", "ayuda");
     	helpMenu.add(aboutAction);
     	
-    	// registramos los menús con el MenuManager principal (objeto menuBar)
+    	// registramos los menÃºs con el MenuManager principal (objeto menuBar)
     	menuBar.add(appMenu1);
-    	// placeholder de "additions" (aparece entre Aplicación y Ayuda)
+    	// placeholder de "additions" (aparece entre AplicaciÃ³n y Ayuda)
     	menuBar.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
     	menuBar.add(reportsMenu);
     	menuBar.add(helpMenu);

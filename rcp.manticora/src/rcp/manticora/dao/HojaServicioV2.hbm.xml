@@ -32,10 +32,10 @@
 			<many-to-many column="idPax"
 				class="rcp.manticora.model.Pax"/>
 		</set>
-<!-- inverse:  la colección es un mirror image del many-to-one del otro lado -->
+<!-- inverse:  la colecciÃ³n es un mirror image del many-to-one del otro lado -->
 <!-- lazy="false" o fetch="join" evita problemas al invocar getDisponibilidad() - complicaciones del polimorfismo -->
-<!-- fetch="join" también evita problemas con getDisponibilidad() pero como ejecuta un solo query (con outer join) al haber -->
-<!-- múltiples rows de reserva, muestra n hojas de servicio iguales (tantas n como reservas se hayan creado) así que nos quedamos con lazy="false" -->
+<!-- fetch="join" tambiÃ©n evita problemas con getDisponibilidad() pero como ejecuta un solo query (con outer join) al haber -->
+<!-- mÃºltiples rows de reserva, muestra n hojas de servicio iguales (tantas n como reservas se hayan creado) asÃ­ que nos quedamos con lazy="false" -->
 		<set name="listaReservas" lazy="false"
 			cascade="all,delete-orphan" inverse="true">
 			<key column="idHoja" not-null="true"/>
@@ -117,10 +117,10 @@
 		<id name="idAsignacion" column="idASIGNACION" unsaved-value="-1">
 			<generator class="native"/>
 		</id>
-<!-- la asignación TIENE una actividad y una reserva -->
+<!-- la asignaciÃ³n TIENE una actividad y una reserva -->
 		<many-to-one name="actividad" column="idActividad" not-null="true"/>
-<!-- TODO: la reserva está dando problemas al guardar, ya que intenta crear el registro de asignación antes -->
-<!-- que la reserva, por lo que el not-null revienta, así que lo dejamos en false por ahora. -->
+<!-- TODO: la reserva estÃ¡ dando problemas al guardar, ya que intenta crear el registro de asignaciÃ³n antes -->
+<!-- que la reserva, por lo que el not-null revienta, asÃ­ que lo dejamos en false por ahora. -->
 		<many-to-one name="reserva" column="idReserva" not-null="false"/>
 		<property name="usuario"/>
 		<property name="fechaCreacion" type="timestamp" column="FECHA_ASIGNACION"/>

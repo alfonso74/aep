@@ -24,7 +24,7 @@ public abstract class AbstractViewH extends ViewPart implements IRefreshView {
 	/**
 	 * Agrega a un viewer la capacidad de abrir un registro al dar un doble clic.
 	 * @param viewer Viewer al que se agrega el listener
-	 * @param editorId ID del editor que ser· utilizado para editar el registro
+	 * @param editorId ID del editor que ser√° utilizado para editar el registro
 	 */
 	protected void hookDoubleClickListener(final StructuredViewer viewer, final String editorId) {
 		viewer.addDoubleClickListener(new IDoubleClickListener() {

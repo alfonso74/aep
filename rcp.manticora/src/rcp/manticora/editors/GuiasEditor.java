@@ -40,7 +40,7 @@ public class GuiasEditor extends AbstractEditorH {
 		Label l;
 		
 		l = new Label(parent, SWT.NONE);
-		l.setText("Código:");
+		l.setText("CÃ³digo:");
 		txtCodigo = new Text(parent, SWT.SINGLE | SWT.BORDER);
 		txtCodigo.setLayoutData(new GridData(40,15));
 		txtCodigo.setEditable(false);
@@ -96,7 +96,7 @@ public class GuiasEditor extends AbstractEditorH {
 	protected void llenarControles() {
 		isNewDoc = getEditorInput().isNewDoc;
 		if (isNewDoc) {
-			System.out.println("Creando nuevo guía...");
+			System.out.println("Creando nuevo guÃ­a...");
 			registro = new Guia();
 			this.setPartName(registro.getTituloDocumento());
 			getEditorInput().setName(registro.getTituloDocumento());

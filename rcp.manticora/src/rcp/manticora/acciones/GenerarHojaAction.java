@@ -36,12 +36,12 @@ public class GenerarHojaAction implements IEditorActionDelegate {
 		//controller = HibernateController.getInstance();
 		
 		if (targetEditor.isDirty()) {
-			MessageDialog.openWarning(targetEditor.getSite().getShell(), "Informaci髇",
+			MessageDialog.openWarning(targetEditor.getSite().getShell(), "Informaci贸n",
 					"Debe guardar los cambios antes de generar la hoja de servicio.");
 			return;
 		};
 		if (!targetEditor.validarGeneracionHS()) {
-			System.out.println("Error de validaci髇");
+			System.out.println("Error de validaci贸n");
 			return;
 		} else {
 			Cotizacion c = (Cotizacion) ((CommonEditorInput) targetEditor.getEditorInput()).getElemento();
@@ -56,10 +56,10 @@ public class GenerarHojaAction implements IEditorActionDelegate {
 			Set<Pax> paxs = c.getListaPaxs();
 			Set<LineaCotizacion> lineas = c.getListaActividades();
 			
-			boolean respuesta = MessageDialog.openConfirm(targetEditor.getSite().getShell(), "Confirmaci髇",
+			boolean respuesta = MessageDialog.openConfirm(targetEditor.getSite().getShell(), "Confirmaci贸n",
 					"Desea generar la hoja de servicio para " + pNombre + "?");
 			if (respuesta) {
-				// actualizamos el status de la cotizaci髇 y grabamos
+				// actualizamos el status de la cotizaci贸n y grabamos
 				//targetEditor.setTxtEstado("Procesada");
 				targetEditor.setFechaFinalizacion(pFechaFinalizacion);
 				targetEditor.addDirtyFlag();
@@ -87,7 +87,7 @@ public class GenerarHojaAction implements IEditorActionDelegate {
 				//copiarPAXs2HS(registro, paxs);
 				//controller.update(registro);
 				hsController.doSave(registro);
-				// confirmamos la creaci髇 de la hoja de servicio
+				// confirmamos la creaci贸n de la hoja de servicio
 				System.out.println("Hoja de servicio generada: " + registro.getIdHoja());
 				// actualizamos las vistas abiertas por el usuario final
 				actualizarVistas();
@@ -97,13 +97,13 @@ public class GenerarHojaAction implements IEditorActionDelegate {
 				try {
 					// abrimos un editor para la nueva hoja de servicio
 					targetEditor.getSite().getPage().openEditor(input, HojaVentasEditor.ID);
-					// cerramos la cotizaci髇
+					// cerramos la cotizaci贸n
 					targetEditor.getSite().getPage().closeEditor(targetEditor, false);
 				} catch (PartInitException e) {
 					e.printStackTrace();
 				}
 			} else {
-				MessageDialog.openInformation(targetEditor.getSite().getShell(), "Informaci髇", "La acci髇 ha sido cancelada.");
+				MessageDialog.openInformation(targetEditor.getSite().getShell(), "Informaci贸n", "La acci贸n ha sido cancelada.");
 			}
 		}
 	}
@@ -121,7 +121,7 @@ public class GenerarHojaAction implements IEditorActionDelegate {
 	}
 	*/
 	
-	//TODO: evaluar poner esto en alguna clase en com鷑
+	//TODO: evaluar poner esto en alguna clase en com煤n
 	private void actualizarVistas() {
 		IViewReference[] viewRef = targetEditor.getSite().getPage().getViewReferences();
 		for (int n = 0; n < viewRef.length; n++) {

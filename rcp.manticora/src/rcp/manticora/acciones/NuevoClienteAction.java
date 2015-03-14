@@ -19,15 +19,15 @@ public class NuevoClienteAction implements IViewActionDelegate {
 	private String nombreCliente;
 
 	public void init(IViewPart view) {
-		System.out.println("Acci髇 - init: " + view.toString());
+		System.out.println("Acci贸n - init: " + view.toString());
 		//view.getViewSite().getWorkbenchWindow().getActivePage().openEditor()
-		System.out.println("Acci髇 - Active page: " + view.getViewSite().getWorkbenchWindow().getActivePage());
+		System.out.println("Acci贸n - Active page: " + view.getViewSite().getWorkbenchWindow().getActivePage());
 		wbp = view.getViewSite().getWorkbenchWindow().getActivePage();
 	}
 
 	
 	public void run(IAction action) {
-		System.out.println("Acci髇 - run: " + action.toString());
+		System.out.println("Acci贸n - run: " + action.toString());
 		//MessageDialog.openInformation(view.getSite().getShell(),
 		//		MessageUtil.getString("Readme_Editor"),  
 		//		MessageUtil.getString("View_Action_executed"));
@@ -44,7 +44,7 @@ public class NuevoClienteAction implements IViewActionDelegate {
 	
 	
 	public void selectionChanged(IAction action, ISelection selection) {
-		System.out.println("Acci髇 nuevo cliente - selectionChanged: " + selection.toString());
+		System.out.println("Acci贸n nuevo cliente - selectionChanged: " + selection.toString());
 		Object seleccion = ((StructuredSelection) selection).getFirstElement();
 		if (seleccion instanceof Cliente) {
 			nombreCliente = ((ICliente) seleccion).getNombreCliente();

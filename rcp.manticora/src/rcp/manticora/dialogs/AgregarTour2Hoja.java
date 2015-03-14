@@ -86,7 +86,7 @@ public class AgregarTour2Hoja extends AbstractAEPTitleAreaDialog {
 		Label l;
 		GridData gridData;
 		
-// ***************** sección de filtro (tipo, producto y fecha) ****************
+// ***************** secciÃ³n de filtro (tipo, producto y fecha) ****************
 		l = new Label(composite, SWT.NONE);
 		l.setText("Tipo:");
 		comboTipo = new Combo(composite, SWT.READ_ONLY);
@@ -141,7 +141,7 @@ public class AgregarTour2Hoja extends AbstractAEPTitleAreaDialog {
 			}
 		});
 		
-// ************************ sección de lista de tours **************************
+// ************************ secciÃ³n de lista de tours **************************
 		
 		Composite compLista = new Composite(composite, SWT.NULL);
 		layout = new GridLayout(1, false);
@@ -172,7 +172,7 @@ public class AgregarTour2Hoja extends AbstractAEPTitleAreaDialog {
 		return new ISelectionChangedListener() {
 			public void selectionChanged(SelectionChangedEvent event) {
 				seleccion = (DisponibilidadTour) ((IStructuredSelection) event.getSelection()).getFirstElement();
-				System.out.println("Nueva selección: " + seleccion);
+				System.out.println("Nueva selecciÃ³n: " + seleccion);
 			}
 		};
 	}

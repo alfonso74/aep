@@ -13,13 +13,13 @@ public class AsignacionReserva {
 	private String usuario;
 	private Date fechaCreacion;
 	
-// ************************************ métodos especiales **************************************
+// ************************************ mÃ©todos especiales **************************************
 	
 	@Override
 	public String toString() {
 		String act = getActividad() == null ? "null" : getActividad().getIdActividad().toString();
 		String res = getReserva() == null ? "null" : getReserva().getIdReserva().toString();
-		return "Asignación (id-act-res): " + getIdAsignacion() + "-" + act + "-" + res;
+		return "AsignaciÃ³n (id-act-res): " + getIdAsignacion() + "-" + act + "-" + res;
 	}
 	
 	public void eliminar() {

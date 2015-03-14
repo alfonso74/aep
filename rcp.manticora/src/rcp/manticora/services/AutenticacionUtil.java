@@ -52,7 +52,7 @@ public class AutenticacionUtil {
 					System.err.println("El password suministrado no coincide...");
 				}
 			}
-			// la sesión puede haber sido cerrada por el encodePasswordMD5(), así que verificamos
+			// la sesiÃ³n puede haber sido cerrada por el encodePasswordMD5(), asÃ­ que verificamos
 			if (session.isOpen()) {
 				session.getTransaction().commit();
 			}

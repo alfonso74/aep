@@ -40,7 +40,7 @@ public class SimpleReportFactory {
 			action.setTituloReporte("Paxs x Giras");
 			action.setRutaReporte("reports/paxsPorGira.rptdesign");
 		} else {
-			System.err.println("No se encontró el reporte con nombre: " + nombreAccion);
+			System.err.println("No se encontrÃ³ el reporte con nombre: " + nombreAccion);
 		}
 		return action;
 	}

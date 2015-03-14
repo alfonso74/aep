@@ -9,8 +9,8 @@ public class TipoHabitacionesController extends AbstractControllerNew<TipoHabita
 
 	/**
 	 * Crea una instancia de este controller
-	 * @param editorID:  nombre del editor que será utilizado para identificar
-	 * de manera única la sesión de este controller.
+	 * @param editorID:  nombre del editor que serÃ¡ utilizado para identificar
+	 * de manera Ãºnica la sesiÃ³n de este controller.
 	 */
 	public TipoHabitacionesController(String editorId) {
 		super(editorId, new TipoHabitacionDAO());
@@ -28,14 +28,14 @@ public class TipoHabitacionesController extends AbstractControllerNew<TipoHabita
 	}
 	
 	public void finalizar(String editorId) {
-		System.out.println("Finalizando sesión: " + editorId);
+		System.out.println("Finalizando sesiÃ³n: " + editorId);
 		HibernateUtil.closeEditorSession(editorId);     // graba en la base de datos
 	}
 	
 	public void doSave(TipoHabitacion registro) {
 		session.beginTransaction();
 		dao.makePersistent(registro);
-		dao.flush();            // extiende las modificaciones al caché
+		dao.flush();            // extiende las modificaciones al cachÃ©
 		session.getTransaction().commit();
 	}
 	*/
@@ -48,8 +48,8 @@ public class TipoHabitacionesController extends AbstractControllerNew<TipoHabita
 	/**
 	 * Obtiene un Producto de acuerdo a su id.  Usado en el doSave() de
 	 * TipoHabitaciones.
-	 * @param id código del producto
-	 * @return El Producto correspondiente al código
+	 * @param id cÃ³digo del producto
+	 * @return El Producto correspondiente al cÃ³digo
 	 */
 	public Producto getProductoById(Long id) {
 		Productos productos = new Productos();

@@ -26,7 +26,7 @@ public class Tour implements IEditableDocument {
 		listaDisponibilidad = new HashSet<DisponibilidadTour>();
 	}
 	
-//	************** métodos adicionales para manejar líneas de actividad ***********
+//	************** mÃ©todos adicionales para manejar lÃ­neas de actividad ***********
 	
 	public void agregarActividad(LineaTour linea) {
 		listaActividades.add(linea);
@@ -41,10 +41,10 @@ public class Tour implements IEditableDocument {
 	}
 	
 	public void eliminarDisponibilidad(DisponibilidadTour linea) {
-		//TODO: eliminar objetos asociados y mandar mensaje en algún lado (controller??)
+		//TODO: eliminar objetos asociados y mandar mensaje en algÃºn lado (controller??)
 		if (linea.getListaReservas() != null) {
 			// eliminar las reservas asociadas a la disponibilidad
-			// y cada reserva debe borrar su asociación a linea y hoja
+			// y cada reserva debe borrar su asociaciÃ³n a linea y hoja
 		}
 		listaDisponibilidad.remove(linea);
 	}
@@ -65,7 +65,7 @@ public class Tour implements IEditableDocument {
 	}
 	
 	
-// ******************* fin de métodos adicionales ************************
+// ******************* fin de mÃ©todos adicionales ************************
 
 	public Integer getCapacidad() {
 		return capacidad;

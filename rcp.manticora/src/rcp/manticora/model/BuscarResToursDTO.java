@@ -21,7 +21,7 @@ public class BuscarResToursDTO {
 	
 	
 	/**
-	 * Busca disponibilidades de tours en base a los par·metros suministrados a la clase.
+	 * Busca disponibilidades de tours en base a los par√°metros suministrados a la clase.
 	 * @return Array de objetos DisponibilidadTour
 	 */
 	public DisponibilidadTour[] buscarReservasTours() {
@@ -30,7 +30,7 @@ public class BuscarResToursDTO {
 	}
 	
 	/**
-	 * Busca disponibilidades de tours en base a los par·metros suministrados a la clase.
+	 * Busca disponibilidades de tours en base a los par√°metros suministrados a la clase.
 	 * @return Lista de objetos DisponibilidadTour
 	 */
 	@SuppressWarnings("unchecked")

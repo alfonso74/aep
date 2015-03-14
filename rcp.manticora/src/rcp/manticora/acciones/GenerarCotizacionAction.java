@@ -35,11 +35,11 @@ public class GenerarCotizacionAction implements IEditorActionDelegate {
 		//controller = HibernateController.getInstance();
 		
 		if (targetEditor.isDirty()) {
-			MessageDialog.openWarning(targetEditor.getSite().getShell(), "Informaci髇",
-					"Debe guardar los cambios antes de generar la cotizaci髇.");
+			MessageDialog.openWarning(targetEditor.getSite().getShell(), "Informaci贸n",
+					"Debe guardar los cambios antes de generar la cotizaci贸n.");
 			return;
 		} else {
-			// falta agregar la validaci髇 de la solicitud antes de generar la cotizaci髇
+			// falta agregar la validaci贸n de la solicitud antes de generar la cotizaci贸n
 			Solicitud s = (Solicitud) ((CommonEditorInput) targetEditor.getEditorInput()).getElemento();
 			Long pIdSolicitud = s.getIdSolicitud();
 			Date pFechaIni = s.getFechaInicio();
@@ -50,18 +50,18 @@ public class GenerarCotizacionAction implements IEditorActionDelegate {
 			int pPaxs = 0;
 			Long pIdVendedor = s.getIdVendedor();
 			Date pFinalizacion = new Date();
-			// confirmamos que se desea genera una cotizaci髇 para la solicitud abierta
-			boolean respuesta = MessageDialog.openConfirm(targetEditor.getSite().getShell(), "Confirmaci髇",
-					"Desea generar una cotizaci髇 para " + pANombreDe + "?");
+			// confirmamos que se desea genera una cotizaci贸n para la solicitud abierta
+			boolean respuesta = MessageDialog.openConfirm(targetEditor.getSite().getShell(), "Confirmaci贸n",
+					"Desea generar una cotizaci贸n para " + pANombreDe + "?");
 			if (respuesta) {
 				// actualizamos la solicitud y la grabamos con su nuevo status, agregando la
-				// fecha de finalizaci髇 y la cotizaci髇 generado
+				// fecha de finalizaci贸n y la cotizaci贸n generado
 				//targetEditor.setTxtEstado("Procesada");
 				targetEditor.setFechaFinalizacion(pFinalizacion);
 				targetEditor.addDirtyFlag();    // lo ensuciamos para poder grabar
 				targetEditor.getSite().getPage().saveEditor(targetEditor, false);
 				
-				System.out.println("Generando cotizaci髇... " + ((SolicitudesEditor) targetEditor).getComentario());
+				System.out.println("Generando cotizaci贸n... " + ((SolicitudesEditor) targetEditor).getComentario());
 				
 				/*
 				Cotizacion registro = controller.addCotizacion(-1L, pFechaIni, pFechaFin, pANombreDe, 0, 0, 0, 5, 0,
@@ -73,7 +73,7 @@ public class GenerarCotizacionAction implements IEditorActionDelegate {
 				p.setApellido(pApellido);
 				p.setIdPais(s.getIdPais());
 				registro.agregarPax(p);
-				// y actualizamos los registros de la cotizaci髇
+				// y actualizamos los registros de la cotizaci贸n
 				controller.update(registro);
 				*/
 				
@@ -107,14 +107,14 @@ public class GenerarCotizacionAction implements IEditorActionDelegate {
 				
 				editorController.doSave(registro);
 				
-				System.out.println("Cotizaci髇 generada: " + registro);
+				System.out.println("Cotizaci贸n generada: " + registro);
 				// actualizamos la vista que presenta las cotizaciones
 				actualizarVistas();
-				// c骴igo para abrir el nuevo documento de cotizaci髇
+				// c贸digo para abrir el nuevo documento de cotizaci贸n
 				CommonEditorInput input = new CommonEditorInput(registro);
 				//input.setName("Nuevo");
 				try {
-					// abrimos un editor para la cotizaci髇
+					// abrimos un editor para la cotizaci贸n
 					targetEditor.getSite().getPage().openEditor(input, CotizacionesEditor.ID);
 					// y cerramos el editor de la solicitud
 					targetEditor.getSite().getPage().closeEditor(targetEditor, false);
@@ -122,7 +122,7 @@ public class GenerarCotizacionAction implements IEditorActionDelegate {
 					e.printStackTrace();
 				}
 			} else {
-				MessageDialog.openInformation(targetEditor.getSite().getShell(), "Informaci髇", "La acci髇 ha sido cancelada.");
+				MessageDialog.openInformation(targetEditor.getSite().getShell(), "Informaci贸n", "La acci贸n ha sido cancelada.");
 			}
 		}
 	}
@@ -131,7 +131,7 @@ public class GenerarCotizacionAction implements IEditorActionDelegate {
 	}
 	
 	
-//	TODO: evaluar poner esto en alguna clase en com鷑
+//	TODO: evaluar poner esto en alguna clase en com煤n
 	private void actualizarVistas() {
 		IViewReference[] viewRef = targetEditor.getSite().getPage().getViewReferences();
 		for (int n = 0; n < viewRef.length; n++) {

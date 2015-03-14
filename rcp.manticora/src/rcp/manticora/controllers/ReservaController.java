@@ -9,8 +9,8 @@ public class ReservaController extends AbstractControllerNew<IReserva> {
 	
 	/**
 	 * Crea una instancia de este controller
-	 * @param editorID:  nombre del editor que será utilizado para identificar
-	 * de manera única la sesión de este controller.
+	 * @param editorID:  nombre del editor que serÃ¡ utilizado para identificar
+	 * de manera Ãºnica la sesiÃ³n de este controller.
 	 */
 	public ReservaController(String editorId) {
 		super(editorId, new ReservaDAO());
@@ -29,17 +29,17 @@ public class ReservaController extends AbstractControllerNew<IReserva> {
 	public void doSave(IReserva registro) {
 		session.beginTransaction();
 		dao.makePersistent(registro);
-		dao.flush();            // extiende las modificaciones al caché
+		dao.flush();            // extiende las modificaciones al cachÃ©
 		session.getTransaction().commit();
 	}
 	
 	*/
 	
 	/**
-	 * Asigna una línea de detalle a una reserva de hospedaje. La relación se establece en
+	 * Asigna una lÃ­nea de detalle a una reserva de hospedaje. La relaciÃ³n se establece en
 	 * ambos sentidos.
 	 * @param reserva Reserva de hospedaje (ReservaHospedaje)
-	 * @param linea Línea de detalle (ILineaHospedaje)
+	 * @param linea LÃ­nea de detalle (ILineaHospedaje)
 	 */
 	public void agregarLinea(ReservaHospedaje reserva, ILineaHospedaje linea) {
 		reserva.agregarLineaHospedaje(linea);
@@ -47,9 +47,9 @@ public class ReservaController extends AbstractControllerNew<IReserva> {
 	}
 	
 	/**
-	 * Elimina la asociación bidireccional entre una reserva y una línea de detalle.
+	 * Elimina la asociaciÃ³n bidireccional entre una reserva y una lÃ­nea de detalle.
 	 * @param reserva Reserva de hospedaje (ReservaHospedaje)
-	 * @param linea Línea de detalle (ILineaHospedaje)
+	 * @param linea LÃ­nea de detalle (ILineaHospedaje)
 	 */
 	public void eliminarLinea(ReservaHospedaje reserva, ILineaHospedaje linea) {
 		reserva.eliminarLineaHospedaje(linea);

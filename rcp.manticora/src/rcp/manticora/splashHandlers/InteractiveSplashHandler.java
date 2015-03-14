@@ -200,7 +200,7 @@ public class InteractiveSplashHandler extends AbstractSplashHandler {
 	    if (!validarCampos()) {
 	    	return;
 	    } else {
-	    	// si el campo de servidor est· habilitado, actualizar el PreferenceStore
+	    	// si el campo de servidor est√° habilitado, actualizar el PreferenceStore
 	    	if (fTextServidor.getEnabled()) {
 	    		ScopedPreferenceStore store = new ScopedPreferenceStore(new ConfigurationScope(), Application.PLUGIN_ID);
 				store.setValue("servidor", fTextServidor.getText());
@@ -233,11 +233,11 @@ public class InteractiveSplashHandler extends AbstractSplashHandler {
 	
 	
 	/**
-	 * Verifica que el usuario y password sean correctos.  Para la conexiÛn
+	 * Verifica que el usuario y password sean correctos.  Para la conexi√≥n
 	 * se usa el servidor y schema guardado en el PreferenceStore.
 	 * @param usuario Nombre del usuario
 	 * @param password Password del usuario
-	 * @return true si autenticÛ correctamente
+	 * @return true si autentic√≥ correctamente
 	 */
 	private boolean login(String usuario, String password) {
 		ConnectionData datos = new ConnectionData(usuario, password, "NADA");
@@ -274,7 +274,7 @@ public class InteractiveSplashHandler extends AbstractSplashHandler {
 		// Crear barra de progreso
 		createProgressInfo();
 		
-		// asignamos el foco al campo de username, y ponemos como default al botÛn "OK"
+		// asignamos el foco al campo de username, y ponemos como default al bot√≥n "OK"
 		fTextUsername.setFocus();
 		getSplash().setDefaultButton(fButtonOK);
 	}		
@@ -489,7 +489,7 @@ public class InteractiveSplashHandler extends AbstractSplashHandler {
 	    loginStatus = -1;
 	    MessageDialog.openError(
 	        getSplash(),
-	        "Falla de autenticaciÛn",
+	        "Falla de autenticaci√≥n",
 	        "Usuario no autenticado correctamente: " + fTextUsername.getText());
 	}
 	
@@ -500,13 +500,13 @@ public class InteractiveSplashHandler extends AbstractSplashHandler {
 		String servidor = fTextServidor.getText().trim();
 		
 		if (usuario.equals("")) {
-			MessageDialog.openError(getSplash(), "Error de validaciÛn",
+			MessageDialog.openError(getSplash(), "Error de validaci√≥n",
 				"El campo de usuario no puede quedar en blanco.");
 			fTextUsername.setFocus();
 			return false;
 		}
 		if (servidor.equals("")) {
-			MessageDialog.openError(getSplash(), "Error de validaciÛn",
+			MessageDialog.openError(getSplash(), "Error de validaci√≥n",
 				"El campo de servidor no puede quedar en blanco.");
 			fTextServidor.setFocus();
 			return false;

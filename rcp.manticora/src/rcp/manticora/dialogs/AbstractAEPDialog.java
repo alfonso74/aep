@@ -44,7 +44,7 @@ public abstract class AbstractAEPDialog extends Dialog implements IFormUtils, IC
 		} else {
 			newShell.setText(titulo);
 		}
-//		carga la imagen de la ventana desde la definici髇 del producto
+//		carga la imagen de la ventana desde la definici贸n del producto
 		IProduct product = Platform.getProduct();
 		if (product != null) {
 			String[] imageURLs = parseCSL(product.getProperty(IProductConstants.WINDOW_IMAGES));
@@ -77,24 +77,24 @@ public abstract class AbstractAEPDialog extends Dialog implements IFormUtils, IC
 	protected abstract void createButtonsForButtonBar(Composite parent);
 	
 	/**
-	 * Helper method para presentar un error durante la ejecuci髇 del dialog. El
-	 * t韙ulo de la ventana siempre es "Error en la aplicaci髇".
+	 * Helper method para presentar un error durante la ejecuci贸n del dialog. El
+	 * t铆tulo de la ventana siempre es "Error en la aplicaci贸n".
 	 * @param shell shell
 	 * @param e Exception
 	 */
 	protected void mensajeError(Shell shell, Exception e) {
-		MessageDialog.openError(shell, "Error en la aplicaci髇", "Error: " + e.toString() + "\n\nStack trace: " + e.getStackTrace()[0]);
+		MessageDialog.openError(shell, "Error en la aplicaci贸n", "Error: " + e.toString() + "\n\nStack trace: " + e.getStackTrace()[0]);
 	}
 	
 	/**
-	 * Helper method para presentar un error durante la ejecuci髇 del dialog
+	 * Helper method para presentar un error durante la ejecuci贸n del dialog
 	 * @param shell shell
-	 * @param titulo t韙ulo que se quiere presentar, se agrega al texto "Error en
-	 * la aplicaci髇:".
+	 * @param titulo t铆tulo que se quiere presentar, se agrega al texto "Error en
+	 * la aplicaci贸n:".
 	 * @param e Exception
 	 */
 	protected void mensajeError(Shell shell, String titulo, Exception e) {
-		MessageDialog.openError(shell, "Error en la aplicaci髇: " + titulo, "Error: " + e.toString() + "\n\nStack trace: " + e.getStackTrace()[0]);
+		MessageDialog.openError(shell, "Error en la aplicaci贸n: " + titulo, "Error: " + e.toString() + "\n\nStack trace: " + e.getStackTrace()[0]);
 	}
 	
 	public Double txt2Currency(String valorCampo) {

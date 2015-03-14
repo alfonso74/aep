@@ -33,12 +33,12 @@ public class GenerarPdfCotizacion implements IEditorActionDelegate {
 		}
 		
 		if (targetEditor.isDirty()) {
-			MessageDialog.openWarning(targetEditor.getSite().getShell(), "Informaci髇",
-					"Debe guardar los cambios antes de generar la cotizaci髇.");
+			MessageDialog.openWarning(targetEditor.getSite().getShell(), "Informaci贸n",
+					"Debe guardar los cambios antes de generar la cotizaci贸n.");
 			return;
 		};
 		if (!targetEditor.validarGeneracionPdf()) {
-			System.out.println("Error de validaci髇");
+			System.out.println("Error de validaci贸n");
 			return;
 		}
 
@@ -49,24 +49,24 @@ public class GenerarPdfCotizacion implements IEditorActionDelegate {
 		dlg.setFilterPath(obtenerDirectorioDefault());
 		String directorio = dlg.open();
 		if (directorio == null) {
-			// mensaje de acci髇 cancelada por el usuario final
+			// mensaje de acci贸n cancelada por el usuario final
 			MessageDialog.openInformation(targetEditor.getSite().getShell(), "Generar archivo PDF",
-					"La acci髇 ha sido cancelada.");
+					"La acci贸n ha sido cancelada.");
 			return;
 		}
 		actualizarDirectorioDefault(directorio);
 		
 		String pNombre = targetEditor.getPartName();
-		System.out.println("Generando pdf para cotizaci髇: " + pNombre);
+		System.out.println("Generando pdf para cotizaci贸n: " + pNombre);
 		Cotizacion cotizacion = targetEditor.getCotizacion();
 		System.out.println("Subtotal: " + cotizacion.getSubtotal());
 		if (cotizacion == null) {
-			System.out.println("Cotizaci髇 NULL");
+			System.out.println("Cotizaci贸n NULL");
 		}
 		Cotizacion2Pdf cot2PDF = new Cotizacion2Pdf(cotizacion);
 		if (cot2PDF.generarPdf(directorio, resumida)) {	
 			MessageDialog.openInformation(targetEditor.getSite().getShell(), "Generar archivo PDF",
-				"Se ha generado exitosamente la cotizaci髇 en formato PDF.\n\nDirectorio: " + directorio);
+				"Se ha generado exitosamente la cotizaci贸n en formato PDF.\n\nDirectorio: " + directorio);
 		} else {
 			MessageDialog.openError(targetEditor.getSite().getShell(), "Generar archivo PDF",
 				cot2PDF.getMensajeError());
@@ -78,7 +78,7 @@ public class GenerarPdfCotizacion implements IEditorActionDelegate {
 	
 	/**
 	 * Accesa el preference store de Eclipse y retorna el directorio default para la
-	 * generaci髇 de los archivos PDF
+	 * generaci贸n de los archivos PDF
 	 * @return
 	 */
 	private String obtenerDirectorioDefault() {
@@ -89,12 +89,12 @@ public class GenerarPdfCotizacion implements IEditorActionDelegate {
 	
 	/**
 	 * Guarda en el preference store de Eclipse el directorio que ha especificado
-	 * el usuario final para la generaci髇 de los archivos PDF
+	 * el usuario final para la generaci贸n de los archivos PDF
 	 * @param directorio Directorio seleccionado por el usuario
 	 */
 	private void actualizarDirectorioDefault(String directorio) {
-		// tambi閚 pod韆 usar IEclipsePreferences pero aparentemente no ofrece mayores
-		// beneficios en esta funci髇
+		// tambi茅n pod铆a usar IEclipsePreferences pero aparentemente no ofrece mayores
+		// beneficios en esta funci贸n
 		Preferences preferences = new ConfigurationScope().getNode(Application.PLUGIN_ID);
 		preferences.put("rutaPdf", directorio);
 		try {

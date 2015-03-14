@@ -40,7 +40,7 @@ public class HibernateController {
 		//hibModel.commit();
 		dao.makePersistent(tipo);
 		dao.commit();
-		System.out.println("C骴igo TP: " + tipo.getIdTipo());
+		System.out.println("C贸digo TP: " + tipo.getIdTipo());
 		return tipo;
 	}
 	*/
@@ -57,7 +57,7 @@ public class HibernateController {
 	*/
 	
 	/**
-	 * Retorna un listado de productos.  El par醡etro indica si se deben traer
+	 * Retorna un listado de productos.  El par谩metro indica si se deben traer
 	 * productos que sean o no sean tours.
 	 * @param flagTour
 	 * @return
@@ -192,7 +192,7 @@ public class HibernateController {
 			String referencia, String contacto,
 			String telefono, String email, Long idPais, String direccion1,
 			String direccion2, String direccion3, String comentario, String estado) {
-		System.out.println("Agregando cliente jur韉ico...");
+		System.out.println("Agregando cliente jur铆dico...");
 		ClienteDAO dao = new ClienteDAO();
 		Cliente cliente = new ClienteJuridico(idCliente, nombre, identificacion,
 				referencia, contacto, telefono,
@@ -218,7 +218,7 @@ public class HibernateController {
 	}
 	*/
 	
-// ********************************* Pa韘es *******************************
+// ********************************* Pa铆ses *******************************
 	/*
 	public Pais[] getListadoPaises() {
 		Session session = HibernateUtil.currentSession();
@@ -239,7 +239,7 @@ public class HibernateController {
 	}
 	
 	public Pais addPais(Long id, String descripcion) {
-		System.out.println("Agregando pa韘...");
+		System.out.println("Agregando pa铆s...");
 		PaisDAO dao = new PaisDAO();
 		Pais pais = new Pais(id, descripcion);
 		dao.makePersistent(pais);
@@ -258,7 +258,7 @@ public class HibernateController {
 	*/
 	
 	
-// **************************** Funci髇 polim髍fica??? *********************
+// **************************** Funci贸n polim贸rfica??? *********************
 	/*
 	public void update(Object obj) {
 		GenericDAOImpl dao = new GenericDAOImpl();
@@ -335,9 +335,9 @@ public class HibernateController {
 	}
 	*/
 	/**
-	 * Obtiene todos los tours que est醤 disponibles para el producto y la
+	 * Obtiene todos los tours que est谩n disponibles para el producto y la
 	 * fecha indicada
-	 * @param idProducto c骴igo de producto (siempre debe ser un tour)
+	 * @param idProducto c贸digo de producto (siempre debe ser un tour)
 	 * @param fecha fecha para buscar disponibilidad
 	 * @return
 	 */
@@ -465,7 +465,7 @@ public class HibernateController {
 			String nombre, float subtotal, float porcDescuento, float descuento, 
 			float porcImpuesto, float impuesto,	float total, float pago, Integer paxs,
 			String estado) {
-		System.out.println("Agregando cotizaci髇..." + pago);
+		System.out.println("Agregando cotizaci贸n..." + pago);
 		CotizacionDAO dao = new CotizacionDAO();
 		Cotizacion registro = new Cotizacion(idCotizacion, fechaInicio, fechaFin,
 				nombre, subtotal, porcDescuento, descuento, porcImpuesto, impuesto,

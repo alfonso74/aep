@@ -28,7 +28,7 @@ public class TipoProductosEditor extends AbstractEditorH {
 
 	public void doSave(IProgressMonitor monitor) {
 		String pDescripcion = txtDescripcion.getText();
-		boolean pTour = comboTour.getText().equals("Sí") ? true : false;
+		boolean pTour = comboTour.getText().equals("SÃ­") ? true : false;
 		registro.setDescripcion(pDescripcion);
 		registro.setTour(pTour);
 		editorController.doSave(registro);
@@ -53,7 +53,7 @@ public class TipoProductosEditor extends AbstractEditorH {
 		txtTipo.setEditable(false);
 		
 		l = new Label(parent, SWT.NONE);
-		l.setText("Descripción:");
+		l.setText("DescripciÃ³n:");
 		txtDescripcion = new Text(parent, SWT.BORDER);
 		txtDescripcion.setLayoutData(new GridData(180,15));
 		txtDescripcion.addModifyListener(this.createModifyListener());
@@ -61,7 +61,7 @@ public class TipoProductosEditor extends AbstractEditorH {
 		l = new Label(parent, SWT.NONE);
 		l.setText("Es tour?:");
 		comboTour = new Combo(parent, SWT.READ_ONLY);
-		comboTour.setItems(new String[] {"Sí", "No"});
+		comboTour.setItems(new String[] {"SÃ­", "No"});
 		comboTour.select(1);
 		comboTour.addModifyListener(this.createModifyListener());
 	}
@@ -77,7 +77,7 @@ public class TipoProductosEditor extends AbstractEditorH {
 			registro = (TipoProducto) ((CommonEditorInput) this.getEditorInput()).getElemento();
 			txtTipo.setText(valor2Txt(registro.getIdTipo()));
 			txtDescripcion.setText(registro.getDescripcion());
-			String pTour = valor2Txt(registro.isTour()).equals("true") ? "Sí" : "No";
+			String pTour = valor2Txt(registro.isTour()).equals("true") ? "SÃ­" : "No";
 			comboTour.select(comboTour.indexOf(pTour));
 		};
 		addFilledFlag();

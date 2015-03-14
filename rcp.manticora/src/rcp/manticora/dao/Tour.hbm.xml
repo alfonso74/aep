@@ -39,7 +39,7 @@
 		<id name="idDetalle" column="idDETALLE" unsaved-value="-1">
 			<generator class="native" />
 		</id>
-<!-- El fetch="join" parece no ser útil aquí?. -->
+<!-- El fetch="join" parece no ser Ãºtil aquÃ­?. -->
 		<many-to-one name="producto"
 				column="idPRODUCTO"
 				unique="true"

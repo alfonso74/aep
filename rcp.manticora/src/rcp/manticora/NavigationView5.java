@@ -199,15 +199,15 @@ public class NavigationView5 extends ViewPart {
 	private TreeObject crearMenu() {
 		p1 = new TreeParent("Mantenimientos");
 		TreeObject to101 = new TreeObject("Keywords", KeywordsView.ID, "icons/mantenimiento.gif");
-		TreeObject to102 = new TreeObject("Países", PaisesView.ID, IImageKeys.CONFIG);
+		TreeObject to102 = new TreeObject("PaÃ­ses", PaisesView.ID, IImageKeys.CONFIG);
 		TreeObject to103 = new TreeObject("Tipo clientes", TipoClientesView.ID, IImageKeys.CONFIG);
 		TreeObject to104 = new TreeObject("Clientes", ClientesView.ID, IImageKeys.CONFIG);
-		TreeObject to105 = new TreeObject("Compañías", ClientesComView.ID, IImageKeys.CONFIG);
+		TreeObject to105 = new TreeObject("CompaÃ±Ã­as", ClientesComView.ID, IImageKeys.CONFIG);
 		TreeObject to106 = new TreeObject("Redes de viajes", RedesView.ID, IImageKeys.CONFIG);
 		TreeObject to107 = new TreeObject("Tipo productos", TipoProductosView.ID, IImageKeys.CONFIG);
 		TreeObject to108 = new TreeObject("Productos", ProductosView.ID, IImageKeys.CONFIG);
 		TreeObject to109 = new TreeObject("Vendedores", VendedoresView.ID, IImageKeys.CONFIG);
-		TreeObject to110 = new TreeObject("Guías", GuiasView.ID, IImageKeys.CONFIG);
+		TreeObject to110 = new TreeObject("GuÃ­as", GuiasView.ID, IImageKeys.CONFIG);
 		TreeObject to111 = new TreeObject("Transportistas", TransportesView.ID, IImageKeys.CONFIG);
 		TreeObject to112 = new TreeObject("Roles", RolesView.ID, IImageKeys.CONFIG);
 		TreeObject to113 = new TreeObject("Usuarios", UsuariosView.ID, IImageKeys.CONFIG);
@@ -228,8 +228,8 @@ public class NavigationView5 extends ViewPart {
 		TreeObject to401 = new TreeObject("Tours", ReservaToursView.ID, "icons/menuReservas.gif");
 		TreeObject to402 = new TreeObject("Transporte", "", "icons/menuReservas.gif");
 		TreeObject to403 = new TreeObject("Hospedaje", "", "icons/menuReservas.gif");
-		TreeObject to404 = new TreeObject("Alimentación", "", "icons/menuReservas.gif");
-		TreeObject to405 = new TreeObject("Guías", "", "icons/menuReservas.gif");
+		TreeObject to404 = new TreeObject("AlimentaciÃ³n", "", "icons/menuReservas.gif");
+		TreeObject to405 = new TreeObject("GuÃ­as", "", "icons/menuReservas.gif");
 		
 		p1.addChild(to101);
 		p1.addChild(to102);
@@ -298,12 +298,12 @@ public class NavigationView5 extends ViewPart {
 					viewId = ((TreeObject) seleccion).getViewId();
 					viewName = ((TreeObject) seleccion).getName();
 					if (viewId.equals("")) {
-						MessageDialog.openInformation(window.getShell(), "Aviso", "La vista '" + viewName + "' no está habilitada.");
+						MessageDialog.openInformation(window.getShell(), "Aviso", "La vista '" + viewName + "' no estÃ¡ habilitada.");
 					} else {
 						try {
 							getSite().getPage().showView(viewId);
 							//TODO: eliminar esta prueba de perspectivas cuando finalizemos el layout del cliente
-							if (viewName.equals("Guías")) {
+							if (viewName.equals("GuÃ­as")) {
 								//IPerspectiveDescriptor perspectiva = PlatformUI.getWorkbench().getPerspectiveRegistry().findPerspectiveWithId(VentasPerspective.ID);
 								//window.getActivePage().setPerspective(perspectiva);
 							}

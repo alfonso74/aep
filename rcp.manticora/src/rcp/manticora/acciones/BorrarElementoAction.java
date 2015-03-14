@@ -34,9 +34,9 @@ public class BorrarElementoAction implements IViewActionDelegate {
 
 	public void run(IAction action) {
 		if (seleccion == null) {
-			MessageDialog.openInformation(shell, "Aviso", "No ha seleccionado ningún registro.");
+			MessageDialog.openInformation(shell, "Aviso", "No ha seleccionado ningÃºn registro.");
 		} else {
-			boolean respuesta = MessageDialog.openConfirm(shell, "Confirmación", "Desea borrar el registro seleccionado?");
+			boolean respuesta = MessageDialog.openConfirm(shell, "ConfirmaciÃ³n", "Desea borrar el registro seleccionado?");
 			if (respuesta) {
 				System.out.println("Borrando elemento seleccionado..." + seleccion);
 				if (daoController != null) {
@@ -56,7 +56,7 @@ public class BorrarElementoAction implements IViewActionDelegate {
 					System.out.println("daoController es NULL, no se pudo borrar el registro");
 				}		
 			} else {
-				MessageDialog.openInformation(shell, "Información", "La acción ha sido cancelada.");
+				MessageDialog.openInformation(shell, "InformaciÃ³n", "La acciÃ³n ha sido cancelada.");
 			}
 		}
 	}

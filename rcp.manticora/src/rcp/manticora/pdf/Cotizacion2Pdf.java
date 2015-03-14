@@ -57,23 +57,23 @@ public class Cotizacion2Pdf extends AbstractPDF {
 		String pTotal = valor2Txt(cotizacion.getTotal(), "#,##0.00");
 		int lineasTotal = 0;
 		if (resumido) {
-			lineasTotal = 1;   // si es consolidada solamente tenemos una lÌnea
+			lineasTotal = 1;   // si es consolidada solamente tenemos una l√≠nea
 		} else {
-			// sino, tenemos que contar las lÌneas a generar
+			// sino, tenemos que contar las l√≠neas a generar
 			for (LineaCotizacion linea : cotizacion.getListaActividades()) {
 				lineasTotal += getLineasPdfOcupadas(linea);
 			}
 		}
-		System.out.println("Total de lÌneas a generar: " + lineasTotal);
+		System.out.println("Total de l√≠neas a generar: " + lineasTotal);
 		int lineasPorPagina = 23;
 		int totalPaginas = ((lineasTotal - 1) / lineasPorPagina) + 1;
 		try {
 			PdfReader reader = null;
-			// Dependiendo del n˙mero de p·ginas que requiera la cotizaciÛn, generamos diferentes PDFs
+			// Dependiendo del n√∫mero de p√°ginas que requiera la cotizaci√≥n, generamos diferentes PDFs
 			if (totalPaginas > 1) {
-				System.out.println("Generando PDF (m˙ltiples p·ginas)");
-				// Si tenemos m·s de una p·gina, creamos un pdf temporal donde agregamos todas las p·ginas
-				// de detalle que sean necesarias, y al final agregamos la p·gina que presenta los totales.
+				System.out.println("Generando PDF (m√∫ltiples p√°ginas)");
+				// Si tenemos m√°s de una p√°gina, creamos un pdf temporal donde agregamos todas las p√°ginas
+				// de detalle que sean necesarias, y al final agregamos la p√°gina que presenta los totales.
 				reader = new PdfReader("AEP Sales Quote v2 Detail.pdf");
 				PdfCopyFields copy = new PdfCopyFields(new FileOutputStream("AEP Sales Quote Temporal.pdf"));
 				for (int x = 1; x < totalPaginas; x++) {
@@ -84,13 +84,13 @@ public class Cotizacion2Pdf extends AbstractPDF {
 				copy.close();
 				reader = new PdfReader("AEP Sales Quote Temporal.pdf");
 			} else {
-				// Para una sola p·gina, usamos directamente el pdf que presenta los totales.
-				System.out.println("Generando PDF (una p·gina)");
+				// Para una sola p√°gina, usamos directamente el pdf que presenta los totales.
+				System.out.println("Generando PDF (una p√°gina)");
 				reader = new PdfReader("AEP Sales Quote v2.pdf");
 			}
 			
-			// Ya que tenemos el pdf con las p·ginas necesarias, preparamos el pdf final al que se le
-			// agrega la informaciÛn de la cotizaciÛn.
+			// Ya que tenemos el pdf con las p√°ginas necesarias, preparamos el pdf final al que se le
+			// agrega la informaci√≥n de la cotizaci√≥n.
 			PdfStamper stamper = new PdfStamper(reader, new FileOutputStream(directorio + "\\AEP Sales Quote " + pIdCotizacion + ".pdf"));
 			AcroFields form = stamper.getAcroFields();
 			form.setField("noInvoice", pIdCotizacion);
@@ -103,7 +103,7 @@ public class Cotizacion2Pdf extends AbstractPDF {
 			form.setField("lodgingTax", pHospedaje);
 			form.setField("salesTax", pImpuesto);
 			form.setField("total", pTotal);
-// se generan las lÌneas de la cotizaciÛn
+// se generan las l√≠neas de la cotizaci√≥n
 			if (resumido) {
 				generarTablaResumida(stamper);
 			} else {
@@ -118,25 +118,25 @@ public class Cotizacion2Pdf extends AbstractPDF {
 					if (indiceLinea >= paginaActual * lineasPorPagina) {
 					//if (indiceLinea % lineasPorPagina == 0 || ((indiceLinea - 1) % lineasPorPagina) == 0) {
 					//if (indiceLinea % lineasPorPagina == 0) {
-						// si llegamos al lÌmite de la p·gina: escribimos, reiniciamos el set de lÌneas e incrementamos la p·gina.
+						// si llegamos al l√≠mite de la p√°gina: escribimos, reiniciamos el set de l√≠neas e incrementamos la p√°gina.
 						generarTablaDetalles(stamper, lineas2Add, paginaActual);
 						lineas2Add.clear();
 						paginaActual++;
 					}
 				}
-				// si salimos del ciclo y hay lÌneas pendientes, entonces las agregamos al pdf en la p·gina actual
+				// si salimos del ciclo y hay l√≠neas pendientes, entonces las agregamos al pdf en la p√°gina actual
 				if (!lineas2Add.isEmpty()) {
 					generarTablaDetalles(stamper, lineas2Add, paginaActual);
 				}
 			}
 			stamper.close();
 		} catch (Exception e) {
-			mensajeError = "Error durante generaciÛn de PDF: " + e.getMessage();
-			mensajeError = "Error durante generaciÛn de PDF: " + e.toString() + "\n\nStack trace: " + e.getStackTrace()[0];
+			mensajeError = "Error durante generaci√≥n de PDF: " + e.getMessage();
+			mensajeError = "Error durante generaci√≥n de PDF: " + e.toString() + "\n\nStack trace: " + e.getStackTrace()[0];
 			//System.out.println(mensajeError);
 			e.printStackTrace();
-			//TODO CÛmo saco un shell aquÌ????
-			//MessageDialog.openError(getShell(), "Generar PDF", "Error durante generaciÛn de PDF: " + e.getMessage());
+			//TODO C√≥mo saco un shell aqu√≠????
+			//MessageDialog.openError(getShell(), "Generar PDF", "Error durante generaci√≥n de PDF: " + e.getMessage());
 			return false;
 		}
 		return true;
@@ -144,10 +144,10 @@ public class Cotizacion2Pdf extends AbstractPDF {
 	
 	
 	/**
-	 * Permite saber cu·ntas lÌneas del pdf puede ocupar una lÌnea de detalle de la
-	 * cotizaciÛn.  Si tienen observaciones con "*" ocupan 2 lÌneas en el pdf final.
-	 * @param linea LÌnea de cotizaciÛn
-	 * @return Cantidad de lÌneas que ocupar· en el pdf final
+	 * Permite saber cu√°ntas l√≠neas del pdf puede ocupar una l√≠nea de detalle de la
+	 * cotizaci√≥n.  Si tienen observaciones con "*" ocupan 2 l√≠neas en el pdf final.
+	 * @param linea L√≠nea de cotizaci√≥n
+	 * @return Cantidad de l√≠neas que ocupar√° en el pdf final
 	 */
 	private int getLineasPdfOcupadas(LineaCotizacion linea) {
 		int cantidad = 1;
@@ -160,7 +160,7 @@ public class Cotizacion2Pdf extends AbstractPDF {
 				cantidad++;
 			}
 		} else {
-			// si no es visible, entonces no ocupa espacio en el pdf generado para la cotizaciÛn
+			// si no es visible, entonces no ocupa espacio en el pdf generado para la cotizaci√≥n
 			cantidad = 0;
 		}
 		*/
@@ -196,16 +196,16 @@ public class Cotizacion2Pdf extends AbstractPDF {
 			form.setField("lodgingTax", pHospedaje);
 			form.setField("salesTax", pImpuesto);
 			form.setField("total", pTotal);
-// se generan las lÌneas de la cotizaciÛn
+// se generan las l√≠neas de la cotizaci√≥n
 			generarTablaDetalles(stamper, cotizacion.getListaActividades(), 1);
 			stamper.close();
 		} catch (Exception e) {
-			mensajeError = "Error durante generaciÛn de PDF: " + e.getMessage();
-			mensajeError = "Error durante generaciÛn de PDF: " + e.toString() + "\n\nStack trace: " + e.getStackTrace()[0];
+			mensajeError = "Error durante generaci√≥n de PDF: " + e.getMessage();
+			mensajeError = "Error durante generaci√≥n de PDF: " + e.toString() + "\n\nStack trace: " + e.getStackTrace()[0];
 			//System.out.println(mensajeError);
 			e.printStackTrace();
-			//TODO CÛmo saco un shell aquÌ????
-			//MessageDialog.openError(getShell(), "Generar PDF", "Error durante generaciÛn de PDF: " + e.getMessage());
+			//TODO C√≥mo saco un shell aqu√≠????
+			//MessageDialog.openError(getShell(), "Generar PDF", "Error durante generaci√≥n de PDF: " + e.getMessage());
 			return false;
 		}
 		return true;
@@ -213,8 +213,8 @@ public class Cotizacion2Pdf extends AbstractPDF {
 	
 	
 	/**
-	 * Agrega la informaciÛn del cliente al encabezado de la cotizaciÛn en PDF
-	 * @param form Objeto que tiene acceso a los campos de la cotizaciÛn en PDF
+	 * Agrega la informaci√≥n del cliente al encabezado de la cotizaci√≥n en PDF
+	 * @param form Objeto que tiene acceso a los campos de la cotizaci√≥n en PDF
 	 * @throws Exception
 	 */
 	private void asignarInfoCliente(AcroFields form) throws Exception {
@@ -234,15 +234,15 @@ public class Cotizacion2Pdf extends AbstractPDF {
 	
 	
 	/**
-	 * Agrega lÌneas de detalle a una cotizaciÛn en formato PDF
+	 * Agrega l√≠neas de detalle a una cotizaci√≥n en formato PDF
 	 * @param stamper Documento PDF a ser modificado
-	 * @param lineasCotizacion lÌneas de cotizaciÛn que se van a agregar
-	 * @param noPagina p·gina en la que se deben agregar las lÌneas
+	 * @param lineasCotizacion l√≠neas de cotizaci√≥n que se van a agregar
+	 * @param noPagina p√°gina en la que se deben agregar las l√≠neas
 	 * @throws DocumentException
 	 */
 	private void generarTablaDetalles(PdfStamper stamper, Set<LineaCotizacion> lineas, int noPagina) throws DocumentException {
-		// Usamos un nuevo TreeSet porque el de la cotizaciÛn puede estar
-		// desordenado si se movieron lÌneas hacia arriba o abajo
+		// Usamos un nuevo TreeSet porque el de la cotizaci√≥n puede estar
+		// desordenado si se movieron l√≠neas hacia arriba o abajo
 		//Set<LineaCotizacion> lineas = new TreeSet<LineaCotizacion>(new CotizacionesComparator());
 		//lineas.addAll(lineasCotizacion);
 		PdfContentByte cb = stamper.getOverContent(noPagina);
@@ -263,11 +263,11 @@ public class Cotizacion2Pdf extends AbstractPDF {
 	
 	
 	/**
-	 * Agrega lÌneas de detalle a la tabla que presenta el detalle de la
-	 * cotizaciÛn
+	 * Agrega l√≠neas de detalle a la tabla que presenta el detalle de la
+	 * cotizaci√≥n
 	 * @param table Tabla de iText
-	 * @param linea la lÌnea de cotizaciÛn a ser agregada
-	 * @return n˙mero de lÌneas agregadas (hasta 2 si hay comentario)
+	 * @param linea la l√≠nea de cotizaci√≥n a ser agregada
+	 * @return n√∫mero de l√≠neas agregadas (hasta 2 si hay comentario)
 	 */
 	private int agregarLineaDetalle(PdfPTable table, LineaCotizacion linea) {
 		int n = 1;
@@ -283,7 +283,7 @@ public class Cotizacion2Pdf extends AbstractPDF {
 		cell.setBorder(PdfPCell.NO_BORDER);
 		table.addCell(cell);
 		
-		// columna de descripciÛn
+		// columna de descripci√≥n
 		//cadena = linea.getDspProducto();
 		cadena = linea.getProducto().getDescripcionHotel();
 		cell = new PdfPCell(new Paragraph(cadena, font));
@@ -311,7 +311,7 @@ public class Cotizacion2Pdf extends AbstractPDF {
 		cell.setBorder(PdfPCell.NO_BORDER);
 		table.addCell(cell);
 
-		// columna de precio total (lÌnea)
+		// columna de precio total (l√≠nea)
 		//cadena = valor2Txt((cotizacion.getPaxs().floatValue() * linea.getPrecio()), "#,##0.00");
 		if (linea.isVisible()) {
 			cadena = valor2Txt(linea.getPrecio() * linea.getCantidad() * linea.getEspacios(), "#,##0.00");
@@ -350,16 +350,16 @@ public class Cotizacion2Pdf extends AbstractPDF {
 	
 	
 	/**
-	 * Crea una lÌnea consolidada en la tabla que presenta el detalle de la
-	 * cotizaciÛn
+	 * Crea una l√≠nea consolidada en la tabla que presenta el detalle de la
+	 * cotizaci√≥n
 	 * @param table Tabla de iText
-	 * @return n˙mero de lÌneas agregadas (por ahora siempre es 1)
+	 * @return n√∫mero de l√≠neas agregadas (por ahora siempre es 1)
 	 */
 	private int generarTablaResumida(PdfStamper stamper) throws DocumentException {
 		
-		// preparamos la tabla que va a presentar el listado de items de la cotizaciÛn
-		// solo que en este caso siempre tenemos una sola lÌnea
-		PdfContentByte cb = stamper.getOverContent(1);   // una consolidada siempre tiene una sola p·gina
+		// preparamos la tabla que va a presentar el listado de items de la cotizaci√≥n
+		// solo que en este caso siempre tenemos una sola l√≠nea
+		PdfContentByte cb = stamper.getOverContent(1);   // una consolidada siempre tiene una sola p√°gina
 		PdfPTable table = new PdfPTable(5);
 		float[] widths = {57f, 249f, 53f, 70f, 63f};
 		table.setTotalWidth(widths);
@@ -367,7 +367,7 @@ public class Cotizacion2Pdf extends AbstractPDF {
 		table.getDefaultCell().setBorder(PdfPCell.NO_BORDER);
 		table.getDefaultCell().setVerticalAlignment(Element.ALIGN_CENTER);
 		
-		// generamos las celdas de la lÌnea
+		// generamos las celdas de la l√≠nea
 		int n = 1;
 		
 		PdfPCell cell;
@@ -381,7 +381,7 @@ public class Cotizacion2Pdf extends AbstractPDF {
 		cell.setBorder(PdfPCell.NO_BORDER);
 		table.addCell(cell);
 		
-		// columna de descripciÛn
+		// columna de descripci√≥n
 		//cadena = linea.getDspProducto();
 		cadena = cotizacion.getNombre();
 		cell = new PdfPCell(new Paragraph(cadena, font));
@@ -405,7 +405,7 @@ public class Cotizacion2Pdf extends AbstractPDF {
 		cell.setBorder(PdfPCell.NO_BORDER);
 		table.addCell(cell);
 
-		// columna de precio total (lÌnea)
+		// columna de precio total (l√≠nea)
 		cadena = valor2Txt(cotizacion.getSubtotal(), "#,##0.00");
 		cell = new PdfPCell(new Paragraph(cadena, font));
 		cell.setPaddingRight(7);
@@ -420,7 +420,7 @@ public class Cotizacion2Pdf extends AbstractPDF {
 		}
 		*/
 		
-		// agrega la lÌnea (y sus celdas) que ha sido creada a la tabla de iText
+		// agrega la l√≠nea (y sus celdas) que ha sido creada a la tabla de iText
 		table.writeSelectedRows(0, n, 72, 445, cb);
 		
 		return n;
@@ -442,7 +442,7 @@ public class Cotizacion2Pdf extends AbstractPDF {
 			form.setField("noCustomer", "0015");
 			form.setField("soldTo1", "Country Walkers");
 			//form.setField("soldTo2", "USA");
-			form.setField("salesperson", "Carlos A. PÈrez Q.");
+			form.setField("salesperson", "Carlos A. P√©rez Q.");
 			form.setField("tourName", "Jungle Boat");
 			form.setField("tourDate", "From: 05-02-2007, to: 27-02-2007");
 			form.setField("description", "Jungle Boat");
@@ -452,7 +452,7 @@ public class Cotizacion2Pdf extends AbstractPDF {
 			stamper.close();
 			return true;
 		} catch (Exception e) {
-			System.out.println("Error durante generaciÛn de PDF: " + e.getMessage());
+			System.out.println("Error durante generaci√≥n de PDF: " + e.getMessage());
 			return false;
 		}
 	}

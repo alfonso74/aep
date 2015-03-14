@@ -35,7 +35,7 @@ public class ClienteNatural extends Cliente {
 	}
 	
 	
-// *************************** métodos especiales *****************************
+// *************************** mÃ©todos especiales *****************************
 	
 	public String getNombreCliente() {
 		return getNombre() + " " + getApellido();

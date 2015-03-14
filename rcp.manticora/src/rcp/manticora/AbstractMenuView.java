@@ -26,11 +26,11 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 
 /**
- * Clase abstracta para crear un menú en el sistema.  Requiere que
- * se implemente el método crearMenu() y que se defina la variable que
+ * Clase abstracta para crear un menÃº en el sistema.  Requiere que
+ * se implemente el mÃ©todo crearMenu() y que se defina la variable que
  * identifica a la vista en eclipse:
  *     public static final String ID = "identificador"
- * El menú resultante se puede expandir con el hook expandirMenu() o 
+ * El menÃº resultante se puede expandir con el hook expandirMenu() o 
  * manipular con getTreeViewer().
  * @author Carlos Alfonso
  *
@@ -180,12 +180,12 @@ public abstract class AbstractMenuView extends ViewPart {
 	}
 
     /**
-     * Método invocado por la clase que implementa, para crear el menú
+     * MÃ©todo invocado por la clase que implementa, para crear el menÃº
      */
 	protected abstract TreeObject crearMenu();
 
 	/**
-	 * Método hook para expandir el menú
+	 * MÃ©todo hook para expandir el menÃº
 	 */
 	protected void expandirMenu() {
 		viewer.expandAll();
@@ -212,7 +212,7 @@ public abstract class AbstractMenuView extends ViewPart {
 					viewId = ((TreeObject) seleccion).getViewId();
 					viewName = ((TreeObject) seleccion).getName();
 					if (viewId.equals("")) {
-						MessageDialog.openInformation(window.getShell(), "Aviso", "La vista '" + viewName + "' no está habilitada.");
+						MessageDialog.openInformation(window.getShell(), "Aviso", "La vista '" + viewName + "' no estÃ¡ habilitada.");
 					} else {
 						try {
 							getSite().getPage().showView(viewId);

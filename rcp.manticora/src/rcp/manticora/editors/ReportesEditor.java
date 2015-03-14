@@ -128,7 +128,7 @@ public class ReportesEditor extends EditorPart {
 	
 	
 	/**
-	 * Obtiene la ubicaciÛn del reporte (dentro del bundle de eclipse)
+	 * Obtiene la ubicaci√≥n del reporte (dentro del bundle de eclipse)
 	 * @param rutaReporte Ruta del reporte dentro del bundle de eclipse
 	 * @return Ruta para accesar el reporte
 	 */
@@ -155,7 +155,7 @@ public class ReportesEditor extends EditorPart {
 
 	
 	/**
-	 * Configura un renderer de excel para generar una hoja de c·lculo basada en el reporte indicado
+	 * Configura un renderer de excel para generar una hoja de c√°lculo basada en el reporte indicado
 	 * @param rpt Ruta del reporte usado como template
 	 * @return RenderOption configurado para excel
 	 */
@@ -187,12 +187,12 @@ public class ReportesEditor extends EditorPart {
 	/**
 	 * Gnenera un archivo de acuerdo al reporte y formato suministrados
 	 * @param engine Engine de BIRT
-	 * @param options renderer configurado para generar el archivo en un formato especÌfico
+	 * @param options renderer configurado para generar el archivo en un formato espec√≠fico
 	 * @param rpt ruta del reporte de BIRT a usar como template
 	 * @return
 	 */
 	private String ejecutarReporte(IReportEngine engine, RenderOption options, String rpt) {
-		// Pasamos los par·metros para el reporte y lo ejecutamos
+		// Pasamos los par√°metros para el reporte y lo ejecutamos
 		try {
 			IReportRunnable design = engine.openReportDesign(rpt);
 			IRunAndRenderTask task = engine.createRunAndRenderTask(design);

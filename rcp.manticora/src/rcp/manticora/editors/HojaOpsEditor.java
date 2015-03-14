@@ -165,12 +165,12 @@ public class HojaOpsEditor extends AbstractEditorH {
 		String pNombre = txtNombre.getText();
 		
 		if (pNombre.length() > 50) {
-			MessageDialog.openInformation(getSite().getShell(), "Validación de campos",
+			MessageDialog.openInformation(getSite().getShell(), "ValidaciÃ³n de campos",
 					"El nombre de la hoja no puede superar los 50 caracteres (" + pNombre.length() + ").");
 			return false;
 		}
 		if (registro.getListaActividades().size() == 0) {
-			MessageDialog.openInformation(getSite().getShell(), "Validación de campos",
+			MessageDialog.openInformation(getSite().getShell(), "ValidaciÃ³n de campos",
 					"Debe definir actividades antes de guardar la hoja de servicios.");
 			return false;
 		}
@@ -185,7 +185,7 @@ public class HojaOpsEditor extends AbstractEditorH {
 		
 		// tab de datos generales
 		TabItem tabGeneral = new TabItem(tabFolder, SWT.NONE);
-		tabGeneral.setText("Información general");
+		tabGeneral.setText("InformaciÃ³n general");
 		image = AbstractUIPlugin.imageDescriptorFromPlugin(pluginId, "icons/infoGeneral2.gif");
 		tabGeneral.setImage(image.createImage());
 		tabGeneral.setControl(crearControlesTabGeneral(tabFolder));
@@ -211,9 +211,9 @@ public class HojaOpsEditor extends AbstractEditorH {
 		tabReservas.setImage(image.createImage());
 		tabReservas.setControl(crearControlesTabReservas(tabFolder));
 		
-		// tab de asignación de guías
+		// tab de asignaciÃ³n de guÃ­as
 		TabItem tabGuias = new TabItem(tabFolder, SWT.NONE);
-		tabGuias.setText("Guías");
+		tabGuias.setText("GuÃ­as");
 		image = AbstractUIPlugin.imageDescriptorFromPlugin(pluginId, "icons/cliente.gif");
 		tabGuias.setImage(image.createImage());
 		tabGuias.setControl(crearControlesTabGuias(tabFolder));
@@ -233,7 +233,7 @@ public class HojaOpsEditor extends AbstractEditorH {
 			viewerReservas.setInput(registro.getListaReservas());
 			viewerGuias.setInput(registro.getListaResGuias());
 		} else{
-			System.out.println("Ejecutando código para cargar datos...");
+			System.out.println("Ejecutando cÃ³digo para cargar datos...");
 			registro = (HojaServicioTour) ((CommonEditorInput) this.getEditorInput()).getElemento();
 
 			hsController.getSession().refresh(registro, LockMode.READ);
@@ -276,9 +276,9 @@ public class HojaOpsEditor extends AbstractEditorH {
 		Label l;
 		GridData gridData;
 
-// *************** Grupo de información general ***************************
+// *************** Grupo de informaciÃ³n general ***************************
 		Group grupoTop = new Group(composite, SWT.NONE);
-		//grupoTop.setText("Información General");
+		//grupoTop.setText("InformaciÃ³n General");
 		//Composite grupoTop = new Composite(parent, SWT.NONE);
 		gridLayout = new GridLayout();
 		gridLayout.numColumns = 6;
@@ -328,7 +328,7 @@ public class HojaOpsEditor extends AbstractEditorH {
 		txtCapacidad.addModifyListener(this.createModifyListener());
 		
 		l = new Label(grupoTop, SWT.NONE);
-		l.setText("Ocupación:");
+		l.setText("OcupaciÃ³n:");
 		txtOcupacion = new Text(grupoTop, SWT.BORDER);
 		gridData = new GridData(75,15);
 		gridData.horizontalSpan = 2;
@@ -351,14 +351,14 @@ public class HojaOpsEditor extends AbstractEditorH {
 		txtEstado.setEditable(false);
 		
 		l = new Label(grupoStatus, SWT.None);
-		l.setText("Número HS:");
+		l.setText("NÃºmero HS:");
 		txtNumero = new Text(grupoStatus, SWT.SINGLE | SWT.BORDER);
 		gridData = new GridData(35,15);
 		txtNumero.setLayoutData(gridData);
 		txtNumero.setEditable(false);
 		
 		l = new Label(grupoStatus, SWT.None);
-		l.setText("Número tour:");
+		l.setText("NÃºmero tour:");
 		txtNumeroTour = new Text(grupoStatus, SWT.SINGLE | SWT.BORDER);
 		gridData = new GridData(60,15);
 		txtNumeroTour.setLayoutData(gridData);
@@ -435,7 +435,7 @@ public class HojaOpsEditor extends AbstractEditorH {
 		viewerAct.setSorter(new GenericSorter(viewerAct, 0, GenericSorter.FECHAHORA));
 		
 		//registramos al viewer como un selection provider para determinar
-		//qué elemento está seleccionado
+		//quÃ© elemento estÃ¡ seleccionado
 		getSite().setSelectionProvider(viewerAct);
 		
 		
@@ -450,7 +450,7 @@ public class HojaOpsEditor extends AbstractEditorH {
 		bAgregar.setText("Agregar");
 		bAgregar.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("Botón de agregar...");
+				System.out.println("BotÃ³n de agregar...");
 				LineaActividad la = getActividadDefault(viewerAct);
 				if (la != null) {
 					String fechaDefault = FechaUtil.toString(la.getFecha());
@@ -468,7 +468,7 @@ public class HojaOpsEditor extends AbstractEditorH {
 		bEditar.setText("Editar");
 		bEditar.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("Botón de editar...");
+				System.out.println("BotÃ³n de editar...");
 				//LineaActividad la = getActividadDefault(viewerAct);
 				editarActividad(getSite().getShell(), getActividadSeleccionada(viewerAct));
 			}
@@ -487,7 +487,7 @@ public class HojaOpsEditor extends AbstractEditorH {
 		bBorrar.setText("Borrar");
 		bBorrar.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("Botón de borrar actividad...");
+				System.out.println("BotÃ³n de borrar actividad...");
 				borrarActividades();
 			}
 		});
@@ -500,7 +500,7 @@ public class HojaOpsEditor extends AbstractEditorH {
 		/*
 		bReserva.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("Botón de realizar reservas...");
+				System.out.println("BotÃ³n de realizar reservas...");
 				//gestionarReserva(getSite().getShell(), getActividadSeleccionada());
 				if (gestionarReserva(getSite().getShell(), getActividadesSeleccionadas(viewerAct))) {
 					viewerAct.refresh();
@@ -517,7 +517,7 @@ public class HojaOpsEditor extends AbstractEditorH {
 		bTour.setText("Ver tours");
 		bTour.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("Botón de 'Ver tours'");
+				System.out.println("BotÃ³n de 'Ver tours'");
 				AgregarTour2Hoja2 dialogo = new AgregarTour2Hoja2(getSite().getShell());
 				dialogo.open();
 			}
@@ -544,7 +544,7 @@ public class HojaOpsEditor extends AbstractEditorH {
 		viewerPaxs.setContentProvider(new ViewContentProviderPax());
 		viewerPaxs.setLabelProvider(new ViewLabelProviderPax());
 		
-// ******************** adición de botones para paxs *********************
+// ******************** adiciÃ³n de botones para paxs *********************
 		Composite botones = new Composite(composite, SWT.NONE);
 		gridLayout = new GridLayout(3, false);
 		botones.setLayout(gridLayout);
@@ -555,10 +555,10 @@ public class HojaOpsEditor extends AbstractEditorH {
 		bAgregar.setLayoutData(gridData);
 		bAgregar.setText("Agregar");
 		//bAgregar.setEnabled(false);
-		// acción deshabilitada, no hacemos nada
+		// acciÃ³n deshabilitada, no hacemos nada
 		bAgregar.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("Botón de agregar...");
+				System.out.println("BotÃ³n de agregar...");
 				agregarPax(getSite().getShell());
 			}
 		});
@@ -570,7 +570,7 @@ public class HojaOpsEditor extends AbstractEditorH {
 		bEditar.setText("Editar");
 		bEditar.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("Botón de editar..." + getPaxSeleccionado().getNombre());
+				System.out.println("BotÃ³n de editar..." + getPaxSeleccionado().getNombre());
 				editarPax(getSite().getShell(), getPaxSeleccionado());
 			}
 		});
@@ -588,7 +588,7 @@ public class HojaOpsEditor extends AbstractEditorH {
 		bBorrar.setText("Excluir");
 		bBorrar.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("Botón de excluir...");
+				System.out.println("BotÃ³n de excluir...");
 				hsController.excluirPax(registro, getPaxSeleccionado());
 				viewerPaxs.refresh();
 				addDirtyFlag();
@@ -620,10 +620,10 @@ public class HojaOpsEditor extends AbstractEditorH {
 		((GenericSorter) viewerReservas.getSorter()).doSort(2, GenericSorter.NUMERO, 1);
 		
 		//registramos al viewer como un selection provider para determinar
-		//qué elemento está seleccionado
+		//quÃ© elemento estÃ¡ seleccionado
 		getSite().setSelectionProvider(viewerAct);
 		
-// ****************** adición de botones de reservas *********************
+// ****************** adiciÃ³n de botones de reservas *********************
 		Composite botones = new Composite(composite, SWT.NONE);
 		gridLayout = new GridLayout(2, false);
 		botones.setLayout(gridLayout);
@@ -636,7 +636,7 @@ public class HojaOpsEditor extends AbstractEditorH {
 		bEditar.setText("Editar");
 		bEditar.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("Botón de editar reserva...");
+				System.out.println("BotÃ³n de editar reserva...");
 				IReserva reserva = (IReserva) getElementoSeleccionado(viewerReservas);
 				editarReserva(getSite().getShell(), reserva);
 			}
@@ -656,12 +656,12 @@ public class HojaOpsEditor extends AbstractEditorH {
 		bBorrar.setText("Borrar");
 		bBorrar.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("Botón de borrar reserva...");
+				System.out.println("BotÃ³n de borrar reserva...");
 				IReserva reserva = (IReserva) getElementoSeleccionado(viewerReservas);
-				System.out.println("Selección: " + reserva);
+				System.out.println("SelecciÃ³n: " + reserva);
 				hsController.eliminarReserva(reserva);
 				viewerReservas.refresh();
-				addDirtyFlag();   // como borramos, indicamos que se ha modificado la cotización
+				addDirtyFlag();   // como borramos, indicamos que se ha modificado la cotizaciÃ³n
 			}
 		});	
 		
@@ -689,10 +689,10 @@ public class HojaOpsEditor extends AbstractEditorH {
 		viewerGuias.setSorter(new GenericSorter(viewerGuias, 1));
 		
 		//registramos al viewer como un selection provider para determinar
-		//qué elemento está seleccionado
+		//quÃ© elemento estÃ¡ seleccionado
 		getSite().setSelectionProvider(viewerAct);
 		
-// ****************** adición de botones de reservas *********************
+// ****************** adiciÃ³n de botones de reservas *********************
 		Composite botones = new Composite(composite, SWT.NONE);
 		gridLayout = new GridLayout(3, false);
 		botones.setLayout(gridLayout);
@@ -705,7 +705,7 @@ public class HojaOpsEditor extends AbstractEditorH {
 		bAgregar.setText("Agregar");
 		bAgregar.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("Botón de agregar asignación de guía...");
+				System.out.println("BotÃ³n de agregar asignaciÃ³n de guÃ­a...");
 				agregarReservaGuia(getSite().getShell());
 			}
 		});
@@ -717,14 +717,14 @@ public class HojaOpsEditor extends AbstractEditorH {
 		bEditar.setText("Editar");
 		bEditar.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("Botón de editar asignación de guía...");
+				System.out.println("BotÃ³n de editar asignaciÃ³n de guÃ­a...");
 				ReservaGuia reserva = (ReservaGuia) getElementoSeleccionado(viewerGuias);
 				editarReservaGuia(getSite().getShell(), reserva);
 			}
 		});
 		viewerGuias.addDoubleClickListener(new IDoubleClickListener() {
 			public void doubleClick(DoubleClickEvent event) {
-				System.out.println("Editar asignación de guía (doble clic)...");
+				System.out.println("Editar asignaciÃ³n de guÃ­a (doble clic)...");
 				ReservaGuia reserva = (ReservaGuia) getElementoSeleccionado(viewerGuias);
 				editarReservaGuia(getSite().getShell(), reserva);
 			}
@@ -737,12 +737,12 @@ public class HojaOpsEditor extends AbstractEditorH {
 		bBorrar.setText("Borrar");
 		bBorrar.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("Botón de borrar asignación de guía...");
+				System.out.println("BotÃ³n de borrar asignaciÃ³n de guÃ­a...");
 				ReservaGuia reserva = (ReservaGuia) getElementoSeleccionado(viewerGuias);
-				System.out.println("Selección: " + reserva);
+				System.out.println("SelecciÃ³n: " + reserva);
 				hsController.eliminarGuia(registro, reserva);
 				viewerGuias.refresh();
-				addDirtyFlag();   // como borramos, indicamos que se ha modificado la cotización
+				addDirtyFlag();   // como borramos, indicamos que se ha modificado la cotizaciÃ³n
 			}
 		});	
 		
@@ -765,7 +765,7 @@ public class HojaOpsEditor extends AbstractEditorH {
 		column.setWidth(22);
 		
 		column = new TreeColumn(v.getTree(),SWT.NONE);
-		column.setText("Descripción");
+		column.setText("DescripciÃ³n");
 		column.setWidth(170);
 		
 		column = new TreeColumn(v.getTree(),SWT.NONE);
@@ -802,7 +802,7 @@ public class HojaOpsEditor extends AbstractEditorH {
 		column.setAlignment(SWT.LEFT);
 		
 		column = new TableColumn(tablaPaxs, SWT.CENTER, 3);
-		column.setText("País");
+		column.setText("PaÃ­s");
 		column.setWidth(100);
 		column.setAlignment(SWT.LEFT);
 		
@@ -1142,14 +1142,14 @@ public class HojaOpsEditor extends AbstractEditorH {
 		} else {
 			System.out.println("No hay actividades seleccionadas para borrar");
 		}
-		addDirtyFlag();   // como borramos, indicamos que se ha modificado la cotización
+		addDirtyFlag();   // como borramos, indicamos que se ha modificado la cotizaciÃ³n
 	}
 	
 	
 	/**
 	 * Retorna el elemento seleccionado por el usuario en un viewer.  Si
-	 * el usuario no ha seleccionado ningún elemento, se retorna el
-	 * último.
+	 * el usuario no ha seleccionado ningÃºn elemento, se retorna el
+	 * Ãºltimo.
 	 * @param viewer Objeto tipo TableViewer o TreeViewer
 	 * @return Objeto de tipo LineaActividad
 	 */
@@ -1166,10 +1166,10 @@ public class HojaOpsEditor extends AbstractEditorH {
 				System.out.println("Cantidad de actividades: " + n);
 				if (n > 0) {
 					TreeItem ti = ((TreeViewer) viewer).getTree().getItem(n - 1);
-					// seleccionamos el último elemento para poder extraerlo del viewer
+					// seleccionamos el Ãºltimo elemento para poder extraerlo del viewer
 					((TreeViewer) viewer).getTree().setSelection(ti);
 					linea = getActividadSeleccionada(viewer);
-					// el usuario no ha seleccionado ningún elemento, así que regresamos al viewer a ese estado
+					// el usuario no ha seleccionado ningÃºn elemento, asÃ­ que regresamos al viewer a ese estado
 					((TreeViewer) viewer).getTree().deselectAll();
 				}
 			}
@@ -1230,12 +1230,12 @@ public class HojaOpsEditor extends AbstractEditorH {
 		try {
 			if (reserva == null) {
 				MessageDialog.openInformation(shell, "Editar reserva",
-						"Debe seleccionar una reserva para ejecutar esta acción.");
+						"Debe seleccionar una reserva para ejecutar esta acciÃ³n.");
 				return;
 			}
 			AbstractAEPTitleAreaDialog dialogo = null;
 			System.out.println("Tipo de reserva: " + reserva.getTipoReserva());
-// Martillo chévere para cargar el objeto correcto en memoria, y evitar el problema con los proxys
+// Martillo chÃ©vere para cargar el objeto correcto en memoria, y evitar el problema con los proxys
 // de hibernate.
 // TODO: buscar forma de evitar este problema con los proxys
 			if (reserva instanceof HibernateProxy) {
@@ -1280,7 +1280,7 @@ public class HojaOpsEditor extends AbstractEditorH {
 	
 
 	
-// ******************************* manejo de guías *****************************
+// ******************************* manejo de guÃ­as *****************************
 	
 	private void agregarReservaGuia(Shell shell) {
 		ReservaGuia reserva = new ReservaGuia();

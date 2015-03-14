@@ -22,7 +22,7 @@ public class AsignarVendedorAction implements IEditorActionDelegate {
 
 	public void run(IAction action) {
 		AsignarVendedorDialog midt = new AsignarVendedorDialog(targetEditor.getSite().getShell());
-		midt.setText("Asignación de vendedor");
+		midt.setText("AsignaciÃ³n de vendedor");
 		MyInputDialogData myData = midt.open();
 		System.out.println("Data: " + myData.getTextResponse());
 		String respuesta;
@@ -33,7 +33,7 @@ public class AsignarVendedorAction implements IEditorActionDelegate {
 			((SolicitudesEditor) targetEditor).setTxtEstado("Asignada");
 			((SolicitudesEditor) targetEditor).setFechaAsignacion(new Date());
 		} else {
-			MessageDialog.openInformation(targetEditor.getSite().getShell(), "Información", "La asignación del vendedor ha sido cancelada.");
+			MessageDialog.openInformation(targetEditor.getSite().getShell(), "InformaciÃ³n", "La asignaciÃ³n del vendedor ha sido cancelada.");
 		}
 	}
 

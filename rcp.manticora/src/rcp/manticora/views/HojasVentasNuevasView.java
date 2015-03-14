@@ -62,7 +62,7 @@ public class HojasVentasNuevasView extends AbstractViewH {
 		tabla.setHeaderVisible(true);
 		
 		TableColumn column = new TableColumn(tabla, SWT.RIGHT, 0);
-		column.setText("Número");
+		column.setText("NÃºmero");
 		column.setWidth(50);
 		column.setAlignment(SWT.RIGHT);  // aparentemente esto es ignorado
 		

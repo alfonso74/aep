@@ -16,7 +16,7 @@ public class ReservaVuelo extends ReservaAdapter {
 	private String tipoReserva = "Vuelo";
 
 	
-// *************************** Métodos especiales *************************
+// *************************** MÃ©todos especiales *************************
 	
 	public String getTituloDocumento() {
 		return "Reserva " + getIdReserva();

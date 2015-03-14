@@ -14,8 +14,8 @@ public abstract class AbstractControllerNew<X> {
 	private NewGenericDAOImpl<X, Long> dao;
 	
 	/**
-	 * Inicializa una sesiÛn de hibernate en base al editor indicado
-	 * @param id que se asociar· a la nueva sesiÛn
+	 * Inicializa una sesi√≥n de hibernate en base al editor indicado
+	 * @param id que se asociar√° a la nueva sesi√≥n
 	 */
 	public AbstractControllerNew(String editorId, NewGenericDAOImpl<X, Long> dao) {
 		session = HibernateUtil.getEditorSession(editorId);
@@ -34,7 +34,7 @@ public abstract class AbstractControllerNew<X> {
 		/*
 		session.beginTransaction();
 		dao.makePersistent(registro);
-		dao.flush();                     // extiende las modificaciones al cachÈ
+		dao.flush();                     // extiende las modificaciones al cach√©
 		session.getTransaction().commit();
 		session = null;
 		*/
@@ -54,25 +54,25 @@ public abstract class AbstractControllerNew<X> {
 	}
 	
 	/**
-	 * Finaliza una sesiÛn de hibernate
-	 * @param editorId id asociado a la sesiÛn que ser· finalizada
+	 * Finaliza una sesi√≥n de hibernate
+	 * @param editorId id asociado a la sesi√≥n que ser√° finalizada
 	 */
 	//TODO:  Reemplazar esto por finalizarSesion()
 	public void finalizar(String editorId) {
-		System.out.println("Finalizando sesiÛn: " + editorId);
+		System.out.println("Finalizando sesi√≥n: " + editorId);
 		HibernateUtil.closeEditorSession(editorId);     // graba en la base de datos
 	}
 	
 	/**
-	 * Finaliza una sesiÛn de hibernate.
+	 * Finaliza una sesi√≥n de hibernate.
 	 */
 	public void finalizarSesion() {
-		System.out.println("Finalizando sesiÛn: " + getEditorId());
+		System.out.println("Finalizando sesi√≥n: " + getEditorId());
 		HibernateUtil.closeEditorSession(getEditorId());     // graba en la base de datos
 	}
 	
 	/**
-	 * Retorna el editor que est· asociado a este controller
+	 * Retorna el editor que est√° asociado a este controller
 	 * @return id del editor asociado
 	 */
 	public String getEditorId() {
@@ -80,8 +80,8 @@ public abstract class AbstractControllerNew<X> {
 	}
 	
 	/**
-	 * Retorna la sesiÛn que ha sida creada para este editor
-	 * @return sesiÛn de hibernate
+	 * Retorna la sesi√≥n que ha sida creada para este editor
+	 * @return sesi√≥n de hibernate
 	 */
 	public Session getSession() {
 		return session;

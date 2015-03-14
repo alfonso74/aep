@@ -23,7 +23,7 @@ public class LineaTour {
 	}
 	
 	
-// ***************************** mÈtodos especiales **************************
+// ***************************** m√©todos especiales **************************
 	
 	@Override
 	public String toString() {
@@ -136,7 +136,7 @@ public class LineaTour {
 		return breakfast;
 	}
 
-	// esta propiedad es seteada autom·ticamente por el mÈtodo setComidas()
+	// esta propiedad es seteada autom√°ticamente por el m√©todo setComidas()
 	private void setBreakfast(Boolean breakfast) {
 		this.breakfast = breakfast;
 	}
@@ -145,7 +145,7 @@ public class LineaTour {
 		return dinner;
 	}
 
-	// esta propiedad es seteada autom·ticamente por el mÈtodo setComidas()
+	// esta propiedad es seteada autom√°ticamente por el m√©todo setComidas()
 	private void setDinner(Boolean dinner) {
 		this.dinner = dinner;
 	}
@@ -154,7 +154,7 @@ public class LineaTour {
 		return lunch;
 	}
 
-	// esta propiedad es seteada autom·ticamente por el mÈtodo setComidas()
+	// esta propiedad es seteada autom√°ticamente por el m√©todo setComidas()
 	private void setLunch(Boolean lunch) {
 		this.lunch = lunch;
 	}
@@ -163,7 +163,7 @@ public class LineaTour {
 		return welcomeCocktail;
 	}
 	
-	// esta propiedad es seteada autom·ticamente por el mÈtodo setComidas()
+	// esta propiedad es seteada autom√°ticamente por el m√©todo setComidas()
 	private void setWelcomeCocktail(Boolean welcomeCocktail) {
 		this.welcomeCocktail = welcomeCocktail;
 	}
@@ -172,7 +172,7 @@ public class LineaTour {
 		return other;
 	}
 	
-	// esta propiedad es seteada autom·ticamente por el mÈtodo setComidas()
+	// esta propiedad es seteada autom√°ticamente por el m√©todo setComidas()
 	private void setOther(Boolean other) {
 		this.other = other;
 	}
