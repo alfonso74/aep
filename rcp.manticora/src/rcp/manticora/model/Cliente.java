@@ -6,7 +6,7 @@ import java.util.Set;
 import rcp.manticora.IEditableDocument;
 
 
-public class Cliente implements IEditableDocument, ICliente {
+public class Cliente implements IEditableDocument, ICliente, Comparable<ICliente> {
 	private Long idCliente = -1L;
 	private Long idTipo;
 	private String dspTipo;
@@ -389,6 +389,18 @@ public class Cliente implements IEditableDocument, ICliente {
 			throw new IllegalArgumentException("Clase de cliente no definida: " + codigo);
 		}
 
+	}
+
+
+	public int compareTo(ICliente other) {
+	    final int EQUAL = 0;
+	    
+	    if (this == other) return EQUAL;
+	    //note that null objects will throw an exception here
+	    int comparison = this.getNombreCliente().compareToIgnoreCase(other.getNombreCliente());
+	    if (comparison != EQUAL) return comparison;
+		
+		return EQUAL;
 	}
 
 }

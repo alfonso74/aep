@@ -1,5 +1,7 @@
 package rcp.manticora.controllers;
 
+import java.util.Arrays;
+
 import rcp.manticora.model.Condicional;
 import rcp.manticora.model.Guia;
 import rcp.manticora.model.Habitacion;
@@ -128,6 +130,7 @@ public class ComboDataController extends ViewController {
 	public ComboData getComboDataClientesComisionables() {
 		ComboData data = new ComboData();
 		ICliente[] lista = getListadoClientesComisionables();
+		Arrays.sort(lista);
 		for (int n = 0; n < lista.length; n++) {
 			data.agregarItem(lista[n].getNombreCliente(), lista[n].getIdCliente(), lista[n]);
 		}
@@ -195,4 +198,5 @@ public class ComboDataController extends ViewController {
 		}
 		return data;
 	}
+
 }
