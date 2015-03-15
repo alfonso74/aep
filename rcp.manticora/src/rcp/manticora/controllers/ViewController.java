@@ -3,7 +3,6 @@ package rcp.manticora.controllers;
 import java.util.Date;
 import java.util.List;
 
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 
 import rcp.manticora.dao.ClienteDAO;
@@ -43,6 +42,7 @@ import rcp.manticora.model.Solicitud;
 import rcp.manticora.model.Template;
 import rcp.manticora.model.TipoCliente;
 import rcp.manticora.model.TipoHabitacion;
+import rcp.manticora.model.TipoKeyword;
 import rcp.manticora.model.TipoProducto;
 import rcp.manticora.model.Tour;
 import rcp.manticora.model.Transporte;
@@ -214,12 +214,12 @@ public class ViewController {
 		return (Keyword[]) resultados.toArray(new Keyword[resultados.size()]);
 	}
 	
-	public Keyword[] getListadoKeyword(String tipoKeyword) {
+	public Keyword[] getListadoKeyword(TipoKeyword tipoKeyword) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		KeywordDAO dao = new KeywordDAO();
 		dao.setSession(session);
-		List<Keyword> resultados = dao.findByStatus(tipoKeyword);
+		List<Keyword> resultados = dao.findByTipo(tipoKeyword);
 		session.getTransaction().commit();
 		return (Keyword[]) resultados.toArray(new Keyword[resultados.size()]);
 	}
@@ -431,8 +431,8 @@ public class ViewController {
 	public Cotizacion[] buscarCotizaciones(BuscarCotizacionDatos busqueda) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		Criteria criteria = busqueda.generarCriteria(session);
-		List<Cotizacion> resultados = criteria.list();
+		CotizacionDAO dao = new CotizacionDAO();
+		List<Cotizacion> resultados = dao.findBy(busqueda);
 		session.getTransaction().commit();
 		return (Cotizacion[]) resultados.toArray(new Cotizacion[resultados.size()]);
 	}

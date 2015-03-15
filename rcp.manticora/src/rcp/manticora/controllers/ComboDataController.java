@@ -13,6 +13,7 @@ import rcp.manticora.model.Red;
 import rcp.manticora.model.Template;
 import rcp.manticora.model.TipoCliente;
 import rcp.manticora.model.TipoHabitacion;
+import rcp.manticora.model.TipoKeyword;
 import rcp.manticora.model.TipoProducto;
 import rcp.manticora.model.Transporte;
 import rcp.manticora.model.Vendedor;
@@ -87,11 +88,11 @@ public class ComboDataController extends ViewController {
 		return data;
 	}
 	
-	public ComboData getComboDataKeyword(String tipoKeyword) {
+	public ComboData getComboDataKeyword(TipoKeyword tipoKeyword) {
 		ComboData data = new ComboData();
 		Keyword[] keyword = getListadoKeyword(tipoKeyword);
 		for (int n = 0; n < keyword.length; n++) {
-			data.agregarItem(keyword[n].getDescripcion(), keyword[n].getCodigo());
+			data.agregarComboDataItem(keyword[n].toComboDataItem());
 		}
 		return data;
 	}

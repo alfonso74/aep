@@ -60,6 +60,7 @@ import rcp.manticora.model.ICliente;
 import rcp.manticora.model.LineaCotizacion;
 import rcp.manticora.model.Pax;
 import rcp.manticora.model.Red;
+import rcp.manticora.model.TipoKeyword;
 import rcp.manticora.services.AutenticacionUtil;
 import rcp.manticora.services.ComboData;
 import rcp.manticora.services.FechaUtil;
@@ -133,7 +134,7 @@ public class CotizacionesEditor extends AbstractEditorH {
 		super();
 		editorController = new CotizacionesController(idSession);
 		cdController = new ComboDataController();
-		cdStatus = cdController.getComboDataKeyword("Status de cotizaciones");
+		cdStatus = cdController.getComboDataKeyword(TipoKeyword.STATUS_COTIZACION);
 		cdVendedor = cdController.getComboDataVendedoresActivos();
 		cdRedViajes = cdController.getComboDataRedes();
 		cdRedViajes.agregarItemAt(REFERIDA_NONE, "", null, 0);

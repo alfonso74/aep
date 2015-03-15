@@ -13,6 +13,7 @@ import rcp.manticora.controllers.ComboDataController;
 import rcp.manticora.controllers.RolesController;
 import rcp.manticora.model.Keyword;
 import rcp.manticora.model.Rol;
+import rcp.manticora.model.TipoKeyword;
 import rcp.manticora.services.ComboData;
 import rcp.manticora.views.RolesView;
 
@@ -34,7 +35,7 @@ public class RolesEditor extends AbstractEditorH {
 		System.out.println("Inicializando RolesEditor...");
 		editorController = new RolesController(ID);
 		cdController = new ComboDataController();
-		cdStatus = cdController.getComboDataKeyword("Status general");
+		cdStatus = cdController.getComboDataKeyword(TipoKeyword.STATUS_GENERAL);
 	}
 	
 	

@@ -1,6 +1,7 @@
 package rcp.manticora.model;
 
 import rcp.manticora.IEditableDocument;
+import rcp.manticora.services.ComboDataItem;
 
 public class Keyword implements IEditableDocument {
 	private Long idKeyword = -1L;
@@ -29,6 +30,18 @@ public class Keyword implements IEditableDocument {
 			tituloDocumento = "Keyword: " + getDescripcion();
 		}
 		return tituloDocumento;
+	}
+	
+	/**
+	 * Formatea un keyword para ser agregado a un ComboData
+	 * @return ComboDataItem listo para procesar
+	 */
+	public ComboDataItem toComboDataItem() {
+		ComboDataItem cdItem = new ComboDataItem();
+		cdItem.setKey(getCodigo());
+		cdItem.setTexto(getDescripcion());
+		cdItem.setObjeto(this);
+		return cdItem;
 	}
 	
 	@Override

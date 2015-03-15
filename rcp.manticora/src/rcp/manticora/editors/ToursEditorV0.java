@@ -8,6 +8,7 @@ import java.util.Set;
 import java.util.Vector;
 
 
+
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -52,6 +53,7 @@ import rcp.manticora.model.DisponibilidadTour;
 import rcp.manticora.model.LineaTemplate;
 import rcp.manticora.model.LineaTour;
 import rcp.manticora.model.Template;
+import rcp.manticora.model.TipoKeyword;
 import rcp.manticora.model.Tour;
 import rcp.manticora.services.ComboData;
 import rcp.manticora.services.FechaUtil;
@@ -230,7 +232,7 @@ public class ToursEditorV0 extends AbstractEditorH {
 		GridData gridData;
 		
 		cdTipoProd = cdController.getComboDataTipoProductosTour(true);
-		cdEstado = cdController.getComboDataKeyword("Status general");
+		cdEstado = cdController.getComboDataKeyword(TipoKeyword.STATUS_GENERAL);
 		productos = new Productos();
 		
 		l = new Label(composite, SWT.NONE);

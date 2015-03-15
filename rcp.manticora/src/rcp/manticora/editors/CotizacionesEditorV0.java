@@ -9,6 +9,7 @@ import java.util.Set;
 import java.util.Vector;
 
 
+
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -56,6 +57,7 @@ import rcp.manticora.model.Cotizacion;
 import rcp.manticora.model.ICliente;
 import rcp.manticora.model.LineaCotizacion;
 import rcp.manticora.model.Pax;
+import rcp.manticora.model.TipoKeyword;
 import rcp.manticora.services.ComboData;
 import rcp.manticora.services.FechaUtil;
 import rcp.manticora.services.GenericSorter;
@@ -358,7 +360,7 @@ public class CotizacionesEditorV0 extends AbstractEditorH {
 			txtEstado.setText("Activa");
 			txtPago.setText("0.00");
 			txtPorcImpuesto.setText("5");
-			comboDataStatus = cdController.getComboDataKeyword("Status de cotizaciones");
+			comboDataStatus = cdController.getComboDataKeyword(TipoKeyword.STATUS_COTIZACION);
 		} else {
 			System.out.println("Ejecutando código para cargar datos...");
 			registro = (Cotizacion) ((CommonEditorInput) this.getEditorInput()).getElemento();
@@ -372,7 +374,7 @@ public class CotizacionesEditorV0 extends AbstractEditorH {
 			txtANombreDe.setText(valor2Txt(registro.getNombre()));
 			txtInicio.setText(FechaUtil.toString(registro.getFechaInicio()));
 			txtFin.setText(FechaUtil.toString(registro.getFechaFin()));
-			comboDataStatus = cdController.getComboDataKeyword("Status de cotizaciones");
+			comboDataStatus = cdController.getComboDataKeyword(TipoKeyword.STATUS_COTIZACION);
 			txtEstado.setText(comboDataStatus.getTextoByKey(registro.getEstado()));
 			txtPaxs.setText(valor2Txt(registro.getPaxs()));
 			System.out.println(registro.getIdVendedor() + "ja: " + registro.getDspVendedor());

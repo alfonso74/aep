@@ -11,6 +11,7 @@ import org.eclipse.swt.widgets.Text;
 
 import rcp.manticora.controllers.ComboDataController;
 import rcp.manticora.controllers.VendedoresController;
+import rcp.manticora.model.TipoKeyword;
 import rcp.manticora.model.Vendedor;
 import rcp.manticora.services.ComboData;
 import rcp.manticora.views.VendedoresView;
@@ -79,7 +80,7 @@ public class VendedoresEditor extends AbstractEditorH {
 		
 		l = new Label (parent, SWT.NONE);
 		l.setText("Estado:");
-		cdStatus = cdController.getComboDataKeyword("Status general");
+		cdStatus = cdController.getComboDataKeyword(TipoKeyword.STATUS_GENERAL);
 		comboStatus = new Combo(parent, SWT.READ_ONLY);
 		comboStatus.setItems(cdStatus.getTexto());
 		comboStatus.select(0);

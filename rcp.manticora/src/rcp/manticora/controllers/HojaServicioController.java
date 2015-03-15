@@ -22,6 +22,7 @@ import rcp.manticora.model.LineaTour;
 import rcp.manticora.model.Pax;
 import rcp.manticora.model.ReservaGuia;
 import rcp.manticora.model.ReservaTour;
+import rcp.manticora.model.TipoKeyword;
 import rcp.manticora.model.Tour;
 import rcp.manticora.services.AutenticacionUtil;
 import rcp.manticora.services.ComboData;
@@ -158,7 +159,7 @@ public class HojaServicioController extends AbstractControllerNew<IHojaServicio>
 		return cdController.getComboDataVendedoresActivos();
 	}
 	
-	public ComboData getComboDataKeyword(String tipoKeyword) {
+	public ComboData getComboDataKeyword(TipoKeyword tipoKeyword) {
 		return cdController.getComboDataKeyword(tipoKeyword);
 	}
 	

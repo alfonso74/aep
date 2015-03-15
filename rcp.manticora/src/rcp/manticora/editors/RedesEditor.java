@@ -12,6 +12,7 @@ import org.eclipse.swt.widgets.Combo;
 import rcp.manticora.controllers.ComboDataController;
 import rcp.manticora.controllers.RedesController;
 import rcp.manticora.model.Red;
+import rcp.manticora.model.TipoKeyword;
 import rcp.manticora.services.ComboData;
 import rcp.manticora.views.RedesView;
 
@@ -34,7 +35,7 @@ public class RedesEditor extends AbstractEditorH {
 		System.out.println("Inicializando RedesEditor...");
 		editorController = new RedesController(ID);
 		cdController = new ComboDataController();
-		cdStatus = cdController.getComboDataKeyword("Status general");
+		cdStatus = cdController.getComboDataKeyword(TipoKeyword.STATUS_GENERAL);
 	}
 
 	/**
