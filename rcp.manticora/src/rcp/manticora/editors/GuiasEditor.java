@@ -12,6 +12,7 @@ import org.eclipse.swt.widgets.Text;
 import rcp.manticora.controllers.ComboDataController;
 import rcp.manticora.controllers.GuiasController;
 import rcp.manticora.model.Guia;
+import rcp.manticora.model.TipoKeyword;
 import rcp.manticora.services.ComboData;
 import rcp.manticora.views.GuiasView;
 
@@ -32,7 +33,7 @@ public class GuiasEditor extends AbstractEditorH {
 		System.out.println("Inicializando GuiasEditor");
 		editorController = new GuiasController(ID);
 		cdController = new ComboDataController();
-		cdStatus = cdController.getComboDataKeyword("Status general");
+		cdStatus = cdController.getComboDataKeyword(TipoKeyword.STATUS_GENERAL);
 	}
 
 	@Override

@@ -3,6 +3,7 @@ package rcp.manticora.editors;
 import java.util.Date;
 
 
+
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -26,6 +27,7 @@ import rcp.manticora.controllers.ComboDataController;
 import rcp.manticora.model.Cliente;
 import rcp.manticora.model.ClienteNatural;
 import rcp.manticora.model.Condicional;
+import rcp.manticora.model.TipoKeyword;
 import rcp.manticora.services.ComboData;
 import rcp.manticora.services.FechaUtil;
 import rcp.manticora.views.ClientesView;
@@ -76,8 +78,8 @@ public class ClientesEditor extends AbstractEditorH {
 		cdComision = cdController.getComboDataCondicional();
 		cdPais = cdController.getComboDataPaises();
 		cdTipoCliente = cdController.getComboDataTipoClientes();
-		cdSexo = cdController.getComboDataKeyword("Sexo");
-		cdFormaPago = cdController.getComboDataKeyword("Forma de pago");
+		cdSexo = cdController.getComboDataKeyword(TipoKeyword.SEXO);
+		cdFormaPago = cdController.getComboDataKeyword(TipoKeyword.FORMA_PAGO);
 	}
 	
 	public void doSave(IProgressMonitor monitor) {

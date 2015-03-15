@@ -72,6 +72,7 @@ import rcp.manticora.model.ReservaHospedaje;
 import rcp.manticora.model.ReservaTour;
 import rcp.manticora.model.ReservaTransporte;
 import rcp.manticora.model.ReservaVuelo;
+import rcp.manticora.model.TipoKeyword;
 import rcp.manticora.services.ComboData;
 import rcp.manticora.services.FechaUtil;
 import rcp.manticora.services.GenericSorter;
@@ -120,7 +121,7 @@ public class HojaVentasEditor extends AbstractEditorH {
 		hsController = new HojaServicioController(idSession);
 		//vLineasAct = new Vector<LineaActividad>();
 		//vLineasPax = new Vector<Pax>();
-		cdStatus = hsController.getComboDataKeyword("Status hoja de servicios");
+		cdStatus = hsController.getComboDataKeyword(TipoKeyword.STATUS_HOJA_SERV);
 		cdVendedor = hsController.getComboDataVendedores();
 	}
 

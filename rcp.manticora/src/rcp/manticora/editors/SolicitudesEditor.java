@@ -3,6 +3,7 @@ package rcp.manticora.editors;
 import java.util.Date;
 
 
+
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.SWT;
@@ -21,6 +22,7 @@ import rcp.manticora.IImageKeys;
 import rcp.manticora.controllers.ComboDataController;
 import rcp.manticora.controllers.SolicitudController;
 import rcp.manticora.model.Solicitud;
+import rcp.manticora.model.TipoKeyword;
 import rcp.manticora.services.ComboData;
 import rcp.manticora.services.FechaUtil;
 import rcp.manticora.views.SolicitudesView;
@@ -65,7 +67,7 @@ public class SolicitudesEditor extends AbstractEditorH {
 		super();
 		editorController = new SolicitudController(ID);
 		cdController = new ComboDataController();
-		comboKeyword = cdController.getComboDataKeyword("Status de solicitudes");
+		comboKeyword = cdController.getComboDataKeyword(TipoKeyword.STATUS_SOLICITUD);
 		cdPaises = cdController.getComboDataPaises();
 		cdVendedores = cdController.getComboDataVendedores();
 		image = AbstractUIPlugin.imageDescriptorFromPlugin(pluginId, IImageKeys.CALENDARIO);

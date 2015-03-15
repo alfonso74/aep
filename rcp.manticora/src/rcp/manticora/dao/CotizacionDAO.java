@@ -3,9 +3,13 @@ package rcp.manticora.dao;
 import java.util.List;
 
 
+
+
+import org.hibernate.Criteria;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
 
+import rcp.manticora.model.BuscarCotizacionDatos;
 import rcp.manticora.model.Cotizacion;
 
 public class CotizacionDAO extends NewGenericDAOImpl<Cotizacion, Long> {
@@ -20,6 +24,13 @@ public class CotizacionDAO extends NewGenericDAOImpl<Cotizacion, Long> {
 	public List<Cotizacion> findRegistradas() {
 		Criterion c = Restrictions.isNotNull("fechaContabilidad");
 		List<Cotizacion> resultados = findByCriteria(c);
+		return resultados;
+	}
+	
+	
+	public List<Cotizacion> findBy(BuscarCotizacionDatos filter) {
+		Criteria c = filter.generarCriteria(getSession());
+		List<Cotizacion> resultados = c.list();
 		return resultados;
 	}
 	

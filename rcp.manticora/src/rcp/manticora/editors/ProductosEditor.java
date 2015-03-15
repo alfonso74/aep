@@ -3,6 +3,7 @@ package rcp.manticora.editors;
 import java.util.Date;
 
 
+
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
@@ -21,6 +22,7 @@ import org.eclipse.swt.widgets.Text;
 import rcp.manticora.controllers.ComboDataController;
 import rcp.manticora.controllers.ProductosController;
 import rcp.manticora.model.Producto;
+import rcp.manticora.model.TipoKeyword;
 import rcp.manticora.services.ComboData;
 import rcp.manticora.views.ProductosView;
 
@@ -189,7 +191,7 @@ public class ProductosEditor extends AbstractEditorH {
 		
 		l = new Label(parent, SWT.NONE);
 		l.setText("Status:");
-		cdKeyword = cdController.getComboDataKeyword("Status general");
+		cdKeyword = cdController.getComboDataKeyword(TipoKeyword.STATUS_GENERAL);
 		comboStatus = new Combo(parent, SWT.READ_ONLY);
 		comboStatus.setItems(cdKeyword.getTexto());
 		comboStatus.select(0);

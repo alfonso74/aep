@@ -23,6 +23,7 @@ import rcp.manticora.controllers.HabitacionesController;
 import rcp.manticora.model.Habitacion;
 import rcp.manticora.model.Producto;
 import rcp.manticora.model.TipoHabitacion;
+import rcp.manticora.model.TipoKeyword;
 import rcp.manticora.services.ComboData;
 import rcp.manticora.views.HabitacionesView;
 
@@ -48,7 +49,7 @@ public class HabitacionesEditor extends AbstractEditorH {
 		editorController = new HabitacionesController(ID);
 		cdController = new ComboDataController();
 		cdHotel = cdController.getComboDataHotelesAEP();
-		cdStatus = cdController.getComboDataKeyword("Status general");
+		cdStatus = cdController.getComboDataKeyword(TipoKeyword.STATUS_GENERAL);
 	}
 	
 	public void createPartControl(Composite parent) {

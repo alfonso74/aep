@@ -12,6 +12,7 @@ import org.eclipse.swt.widgets.Text;
 import rcp.manticora.controllers.ComboDataController;
 import rcp.manticora.controllers.PaisesController;
 import rcp.manticora.model.Pais;
+import rcp.manticora.model.TipoKeyword;
 import rcp.manticora.services.ComboData;
 import rcp.manticora.views.PaisesView;
 
@@ -31,7 +32,7 @@ public class PaisesEditor extends AbstractEditorH {
 	public PaisesEditor() {
 		editorController = new PaisesController(ID);
 		cdController = new ComboDataController();
-		cdStatus = cdController.getComboDataKeyword("Status general");
+		cdStatus = cdController.getComboDataKeyword(TipoKeyword.STATUS_GENERAL);
 	}
 
 	public void doSave(IProgressMonitor monitor) {

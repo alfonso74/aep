@@ -3,6 +3,7 @@ package rcp.manticora.dialogs;
 import java.util.Date;
 
 
+
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -19,6 +20,7 @@ import org.eclipse.swt.widgets.Text;
 import rcp.manticora.controllers.ComboDataController;
 import rcp.manticora.model.LineaActividad;
 import rcp.manticora.model.ReservaTransporte;
+import rcp.manticora.model.TipoKeyword;
 import rcp.manticora.services.ComboData;
 import rcp.manticora.services.FechaUtil;
 
@@ -124,7 +126,7 @@ public class ReservaTransporteDialog extends AbstractAEPTitleAreaDialog
 		gridData.horizontalSpan = 1;
 		l.setLayoutData(gridData);
 		comboTipo = new Combo(composite, SWT.READ_ONLY);
-		cdKeyword = controller.getComboDataKeyword("Tipo de vehículo");
+		cdKeyword = controller.getComboDataKeyword(TipoKeyword.TIPO_VEHICULO);
 		comboTipo.setItems(cdKeyword.getTexto());
 		
 		l = new Label(composite, SWT.NONE);

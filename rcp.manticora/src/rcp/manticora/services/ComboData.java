@@ -16,6 +16,24 @@ public class ComboData {
 	}
 	
 	/**
+	 * Agrega una entrada (item) al combo data
+	 * @param cdItem Objeto que contiene un identificador (llave), texto y el objeto a partir del cual se creó
+	 * el item.
+	 */
+	public void agregarComboDataItem(ComboDataItem cdItem) {
+		vTexto.addElement(cdItem.getTexto());
+		vKey.addElement(cdItem.getKey());
+		vObjeto.addElement(cdItem.getObjeto());
+	}
+	
+//	public void agregarItem(IComboDataItem item) {
+//		ComboDataItem cdItem = item.toComboDataItem();
+//		vTexto.addElement(cdItem.getTexto());
+//		vKey.addElement(cdItem.getKey());
+//		vObjeto.addElement(cdItem.getObjeto());
+//	}
+	
+	/**
 	 * Agrega una entrada (item) al combo data.
 	 * @param texto texto que se presenta en el combodata
 	 * @param key valor o código que representa al texto

@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 
+
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.CheckStateChangedEvent;
@@ -27,6 +28,7 @@ import org.eclipse.swt.widgets.Text;
 import rcp.manticora.controllers.ComboDataController;
 import rcp.manticora.controllers.UsuariosController;
 import rcp.manticora.model.Rol;
+import rcp.manticora.model.TipoKeyword;
 import rcp.manticora.model.Usuario;
 import rcp.manticora.services.AutenticacionUtil;
 import rcp.manticora.services.ComboData;
@@ -53,7 +55,7 @@ public class UsuariosEditor extends AbstractEditorH {
 	public UsuariosEditor() {
 		editorController = new UsuariosController(ID);
 		cdController = new ComboDataController();
-		cdStatus = cdController.getComboDataKeyword("Status general");
+		cdStatus = cdController.getComboDataKeyword(TipoKeyword.STATUS_GENERAL);
 	}
 	
 

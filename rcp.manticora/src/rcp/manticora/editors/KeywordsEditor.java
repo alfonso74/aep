@@ -11,6 +11,7 @@ import org.eclipse.swt.widgets.Text;
 
 import rcp.manticora.controllers.KeywordsController;
 import rcp.manticora.model.Keyword;
+import rcp.manticora.model.TipoKeyword;
 import rcp.manticora.views.KeywordsView;
 
 public class KeywordsEditor extends AbstractEditorH {
@@ -47,8 +48,6 @@ public class KeywordsEditor extends AbstractEditorH {
 
 	protected void agregarControles(Composite parent) {
 		Label l;
-		//GridLayout gridLayout;
-		//GridData gridData;
 		
 		l = new Label(parent, SWT.NONE);
 		l.setText("ID:");
@@ -71,7 +70,7 @@ public class KeywordsEditor extends AbstractEditorH {
 		l = new Label(parent, SWT.NONE);
 		l.setText("Tipo:");
 		comboTipo = new Combo(parent, SWT.READ_ONLY);
-		comboTipo.setItems(new String[] {"Forma de pago", "Sexo", "Status de cotizaciones", "Status general", "Status hoja de servicios", "Status de solicitudes", "Tipo de avión", "Tipo de impuesto", "Tipo de vehículo"});
+		comboTipo.setItems(TipoKeyword.getTipoKeywordList());
 		comboTipo.addModifyListener(this.createModifyListener());
 	}
 
