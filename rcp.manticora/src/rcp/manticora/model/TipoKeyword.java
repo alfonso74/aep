@@ -26,7 +26,7 @@ public enum TipoKeyword {
 		return descripcion;
 	}
 	
-	public static final String[] getTipoKeywordList() {
+	public static final String[] getAsStringArray() {
 		String[] tipoKeywordList = new String[values().length];
 		for (int n=0; n < values().length; n++) {
 			tipoKeywordList[n] = values()[n].getDescripcion();

@@ -70,7 +70,7 @@ public class KeywordsEditor extends AbstractEditorH {
 		l = new Label(parent, SWT.NONE);
 		l.setText("Tipo:");
 		comboTipo = new Combo(parent, SWT.READ_ONLY);
-		comboTipo.setItems(TipoKeyword.getTipoKeywordList());
+		comboTipo.setItems(TipoKeyword.getAsStringArray());
 		comboTipo.addModifyListener(this.createModifyListener());
 	}
 

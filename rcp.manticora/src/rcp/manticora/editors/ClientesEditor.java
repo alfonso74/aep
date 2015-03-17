@@ -4,6 +4,7 @@ import java.util.Date;
 
 
 
+
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -27,6 +28,7 @@ import rcp.manticora.controllers.ComboDataController;
 import rcp.manticora.model.Cliente;
 import rcp.manticora.model.ClienteNatural;
 import rcp.manticora.model.Condicional;
+import rcp.manticora.model.Fuente;
 import rcp.manticora.model.TipoKeyword;
 import rcp.manticora.services.ComboData;
 import rcp.manticora.services.FechaUtil;
@@ -354,18 +356,11 @@ public class ClientesEditor extends AbstractEditorH {
 		gridData = new GridData();
 		gridData.horizontalSpan = 1;
 		comboFuente.setLayoutData(gridData);
-		comboFuente.setItems(new String[] {"Correo electrónico", "Página web", "Teléfono/fax", "Walk-in"});
+		comboFuente.setItems(Fuente.getAsStringArray());
 		comboFuente.addModifyListener(this.createModifyListener());
 		
 		l = new Label(parent, SWT.NONE);
-		l.setText("Comisión:");
-//		comboComision = new Combo(parent, SWT.READ_ONLY);
-//		gridData = new GridData();
-//		gridData.horizontalSpan = 2;
-//		comboComision.setLayoutData(gridData);
-//		comboComision.setItems(new String[] {"Correo electrónico", "Página web", "Teléfono/fax", "Walk-in"});
-//		comboComision.addModifyListener(this.createModifyListener());
-		
+		l.setText("Comisión:");		
 		comboComision = new Combo(parent, SWT.READ_ONLY);
 		comboComision.setItems(cdComision.getTexto());
 		comboComision.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1));
