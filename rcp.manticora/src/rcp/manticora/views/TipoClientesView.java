@@ -59,6 +59,9 @@ public class TipoClientesView extends ViewPart implements IRefreshView {
 			case 1:
 				resultado = tipo.getDescripcion();
 				break;
+			case 2:
+				resultado = tipo.getDspEstado();
+				break;
 			}
 			return resultado;
 		}
@@ -99,6 +102,11 @@ public class TipoClientesView extends ViewPart implements IRefreshView {
 		column = new TableColumn(tabla, SWT.CENTER, 1);
 		column.setText("Descripción");
 		column.setWidth(180);
+		column.setAlignment(SWT.LEFT);
+		
+		column = new TableColumn(tabla, SWT.CENTER, 2);
+		column.setText("Estado");
+		column.setWidth(70);
 		column.setAlignment(SWT.LEFT);
 	}
 	

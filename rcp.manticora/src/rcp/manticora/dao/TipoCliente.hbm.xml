@@ -9,5 +9,9 @@
 			<generator class="native"/>
 		</id>
 		<property name="descripcion"/>
+		<property name="estado"/>
+		<property name="dspEstado"
+			formula="(select k.descripcion from keywords k
+				where k.codigo = estado and k.tipo = 'Status general')"/>
 	</class>
 </hibernate-mapping>

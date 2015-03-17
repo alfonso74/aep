@@ -5,6 +5,8 @@ import rcp.manticora.IEditableDocument;
 public class TipoCliente implements IEditableDocument {
 	private Long idTipo = -1L;
 	private String descripcion;
+	private String estado;
+	private String dspEstado;
 
 	public TipoCliente() {
 	}
@@ -17,12 +19,8 @@ public class TipoCliente implements IEditableDocument {
 // ************************** métodos especiales *****************************
 	
 	public String getTituloDocumento() {
-		String tituloDocumento = "Nuevo";
-		if (descripcion == null) {
-			tituloDocumento = "Nuevo tipo de cliente";
-		} else {
-			tituloDocumento = "Tipo: " + descripcion;
-		}
+		String tituloDocumento = "Nuevo tipo de cliente";
+		tituloDocumento = descripcion == null ? tituloDocumento : "Tipo: " + descripcion;
 		return tituloDocumento;
 	}
 	
@@ -48,5 +46,21 @@ public class TipoCliente implements IEditableDocument {
 
 	public void setIdTipo(Long idTipo) {
 		this.idTipo = idTipo;
+	}
+	
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public String getDspEstado() {
+		return dspEstado;
+	}
+
+	public void setDspEstado(String dspEstado) {
+		this.dspEstado = dspEstado;
 	}
 }
