@@ -167,6 +167,7 @@ public class GenericSorter extends ViewerSorter {
 	 */
 	public void doSort(int column, int tipo, int direccionInicial, boolean mostrarIndicador) {
 		this.tipo = tipo;
+		System.out.println("Tipo de ordenamiento: " + tipo);
 		// si se hace click a una nueva columna, se resetea la dirección y
 		// se guarda la referencia de la columna actual
 		if (this.column != column) {

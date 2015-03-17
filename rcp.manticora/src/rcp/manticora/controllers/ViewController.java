@@ -340,6 +340,16 @@ public class ViewController {
 		return (TipoCliente[]) resultados.toArray(new TipoCliente[resultados.size()]);
 	}
 	
+	public TipoCliente[] getListadoTipoClientesByStatus(String status) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		TipoClienteDAO dao = new TipoClienteDAO();
+		dao.setSession(session);
+		List<TipoCliente> resultados = dao.findByStatus(status);
+		session.getTransaction().commit();
+		return (TipoCliente[]) resultados.toArray(new TipoCliente[resultados.size()]);
+	}
+	
 	public TipoHabitacion[] getListadoTipoHabitaciones() {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();

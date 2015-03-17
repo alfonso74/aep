@@ -13,6 +13,8 @@ public interface ICliente extends IEditableDocument {
 	
 	Boolean getComision();
 	
+	TipoCliente getTipo();
+	
 	public abstract String getClase();
 	
 	public abstract String getDspPais();
@@ -31,7 +33,7 @@ public interface ICliente extends IEditableDocument {
 
 	public abstract String getDireccion3();
 
-	public abstract String getDspTipo();
+//	public abstract String getDspTipo();
 
 	public abstract String getEmail();
 
@@ -43,8 +45,6 @@ public interface ICliente extends IEditableDocument {
 
 	public abstract Long getIdPais();
 
-	public abstract Long getIdTipo();
-
 	public abstract String getNumero();
 
 	public abstract String getTelefono();
@@ -54,6 +54,8 @@ public interface ICliente extends IEditableDocument {
 	public abstract String getFuente();
 	
 	void setComision(Boolean comision);
+	
+	void setTipo(TipoCliente tipo);
 	
 	public abstract void setClase(String clase);
 
@@ -73,7 +75,7 @@ public interface ICliente extends IEditableDocument {
 
 	public abstract void setDspPais(String dspPais);
 
-	public abstract void setDspTipo(String dspTipo);
+//	public abstract void setDspTipo(String dspTipo);
 
 	public abstract void setEmail(String email);
 
@@ -84,9 +86,7 @@ public interface ICliente extends IEditableDocument {
 	public abstract void setIdentificacion(String identificacion);
 
 	public abstract void setIdPais(Long idPais);
-
-	public abstract void setIdTipo(Long idTipo);
-
+	
 	public abstract void setNumero(String numero);
 
 	public abstract void setTelefono(String telefono);

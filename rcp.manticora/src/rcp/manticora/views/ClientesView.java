@@ -68,7 +68,7 @@ public class ClientesView extends ViewPart implements IRefreshView, IViewFilter 
 				resultado = c.getEmail();
 				break;
 			case 3:
-				resultado = c.getDspTipo();
+				resultado = c.getTipo().getDescripcion();
 				break;
 			}
 			return resultado;
@@ -118,7 +118,7 @@ public class ClientesView extends ViewPart implements IRefreshView, IViewFilter 
 		column.setWidth(250);
 		column.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				((GenericSorter) viewer.getSorter()).doSort(1, GenericSorter.TEXTO, 0, true);
+				((GenericSorter) viewer.getSorter()).doSort(1, GenericSorter.TEXTO, 1, true);
 				viewer.refresh();
 			}
 		});

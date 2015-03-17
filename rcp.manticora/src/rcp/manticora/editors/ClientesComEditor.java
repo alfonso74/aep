@@ -8,7 +8,6 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
@@ -17,6 +16,7 @@ import rcp.manticora.controllers.ComboDataController;
 import rcp.manticora.model.Cliente;
 import rcp.manticora.model.ClienteJuridico;
 import rcp.manticora.model.Condicional;
+import rcp.manticora.model.TipoCliente;
 import rcp.manticora.services.ComboData;
 import rcp.manticora.views.ClientesComView;
 
@@ -35,7 +35,6 @@ public class ClientesComEditor extends AbstractEditorH {
 	private Text txtDireccion1;
 	private Text txtDireccion2;
 	private Text txtDireccion3;
-	private Text txtComentario;
 	
 	private ComboData cdTipoCliente;
 	private ComboData cdComision;
@@ -66,8 +65,8 @@ public class ClientesComEditor extends AbstractEditorH {
 			return;
 		}
 		String pClase = "C";
-		Long pIdTipo = cdTipoCliente.getKeyAsLongByIndex(comboTipoCliente.getSelectionIndex());
-		System.out.println("Tipo de cliente: " + pIdTipo);
+		TipoCliente pTipo = (TipoCliente) cdTipoCliente.getObjectByIndex(comboTipoCliente.getSelectionIndex());
+		System.out.println("Tipo de cliente: " + pTipo);
 		String pNombre = txtNombre.getText().trim();
 		String pComision = cdComision.getCodeByIndex(comboComision.getSelectionIndex());
 		String pIdentificacion = txtIdentificacion.getText().trim();
@@ -84,20 +83,20 @@ public class ClientesComEditor extends AbstractEditorH {
 		String pApartado = "";
 		String pCiudad = "";
 		String pComentario = "";
-		String pEstado = "A";
+		String pEstado = "A";              // no hay campo de status en el editor
 		
 		registro.setClase(pClase);
-		registro.setIdTipo(pIdTipo);
+		registro.setTipo(pTipo);
 		registro.setIdentificacion(pIdentificacion);
 		registro.setTelefono(pTelefono);
-		registro.setTelefono2("");
+		registro.setTelefono2(pTelefono2);
 		registro.setEmail(pEmail);
 		registro.setIdPais(pIdPais);
 		registro.setDireccion1(pDireccion1);
 		registro.setDireccion2(pDireccion2);
 		registro.setDireccion3(pDireccion3);
-		registro.setApartado("");
-		registro.setCiudad("");
+		registro.setApartado(pApartado);
+		registro.setCiudad(pCiudad);
 		registro.setComentario(pComentario);
 		registro.setComision(Boolean.parseBoolean(pComision));
 		registro.setEstado(pEstado);
@@ -107,7 +106,6 @@ public class ClientesComEditor extends AbstractEditorH {
 			((ClienteJuridico) registro).setContacto(pContacto);
 		}
 		
-		//controller.update(registro);
 		editorController.doSave(registro);
 		if (isNewDoc) {
 			System.out.println("Nuevo cliente comercial creado");
@@ -162,17 +160,6 @@ public class ClientesComEditor extends AbstractEditorH {
 		gridLayout.marginLeft = 10;
 		gridLayout.numColumns = 5;
 		parent.setLayout(gridLayout);
-		
-//		GridLayout gridLayout = new GridLayout();
-//		gridLayout.numColumns = 2;
-//		parent.setLayout(gridLayout);
-//		Group grupoTop = new Group(parent, SWT.NONE);
-//		gridLayout = new GridLayout();
-//		gridLayout.numColumns = 5;
-//		GridData gridData = new GridData(SWT.FILL, SWT.FILL, true, true);
-//		gridData.horizontalSpan = 2;
-//		grupoTop.setLayout(gridLayout);
-//		grupoTop.setLayoutData(gridData);
 		
 		agregarControles(parent);
 		llenarControles();
@@ -256,7 +243,7 @@ public class ClientesComEditor extends AbstractEditorH {
 		l = new Label(parent, SWT.NONE);
 		l.setText("Teléfono:");
 		txtTelefono = new Text(parent, SWT.BORDER);
-		txtTelefono.setLayoutData(new GridData(80,15));
+		txtTelefono.setLayoutData(new GridData(90,15));
 		txtTelefono.setTextLimit(15);
 		txtTelefono.addModifyListener(this.createModifyListener());
 		
@@ -337,13 +324,19 @@ public class ClientesComEditor extends AbstractEditorH {
 			registro = (Cliente) ((CommonEditorInput) this.getEditorInput()).getElemento();
 			System.out.println("Pais: " + registro.getDspPais());
 			txtCodigo.setText(valor2Txt(registro.getIdCliente()));
-			System.out.println("Tipo: " + registro.getDspTipo());
-			comboTipoCliente.setText(valor2Txt(registro.getDspTipo()));
 			
-//			System.out.println("A: " + Boolean.toString(registro.getComision()));
-//			System.out.println("B: " + cdComision.getTextoByKey(codigo));
-//			String keyComision = registro.getComision() == null ? "" : registro.getComision().toString();
-//			System.out.println("COMISION: " + registro.getComision() + ", " + keyComision);
+			System.out.println("Tipo: " + registro.getTipo());
+			if (registro.getTipo() != null) {
+				comboTipoCliente.setText(registro.getTipo().getDescripcion());
+				System.out.println("Selection index: " + comboTipoCliente.getSelectionIndex());
+				if (comboTipoCliente.getSelectionIndex() == -1) {
+					String dspTipoCliente = registro.getTipo().getDescripcion() + " (Inactivo)";
+					cdTipoCliente.agregarItem(dspTipoCliente, registro.getTipo().getIdTipo(), registro.getTipo());
+					comboTipoCliente.add(dspTipoCliente);
+					comboTipoCliente.select(comboTipoCliente.indexOf(dspTipoCliente));
+				}
+			}
+			
 			comboComision.setText(cdComision.getTextoByKey(Boolean.toString(registro.getComision())));
 			
 			txtIdentificacion.setText((valor2Txt(registro.getIdentificacion())));

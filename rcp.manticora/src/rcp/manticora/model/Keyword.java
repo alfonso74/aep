@@ -3,7 +3,7 @@ package rcp.manticora.model;
 import rcp.manticora.IEditableDocument;
 import rcp.manticora.services.ComboDataItem;
 
-public class Keyword implements IEditableDocument {
+public class Keyword implements IEditableDocument, IComboDataItem {
 	private Long idKeyword = -1L;
 	private String codigo;
 	private String descripcion;

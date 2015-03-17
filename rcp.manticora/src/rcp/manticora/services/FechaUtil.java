@@ -52,7 +52,7 @@ public class FechaUtil {
 				formatter.applyPattern(formatoFecha);
 				return formatter.parse(fecha);
 			} catch (ParseException e) {
-				System.err.println("Error durante transformación de fechas: " + e);
+				System.err.println("El valor suministrado no es una fecha: " + e);
 				return null;
 			}
 		} else {
@@ -66,7 +66,7 @@ public class FechaUtil {
 				formatter.applyPattern(formatoHora);
 				return formatter.parse(fecha);
 			} catch (ParseException e) {
-				System.err.println("Error durante transformación de hora: " + e);
+				System.err.println("El valor suministrado no es una hora: " + e);
 				return null;
 			}
 		} else {
@@ -80,7 +80,7 @@ public class FechaUtil {
 				formatter.applyPattern(formatoFechaHora);
 				return formatter.parse(fecha);
 			} catch (ParseException e) {
-				System.err.println("Error durante transformación de fecha-hora: " + e);
+				System.err.println("El valor suministrado no es una fecha-hora: " + e);
 				return null;
 			}
 		} else {

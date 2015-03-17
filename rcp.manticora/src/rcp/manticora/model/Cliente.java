@@ -8,7 +8,8 @@ import rcp.manticora.IEditableDocument;
 
 public class Cliente implements IEditableDocument, ICliente, Comparable<ICliente> {
 	private Long idCliente = -1L;
-	private Long idTipo;
+//	private Long idTipo;
+	private TipoCliente tipo;
 	private String dspTipo;
 	private String clase;
 	private Long idPais;
@@ -117,6 +118,14 @@ public class Cliente implements IEditableDocument, ICliente, Comparable<ICliente
 		this.comision = comision == null ? Boolean.FALSE : comision.booleanValue();
 	}
 	
+	public TipoCliente getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(TipoCliente tipo) {
+		this.tipo = tipo;
+	}
+
 	public String getClase() {
 		return clase;
 	}
@@ -207,13 +216,6 @@ public class Cliente implements IEditableDocument, ICliente, Comparable<ICliente
 	 */
 	public Long getIdPais() {
 		return idPais;
-	}
-
-	/* (non-Javadoc)
-	 * @see manticora.model.ICliente#getIdTipo()
-	 */
-	public Long getIdTipo() {
-		return idTipo;
 	}
 
 	/* (non-Javadoc)
@@ -326,13 +328,6 @@ public class Cliente implements IEditableDocument, ICliente, Comparable<ICliente
 	 */
 	public void setIdPais(Long idPais) {
 		this.idPais = idPais;
-	}
-
-	/* (non-Javadoc)
-	 * @see manticora.model.ICliente#setIdTipo(int)
-	 */
-	public void setIdTipo(Long idTipo) {
-		this.idTipo = idTipo;
 	}
 	
 	/* (non-Javadoc)

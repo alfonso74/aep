@@ -63,7 +63,7 @@ public class ClientesComView extends AbstractViewH implements IViewFilter {
 				resultado = c.getEmail();
 				break;
 			case 3:
-				resultado = c.getDspTipo();
+				resultado = c.getTipo().getDescripcion();
 				break;
 			}
 			return resultado;

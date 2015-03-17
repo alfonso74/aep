@@ -123,7 +123,16 @@ public class ComboDataController extends ViewController {
 		ComboData data = new ComboData();
 		TipoCliente[] lista = getListadoTipoClientes();
 		for (int n = 0; n < lista.length; n++) {
-			data.agregarItem(lista[n].getDescripcion(), lista[n].getIdTipo());
+			data.agregarComboDataItem(lista[n].toComboDataItem());
+		}
+		return data;
+	}
+	
+	public ComboData getComboDataTipoClientesActivos() {
+		ComboData data = new ComboData();
+		TipoCliente[] lista = getListadoTipoClientesByStatus("A");
+		for (int n = 0; n < lista.length; n++) {
+			data.agregarComboDataItem(lista[n].toComboDataItem());
 		}
 		return data;
 	}

@@ -8,10 +8,13 @@
 		<id name="idCliente" column="idCLIENTE" unsaved-value="-1">
 			<generator class="native"/>
 		</id>
-		<property name="idTipo"/>
 		<property name="dspTipo"
 			formula="(select tp.descripcion from tipo_clientes tp
 				where tp.idTipo = idTipo)"/>
+		<many-to-one name="tipo" lazy="false"
+				column="idTipo" 
+				unique="false"
+				not-null="false"/>
 		<property name="clase"/>
 		<property name="identificacion"/>
 		<property name="telefono"/>

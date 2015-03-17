@@ -5,6 +5,7 @@ import java.util.Date;
 
 
 
+
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -29,6 +30,7 @@ import rcp.manticora.model.Cliente;
 import rcp.manticora.model.ClienteNatural;
 import rcp.manticora.model.Condicional;
 import rcp.manticora.model.Fuente;
+import rcp.manticora.model.TipoCliente;
 import rcp.manticora.model.TipoKeyword;
 import rcp.manticora.services.ComboData;
 import rcp.manticora.services.FechaUtil;
@@ -79,7 +81,7 @@ public class ClientesEditor extends AbstractEditorH {
 		cdController = new ComboDataController();
 		cdComision = cdController.getComboDataCondicional();
 		cdPais = cdController.getComboDataPaises();
-		cdTipoCliente = cdController.getComboDataTipoClientes();
+		cdTipoCliente = cdController.getComboDataTipoClientesActivos();
 		cdSexo = cdController.getComboDataKeyword(TipoKeyword.SEXO);
 		cdFormaPago = cdController.getComboDataKeyword(TipoKeyword.FORMA_PAGO);
 	}
@@ -91,23 +93,20 @@ public class ClientesEditor extends AbstractEditorH {
 		}
 		
 		String pClase = "N";
-		Long pIdTipo = cdTipoCliente.getKeyAsLongByIndex(comboTipoCliente.getSelectionIndex());
-		System.out.println("Tipo de cliente: " + pIdTipo);
+		TipoCliente pTipo = (TipoCliente) cdTipoCliente.getObjectByIndex(comboTipoCliente.getSelectionIndex());
+		System.out.println("Tipo de cliente: " + pTipo);
 		String pFuente = comboFuente.getText();
 		String pComision = cdComision.getCodeByIndex(comboComision.getSelectionIndex());
 		String pNombre = txtNombre.getText().trim();
 		String pApellido = txtApellido.getText().trim();
 		String pIdentificacion = txtIdentificacion.getText().trim();
 		Date pNacimiento = FechaUtil.toDate(txtNacimiento.getText());
-		//int pPeso = Integer.parseInt(txtPeso.getText());
 		Integer pPeso = txt2Integer(txtPeso.getText());
-		//String pSexo = comboSexo.getText().substring(1);
 		String pSexo = cdSexo.getCodeByIndex(comboSexo.getSelectionIndex());
 		System.out.println("Sexo: " + pSexo);
 		String pTelefono = txtTelefono.getText().trim();
-		String pTelefono2 = "2222222";
+		String pTelefono2 = "";
 		String pEmail = txtEmail.getText().trim();
-		//String pFormaPago = comboPago.getText();
 		String pFormaPago = cdFormaPago.getCodeByIndex(comboPago.getSelectionIndex());
 		String pComentario = txtComentario.getText();
 		Long pIdPais = cdPais.getKeyAsLongByIndex(comboPais.getSelectionIndex());
@@ -120,57 +119,8 @@ public class ClientesEditor extends AbstractEditorH {
 		registro.setComision(Boolean.parseBoolean(pComision));
 		String pEstado = "A";            // no hay campo de status en el editor
 		
-		/*
-		if (isNewDoc) {
-			System.out.println("Acción de salvar cliente");
-			System.out.println("Pars: 0" + pNombre + pApellido + pEmail + pTelefono + pTelefono2);
-			registro = controller.addCliente(-1, pNombre, pApellido, pIdentificacion,
-				pTelefono, pTelefono2, pEmail, pIdPais, pDireccion1, pDireccion2,
-				pDireccion3, pApartado, pCiudad, pComentario, pEstado);
-			registro.setFuente(pFuente);
-			registro.setFormaPago(pFormaPago);
-			registro.setClase(pClase);
-			registro.setIdTipo(pIdTipo);
-			if (registro instanceof ClienteNatural) {
-				((ClienteNatural) registro).setFechaNacimiento(pNacimiento);
-				((ClienteNatural) registro).setSexo(pSexo);
-				((ClienteNatural) registro).setPeso(pPeso);
-			};
-			controller.update(registro);
-			int idCliente = registro.getIdCliente();
-			txtCodigo.setText(Integer.toString(idCliente));
-			isNewDoc = false;
-		} else {
-			System.out.println("Actualizando cliente...");
-			registro.setClase(pClase);
-			registro.setIdTipo(pIdTipo);
-			registro.setFuente(pFuente);
-			registro.setIdentificacion(pIdentificacion);
-			registro.setTelefono(pTelefono);
-			registro.setTelefono2(pTelefono2);
-			registro.setEmail(pEmail);
-			registro.setFormaPago(pFormaPago);
-			System.out.println("Peso a grabar: " + pPeso);
-			registro.setIdPais(pIdPais);
-			registro.setCiudad(pCiudad);
-			registro.setApartado(pApartado);
-			registro.setDireccion1(pDireccion1);
-			registro.setDireccion2(pDireccion2);
-			registro.setDireccion3(pDireccion3);
-			registro.setComentario(pComentario);
-			if (registro instanceof ClienteNatural) {
-				((ClienteNatural) registro).setNombre(pNombre);
-				((ClienteNatural) registro).setApellido(pApellido);
-				((ClienteNatural) registro).setFechaNacimiento(pNacimiento);
-				((ClienteNatural) registro).setSexo(pSexo);
-				((ClienteNatural) registro).setPeso(pPeso);
-			}
-			controller.update(registro);
-		}
-		*/
-		
 		registro.setClase(pClase);
-		registro.setIdTipo(pIdTipo);
+		registro.setTipo(pTipo);
 		registro.setFuente(pFuente);
 		registro.setIdentificacion(pIdentificacion);
 		registro.setTelefono(pTelefono);
@@ -194,7 +144,6 @@ public class ClientesEditor extends AbstractEditorH {
 			((ClienteNatural) registro).setPeso(pPeso);
 		}
 		
-		//controller.update(registro);
 		editorController.doSave(registro);
 		if (isNewDoc) {
 			System.out.println("Nuevo cliente natural creado");
@@ -285,25 +234,7 @@ public class ClientesEditor extends AbstractEditorH {
 		gridLayout = new GridLayout();
 		gridLayout.numColumns = 2;
 		parent.setLayout(gridLayout);
-		/*
-		ScrolledComposite sc = new ScrolledComposite(parent, SWT.BORDER | SWT.V_SCROLL);
-		Composite cBase = new Composite(sc, SWT.NONE);
-		sc.setContent(cBase);
-		sc.setLayout(new GridLayout());
-		parent.layout(true);
-		cBase.setLayout(new GridLayout());
-		cBase.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
-		cBase.setSize(cBase.computeSize(SWT.DEFAULT, SWT.DEFAULT));
-		*/
-		/*
-		Group grupoTop = new Group(parent, SWT.NONE);
-		gridLayout = new GridLayout();
-		gridLayout.numColumns = 5;
-		GridData gridData = new GridData(SWT.FILL, SWT.FILL, true, true);
-		gridData.horizontalSpan = 2;
-		grupoTop.setLayout(gridLayout);
-		grupoTop.setLayoutData(gridData);
-		*/
+		
 		agregarControles(parent);
 		new Label(parent, SWT.NONE);
 		llenarControles();
@@ -423,7 +354,7 @@ public class ClientesEditor extends AbstractEditorH {
 		l = new Label(parent, SWT.NONE);
 		l.setText("Teléfono:");
 		txtTelefono = new Text(parent, SWT.BORDER);
-		txtTelefono.setLayoutData(new GridData(75,15));
+		txtTelefono.setLayoutData(new GridData(90,15));
 		txtTelefono.setTextLimit(15);
 		txtTelefono.addModifyListener(this.createModifyListener());
 		
@@ -542,9 +473,18 @@ public class ClientesEditor extends AbstractEditorH {
 			registro = (Cliente) ((CommonEditorInput) this.getEditorInput()).getElemento();
 			System.out.println("Pais: " + registro.getDspPais());
 			txtCodigo.setText("" + registro.getIdCliente());
-			System.out.println("Tipo: " + registro.getDspTipo());
-			//comboTipoCliente.select(comboTipoCliente.indexOf(registro.getDspTipo()));
-			comboTipoCliente.setText(valor2Txt(registro.getDspTipo()));
+			
+			System.out.println("Tipo: " + registro.getTipo());
+			if (registro.getTipo() != null) {
+				comboTipoCliente.setText(registro.getTipo().getDescripcion());
+				System.out.println("Selection index: " + comboTipoCliente.getSelectionIndex());
+				if (comboTipoCliente.getSelectionIndex() == -1) {
+					String dspTipoCliente = registro.getTipo().getDescripcion() + " (Inactivo)";
+					cdTipoCliente.agregarItem(dspTipoCliente, registro.getTipo().getIdTipo(), registro.getTipo());
+					comboTipoCliente.add(dspTipoCliente);
+					comboTipoCliente.select(comboTipoCliente.indexOf(dspTipoCliente));
+				}
+			}
 			comboFuente.setText(valor2Txt(registro.getFuente()));
 			comboComision.setText(cdComision.getTextoByKey(Boolean.toString(registro.getComision())));
 			txtIdentificacion.setText(valor2Txt(registro.getIdentificacion()));

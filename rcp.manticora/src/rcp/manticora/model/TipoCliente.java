@@ -1,8 +1,9 @@
 package rcp.manticora.model;
 
 import rcp.manticora.IEditableDocument;
+import rcp.manticora.services.ComboDataItem;
 
-public class TipoCliente implements IEditableDocument {
+public class TipoCliente implements IEditableDocument, IComboDataItem {
 	private Long idTipo = -1L;
 	private String descripcion;
 	private String estado;
@@ -22,6 +23,14 @@ public class TipoCliente implements IEditableDocument {
 		String tituloDocumento = "Nuevo tipo de cliente";
 		tituloDocumento = descripcion == null ? tituloDocumento : "Tipo: " + descripcion;
 		return tituloDocumento;
+	}
+	
+	public ComboDataItem toComboDataItem() {
+		ComboDataItem cdItem = new ComboDataItem();
+		cdItem.setKey(getIdTipo().toString());
+		cdItem.setTexto(getDescripcion());
+		cdItem.setObjeto(this);
+		return cdItem;
 	}
 	
 	@Override
@@ -63,4 +72,5 @@ public class TipoCliente implements IEditableDocument {
 	public void setDspEstado(String dspEstado) {
 		this.dspEstado = dspEstado;
 	}
+	
 }
