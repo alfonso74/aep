@@ -54,7 +54,7 @@ public class ClientesComEditor extends AbstractEditorH {
 		super();
 		editorController = new ClientesController(ID);
 		cdController = new ComboDataController();
-		cdTipoCliente = cdController.getComboDataTipoClientes();
+		cdTipoCliente = cdController.getComboDataTipoClientesActivos();
 		cdComision = cdController.getComboDataCondicional();
 		cdPais = cdController.getComboDataPaises();
 	}

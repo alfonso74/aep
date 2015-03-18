@@ -11,7 +11,7 @@ public class TipoClienteDAO extends NewGenericDAOImpl<TipoCliente, Long> {
 	
 	public List<TipoCliente> findByStatus(String status) {
 		Criterion c = Restrictions.eq("estado", status);
-		List<TipoCliente> resultados = findByCriteria(c);
+		List<TipoCliente> resultados = findByOrderedCriteria("descripcion", true, c);
 		return resultados;
 	}
 	

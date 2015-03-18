@@ -335,7 +335,7 @@ public class ViewController {
 		session.beginTransaction();
 		TipoClienteDAO dao = new TipoClienteDAO();
 		dao.setSession(session);
-		List<TipoCliente> resultados = dao.findAll();
+		List<TipoCliente> resultados = dao.findAllOrdered("descripcion", true);
 		session.getTransaction().commit();
 		return (TipoCliente[]) resultados.toArray(new TipoCliente[resultados.size()]);
 	}
