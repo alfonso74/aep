@@ -1342,6 +1342,7 @@ Reporte de Ventas Anuales
                             <property name="color">green</property>
                             <property name="verticalAlign">middle</property>
                             <data id="262">
+                                <property name="color">#008080</property>
                                 <structure name="numberFormat">
                                     <property name="category">Fixed</property>
                                     <property name="pattern">#,##0.00{RoundingMode=HALF_UP}</property>
