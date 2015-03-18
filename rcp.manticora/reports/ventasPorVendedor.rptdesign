@@ -85,7 +85,7 @@
         </scalar-parameter>
         <scalar-parameter name="estado" id="150">
             <text-property name="helpText">Filtra las cotizaciones en base al status indicado</text-property>
-            <text-property name="promptText">Status</text-property>
+            <text-property name="promptText">Cotizaciones con estado</text-property>
             <property name="valueType">dynamic</property>
             <property name="dataSetName">Status Cotizaciones</property>
             <expression name="valueExpr" type="javascript">dataSetRow["CODIGO"]</expression>
@@ -105,6 +105,7 @@
             </structure>
         </scalar-parameter>
         <scalar-parameter name="vendedor" id="154">
+            <text-property name="promptText">Vendedor</text-property>
             <property name="valueType">dynamic</property>
             <property name="dataSetName">VendedoresActivos</property>
             <expression name="valueExpr" type="javascript">dataSetRow["idVENDEDOR"]</expression>
