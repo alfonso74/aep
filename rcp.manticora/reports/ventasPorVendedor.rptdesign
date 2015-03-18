@@ -46,6 +46,7 @@
     <property name="imageDPI">96</property>
     <parameters>
         <scalar-parameter name="connectionURL" id="145">
+            <property name="hidden">true</property>
             <property name="valueType">static</property>
             <property name="isRequired">false</property>
             <property name="dataType">string</property>
@@ -595,6 +596,7 @@ where estado = 'A']]></xml-property>
 </model:DesignValues>]]></xml-property>
         </oda-data-set>
         <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="VentaAnual" id="155">
+            <list-property name="columnHints"/>
             <list-property name="parameters">
                 <structure>
                     <property name="name">param_1</property>
@@ -631,81 +633,86 @@ where estado = 'A']]></xml-property>
                 <list-property name="resultSet">
                     <structure>
                         <property name="position">1</property>
+                        <property name="name">idMES</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
                         <property name="name">NOMBRE</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
-                        <property name="position">2</property>
+                        <property name="position">3</property>
                         <property name="name">idCOTIZACION</property>
                         <property name="dataType">integer</property>
                     </structure>
                     <structure>
-                        <property name="position">3</property>
+                        <property name="position">4</property>
                         <property name="name">NO_TOUR</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
-                        <property name="position">4</property>
+                        <property name="position">5</property>
                         <property name="name">NO_TOUR_YYYY</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
-                        <property name="position">5</property>
+                        <property name="position">6</property>
                         <property name="name">NO_TOUR_MM</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
-                        <property name="position">6</property>
+                        <property name="position">7</property>
                         <property name="name">FECHA_INICIO</property>
                         <property name="dataType">date</property>
                     </structure>
                     <structure>
-                        <property name="position">7</property>
+                        <property name="position">8</property>
                         <property name="name">FECHA_CREACION</property>
                         <property name="dataType">date-time</property>
                     </structure>
                     <structure>
-                        <property name="position">8</property>
+                        <property name="position">9</property>
                         <property name="name">SUBTOTAL</property>
                         <property name="dataType">decimal</property>
                     </structure>
                     <structure>
-                        <property name="position">9</property>
+                        <property name="position">10</property>
                         <property name="name">IMPUESTO</property>
                         <property name="dataType">decimal</property>
                     </structure>
                     <structure>
-                        <property name="position">10</property>
+                        <property name="position">11</property>
                         <property name="name">PORC_HOSPEDAJE</property>
                         <property name="dataType">decimal</property>
                     </structure>
                     <structure>
-                        <property name="position">11</property>
+                        <property name="position">12</property>
                         <property name="name">HOSPEDAJE</property>
                         <property name="dataType">decimal</property>
                     </structure>
                     <structure>
-                        <property name="position">12</property>
+                        <property name="position">13</property>
                         <property name="name">TOTAL</property>
                         <property name="dataType">decimal</property>
                     </structure>
                     <structure>
-                        <property name="position">13</property>
+                        <property name="position">14</property>
                         <property name="name">PORC_PAGO</property>
                         <property name="dataType">decimal</property>
                     </structure>
                     <structure>
-                        <property name="position">14</property>
+                        <property name="position">15</property>
                         <property name="name">CLIENTE</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
-                        <property name="position">15</property>
+                        <property name="position">16</property>
                         <property name="name">ESTADO</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
-                        <property name="position">16</property>
+                        <property name="position">17</property>
                         <property name="name">DESCRIPCION</property>
                         <property name="dataType">string</property>
                     </structure>
@@ -715,102 +722,108 @@ where estado = 'A']]></xml-property>
             <list-property name="resultSet">
                 <structure>
                     <property name="position">1</property>
+                    <property name="name">idMES</property>
+                    <property name="nativeName">idMES</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
                     <property name="name">NOMBRE</property>
                     <property name="nativeName">NOMBRE</property>
                     <property name="dataType">string</property>
                 </structure>
                 <structure>
-                    <property name="position">2</property>
+                    <property name="position">3</property>
                     <property name="name">idCOTIZACION</property>
                     <property name="nativeName">idCOTIZACION</property>
                     <property name="dataType">integer</property>
                 </structure>
                 <structure>
-                    <property name="position">3</property>
+                    <property name="position">4</property>
                     <property name="name">NO_TOUR</property>
                     <property name="nativeName">NO_TOUR</property>
                     <property name="dataType">string</property>
                 </structure>
                 <structure>
-                    <property name="position">4</property>
+                    <property name="position">5</property>
                     <property name="name">NO_TOUR_YYYY</property>
                     <property name="nativeName">NO_TOUR_YYYY</property>
                     <property name="dataType">string</property>
                 </structure>
                 <structure>
-                    <property name="position">5</property>
+                    <property name="position">6</property>
                     <property name="name">NO_TOUR_MM</property>
                     <property name="nativeName">NO_TOUR_MM</property>
                     <property name="dataType">string</property>
                 </structure>
                 <structure>
-                    <property name="position">6</property>
+                    <property name="position">7</property>
                     <property name="name">FECHA_INICIO</property>
                     <property name="nativeName">FECHA_INICIO</property>
                     <property name="dataType">date</property>
                 </structure>
                 <structure>
-                    <property name="position">7</property>
+                    <property name="position">8</property>
                     <property name="name">FECHA_CREACION</property>
                     <property name="nativeName">FECHA_CREACION</property>
                     <property name="dataType">date-time</property>
                 </structure>
                 <structure>
-                    <property name="position">8</property>
+                    <property name="position">9</property>
                     <property name="name">SUBTOTAL</property>
                     <property name="nativeName">SUBTOTAL</property>
                     <property name="dataType">decimal</property>
                 </structure>
                 <structure>
-                    <property name="position">9</property>
+                    <property name="position">10</property>
                     <property name="name">IMPUESTO</property>
                     <property name="nativeName">IMPUESTO</property>
                     <property name="dataType">decimal</property>
                 </structure>
                 <structure>
-                    <property name="position">10</property>
+                    <property name="position">11</property>
                     <property name="name">PORC_HOSPEDAJE</property>
                     <property name="nativeName">PORC_HOSPEDAJE</property>
                     <property name="dataType">decimal</property>
                 </structure>
                 <structure>
-                    <property name="position">11</property>
+                    <property name="position">12</property>
                     <property name="name">HOSPEDAJE</property>
                     <property name="nativeName">HOSPEDAJE</property>
                     <property name="dataType">decimal</property>
                 </structure>
                 <structure>
-                    <property name="position">12</property>
+                    <property name="position">13</property>
                     <property name="name">TOTAL</property>
                     <property name="nativeName">TOTAL</property>
                     <property name="dataType">decimal</property>
                 </structure>
                 <structure>
-                    <property name="position">13</property>
+                    <property name="position">14</property>
                     <property name="name">PORC_PAGO</property>
                     <property name="nativeName">PORC_PAGO</property>
                     <property name="dataType">decimal</property>
                 </structure>
                 <structure>
-                    <property name="position">14</property>
+                    <property name="position">15</property>
                     <property name="name">CLIENTE</property>
                     <property name="nativeName">CLIENTE</property>
                     <property name="dataType">string</property>
                 </structure>
                 <structure>
-                    <property name="position">15</property>
+                    <property name="position">16</property>
                     <property name="name">ESTADO</property>
                     <property name="nativeName">ESTADO</property>
                     <property name="dataType">string</property>
                 </structure>
                 <structure>
-                    <property name="position">16</property>
+                    <property name="position">17</property>
                     <property name="name">DESCRIPCION</property>
                     <property name="nativeName">DESCRIPCION</property>
                     <property name="dataType">string</property>
                 </structure>
             </list-property>
-            <xml-property name="queryText"><![CDATA[select m.nombre, a.idCotizacion, a.no_tour, a.no_tour_yyyy, a.no_tour_mm, a.fecha_inicio, a.fecha_creacion, 
+            <xml-property name="queryText"><![CDATA[select m.idMes, m.nombre, a.idCotizacion, a.no_tour, a.no_tour_yyyy, a.no_tour_mm, a.fecha_inicio, a.fecha_creacion, 
 a.subtotal, a.impuesto, a.porc_hospedaje, a.hospedaje, a.total, a.porc_pago, 
 a.cliente, a.estado, e.descripcion
 from cotizaciones a, cotizaciones_has_clientes b, clientes c, vendedores d, tipo_clientes e, meses m
@@ -1144,6 +1157,38 @@ Reporte de Ventas Anuales
                     </list-property>
                     <property name="allowExport">true</property>
                 </structure>
+                <structure>
+                    <property name="name">idMES</property>
+                    <text-property name="displayName">idMES</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["idMES"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">ipatAnual</property>
+                    <text-property name="displayName">ipatAnual</text-property>
+                    <property name="dataType">float</property>
+                    <property name="aggregateFunction">SUM</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                            <expression name="value" type="javascript">row["HOSPEDAJE"]</expression>
+                        </structure>
+                    </list-property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">itbmsAnual</property>
+                    <text-property name="displayName">itbmsAnual</text-property>
+                    <property name="dataType">float</property>
+                    <property name="aggregateFunction">SUM</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                            <expression name="value" type="javascript">row["IMPUESTO"]</expression>
+                        </structure>
+                    </list-property>
+                    <property name="allowExport">true</property>
+                </structure>
             </list-property>
             <column id="184">
                 <property name="width">0.365in</property>
@@ -1252,6 +1297,13 @@ Reporte de Ventas Anuales
                     <expression name="expressionValue" type="javascript">row["NOMBRE"]</expression>
                 </structure>
                 <property name="hideDetail">false</property>
+                <list-property name="sort">
+                    <structure>
+                        <expression name="key" type="javascript">row["idMES"]</expression>
+                        <property name="direction">asc</property>
+                        <property name="strength">-1</property>
+                    </structure>
+                </list-property>
                 <header>
                     <row id="221">
                         <cell id="222">
@@ -1390,8 +1442,30 @@ Reporte de Ventas Anuales
                     <cell id="179"/>
                     <cell id="180"/>
                     <cell id="181"/>
-                    <cell id="254"/>
-                    <cell id="182"/>
+                    <cell id="254">
+                        <data id="274">
+                            <property name="fontFamily">serif</property>
+                            <property name="fontWeight">bold</property>
+                            <structure name="numberFormat">
+                                <property name="category">Fixed</property>
+                                <property name="pattern">#,##0.00{RoundingMode=HALF_UP}</property>
+                            </structure>
+                            <property name="textAlign">right</property>
+                            <property name="resultSetColumn">itbmsAnual</property>
+                        </data>
+                    </cell>
+                    <cell id="182">
+                        <data id="273">
+                            <property name="fontFamily">serif</property>
+                            <property name="fontWeight">bold</property>
+                            <structure name="numberFormat">
+                                <property name="category">Fixed</property>
+                                <property name="pattern">#,##0.00{RoundingMode=HALF_UP}</property>
+                            </structure>
+                            <property name="textAlign">right</property>
+                            <property name="resultSetColumn">ipatAnual</property>
+                        </data>
+                    </cell>
                     <cell id="183">
                         <property name="fontFamily">serif</property>
                         <property name="fontWeight">bold</property>
