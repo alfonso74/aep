@@ -33,8 +33,6 @@ public interface ICliente extends IEditableDocument {
 
 	public abstract String getDireccion3();
 
-//	public abstract String getDspTipo();
-
 	public abstract String getEmail();
 
 	public abstract String getEstado();
@@ -74,9 +72,7 @@ public interface ICliente extends IEditableDocument {
 	public abstract void setDireccion3(String direccion3);
 
 	public abstract void setDspPais(String dspPais);
-
-//	public abstract void setDspTipo(String dspTipo);
-
+	
 	public abstract void setEmail(String email);
 
 	public abstract void setEstado(String estado);

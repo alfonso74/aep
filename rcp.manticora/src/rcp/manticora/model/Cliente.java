@@ -8,9 +8,7 @@ import rcp.manticora.IEditableDocument;
 
 public class Cliente implements IEditableDocument, ICliente, Comparable<ICliente> {
 	private Long idCliente = -1L;
-//	private Long idTipo;
 	private TipoCliente tipo;
-	private String dspTipo;
 	private String clase;
 	private Long idPais;
 	private String dspPais;
@@ -65,7 +63,6 @@ public class Cliente implements IEditableDocument, ICliente, Comparable<ICliente
 	}
 	
 	public Set<String> generarDireccion() {
-		//Set<String> set = new TreeSet<String>();
 		Set<String> set = new LinkedHashSet<String>();
 		String lineaDireccion = "";
 		
@@ -98,13 +95,6 @@ public class Cliente implements IEditableDocument, ICliente, Comparable<ICliente
 		} else {
 			return dspPais;
 		}
-	}
-	
-	/* (non-Javadoc)
-	 * @see manticora.model.ICliente#getDspTipo()
-	 */
-	public String getDspTipo() {
-		return dspTipo == null ? "" : dspTipo;
 	}
 	
 	
@@ -286,13 +276,6 @@ public class Cliente implements IEditableDocument, ICliente, Comparable<ICliente
 	 */
 	public void setDspPais(String dspPais) {
 		this.dspPais = dspPais;
-	}
-
-	/* (non-Javadoc)
-	 * @see manticora.model.ICliente#setDspTipo(java.lang.String)
-	 */
-	public void setDspTipo(String dspTipo) {
-		this.dspTipo = dspTipo;
 	}
 
 	/* (non-Javadoc)
