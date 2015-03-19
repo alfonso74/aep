@@ -42,6 +42,9 @@ public class SimpleReportFactory {
 		} else if (nombreAccion.equals("Ventas por Vendedor")) {
 			action.setTituloReporte("Ventas por Vendedor");
 			action.setRutaReporte("reports/ventasPorVendedor.rptdesign");
+		} else if (nombreAccion.equals("Comparativo de Ventas (x Vendedor)")) {
+			action.setTituloReporte("Comparativo de Ventas (x Vendedor)");
+			action.setRutaReporte("reports/comparativoVentasVendedor.rptdesign");
 		} else if (nombreAccion.equals("Comparativo de Ventas Anuales")) {
 			action.setTituloReporte("Comparativo de Ventas Anuales");
 			action.setRutaReporte("reports/comparativoVentasAnuales.rptdesign");

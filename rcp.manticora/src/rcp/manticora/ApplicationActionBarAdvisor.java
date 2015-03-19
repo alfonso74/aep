@@ -38,6 +38,7 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 	private IAction reportePaxsGiras;
 	
 	private IAction reporteVentasPorVendedor;
+	private IAction reporteComparativoVentasPorVendedor;
 	private IAction reporteComparativoVentas;
 	
 
@@ -77,6 +78,7 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
     	reportePaxsGiras = factory.createAction("Paxs x Giras", window);
     	
     	reporteVentasPorVendedor = factory.createAction("Ventas por Vendedor", window);
+    	reporteComparativoVentasPorVendedor = factory.createAction("Comparativo de Ventas (x Vendedor)", window);
     	reporteComparativoVentas = factory.createAction("Comparativo de Ventas Anuales", window);
     }
 
@@ -109,6 +111,7 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
     	reportsMenu.add(reportePaxsGiras);
     	reportsMenu.add(new Separator());
     	reportsMenu.add(reporteVentasPorVendedor);
+    	reportsMenu.add(reporteComparativoVentasPorVendedor);
     	reportsMenu.add(reporteComparativoVentas);
     	
     	MenuManager helpMenu = new MenuManager("&Ayuda", "ayuda");
