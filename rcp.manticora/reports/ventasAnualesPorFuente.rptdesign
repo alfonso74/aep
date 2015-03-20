@@ -65,7 +65,7 @@
                 <list-property name="resultSet">
                     <structure>
                         <property name="position">1</property>
-                        <property name="name">FUENTE</property>
+                        <property name="name">fuente</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
@@ -84,8 +84,8 @@
             <list-property name="resultSet">
                 <structure>
                     <property name="position">1</property>
-                    <property name="name">FUENTE</property>
-                    <property name="nativeName">FUENTE</property>
+                    <property name="name">fuente</property>
+                    <property name="nativeName">fuente</property>
                     <property name="dataType">string</property>
                 </structure>
                 <structure>
@@ -101,7 +101,7 @@
                     <property name="dataType">decimal</property>
                 </structure>
             </list-property>
-            <xml-property name="queryText"><![CDATA[select fuente, count(*) as no_ventas, sum(total) as total
+            <xml-property name="queryText"><![CDATA[select coalesce(fuente, 'No clasificado') as fuente, count(*) as no_ventas, sum(total) as total
 from cotizaciones
 where idTipo = 1 and year(fecha_inicio) = ? and estado = ?
 group by fuente]]></xml-property>
@@ -318,12 +318,6 @@ Ventas Anuales por Fuente
                         <property name="dataSet">Venta Anual por Fuente</property>
                         <list-property name="boundDataColumns">
                             <structure>
-                                <property name="name">FUENTE</property>
-                                <text-property name="displayName">FUENTE</text-property>
-                                <expression name="expression" type="javascript">dataSetRow["FUENTE"]</expression>
-                                <property name="dataType">string</property>
-                            </structure>
-                            <structure>
                                 <property name="name">total</property>
                                 <text-property name="displayName">total</text-property>
                                 <expression name="expression" type="javascript">dataSetRow["total"]</expression>
@@ -367,6 +361,12 @@ Ventas Anuales por Fuente
                                     </structure>
                                 </list-property>
                                 <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">fuente</property>
+                                <text-property name="displayName">fuente</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["fuente"]</expression>
+                                <property name="dataType">string</property>
                             </structure>
                         </list-property>
                         <column id="171"/>
@@ -414,8 +414,8 @@ Ventas Anuales por Fuente
                                 <property name="backgroundColor">#E0E7E9</property>
                                 <property name="fontFamily">serif</property>
                                 <cell id="166">
-                                    <data id="180">
-                                        <property name="resultSetColumn">FUENTE</property>
+                                    <data id="204">
+                                        <property name="resultSetColumn">fuente</property>
                                     </data>
                                 </cell>
                                 <cell id="192">
@@ -1317,7 +1317,7 @@ Ventas Anuales por Fuente
         <Visible>false</Visible>
       </Label>
       <DataDefinition>
-        <Definition>row[&quot;FUENTE&quot;]</Definition>
+        <Definition>row[&quot;fuente&quot;]</Definition>
       </DataDefinition>
       <DataPoint>
         <Components>
@@ -1349,11 +1349,6 @@ Ventas Anuales por Fuente
                         <property name="dataSet">Venta Anual por Fuente</property>
                         <list-property name="boundDataColumns">
                             <structure>
-                                <property name="name">FUENTE</property>
-                                <expression name="expression" type="javascript">dataSetRow["FUENTE"]</expression>
-                                <property name="dataType">string</property>
-                            </structure>
-                            <structure>
                                 <property name="name">no_ventas</property>
                                 <expression name="expression" type="javascript">dataSetRow["no_ventas"]</expression>
                                 <property name="dataType">decimal</property>
@@ -1362,6 +1357,12 @@ Ventas Anuales por Fuente
                                 <property name="name">total</property>
                                 <expression name="expression" type="javascript">dataSetRow["total"]</expression>
                                 <property name="dataType">decimal</property>
+                            </structure>
+                            <structure>
+                                <property name="name">fuente</property>
+                                <text-property name="displayName">fuente</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["fuente"]</expression>
+                                <property name="dataType">string</property>
                             </structure>
                         </list-property>
                     </extended-item>
