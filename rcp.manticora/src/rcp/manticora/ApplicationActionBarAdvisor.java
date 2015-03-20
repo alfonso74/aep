@@ -40,6 +40,8 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 	private IAction reporteVentasPorVendedor;
 	private IAction reporteComparativoVentasPorVendedor;
 	private IAction reporteComparativoVentas;
+	private IAction reporteVentasPorFuente;
+	private IAction reporteVentasPorOrigen;
 	
 
     public ApplicationActionBarAdvisor(IActionBarConfigurer configurer) {
@@ -80,6 +82,8 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
     	reporteVentasPorVendedor = factory.createAction("Ventas por Vendedor", window);
     	reporteComparativoVentasPorVendedor = factory.createAction("Comparativo de Ventas (x Vendedor)", window);
     	reporteComparativoVentas = factory.createAction("Comparativo de Ventas Anuales", window);
+    	reporteVentasPorFuente = factory.createAction("Ventas Anuales por Fuente", window);
+    	reporteVentasPorOrigen = factory.createAction("Ventas Anuales por Origen", window);
     }
 
     protected void fillMenuBar(IMenuManager menuBar) {
@@ -113,6 +117,8 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
     	reportsMenu.add(reporteVentasPorVendedor);
     	reportsMenu.add(reporteComparativoVentasPorVendedor);
     	reportsMenu.add(reporteComparativoVentas);
+    	reportsMenu.add(reporteVentasPorFuente);
+    	reportsMenu.add(reporteVentasPorOrigen);
     	
     	MenuManager helpMenu = new MenuManager("&Ayuda", "ayuda");
     	helpMenu.add(aboutAction);

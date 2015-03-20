@@ -48,6 +48,12 @@ public class SimpleReportFactory {
 		} else if (nombreAccion.equals("Comparativo de Ventas Anuales")) {
 			action.setTituloReporte("Comparativo de Ventas Anuales");
 			action.setRutaReporte("reports/comparativoVentasAnuales.rptdesign");
+		} else if (nombreAccion.equals("Ventas Anuales por Fuente")) {
+			action.setTituloReporte("Ventas Anuales por Fuente");
+			action.setRutaReporte("reports/ventasAnualesPorFuente.rptdesign");
+		} else if (nombreAccion.equals("Ventas Anuales por Origen")) {
+			action.setTituloReporte("Ventas Anuales por Origen");
+			action.setRutaReporte("reports/ventasAnualesPorOrigen.rptdesign");
 		} else {
 			System.err.println("No se encontró el reporte con nombre: " + nombreAccion);
 		}
