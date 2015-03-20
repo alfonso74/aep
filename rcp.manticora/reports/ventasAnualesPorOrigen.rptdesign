@@ -19,9 +19,9 @@
         </structure>
     </list-property>
     <parameters>
-        <scalar-parameter name="connectionURL" id="10" extends="aep.connectionURL"/>
-        <scalar-parameter name="yyyy" id="11" extends="aep.yyyy"/>
-        <scalar-parameter name="estado" id="12" extends="aep.estado"/>
+        <scalar-parameter name="connectionURL" id="8" extends="aep.connectionURL"/>
+        <scalar-parameter name="yyyy" id="9" extends="aep.yyyy"/>
+        <scalar-parameter name="estado" id="10" extends="aep.estado"/>
     </parameters>
     <data-sources>
         <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="AEP Produccion" id="7"
@@ -33,11 +33,12 @@
         </oda-data-source>
     </data-sources>
     <data-sets>
-        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Periodos YYYY" id="8"
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Periodos YYYY" id="11"
  extends="aep.Periodos YYYY"/>
-        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Status Cotizaciones" id="9"
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Status Cotizaciones" id="12"
  extends="aep.Status Cotizaciones"/>
-        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Venta Anual por Fuente" id="144">
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Ventas Anuales por Origen" id="144">
+            <property name="nullsOrdering">nulls lowest</property>
             <list-property name="computedColumns">
                 <structure>
                     <property name="name">porcentaje</property>
@@ -46,7 +47,7 @@
                     <list-property name="arguments">
                         <structure>
                             <property name="name">Expression</property>
-                            <expression name="value">row["total"]</expression>
+                            <expression name="value">row["totalTipo"]</expression>
                         </structure>
                     </list-property>
                 </structure>
@@ -78,21 +79,26 @@
                 <list-property name="resultSet">
                     <structure>
                         <property name="position">1</property>
-                        <property name="name">fuente</property>
-                        <property name="dataType">string</property>
+                        <property name="name">idTipo</property>
+                        <property name="dataType">float</property>
                     </structure>
                     <structure>
                         <property name="position">2</property>
+                        <property name="name">tipoCliente</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
                         <property name="name">no_ventas</property>
                         <property name="dataType">decimal</property>
                     </structure>
                     <structure>
-                        <property name="position">3</property>
-                        <property name="name">total</property>
+                        <property name="position">4</property>
+                        <property name="name">totalTipo</property>
                         <property name="dataType">decimal</property>
                     </structure>
                     <structure>
-                        <property name="position">4</property>
+                        <property name="position">5</property>
                         <property name="name">porcentaje</property>
                         <property name="dataType">float</property>
                     </structure>
@@ -102,27 +108,35 @@
             <list-property name="resultSet">
                 <structure>
                     <property name="position">1</property>
-                    <property name="name">fuente</property>
-                    <property name="nativeName">fuente</property>
-                    <property name="dataType">string</property>
+                    <property name="name">idTipo</property>
+                    <property name="nativeName">idTipo</property>
+                    <property name="dataType">float</property>
                 </structure>
                 <structure>
                     <property name="position">2</property>
+                    <property name="name">tipoCliente</property>
+                    <property name="nativeName">tipoCliente</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
                     <property name="name">no_ventas</property>
                     <property name="nativeName">no_ventas</property>
                     <property name="dataType">decimal</property>
                 </structure>
                 <structure>
-                    <property name="position">3</property>
-                    <property name="name">total</property>
-                    <property name="nativeName">total</property>
+                    <property name="position">4</property>
+                    <property name="name">totalTipo</property>
+                    <property name="nativeName">totalTipo</property>
                     <property name="dataType">decimal</property>
                 </structure>
             </list-property>
-            <xml-property name="queryText"><![CDATA[select coalesce(fuente, 'No clasificado') as fuente, count(*) as no_ventas, sum(total) as total
-from cotizaciones
-where idTipo = 1 and year(fecha_inicio) = ? and estado = ?
-group by fuente]]></xml-property>
+            <xml-property name="queryText"><![CDATA[select coalesce(c.idTipo, 0) as idTipo, coalesce(t.descripcion, 'No clasificado') as tipoCliente,
+count(*) as no_ventas, sum(total) as totalTipo
+from cotizaciones c
+left join tipo_clientes t on t.idTipo = c.idTipo
+where year(fecha_inicio) = ? and c.estado = ?
+group by c.idTipo]]></xml-property>
             <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
   <Version>2.0</Version>
@@ -159,6 +173,92 @@ group by fuente]]></xml-property>
     </parameter>
   </DataSetParameters>
 </model:DesignValues>]]></xml-property>
+        </oda-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="xxx" id="206">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">idTipo</property>
+                    <text-property name="displayName">idTipo</text-property>
+                    <text-property name="heading">idTipo</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">tipoCliente</property>
+                    <text-property name="displayName">tipoCliente</text-property>
+                    <text-property name="heading">tipoCliente</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">no_ventas</property>
+                    <text-property name="displayName">no_ventas</text-property>
+                    <text-property name="heading">no_ventas</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">totalTipo</property>
+                    <text-property name="displayName">totalTipo</text-property>
+                    <text-property name="heading">totalTipo</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters"/>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">idTipo</property>
+                        <property name="dataType">float</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">tipoCliente</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">no_ventas</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">totalTipo</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">AEP Produccion</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">idTipo</property>
+                    <property name="nativeName">idTipo</property>
+                    <property name="dataType">float</property>
+                    <property name="nativeDataType">8</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">tipoCliente</property>
+                    <property name="nativeName">tipoCliente</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">no_ventas</property>
+                    <property name="nativeName">no_ventas</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">-5</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">totalTipo</property>
+                    <property name="nativeName">totalTipo</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">3</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select coalesce(c.idTipo, 0) as idTipo, coalesce(t.descripcion, 'No clasificado') as tipoCliente,
+count(*) as no_ventas, sum(total) as totalTipo
+from cotizaciones c
+left join tipo_clientes t on t.idTipo = c.idTipo
+where year(fecha_inicio) = ? and c.estado = ?
+group by c.idTipo]]></xml-property>
         </oda-data-set>
     </data-sets>
     <styles>
@@ -244,7 +344,7 @@ group by fuente]]></xml-property>
                         <property name="contentType">html</property>
                         <text-property name="content"><![CDATA[<CENTER>
 <FONT size="4" color=blue>
-Ventas Anuales por Fuente
+Ventas Anuales por Origen de Venta
 </FONT>
 </BR>
 <I>Solo para uso interno</I>
@@ -295,20 +395,19 @@ Ventas Anuales por Fuente
             </row>
         </grid>
         <grid id="145">
-            <property name="height">2.1666666666666665in</property>
-            <column id="203">
+            <column id="194">
                 <property name="width">2%</property>
             </column>
             <column id="146">
-                <property name="width">3.7291666666666665in</property>
+                <property name="width">3.729in</property>
             </column>
             <column id="147">
                 <property name="width">7%</property>
             </column>
             <column id="148"/>
             <row id="149">
-                <property name="height">0.71875in</property>
-                <cell id="200">
+                <property name="height">0.719in</property>
+                <cell id="191">
                     <property name="borderTopColor">#004080</property>
                     <property name="borderTopStyle">solid</property>
                     <property name="borderTopWidth">medium</property>
@@ -330,29 +429,28 @@ Ventas Anuales por Fuente
                 </cell>
             </row>
             <row id="153">
-                <cell id="201"/>
+                <cell id="192"/>
                 <cell id="154">
                     <table id="161">
-                        <property name="dataSet">Venta Anual por Fuente</property>
+                        <property name="dataSet">Ventas Anuales por Origen</property>
                         <list-property name="boundDataColumns">
                             <structure>
-                                <property name="name">total</property>
-                                <text-property name="displayName">total</text-property>
-                                <expression name="expression" type="javascript">dataSetRow["total"]</expression>
+                                <property name="name">no_ventas</property>
+                                <text-property name="displayName">no_ventas</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["no_ventas"]</expression>
                                 <property name="dataType">decimal</property>
                             </structure>
                             <structure>
-                                <property name="name">totalAnual</property>
-                                <text-property name="displayName">totalAnual</text-property>
+                                <property name="name">totalTipo</property>
+                                <text-property name="displayName">totalTipo</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["totalTipo"]</expression>
+                                <property name="dataType">decimal</property>
+                            </structure>
+                            <structure>
+                                <property name="name">porcentaje</property>
+                                <text-property name="displayName">porcentaje</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["porcentaje"]</expression>
                                 <property name="dataType">float</property>
-                                <property name="aggregateFunction">SUM</property>
-                                <list-property name="arguments">
-                                    <structure>
-                                        <property name="name">Expression</property>
-                                        <expression name="value" type="javascript">row["total"]</expression>
-                                    </structure>
-                                </list-property>
-                                <property name="allowExport">true</property>
                             </structure>
                             <structure>
                                 <property name="name">tituloTabla</property>
@@ -362,10 +460,17 @@ Ventas Anuales por Fuente
                                 <property name="allowExport">true</property>
                             </structure>
                             <structure>
-                                <property name="name">no_ventas</property>
-                                <text-property name="displayName">no_ventas</text-property>
-                                <expression name="expression" type="javascript">dataSetRow["no_ventas"]</expression>
-                                <property name="dataType">decimal</property>
+                                <property name="name">totalAnual</property>
+                                <text-property name="displayName">totalAnual</text-property>
+                                <property name="dataType">float</property>
+                                <property name="aggregateFunction">SUM</property>
+                                <list-property name="arguments">
+                                    <structure>
+                                        <property name="name">Expression</property>
+                                        <expression name="value" type="javascript">row["totalTipo"]</expression>
+                                    </structure>
+                                </list-property>
+                                <property name="allowExport">true</property>
                             </structure>
                             <structure>
                                 <property name="name">noVentasAnual</property>
@@ -381,53 +486,55 @@ Ventas Anuales por Fuente
                                 <property name="allowExport">true</property>
                             </structure>
                             <structure>
-                                <property name="name">fuente</property>
-                                <text-property name="displayName">fuente</text-property>
-                                <expression name="expression" type="javascript">dataSetRow["fuente"]</expression>
+                                <property name="name">idTipo</property>
+                                <text-property name="displayName">idTipo</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["idTipo"]</expression>
+                                <property name="dataType">float</property>
+                            </structure>
+                            <structure>
+                                <property name="name">tipoCliente</property>
+                                <text-property name="displayName">tipoCliente</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["tipoCliente"]</expression>
                                 <property name="dataType">string</property>
                             </structure>
                         </list-property>
-                        <column id="171"/>
-                        <column id="195"/>
-                        <column id="172"/>
+                        <column id="174"/>
+                        <column id="175"/>
+                        <column id="176"/>
                         <header>
-                            <row id="184">
+                            <row id="183">
                                 <property name="fontFamily">serif</property>
-                                <property name="fontSize">10pt</property>
                                 <property name="fontWeight">bold</property>
-                                <cell id="185">
+                                <cell id="184">
                                     <property name="colSpan">3</property>
                                     <property name="rowSpan">1</property>
-                                    <data id="187">
+                                    <data id="195">
                                         <property name="resultSetColumn">tituloTabla</property>
                                     </data>
                                 </cell>
                             </row>
-                            <row id="205">
-                                <property name="fontFamily">serif</property>
-                                <property name="fontSize">10pt</property>
-                                <property name="fontWeight">bold</property>
-                                <cell id="206"/>
-                                <cell id="207"/>
-                                <cell id="208"/>
+                            <row id="187">
+                                <cell id="188"/>
+                                <cell id="189"/>
+                                <cell id="190"/>
                             </row>
-                            <row id="173">
+                            <row id="162">
                                 <property name="backgroundColor">#FAD764</property>
                                 <property name="fontFamily">serif</property>
                                 <property name="fontSize">9pt</property>
                                 <property name="fontWeight">bold</property>
-                                <cell id="174">
-                                    <label id="179">
+                                <cell id="163">
+                                    <label id="177">
                                         <text-property name="text">Fuente</text-property>
                                     </label>
                                 </cell>
-                                <cell id="191">
-                                    <label id="197">
+                                <cell id="164">
+                                    <label id="179">
                                         <property name="textAlign">right</property>
                                         <text-property name="text">Cantidad</text-property>
                                     </label>
                                 </cell>
-                                <cell id="175">
+                                <cell id="165">
                                     <label id="181">
                                         <property name="textAlign">right</property>
                                         <text-property name="text">Total</text-property>
@@ -436,64 +543,63 @@ Ventas Anuales por Fuente
                             </row>
                         </header>
                         <detail>
-                            <row id="165">
+                            <row id="166">
                                 <property name="backgroundColor">#E0E7E9</property>
                                 <property name="fontFamily">serif</property>
-                                <cell id="166">
-                                    <data id="204">
-                                        <property name="resultSetColumn">fuente</property>
+                                <cell id="167">
+                                    <data id="205">
+                                        <property name="resultSetColumn">tipoCliente</property>
                                     </data>
                                 </cell>
-                                <cell id="192">
-                                    <data id="196">
+                                <cell id="168">
+                                    <data id="180">
                                         <property name="textAlign">right</property>
                                         <property name="resultSetColumn">no_ventas</property>
                                     </data>
                                 </cell>
-                                <cell id="167">
+                                <cell id="169">
                                     <data id="182">
                                         <structure name="numberFormat">
                                             <property name="category">Fixed</property>
                                             <property name="pattern">#,##0.00{RoundingMode=HALF_UP}</property>
                                         </structure>
                                         <property name="textAlign">right</property>
-                                        <property name="resultSetColumn">total</property>
+                                        <property name="resultSetColumn">totalTipo</property>
                                     </data>
                                 </cell>
                             </row>
                         </detail>
                         <footer>
-                            <row id="168">
-                                <cell id="169"/>
-                                <cell id="193"/>
-                                <cell id="170"/>
-                            </row>
-                            <row id="176">
+                            <row id="200">
                                 <property name="fontFamily">serif</property>
-                                <cell id="177">
-                                    <label id="188">
-                                        <property name="fontWeight">bold</property>
+                                <property name="fontSize">10pt</property>
+                                <property name="fontWeight">bold</property>
+                                <cell id="201"/>
+                                <cell id="202"/>
+                                <cell id="203"/>
+                            </row>
+                            <row id="170">
+                                <property name="fontFamily">serif</property>
+                                <property name="fontSize">10pt</property>
+                                <property name="fontWeight">bold</property>
+                                <cell id="171">
+                                    <label id="199">
                                         <text-property name="text">Total:</text-property>
                                     </label>
                                 </cell>
-                                <cell id="194">
-                                    <property name="fontWeight">bold</property>
-                                    <property name="textAlign">right</property>
+                                <cell id="172">
                                     <data id="198">
-                                        <structure name="numberFormat">
-                                            <property name="category">Unformatted</property>
-                                        </structure>
+                                        <property name="textAlign">right</property>
                                         <property name="resultSetColumn">noVentasAnual</property>
                                     </data>
                                 </cell>
-                                <cell id="178">
-                                    <property name="textAlign">right</property>
-                                    <data id="183">
-                                        <property name="fontWeight">bold</property>
+                                <cell id="173">
+                                    <data id="197">
                                         <structure name="numberFormat">
                                             <property name="category">Fixed</property>
                                             <property name="pattern">#,##0.00{RoundingMode=HALF_UP}</property>
                                         </structure>
+                                        <property name="textAlign">right</property>
                                         <property name="resultSetColumn">totalAnual</property>
                                     </data>
                                 </cell>
@@ -503,7 +609,7 @@ Ventas Anuales por Fuente
                 </cell>
                 <cell id="155"/>
                 <cell id="156">
-                    <extended-item extensionName="Chart" id="199">
+                    <extended-item extensionName="Chart" id="207">
                         <xml-property name="xmlRepresentation"><![CDATA[<model:ChartWithoutAxes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:attribute="http://www.birt.eclipse.org/ChartModelAttribute" xmlns:layout="http://www.birt.eclipse.org/ChartModelLayout" xmlns:model="http://www.birt.eclipse.org/ChartModel" xmlns:type="http://www.birt.eclipse.org/ChartModelType">
   <Version>2.6.1</Version>
   <Type>Pie Chart</Type>
@@ -540,7 +646,7 @@ Ventas Anuales por Fuente
       <Visible>true</Visible>
       <Label>
         <Caption>
-          <Value>Ventas Anuales por Fuente (%)</Value>
+          <Value>Ventas Anuales por Origen (%)</Value>
           <Font>
             <Size>14.0</Size>
             <Bold>true</Bold>
@@ -633,7 +739,6 @@ Ventas Anuales por Fuente
         <Width>0.0</Width>
         <Height>0.0</Height>
       </Bounds>
-      <Stretch>Horizontal</Stretch>
       <Insets>
         <Top>3.0</Top>
         <Left>3.0</Left>
@@ -729,8 +834,6 @@ Ventas Anuales por Fuente
         <Visible>false</Visible>
       </Title>
       <TitlePosition>Above</TitlePosition>
-      <WrappingSize>0.0</WrappingSize>
-      <TitlePercent>0.6</TitlePercent>
     </Children>
     <Bounds>
       <Left>0.0</Left>
@@ -760,9 +863,6 @@ Ventas Anuales por Fuente
       <Visible>false</Visible>
     </Outline>
     <Visible>true</Visible>
-    <Cursor>
-      <Type>Auto</Type>
-    </Cursor>
   </Block>
   <Dimension>Two_Dimensional_With_Depth</Dimension>
   <Units>Points</Units>
@@ -1010,9 +1110,6 @@ Ventas Anuales por Fuente
     <SeriesDefinitions>
       <Query>
         <Definition></Definition>
-        <Grouping>
-          <GroupType>Numeric</GroupType>
-        </Grouping>
       </Query>
       <SeriesPalette>
         <Entries xsi:type="attribute:ColorDefinition">
@@ -1237,7 +1334,7 @@ Ventas Anuales por Fuente
           <Visible>true</Visible>
         </Label>
         <DataDefinition>
-          <Definition>row[&quot;total&quot;]</Definition>
+          <Definition>row[&quot;totalTipo&quot;]</Definition>
           <Grouping>
             <GroupType>Text</GroupType>
             <AggregateExpression>Sum</AggregateExpression>
@@ -1261,9 +1358,7 @@ Ventas Anuales por Fuente
             </Value>
           </Action>
         </Triggers>
-        <Translucent>false</Translucent>
         <Explosion>0</Explosion>
-        <ExplosionExpression></ExplosionExpression>
         <Title>
           <Caption>
             <Value></Value>
@@ -1303,12 +1398,7 @@ Ventas Anuales por Fuente
           <Thickness>1</Thickness>
           <Visible>true</Visible>
         </LeaderLineAttributes>
-        <LeaderLineStyle>Fixed_Length</LeaderLineStyle>
         <LeaderLineLength>10.0</LeaderLineLength>
-        <Ratio>1.0</Ratio>
-        <Rotation>0.0</Rotation>
-        <Clockwise>false</Clockwise>
-        <InnerRadius>0.0</InnerRadius>
       </Series>
       <Grouping>
         <GroupType>Text</GroupType>
@@ -1350,8 +1440,9 @@ Ventas Anuales por Fuente
         <Visible>false</Visible>
       </Label>
       <DataDefinition>
-        <Definition>row[&quot;fuente&quot;]</Definition>
+        <Definition>row[&quot;tipoCliente&quot;]</Definition>
       </DataDefinition>
+      <SeriesIdentifier></SeriesIdentifier>
       <DataPoint>
         <Components>
           <Type>Orthogonal_Value</Type>
@@ -1362,45 +1453,43 @@ Ventas Anuales por Fuente
       <Stacked>false</Stacked>
     </Series>
     <Grouping>
-      <Enabled>false</Enabled>
+      <Enabled>true</Enabled>
       <GroupType>Text</GroupType>
       <AggregateExpression>Sum</AggregateExpression>
     </Grouping>
-    <Sorting>Ascending</Sorting>
-    <SortKey>
-      <Definition>row[&quot;fuente&quot;]</Definition>
-    </SortKey>
   </SeriesDefinitions>
-  <MinSlicePercent>false</MinSlicePercent>
   <Coverage>0.9</Coverage>
 </model:ChartWithoutAxes>
 ]]></xml-property>
                         <property name="outputFormat">SVG</property>
                         <property name="inheritColumns">false</property>
-                        <property name="display">inline</property>
                         <property name="height">3in</property>
                         <property name="width">5in</property>
-                        <property name="dataSet">Venta Anual por Fuente</property>
+                        <property name="dataSet">Ventas Anuales por Origen</property>
                         <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">idTipo</property>
+                                <expression name="expression" type="javascript">dataSetRow["idTipo"]</expression>
+                                <property name="dataType">float</property>
+                            </structure>
+                            <structure>
+                                <property name="name">tipoCliente</property>
+                                <expression name="expression" type="javascript">dataSetRow["tipoCliente"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
                             <structure>
                                 <property name="name">no_ventas</property>
                                 <expression name="expression" type="javascript">dataSetRow["no_ventas"]</expression>
                                 <property name="dataType">decimal</property>
                             </structure>
                             <structure>
-                                <property name="name">total</property>
-                                <expression name="expression" type="javascript">dataSetRow["total"]</expression>
+                                <property name="name">totalTipo</property>
+                                <expression name="expression" type="javascript">dataSetRow["totalTipo"]</expression>
                                 <property name="dataType">decimal</property>
                             </structure>
                             <structure>
-                                <property name="name">fuente</property>
-                                <text-property name="displayName">fuente</text-property>
-                                <expression name="expression" type="javascript">dataSetRow["fuente"]</expression>
-                                <property name="dataType">string</property>
-                            </structure>
-                            <structure>
                                 <property name="name">porcentaje</property>
-                                <expression name="expression">dataSetRow["porcentaje"]</expression>
+                                <expression name="expression" type="javascript">dataSetRow["porcentaje"]</expression>
                                 <property name="dataType">float</property>
                             </structure>
                         </list-property>
@@ -1408,7 +1497,7 @@ Ventas Anuales por Fuente
                 </cell>
             </row>
             <row id="157">
-                <cell id="202"/>
+                <cell id="193"/>
                 <cell id="158"/>
                 <cell id="159"/>
                 <cell id="160"/>
