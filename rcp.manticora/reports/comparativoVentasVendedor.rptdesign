@@ -74,7 +74,7 @@
                     <property name="dataType">integer</property>
                     <property name="distinct">true</property>
                     <simple-property-list name="defaultValue">
-                        <value type="javascript">(new Date()).getFullYear() -2</value>
+                        <value type="javascript">(new Date()).getFullYear() - 1</value>
                     </simple-property-list>
                     <list-property name="selectionList"/>
                     <property name="paramType">simple</property>
@@ -87,28 +87,6 @@
                 </scalar-parameter>
                 <scalar-parameter name="aaaa2" id="151">
                     <text-property name="promptText">Segundo año</text-property>
-                    <property name="valueType">dynamic</property>
-                    <property name="dataSetName">Periodos YYYY</property>
-                    <expression name="valueExpr" type="javascript">dataSetRow["yyyy"]</expression>
-                    <expression name="sortByColumn">dataSetRow["yyyy"]</expression>
-                    <property name="sortDirection">desc</property>
-                    <property name="dataType">integer</property>
-                    <property name="distinct">true</property>
-                    <simple-property-list name="defaultValue">
-                        <value type="javascript">(new Date()).getFullYear() -1</value>
-                    </simple-property-list>
-                    <list-property name="selectionList"/>
-                    <property name="paramType">simple</property>
-                    <property name="controlType">list-box</property>
-                    <property name="mustMatch">true</property>
-                    <property name="fixedOrder">false</property>
-                    <structure name="format">
-                        <property name="category">Unformatted</property>
-                    </structure>
-                </scalar-parameter>
-                <scalar-parameter name="aaaa3" id="152">
-                    <property name="hidden">true</property>
-                    <text-property name="promptText">Tercer año</text-property>
                     <property name="valueType">dynamic</property>
                     <property name="dataSetName">Periodos YYYY</property>
                     <expression name="valueExpr" type="javascript">dataSetRow["yyyy"]</expression>
@@ -431,6 +409,7 @@ where estado = 'A']]></xml-property>
 </model:DesignValues>]]></xml-property>
         </oda-data-set>
         <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Ventas Anuales Vendedor" id="156">
+            <list-property name="columnHints"/>
             <list-property name="parameters">
                 <structure>
                     <property name="name">param_1</property>
@@ -454,7 +433,7 @@ where estado = 'A']]></xml-property>
                 </structure>
                 <structure>
                     <property name="name">param_3</property>
-                    <property name="paramName">aaaa3</property>
+                    <property name="paramName">aaaa1</property>
                     <property name="nativeName"></property>
                     <property name="dataType">integer</property>
                     <property name="nativeDataType">-1</property>
@@ -464,31 +443,11 @@ where estado = 'A']]></xml-property>
                 </structure>
                 <structure>
                     <property name="name">param_4</property>
-                    <property name="paramName">aaaa1</property>
-                    <property name="nativeName"></property>
-                    <property name="dataType">integer</property>
-                    <property name="nativeDataType">-1</property>
-                    <property name="position">4</property>
-                    <property name="isInput">true</property>
-                    <property name="isOutput">false</property>
-                </structure>
-                <structure>
-                    <property name="name">param_5</property>
                     <property name="paramName">aaaa2</property>
                     <property name="nativeName"></property>
                     <property name="dataType">integer</property>
                     <property name="nativeDataType">-1</property>
-                    <property name="position">5</property>
-                    <property name="isInput">true</property>
-                    <property name="isOutput">false</property>
-                </structure>
-                <structure>
-                    <property name="name">param_6</property>
-                    <property name="paramName">aaaa3</property>
-                    <property name="nativeName"></property>
-                    <property name="dataType">integer</property>
-                    <property name="nativeDataType">-1</property>
-                    <property name="position">6</property>
+                    <property name="position">4</property>
                     <property name="isInput">true</property>
                     <property name="isOutput">false</property>
                 </structure>
@@ -518,11 +477,6 @@ where estado = 'A']]></xml-property>
                     <structure>
                         <property name="position">5</property>
                         <property name="name">aaaa2</property>
-                        <property name="dataType">decimal</property>
-                    </structure>
-                    <structure>
-                        <property name="position">6</property>
-                        <property name="name">aaaa3</property>
                         <property name="dataType">decimal</property>
                     </structure>
                 </list-property>
@@ -559,23 +513,16 @@ where estado = 'A']]></xml-property>
                     <property name="nativeName">aaaa2</property>
                     <property name="dataType">decimal</property>
                 </structure>
-                <structure>
-                    <property name="position">6</property>
-                    <property name="name">aaaa3</property>
-                    <property name="nativeName">aaaa3</property>
-                    <property name="dataType">decimal</property>
-                </structure>
             </list-property>
             <xml-property name="queryText"><![CDATA[select s.mm, s.mes, s.idVendedor,
 sum(case when s.yy = ? then s.total else 0 end) as 'aaaa1',
-sum(case when s.yy = ? then s.total else 0 end) as 'aaaa2',
-sum(case when s.yy = ? then s.total else 0 end) as 'aaaa3'
+sum(case when s.yy = ? then s.total else 0 end) as 'aaaa2'
 from (
 SELECT year(fecha_inicio) as yy, month(fecha_inicio) as mm, sum(total) as total, 
 idVendedor, m.nombre as mes
 FROM cotizaciones c
 inner join meses m on m.idMes = month(fecha_inicio)
-where year(fecha_inicio) in (?, ?, ?) and idVendedor = 10
+where year(fecha_inicio) in (?, ?) and idVendedor = 10
 group by yy, mm, idVendedor
 ) s
 group by s.mm, s.idVendedor]]></xml-property>
@@ -635,36 +582,6 @@ group by s.mm, s.idVendedor]]></xml-property>
           <design:identifier>
             <design:name></design:name>
             <design:position>4</design:position>
-          </design:identifier>
-          <design:nativeDataTypeCode>-1</design:nativeDataTypeCode>
-          <design:precision>0</design:precision>
-          <design:scale>0</design:scale>
-          <design:nullability>Unknown</design:nullability>
-        </design:attributes>
-      </design:ParameterDefinition>
-    </parameter>
-    <parameter>
-      <design:ParameterDefinition>
-        <design:inOutMode>In</design:inOutMode>
-        <design:attributes>
-          <design:identifier>
-            <design:name></design:name>
-            <design:position>5</design:position>
-          </design:identifier>
-          <design:nativeDataTypeCode>-1</design:nativeDataTypeCode>
-          <design:precision>0</design:precision>
-          <design:scale>0</design:scale>
-          <design:nullability>Unknown</design:nullability>
-        </design:attributes>
-      </design:ParameterDefinition>
-    </parameter>
-    <parameter>
-      <design:ParameterDefinition>
-        <design:inOutMode>In</design:inOutMode>
-        <design:attributes>
-          <design:identifier>
-            <design:name></design:name>
-            <design:position>6</design:position>
           </design:identifier>
           <design:nativeDataTypeCode>-1</design:nativeDataTypeCode>
           <design:precision>0</design:precision>
@@ -844,43 +761,17 @@ Comparativo de Ventas Anuales
                     <property name="dataType">decimal</property>
                 </structure>
                 <structure>
-                    <property name="name">aaaa3</property>
-                    <text-property name="displayName">aaaa3</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["aaaa3"]</expression>
-                    <property name="dataType">decimal</property>
-                </structure>
-                <structure>
                     <property name="name">labelYear2</property>
                     <text-property name="displayName">labelYear2</text-property>
-                    <expression name="expression" type="javascript">'Año ' + params["aaaa2"].value</expression>
+                    <expression name="expression" type="javascript">'Año 2 (' + params["aaaa2"].value + ')'</expression>
                     <property name="dataType">string</property>
                     <property name="allowExport">true</property>
                 </structure>
                 <structure>
                     <property name="name">labelYear1</property>
                     <text-property name="displayName">labelYear1</text-property>
-                    <expression name="expression" type="javascript">'Año ' + params["aaaa1"].value</expression>
+                    <expression name="expression" type="javascript">'Año 1 (' + params["aaaa1"].value + ')'</expression>
                     <property name="dataType">string</property>
-                    <property name="allowExport">true</property>
-                </structure>
-                <structure>
-                    <property name="name">labelYear3</property>
-                    <text-property name="displayName">labelYear3</text-property>
-                    <expression name="expression" type="javascript">"Variación"</expression>
-                    <property name="dataType">string</property>
-                    <property name="allowExport">true</property>
-                </structure>
-                <structure>
-                    <property name="name">totalYear3</property>
-                    <text-property name="displayName">totalYear3</text-property>
-                    <property name="dataType">float</property>
-                    <property name="aggregateFunction">SUM</property>
-                    <list-property name="arguments">
-                        <structure>
-                            <property name="name">Expression</property>
-                            <expression name="value" type="javascript">row["aaaa3"]</expression>
-                        </structure>
-                    </list-property>
                     <property name="allowExport">true</property>
                 </structure>
                 <structure>
@@ -950,6 +841,7 @@ Comparativo de Ventas Anuales
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">medium</property>
                         <data id="203">
+                            <property name="textAlign">right</property>
                             <property name="resultSetColumn">labelYear1</property>
                         </data>
                     </cell>
@@ -958,6 +850,7 @@ Comparativo de Ventas Anuales
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">medium</property>
                         <data id="202">
+                            <property name="textAlign">right</property>
                             <property name="resultSetColumn">labelYear2</property>
                         </data>
                     </cell>
@@ -965,9 +858,10 @@ Comparativo de Ventas Anuales
                         <property name="borderBottomColor">#004080</property>
                         <property name="borderBottomStyle">solid</property>
                         <property name="borderBottomWidth">medium</property>
-                        <data id="204">
-                            <property name="resultSetColumn">labelYear3</property>
-                        </data>
+                        <label id="270">
+                            <property name="textAlign">right</property>
+                            <text-property name="text">Variación</text-property>
+                        </label>
                     </cell>
                     <cell id="164"/>
                 </row>
@@ -1096,10 +990,13 @@ Comparativo de Ventas Anuales
             </footer>
         </table>
         <grid id="233">
-            <list-property name="visibility">
+            <list-property name="boundDataColumns">
                 <structure>
-                    <property name="format">all</property>
-                    <expression name="valueExpr" type="javascript">true</expression>
+                    <property name="name">chartTitle</property>
+                    <text-property name="displayName">chartTitle</text-property>
+                    <expression name="expression" type="javascript">'Comparativo (' + params["aaaa1"].value + ' vs ' + params["aaaa2"].value + ')'</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
                 </structure>
             </list-property>
             <column id="234"/>
@@ -1110,8 +1007,28 @@ Comparativo de Ventas Anuales
             <column id="269"/>
             <column id="238"/>
             <column id="239"/>
+            <row id="272">
+                <cell id="273">
+                    <label name="lineSpacer21" id="281">
+                        <property name="color">#FFFFFF</property>
+                        <text-property name="text">.</text-property>
+                    </label>
+                </cell>
+                <cell id="274"/>
+                <cell id="275"/>
+                <cell id="276"/>
+                <cell id="277"/>
+                <cell id="278"/>
+                <cell id="279"/>
+                <cell id="280"/>
+            </row>
             <row id="240">
-                <cell id="241"/>
+                <cell id="241">
+                    <label name="lineSpacer2" id="271">
+                        <property name="color">#FFFFFF</property>
+                        <text-property name="text">.</text-property>
+                    </label>
+                </cell>
                 <cell id="242"/>
                 <cell id="243"/>
                 <cell id="262"/>
@@ -1120,7 +1037,42 @@ Comparativo de Ventas Anuales
                 <cell id="245"/>
                 <cell id="246"/>
             </row>
+            <row id="292">
+                <property name="fontFamily">serif</property>
+                <property name="fontSize">12pt</property>
+                <property name="fontWeight">bold</property>
+                <cell id="293">
+                    <label name="lineSpacer22" id="301">
+                        <property name="color">#FFFFFF</property>
+                        <text-property name="text">.</text-property>
+                    </label>
+                </cell>
+                <cell id="294"/>
+                <cell id="295"/>
+                <cell id="296"/>
+                <cell id="297"/>
+                <cell id="298"/>
+                <cell id="299"/>
+                <cell id="300"/>
+            </row>
+            <row id="282">
+                <property name="fontFamily">serif</property>
+                <property name="fontSize">12pt</property>
+                <property name="fontWeight">bold</property>
+                <cell id="283"/>
+                <cell id="284">
+                    <property name="colSpan">6</property>
+                    <property name="rowSpan">1</property>
+                    <data id="291">
+                        <property name="fontSize">10pt</property>
+                        <property name="textAlign">center</property>
+                        <property name="resultSetColumn">chartTitle</property>
+                    </data>
+                </cell>
+                <cell id="290"/>
+            </row>
             <row id="247">
+                <property name="verticalAlign">top</property>
                 <cell id="248"/>
                 <cell id="249">
                     <property name="colSpan">6</property>
@@ -1159,7 +1111,10 @@ Comparativo de Ventas Anuales
         </Color>
         <Visible>false</Visible>
       </Outline>
-      <Visible>true</Visible>
+      <Visible>false</Visible>
+      <Cursor>
+        <Type>Auto</Type>
+      </Cursor>
       <Label>
         <Caption>
           <Value>Ventas x Años</Value>
@@ -1223,7 +1178,7 @@ Comparativo de Ventas Anuales
           <Green>0</Green>
           <Blue>0</Blue>
         </Color>
-        <Visible>true</Visible>
+        <Visible>false</Visible>
       </Outline>
       <Visible>true</Visible>
       <HorizontalSpacing>5</HorizontalSpacing>
@@ -1255,7 +1210,7 @@ Comparativo de Ventas Anuales
         <Width>0.0</Width>
         <Height>0.0</Height>
       </Bounds>
-      <Anchor>West</Anchor>
+      <Anchor>South</Anchor>
       <Insets>
         <Top>3.0</Top>
         <Left>3.0</Left>
@@ -1278,6 +1233,9 @@ Comparativo de Ventas Anuales
         <Visible>false</Visible>
       </Outline>
       <Visible>true</Visible>
+      <Cursor>
+        <Type>Auto</Type>
+      </Cursor>
       <ClientArea>
         <Outline>
           <Style>Solid</Style>
@@ -1304,7 +1262,7 @@ Comparativo de Ventas Anuales
           <Alignment/>
         </Font>
       </Text>
-      <Orientation>Vertical</Orientation>
+      <Orientation>Horizontal</Orientation>
       <Direction>Top_Bottom</Direction>
       <Separator>
         <Style>Solid</Style>
@@ -1317,7 +1275,7 @@ Comparativo de Ventas Anuales
         </Color>
         <Visible>false</Visible>
       </Separator>
-      <Position>Right</Position>
+      <Position>Below</Position>
       <ItemType>Series</ItemType>
       <Title>
         <Caption>
@@ -1349,7 +1307,7 @@ Comparativo de Ventas Anuales
           <Bottom>0.0</Bottom>
           <Right>3.0</Right>
         </Insets>
-        <Visible>true</Visible>
+        <Visible>false</Visible>
       </Title>
       <TitlePosition>Above</TitlePosition>
       <ShowValue>false</ShowValue>
@@ -1361,7 +1319,7 @@ Comparativo de Ventas Anuales
       <Height>130.0</Height>
     </Bounds>
     <Insets>
-      <Top>3.0</Top>
+      <Top>0.0</Top>
       <Left>3.0</Left>
       <Bottom>3.0</Bottom>
       <Right>3.0</Right>
@@ -1382,6 +1340,9 @@ Comparativo de Ventas Anuales
       <Visible>false</Visible>
     </Outline>
     <Visible>true</Visible>
+    <Cursor>
+      <Type>Auto</Type>
+    </Cursor>
   </Block>
   <Dimension>Two_Dimensional</Dimension>
   <Units>Points</Units>
@@ -1395,13 +1356,16 @@ Comparativo de Ventas Anuales
       <DataSetRepresentation>'A','B','C','D','E'</DataSetRepresentation>
     </BaseSampleData>
     <OrthogonalSampleData>
-      <DataSetRepresentation>5,4,12</DataSetRepresentation>
+      <DataSetRepresentation>6,4,12,8,10</DataSetRepresentation>
       <SeriesDefinitionIndex>0</SeriesDefinitionIndex>
     </OrthogonalSampleData>
     <OrthogonalSampleData>
-      <DataSetRepresentation>10.0,8.0,24.0</DataSetRepresentation>
+      <DataSetRepresentation>42,91,62,9,21</DataSetRepresentation>
       <SeriesDefinitionIndex>1</SeriesDefinitionIndex>
     </OrthogonalSampleData>
+    <AncillarySampleData>
+      <DataSetRepresentation>Series 1</DataSetRepresentation>
+    </AncillarySampleData>
   </SampleData>
   <Interactivity>
     <LegendBehavior>HighlightSerie</LegendBehavior>
@@ -1760,7 +1724,7 @@ Comparativo de Ventas Anuales
             </Components>
             <Separator>, </Separator>
           </DataPoint>
-          <LabelPosition>Inside</LabelPosition>
+          <LabelPosition>Outside</LabelPosition>
           <Stacked>false</Stacked>
           <Triggers>
             <Condition>onmouseover</Condition>
@@ -2036,6 +2000,7 @@ Comparativo de Ventas Anuales
               </Value>
             </Action>
           </Triggers>
+          <Translucent>false</Translucent>
           <Riser>Rectangle</Riser>
         </Series>
         <Grouping>
@@ -2087,6 +2052,393 @@ Comparativo de Ventas Anuales
         <Visible>true</Visible>
       </Label>
       <LabelPosition>Left</LabelPosition>
+      <Staggered>false</Staggered>
+      <MajorGrid>
+        <LineAttributes>
+          <Style>Solid</Style>
+          <Thickness>1</Thickness>
+          <Color>
+            <Transparency>255</Transparency>
+            <Red>196</Red>
+            <Green>196</Green>
+            <Blue>196</Blue>
+          </Color>
+          <Visible>false</Visible>
+        </LineAttributes>
+        <TickStyle>Across</TickStyle>
+        <TickAttributes>
+          <Style>Solid</Style>
+          <Thickness>1</Thickness>
+          <Color>
+            <Transparency>255</Transparency>
+            <Red>196</Red>
+            <Green>196</Green>
+            <Blue>196</Blue>
+          </Color>
+          <Visible>true</Visible>
+        </TickAttributes>
+      </MajorGrid>
+      <MinorGrid>
+        <LineAttributes>
+          <Style>Solid</Style>
+          <Thickness>1</Thickness>
+          <Color>
+            <Transparency>255</Transparency>
+            <Red>225</Red>
+            <Green>225</Green>
+            <Blue>225</Blue>
+          </Color>
+          <Visible>false</Visible>
+        </LineAttributes>
+        <TickStyle>Across</TickStyle>
+        <TickAttributes>
+          <Style>Solid</Style>
+          <Thickness>1</Thickness>
+          <Color>
+            <Transparency>255</Transparency>
+            <Red>225</Red>
+            <Green>225</Green>
+            <Blue>225</Blue>
+          </Color>
+          <Visible>false</Visible>
+        </TickAttributes>
+      </MinorGrid>
+      <Scale>
+        <MinorGridsPerUnit>5</MinorGridsPerUnit>
+        <AutoExpand>true</AutoExpand>
+      </Scale>
+      <Origin>
+        <Type>Min</Type>
+        <Value xsi:type="data:NumberDataElement">
+          <Value>0.0</Value>
+        </Value>
+      </Origin>
+      <PrimaryAxis>true</PrimaryAxis>
+      <Percent>false</Percent>
+      <Aligned>false</Aligned>
+      <SideBySide>false</SideBySide>
+      <Cursor>
+        <Type>Auto</Type>
+      </Cursor>
+    </AssociatedAxes>
+    <AncillaryAxes>
+      <Type>Text</Type>
+      <Title>
+        <Caption>
+          <Value>Z-Axis Title</Value>
+          <Font>
+            <Size>14.0</Size>
+            <Bold>true</Bold>
+            <Alignment>
+              <horizontalAlignment>Center</horizontalAlignment>
+              <verticalAlignment>Center</verticalAlignment>
+            </Alignment>
+          </Font>
+        </Caption>
+        <Background xsi:type="attribute:ColorDefinition">
+          <Transparency>0</Transparency>
+          <Red>255</Red>
+          <Green>255</Green>
+          <Blue>255</Blue>
+        </Background>
+        <Outline>
+          <Style>Solid</Style>
+          <Thickness>1</Thickness>
+          <Color>
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>0</Green>
+            <Blue>0</Blue>
+          </Color>
+        </Outline>
+        <Insets>
+          <Top>0.0</Top>
+          <Left>2.0</Left>
+          <Bottom>0.0</Bottom>
+          <Right>3.0</Right>
+        </Insets>
+        <Visible>false</Visible>
+      </Title>
+      <TitlePosition>Below</TitlePosition>
+      <SeriesDefinitions>
+        <Query>
+          <Definition></Definition>
+        </Query>
+        <SeriesPalette>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>80</Red>
+            <Green>166</Green>
+            <Blue>218</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>242</Red>
+            <Green>88</Green>
+            <Blue>106</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>232</Red>
+            <Green>172</Green>
+            <Blue>57</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>255</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>64</Red>
+            <Green>128</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>128</Green>
+            <Blue>192</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>170</Red>
+            <Green>85</Green>
+            <Blue>85</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>128</Green>
+            <Blue>0</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>192</Red>
+            <Green>192</Green>
+            <Blue>192</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>255</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>192</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>7</Red>
+            <Green>146</Green>
+            <Blue>94</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>128</Green>
+            <Blue>255</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>128</Green>
+            <Blue>192</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>255</Green>
+            <Blue>255</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>128</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>128</Green>
+            <Blue>192</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>0</Green>
+            <Blue>255</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>64</Green>
+            <Blue>64</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>128</Green>
+            <Blue>64</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>80</Red>
+            <Green>240</Green>
+            <Blue>120</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>64</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>0</Green>
+            <Blue>64</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>0</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>128</Green>
+            <Blue>64</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>128</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>128</Green>
+            <Blue>255</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>64</Green>
+            <Blue>0</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>0</Green>
+            <Blue>0</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>255</Green>
+            <Blue>255</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>128</Green>
+            <Blue>0</Blue>
+          </Entries>
+        </SeriesPalette>
+        <Series>
+          <Visible>true</Visible>
+          <Label>
+            <Caption>
+              <Value></Value>
+              <Font>
+                <Alignment/>
+              </Font>
+            </Caption>
+            <Background xsi:type="attribute:ColorDefinition">
+              <Transparency>0</Transparency>
+              <Red>255</Red>
+              <Green>255</Green>
+              <Blue>255</Blue>
+            </Background>
+            <Outline>
+              <Style>Solid</Style>
+              <Thickness>1</Thickness>
+              <Color>
+                <Transparency>255</Transparency>
+                <Red>0</Red>
+                <Green>0</Green>
+                <Blue>0</Blue>
+              </Color>
+              <Visible>false</Visible>
+            </Outline>
+            <Insets>
+              <Top>0.0</Top>
+              <Left>2.0</Left>
+              <Bottom>0.0</Bottom>
+              <Right>3.0</Right>
+            </Insets>
+            <Visible>false</Visible>
+          </Label>
+          <SeriesIdentifier></SeriesIdentifier>
+          <DataPoint>
+            <Components>
+              <Type>Orthogonal_Value</Type>
+            </Components>
+            <Separator>, </Separator>
+          </DataPoint>
+          <LabelPosition>Outside</LabelPosition>
+          <Stacked>false</Stacked>
+        </Series>
+        <Grouping>
+          <GroupType>Text</GroupType>
+          <AggregateExpression>Sum</AggregateExpression>
+        </Grouping>
+      </SeriesDefinitions>
+      <Orientation>Horizontal</Orientation>
+      <LineAttributes>
+        <Style>Solid</Style>
+        <Thickness>1</Thickness>
+        <Visible>true</Visible>
+      </LineAttributes>
+      <Label>
+        <Caption>
+          <Value></Value>
+          <Font>
+            <Alignment/>
+          </Font>
+        </Caption>
+        <Background xsi:type="attribute:ColorDefinition">
+          <Transparency>0</Transparency>
+          <Red>255</Red>
+          <Green>255</Green>
+          <Blue>255</Blue>
+        </Background>
+        <Outline>
+          <Style>Solid</Style>
+          <Thickness>1</Thickness>
+          <Color>
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>0</Green>
+            <Blue>0</Blue>
+          </Color>
+        </Outline>
+        <Insets>
+          <Top>0.0</Top>
+          <Left>2.0</Left>
+          <Bottom>0.0</Bottom>
+          <Right>3.0</Right>
+        </Insets>
+        <Visible>true</Visible>
+      </Label>
+      <LabelPosition>Below</LabelPosition>
       <MajorGrid>
         <LineAttributes>
           <Style>Solid</Style>
@@ -2148,7 +2500,7 @@ Comparativo de Ventas Anuales
       </Origin>
       <PrimaryAxis>true</PrimaryAxis>
       <Percent>false</Percent>
-    </AssociatedAxes>
+    </AncillaryAxes>
     <SeriesDefinitions>
       <Query>
         <Definition></Definition>
@@ -2529,7 +2881,7 @@ Comparativo de Ventas Anuales
 ]]></xml-property>
                         <property name="outputFormat">SVG</property>
                         <property name="inheritColumns">false</property>
-                        <property name="height">2.5in</property>
+                        <property name="height">2.8125in</property>
                         <property name="width">5.53125in</property>
                         <property name="dataSet">Ventas Anuales Vendedor</property>
                         <list-property name="boundDataColumns">
@@ -2556,11 +2908,6 @@ Comparativo de Ventas Anuales
                             <structure>
                                 <property name="name">aaaa2</property>
                                 <expression name="expression" type="javascript">dataSetRow["aaaa2"]</expression>
-                                <property name="dataType">decimal</property>
-                            </structure>
-                            <structure>
-                                <property name="name">aaaa3</property>
-                                <expression name="expression" type="javascript">dataSetRow["aaaa3"]</expression>
                                 <property name="dataType">decimal</property>
                             </structure>
                         </list-property>

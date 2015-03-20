@@ -73,6 +73,74 @@
                 <property name="category">Unformatted</property>
             </structure>
         </scalar-parameter>
+        <parameter-group name="listadoYYYY" id="213">
+            <text-property name="displayName">Años a comparar:</text-property>
+            <parameters>
+                <scalar-parameter name="aaaa1" id="215">
+                    <text-property name="promptText">Primer año</text-property>
+                    <property name="valueType">dynamic</property>
+                    <property name="dataSetName">Periodos YYYY</property>
+                    <expression name="valueExpr" type="javascript">dataSetRow["yyyy"]</expression>
+                    <expression name="sortByColumn">dataSetRow["yyyy"]</expression>
+                    <property name="sortDirection">desc</property>
+                    <property name="dataType">integer</property>
+                    <property name="distinct">true</property>
+                    <simple-property-list name="defaultValue">
+                        <value type="javascript">(new Date()).getFullYear() - 2</value>
+                    </simple-property-list>
+                    <list-property name="selectionList"/>
+                    <property name="paramType">simple</property>
+                    <property name="controlType">list-box</property>
+                    <property name="mustMatch">true</property>
+                    <property name="fixedOrder">false</property>
+                    <structure name="format">
+                        <property name="category">Unformatted</property>
+                    </structure>
+                </scalar-parameter>
+                <scalar-parameter name="aaaa2" id="216">
+                    <text-property name="promptText">Segundo año</text-property>
+                    <property name="valueType">dynamic</property>
+                    <property name="dataSetName">Periodos YYYY</property>
+                    <expression name="valueExpr" type="javascript">dataSetRow["yyyy"]</expression>
+                    <expression name="sortByColumn">dataSetRow["yyyy"]</expression>
+                    <property name="sortDirection">desc</property>
+                    <property name="dataType">integer</property>
+                    <property name="distinct">true</property>
+                    <simple-property-list name="defaultValue">
+                        <value type="javascript">(new Date()).getFullYear() - 1</value>
+                    </simple-property-list>
+                    <list-property name="selectionList"/>
+                    <property name="paramType">simple</property>
+                    <property name="controlType">list-box</property>
+                    <property name="mustMatch">true</property>
+                    <property name="fixedOrder">false</property>
+                    <structure name="format">
+                        <property name="category">Unformatted</property>
+                    </structure>
+                </scalar-parameter>
+                <scalar-parameter name="aaaa3" id="217">
+                    <text-property name="promptText">Tercer año</text-property>
+                    <property name="valueType">dynamic</property>
+                    <property name="dataSetName">Periodos YYYY</property>
+                    <expression name="valueExpr" type="javascript">dataSetRow["yyyy"]</expression>
+                    <expression name="sortByColumn">dataSetRow["yyyy"]</expression>
+                    <property name="sortDirection">desc</property>
+                    <property name="dataType">integer</property>
+                    <property name="distinct">true</property>
+                    <simple-property-list name="defaultValue">
+                        <value type="javascript">(new Date()).getFullYear()</value>
+                    </simple-property-list>
+                    <list-property name="selectionList"/>
+                    <property name="paramType">simple</property>
+                    <property name="controlType">list-box</property>
+                    <property name="mustMatch">true</property>
+                    <property name="fixedOrder">false</property>
+                    <structure name="format">
+                        <property name="category">Unformatted</property>
+                    </structure>
+                </scalar-parameter>
+            </parameters>
+        </parameter-group>
     </parameters>
     <data-sources>
         <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="AEP Produccion" id="144">
@@ -101,45 +169,69 @@
     <data-sets>
         <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="VentasAnuales" id="146">
             <property name="nullsOrdering">nulls lowest</property>
-            <list-property name="columnHints">
+            <list-property name="columnHints"/>
+            <list-property name="parameters">
                 <structure>
-                    <property name="columnName">mm</property>
-                    <property name="analysis">measure</property>
-                    <text-property name="displayName">mm</text-property>
-                    <text-property name="heading">mm</text-property>
+                    <property name="name">param_1</property>
+                    <property name="paramName">aaaa1</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">-1</property>
+                    <property name="position">1</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
                 </structure>
                 <structure>
-                    <property name="columnName">mes</property>
-                    <property name="analysis">dimension</property>
-                    <text-property name="displayName">mes</text-property>
-                    <text-property name="heading">mes</text-property>
+                    <property name="name">param_2</property>
+                    <property name="paramName">aaaa2</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">-1</property>
+                    <property name="position">2</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
                 </structure>
                 <structure>
-                    <property name="columnName">vendedor</property>
-                    <property name="analysis">dimension</property>
-                    <text-property name="displayName">vendedor</text-property>
-                    <text-property name="heading">vendedor</text-property>
+                    <property name="name">param_3</property>
+                    <property name="paramName">aaaa3</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">-1</property>
+                    <property name="position">3</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
                 </structure>
                 <structure>
-                    <property name="columnName">-2012-</property>
-                    <property name="analysis">measure</property>
-                    <text-property name="displayName">-2012-</text-property>
-                    <text-property name="heading">-2012-</text-property>
+                    <property name="name">param_4</property>
+                    <property name="paramName">aaaa1</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">-1</property>
+                    <property name="position">4</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
                 </structure>
                 <structure>
-                    <property name="columnName">-2013-</property>
-                    <property name="analysis">measure</property>
-                    <text-property name="displayName">-2013-</text-property>
-                    <text-property name="heading">-2013-</text-property>
+                    <property name="name">param_5</property>
+                    <property name="paramName">aaaa2</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">-1</property>
+                    <property name="position">5</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
                 </structure>
                 <structure>
-                    <property name="columnName">-2014-</property>
-                    <property name="analysis">measure</property>
-                    <text-property name="displayName">-2014-</text-property>
-                    <text-property name="heading">-2014-</text-property>
+                    <property name="name">param_6</property>
+                    <property name="paramName">aaaa3</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">-1</property>
+                    <property name="position">6</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
                 </structure>
             </list-property>
-            <list-property name="parameters"/>
             <structure name="cachedMetaData">
                 <list-property name="resultSet">
                     <structure>
@@ -181,54 +273,48 @@
                     <property name="name">mm</property>
                     <property name="nativeName">mm</property>
                     <property name="dataType">integer</property>
-                    <property name="nativeDataType">4</property>
                 </structure>
                 <structure>
                     <property name="position">2</property>
                     <property name="name">mes</property>
                     <property name="nativeName">mes</property>
                     <property name="dataType">string</property>
-                    <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">3</property>
                     <property name="name">vendedor</property>
                     <property name="nativeName">vendedor</property>
                     <property name="dataType">string</property>
-                    <property name="nativeDataType">12</property>
                 </structure>
                 <structure>
                     <property name="position">4</property>
                     <property name="name">-2012-</property>
                     <property name="nativeName">-2012-</property>
                     <property name="dataType">decimal</property>
-                    <property name="nativeDataType">3</property>
                 </structure>
                 <structure>
                     <property name="position">5</property>
                     <property name="name">-2013-</property>
                     <property name="nativeName">-2013-</property>
                     <property name="dataType">decimal</property>
-                    <property name="nativeDataType">3</property>
                 </structure>
                 <structure>
                     <property name="position">6</property>
                     <property name="name">-2014-</property>
                     <property name="nativeName">-2014-</property>
                     <property name="dataType">decimal</property>
-                    <property name="nativeDataType">3</property>
                 </structure>
             </list-property>
             <xml-property name="queryText"><![CDATA[select s.mm, s.mes, s.vendedor,
-sum(case when s.yy = '2012' then s.total else 0 end) as '-2012-',
-sum(case when s.yy = '2013' then s.total else 0 end) as '-2013-',
-sum(case when s.yy = '2014' then s.total else 0 end) as '-2014-'
+sum(case when s.yy = ? then s.total else 0 end) as '-2012-',
+sum(case when s.yy = ? then s.total else 0 end) as '-2013-',
+sum(case when s.yy = ? then s.total else 0 end) as '-2014-'
 from (
 SELECT year(fecha_inicio) as yy, month(fecha_inicio) as mm, sum(total) as total, concat(v.nombre, ' ', v.apellido) as vendedor, m.nombre as mes
 FROM cotizaciones c
 inner join vendedores v on v.idVendedor = c.idVendedor
 inner join meses m on m.idMes = month(fecha_inicio)
-where year(fecha_inicio) in (2012, 2013, 2014)
+where year(fecha_inicio) in (?, ?, ?)
 group by yy, mm, vendedor
 order by yy asc, mm asc, vendedor asc
 ) s
@@ -237,6 +323,98 @@ order by s.mm, s.vendedor]]></xml-property>
             <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
   <Version>2.0</Version>
+  <DataSetParameters>
+    <parameter>
+      <design:ParameterDefinition>
+        <design:inOutMode>In</design:inOutMode>
+        <design:attributes>
+          <design:identifier>
+            <design:name></design:name>
+            <design:position>1</design:position>
+          </design:identifier>
+          <design:nativeDataTypeCode>-1</design:nativeDataTypeCode>
+          <design:precision>0</design:precision>
+          <design:scale>0</design:scale>
+          <design:nullability>Unknown</design:nullability>
+        </design:attributes>
+      </design:ParameterDefinition>
+    </parameter>
+    <parameter>
+      <design:ParameterDefinition>
+        <design:inOutMode>In</design:inOutMode>
+        <design:attributes>
+          <design:identifier>
+            <design:name></design:name>
+            <design:position>2</design:position>
+          </design:identifier>
+          <design:nativeDataTypeCode>-1</design:nativeDataTypeCode>
+          <design:precision>0</design:precision>
+          <design:scale>0</design:scale>
+          <design:nullability>Unknown</design:nullability>
+        </design:attributes>
+      </design:ParameterDefinition>
+    </parameter>
+    <parameter>
+      <design:ParameterDefinition>
+        <design:inOutMode>In</design:inOutMode>
+        <design:attributes>
+          <design:identifier>
+            <design:name></design:name>
+            <design:position>3</design:position>
+          </design:identifier>
+          <design:nativeDataTypeCode>-1</design:nativeDataTypeCode>
+          <design:precision>0</design:precision>
+          <design:scale>0</design:scale>
+          <design:nullability>Unknown</design:nullability>
+        </design:attributes>
+      </design:ParameterDefinition>
+    </parameter>
+    <parameter>
+      <design:ParameterDefinition>
+        <design:inOutMode>In</design:inOutMode>
+        <design:attributes>
+          <design:identifier>
+            <design:name></design:name>
+            <design:position>4</design:position>
+          </design:identifier>
+          <design:nativeDataTypeCode>-1</design:nativeDataTypeCode>
+          <design:precision>0</design:precision>
+          <design:scale>0</design:scale>
+          <design:nullability>Unknown</design:nullability>
+        </design:attributes>
+      </design:ParameterDefinition>
+    </parameter>
+    <parameter>
+      <design:ParameterDefinition>
+        <design:inOutMode>In</design:inOutMode>
+        <design:attributes>
+          <design:identifier>
+            <design:name></design:name>
+            <design:position>5</design:position>
+          </design:identifier>
+          <design:nativeDataTypeCode>-1</design:nativeDataTypeCode>
+          <design:precision>0</design:precision>
+          <design:scale>0</design:scale>
+          <design:nullability>Unknown</design:nullability>
+        </design:attributes>
+      </design:ParameterDefinition>
+    </parameter>
+    <parameter>
+      <design:ParameterDefinition>
+        <design:inOutMode>In</design:inOutMode>
+        <design:attributes>
+          <design:identifier>
+            <design:name></design:name>
+            <design:position>6</design:position>
+          </design:identifier>
+          <design:nativeDataTypeCode>-1</design:nativeDataTypeCode>
+          <design:precision>0</design:precision>
+          <design:scale>0</design:scale>
+          <design:nullability>Unknown</design:nullability>
+        </design:attributes>
+      </design:ParameterDefinition>
+    </parameter>
+  </DataSetParameters>
   <design:ResultSets derivedMetaData="true">
     <design:resultSetDefinitions>
       <design:resultSetColumns>
@@ -363,6 +541,71 @@ order by s.mm, s.vendedor]]></xml-property>
             <design:label>2014</design:label>
             <design:formattingHints>
               <design:displaySize>32</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Periodos YYYY" id="214">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">yyyy</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">yyyy</text-property>
+                    <text-property name="heading">yyyy</text-property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">yyyy</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">AEP Produccion</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">yyyy</property>
+                    <property name="nativeName">yyyy</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select distinct(year(fecha_inicio)) as yyyy
+from cotizaciones
+where fecha_inicio is not null
+order by yyyy desc]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>yyyy</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>4</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>yyyy</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>yyyy</design:label>
+            <design:formattingHints>
+              <design:displaySize>4</design:displaySize>
             </design:formattingHints>
           </design:usageHints>
         </design:resultColumnDefinitions>
@@ -645,6 +888,27 @@ Comparativo de Ventas Anuales
                     </list-property>
                     <property name="allowExport">true</property>
                 </structure>
+                <structure>
+                    <property name="name">labelYear1</property>
+                    <text-property name="displayName">labelYear1</text-property>
+                    <expression name="expression" type="javascript">'Año ' + params["aaaa1"].value</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">labelYear2</property>
+                    <text-property name="displayName">labelYear2</text-property>
+                    <expression name="expression" type="javascript">'Año ' + params["aaaa2"].value</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">labelYear3</property>
+                    <text-property name="displayName">labelYear3</text-property>
+                    <expression name="expression" type="javascript">'Año ' + params["aaaa3"].value</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
             </list-property>
             <column id="166">
                 <property name="width">0.365in</property>
@@ -660,26 +924,42 @@ Comparativo de Ventas Anuales
                     <property name="fontFamily">serif</property>
                     <property name="fontSize">9pt</property>
                     <property name="fontWeight">bold</property>
-                    <cell id="186"/>
+                    <cell id="186">
+                        <property name="borderBottomColor">#004080</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">medium</property>
+                    </cell>
                     <cell id="187">
+                        <property name="borderBottomColor">#004080</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">medium</property>
                         <label id="191">
                             <text-property name="text">Vendedor</text-property>
                         </label>
                     </cell>
                     <cell id="188">
-                        <label id="193">
-                            <text-property name="text">-2012-</text-property>
-                        </label>
+                        <property name="borderBottomColor">#004080</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <data id="218">
+                            <property name="resultSetColumn">labelYear1</property>
+                        </data>
                     </cell>
                     <cell id="189">
-                        <label id="195">
-                            <text-property name="text">-2013-</text-property>
-                        </label>
+                        <property name="borderBottomColor">#004080</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <data id="219">
+                            <property name="resultSetColumn">labelYear2</property>
+                        </data>
                     </cell>
                     <cell id="190">
-                        <label id="197">
-                            <text-property name="text">-2014-</text-property>
-                        </label>
+                        <property name="borderBottomColor">#004080</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <data id="220">
+                            <property name="resultSetColumn">labelYear3</property>
+                        </data>
                     </cell>
                 </row>
                 <row id="148">
