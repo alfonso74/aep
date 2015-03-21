@@ -277,8 +277,8 @@ public class BuscarClientesDialog extends TitleAreaDialog {
 		tabla.setLinesVisible(true);
 		tabla.setHeaderVisible(true);
 		GridData gridData = new GridData(SWT.FILL, SWT.FILL, false, false);
-		gridData.widthHint = 410;
-		gridData.heightHint = 90;
+		gridData.widthHint = 470;
+		gridData.heightHint = 100;
 		tabla.setLayoutData(gridData);
 		
 		TableColumn column = new TableColumn(tabla, SWT.RIGHT, 0);
