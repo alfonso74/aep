@@ -4,7 +4,7 @@
     <list-property name="propertyBindings">
         <structure>
             <property name="name">odaURL</property>
-            <property name="id">7</property>
+            <property name="id">211</property>
             <expression name="value" type="javascript">params["connectionURL"].value</expression>
         </structure>
     </list-property>
@@ -12,20 +12,85 @@
     <property name="iconFile">/templates/blank_report.gif</property>
     <property name="bidiLayoutOrientation">ltr</property>
     <property name="imageDPI">96</property>
-    <list-property name="libraries">
-        <structure>
-            <property name="fileName">reports/aep.rptlibrary</property>
-            <property name="namespace">aep</property>
-        </structure>
-    </list-property>
     <parameters>
-        <scalar-parameter name="connectionURL" id="10" extends="aep.connectionURL"/>
-        <scalar-parameter name="yyyy" id="11" extends="aep.yyyy"/>
-        <scalar-parameter name="estado" id="12" extends="aep.estado"/>
+        <scalar-parameter name="connectionURL" id="212">
+            <property name="hidden">true</property>
+            <property name="valueType">static</property>
+            <property name="isRequired">false</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant">jdbc:mysql://servidor:3306/aep</value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="yyyy" id="219">
+            <text-property name="helpText">Filtra las cotizaciones en base al año indicado</text-property>
+            <text-property name="promptText">Año de inicio</text-property>
+            <property name="valueType">dynamic</property>
+            <property name="dataSetName">Periodos YYYY</property>
+            <expression name="valueExpr" type="javascript">dataSetRow["yyyy"]</expression>
+            <expression name="sortByColumn">dataSetRow["yyyy"]</expression>
+            <property name="sortDirection">desc</property>
+            <property name="dataType">integer</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="javascript">(new Date()).getFullYear()</value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">list-box</property>
+            <property name="mustMatch">true</property>
+            <property name="fixedOrder">false</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="estado" id="220">
+            <text-property name="helpText">Filtra las cotizaciones en base al status indicado</text-property>
+            <text-property name="promptText">Cotizaciones con estado</text-property>
+            <property name="valueType">dynamic</property>
+            <property name="dataSetName">Status Cotizaciones</property>
+            <expression name="valueExpr" type="javascript">dataSetRow["CODIGO"]</expression>
+            <expression name="labelExpr" type="javascript">dataSetRow["DESCRIPCION"]</expression>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant">A</value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">list-box</property>
+            <property name="mustMatch">true</property>
+            <property name="fixedOrder">true</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
     </parameters>
     <data-sources>
-        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="AEP Produccion" id="7"
- extends="aep.AEP Produccion">
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="AEP Produccion" id="211">
+            <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>metadataBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledMetadataBidiFormatStr</name>
+                </ex-property>
+                <ex-property>
+                    <name>contentBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledContentBidiFormatStr</name>
+                </ex-property>
+            </list-property>
             <property name="odaDriverClass">com.mysql.jdbc.Driver</property>
             <property name="odaURL">jdbc:mysql://servidor:3306/aep</property>
             <property name="odaUser">carlos</property>
@@ -33,10 +98,6 @@
         </oda-data-source>
     </data-sources>
     <data-sets>
-        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Periodos YYYY" id="8"
- extends="aep.Periodos YYYY"/>
-        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Status Cotizaciones" id="9"
- extends="aep.Status Cotizaciones"/>
         <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Venta Anual por Fuente" id="144">
             <list-property name="computedColumns">
                 <structure>
@@ -158,6 +219,252 @@ group by fuente]]></xml-property>
       </design:ParameterDefinition>
     </parameter>
   </DataSetParameters>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Periodos YYYY" id="217">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">yyyy</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">yyyy</text-property>
+                    <text-property name="heading">yyyy</text-property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">yyyy</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">AEP Produccion</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">yyyy</property>
+                    <property name="nativeName">yyyy</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select distinct(year(fecha_inicio)) as yyyy
+from cotizaciones
+where fecha_inicio is not null
+order by yyyy desc]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>yyyy</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>4</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>yyyy</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>yyyy</design:label>
+            <design:formattingHints>
+              <design:displaySize>4</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Status Cotizaciones" id="218">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">idKEYWORD</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">idKEYWORD</text-property>
+                    <text-property name="heading">idKEYWORD</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">CODIGO</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">CODIGO</text-property>
+                    <text-property name="heading">CODIGO</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">DESCRIPCION</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">DESCRIPCION</text-property>
+                    <text-property name="heading">DESCRIPCION</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">TIPO</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">TIPO</text-property>
+                    <text-property name="heading">TIPO</text-property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">idKEYWORD</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">CODIGO</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">DESCRIPCION</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">TIPO</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">AEP Produccion</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">idKEYWORD</property>
+                    <property name="nativeName">idKEYWORD</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">CODIGO</property>
+                    <property name="nativeName">CODIGO</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">DESCRIPCION</property>
+                    <property name="nativeName">DESCRIPCION</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">TIPO</property>
+                    <property name="nativeName">TIPO</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select *
+from keywords
+where tipo = 'Status de cotizaciones']]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>idKEYWORD</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>idKEYWORD</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>idKEYWORD</design:label>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>CODIGO</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>5</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>CODIGO</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>CODIGO</design:label>
+            <design:formattingHints>
+              <design:displaySize>5</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>DESCRIPCION</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>25</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>DESCRIPCION</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>DESCRIPCION</design:label>
+            <design:formattingHints>
+              <design:displaySize>25</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>TIPO</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>30</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>TIPO</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>TIPO</design:label>
+            <design:formattingHints>
+              <design:displaySize>30</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
 </model:DesignValues>]]></xml-property>
         </oda-data-set>
     </data-sets>
@@ -1419,12 +1726,51 @@ Ventas Anuales por Fuente
         <structure>
             <property name="name">logoAnconSmall.gif</property>
             <property name="type">image/gif</property>
-            <property name="libReference">aep.logoAnconSmall.gif</property>
+            <property name="data">
+                R0lGODlhHAAmAPcAAIQ+HCSiPNS2rDRyHKzetFxaHLSGbFy6dPTm5ASOHJxiRGxOHHzKjOz67CSePESu
+                VJzWrMTmzERmHBSWLHxGHIzOnAyGHNzy5BySLPz+/DSmTNTGvLzixExiHLyWhHTCfASSHKRuVJRWPITK
+                lOz69FSyZKzatMzq1DxuHIxKLPTy7IRCHDSmRCx2HKzevFReHLSGdGS6dAyOHGRWHITKjEyaTKTWrERq
+                HBSaLHRKHJTOnByCHOTy5NzGvJxuXPT69FS2ZNTq1P9Eff8AAG0+gAUFU5ED1XwAdxXq6goEBIIHB3wA
+                AAAMcAAAPhUAfQAAAGAA2AMA5wAAEgAAAJBgh4DI3BhP1AAAd6hQcF/nPhUSfQAAAADg+ACuDABEfQAA
+                AH7gAACuAABEAMAAAAAAYAAAyAAATwAAAP/sAf/mAP8SAP8AAP8QUv/gAP/UAf93AQA0uAAF6wAGEgAA
+                AAAgoQAArQAARAAAAAA+0QAFtBUD1AAAd1MSyH8AvgAARwACACABPuYABRIAAwAAAC+xUA6L6ILUEnx3
+                ANto9AUA64LaEnx3AMCAANzmAE8SAAAAAKg0AF/nAAESAAAAAGwkBwDgAADUAAB3AFxTq+V/NxIAkQAA
+                fDQ4AADnAAASAMAAADiDAPkqABKCAAB8ABgAAO4AAJAAAHwAAHAAAAUAAJEAAHwAAP8AAP8AAP8AAP8A
+                AG0AKAUBAJEAAHwAAErn//Yq/4CC/3x8/wBcKADnABUSAAAAAADCrAAq8gCCEgB8AKgAAF8AABUAAAAA
+                AAAMZAEA6ACwEgAAAAC+/gA+WACCSwB8AFf/RPb/6ID/Enz/AEhgW+foYhISTgAAAKj3eF8+6BWCEgB8
+                AABsvgBvPgBOggAAfEEoCDuW6T9OEncAABsA1rMB/9QA/3cAf1Rc4Obn6BISEgAAACwADAABAAAAsAAA
+                AAAWvgA/PhCCggF8fOMBDJQAANQAsHcAAEkAU2Ywf9YwAHcAAOoBAAQAAAcAAAAAAAwwbgDn/QASRgAA
+                ACH5BAEAABkALAAAAAAcACYABwj/ADMIHEiwoMGDCAmSOJAARAkSCSMKbOAABIiGHyQm/MGi4UUQODQO
+                JHFipMWPF4OIrIADxAOIGYCc/HhBowuPCUYIhNDQo06BLh64OBgDpQaBPz7igDAwRk8OBitabDjwAUiV
+                Aivg/GkSJQgeQIH8GHihp8UKBSN4tHgUYYSTDSMUDIKSBcyDdJUe/GCRxdgMDDQk0HAAqkCpIGIgtDEC
+                IomOMxM8zOACpA6NJxB7LSEwyN+IJ3CsTWAWBNOREEoabDBhZosWUy86GNm6bUENUzskuCEhwQILJ4dm
+                0HFS9UC+PRckkCDBQo7YijPgjkvwwlQUFiS0YC5B98kJAj8CtSk4YmqBATsKaF8wwGtJqw8+C3yAc0YL
+                ADkAACANYkdDpj/YcNABHyWwAwX66UfaAsqBwNVBPLR0kn4IUiABBcr9J1EQuF20QIIUAmcRWBqVB4IE
+                IBYgoksiCXTBBxggCAAK/CWAA1YtZrDBCvrVMAINI9hwV44G6LdCjgmloF8ISB60gYw+NGmQB0YyKSVB
+                IiQY5ZUCIcAjgltyKQAAPK6gAJcCwcBjgiqg6QOZZK7QA5poBgQAOw==
+</property>
         </structure>
         <structure>
             <property name="name">plus.gif</property>
             <property name="type">image/gif</property>
-            <property name="libReference">aep.plus.gif</property>
+            <property name="data">
+                R0lGODlhCwALAPdTAP////z8/b3I4LfD3Z2u0ZSlzJCiyo+iynaNv3GKvHGJvGqDuWZ/t2J8tVx3slt3
+                sUxqqklnqUZlp0V230VlqEVkpkBuzUBtzUBgpTxcojtitjthtjpgtTpcozlgtjlbojhftDherjhZoDZc
+                rzZcrjZcrTZZozVcszVYozVXojVXoTVXoDRXoDRWoTRWnzRVnjRVnTNXpTNWnzNVnTNUmzNSmDNRlzJU
+                nTJPkjFUoTFUnjFRlzFQlzBUoTBTnTBSnS5RnS1OlSlDeClBdyhEfyhBcyhBcihAcSg/cCZLnCZLmSAz
+                WyAyWSAyWB4vUxpBkhpAkxQ7kBM6kAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                ACH5BAEAAFMALAAAAAALAAsAAAh7AD0IOVLEiEEjRZA4uQCDhgogSnSsaIGjiQUULn5AWIBBB4saSyyY
+                8CHlAIAHUGSAtNAjAgIBAAgk6MAjZBIFAHLmpBAkZA4JDQYAKMDgw46QI6MYCODgicqQKV7cyFBBxAwX
+                NphM2MAVxAkOGzSEGBKDxIizaEmUIBIQADs=
+</property>
         </structure>
     </list-property>
 </report>
