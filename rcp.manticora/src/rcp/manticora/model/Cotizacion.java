@@ -16,8 +16,12 @@ public class Cotizacion implements IEditableDocument {
 	private NumeroTour numeroTour;
 	private Date fechaInicio;
 	private Date fechaFin;
+	/** Nombre del tour, que puede coincidir con el nombre del cliente */
 	private String nombre;
+	/** Este es el cliente "real" que está pagando */
 	private String prospecto;
+	/** Solo para clientes 'Directos', indica cómo contactó a AEP */
+	private String fuente;
 	private Float subtotal;
 	private Float porcHospedaje;
 	private Float hospedaje;
@@ -35,6 +39,8 @@ public class Cotizacion implements IEditableDocument {
 	private String estado;
 	private String dspVendedor;
 	
+	/** El "Origen de la venta" es equivalente al tipo de cliente que generó la venta */
+	private TipoCliente origenVenta;
 	private Set<Comision> listaComisiones;
 	private Red redViajes;
 	private ICliente cliente;
@@ -43,7 +49,6 @@ public class Cotizacion implements IEditableDocument {
 	
 	public Cotizacion() {
 		listaComisiones = new HashSet<Comision>();
-		//listaActividades = new HashSet<LineaCotizacion>();
 		listaActividades = new TreeSet<LineaCotizacion>(new CotizacionesComparator());
 		listaPaxs = new HashSet<Pax>();
 		this.fechaCreacion = new Date();
@@ -67,7 +72,6 @@ public class Cotizacion implements IEditableDocument {
 		this.paxs = paxs;
 		this.estado = estado;
 		this.fechaCreacion = new Date();
-		//listaActividades = new HashSet<LineaCotizacion>();
 		listaActividades = new TreeSet<LineaCotizacion>();
 		listaPaxs = new HashSet<Pax>();
 	}
@@ -179,6 +183,20 @@ public class Cotizacion implements IEditableDocument {
 		return estado;
 	}
 	
+	/** Retorna el "Origen de la venta", o dicho de otra forma, el tipo de cliente
+	 *  que generó la venta */
+	public TipoCliente getOrigenVenta() {
+		return origenVenta;
+	}
+	
+	/**
+	 * Permite indicar el "Origen de la venta".
+	 * @param origenVenta Tipo de cliente que generó la venta
+	 */
+	public void setOrigenVenta(TipoCliente origenVenta) {
+		this.origenVenta = origenVenta;
+	}
+
 	public Comision getComision() {
 		Comision comision = null;
 		if (listaComisiones != null && !listaComisiones.isEmpty()) {
@@ -391,6 +409,14 @@ public class Cotizacion implements IEditableDocument {
 
 	public void setProspecto(String prospecto) {
 		this.prospecto = prospecto;
+	}
+	
+	public String getFuente() {
+		return fuente;
+	}
+
+	public void setFuente(String fuente) {
+		this.fuente = fuente;
 	}
 
 	public Long getIdSolicitud() {

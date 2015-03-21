@@ -20,6 +20,7 @@
 		<property name="fechaFin" type = "date" column="FECHA_FIN"/>
 		<property name="nombre"/>
 		<property name="prospecto" column="CLIENTE"/>
+		<property name="fuente"></property>
 		<property name="subtotal"/>
 		<property name="porcHospedaje" column="PORC_HOSPEDAJE"/>
 		<property name="hospedaje"/>
@@ -39,6 +40,10 @@
 		<one-to-one name="comision"
 				property-ref="cotizacion"/>
 		 -->
+		 <many-to-one name="origenVenta" lazy="false"
+				column="idTipo" 
+				unique="false"
+				not-null="false"/>
 		<set name="listaComisiones" inverse="true"
 			cascade="all,delete-orphan">
 			<key column="idCotizacion" not-null="true"/>
