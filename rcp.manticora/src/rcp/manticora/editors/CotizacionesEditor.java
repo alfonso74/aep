@@ -21,6 +21,8 @@ import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Font;
@@ -56,10 +58,11 @@ import rcp.manticora.dialogs.MyInputDialogData;
 import rcp.manticora.model.Cliente;
 import rcp.manticora.model.Comision;
 import rcp.manticora.model.Cotizacion;
+import rcp.manticora.model.Fuente;
 import rcp.manticora.model.ICliente;
 import rcp.manticora.model.LineaCotizacion;
 import rcp.manticora.model.Pax;
-import rcp.manticora.model.Red;
+import rcp.manticora.model.TipoCliente;
 import rcp.manticora.model.TipoKeyword;
 import rcp.manticora.services.AutenticacionUtil;
 import rcp.manticora.services.ComboData;
@@ -73,8 +76,6 @@ public class CotizacionesEditor extends AbstractEditorH {
 	private final String pluginId = Application.PLUGIN_ID;
 	private String idSession = ID + FechaUtil.getMilisegundos();
 	private boolean isEditable = true;
-	/** Texto: -- Ninguna -- **/
-	private final String REFERIDA_NONE = "- Ninguna -";
 	/** Texto: -- Ninguno -- **/
 	private final String REFERIDO_NONE = "-- Ninguno --";
 	
@@ -84,8 +85,9 @@ public class CotizacionesEditor extends AbstractEditorH {
 	private Text txtFin;
 	private Text txtEstado;
 	private Text txtPaxs;
-	private Combo comboRedViajes;
+	private Combo comboOrigenVenta;
 	private Combo comboVendedor;
+	private Combo comboFuente;
 	private Combo comboReferido;
 	private Text txtPago;
 	private Float porcPago;
@@ -109,7 +111,7 @@ public class CotizacionesEditor extends AbstractEditorH {
 	
 	private Cotizacion registro;
 	private ComboData cdStatus;
-	private ComboData cdRedViajes;
+	private ComboData cdOrigenVenta;
 	private ComboData cdVendedor;
 	private ComboData cdReferido;
 	private ComboDataController cdController;
@@ -128,6 +130,8 @@ public class CotizacionesEditor extends AbstractEditorH {
 	private Label lblPaxs;
 	private Text txtNumeroTour;
 	private Text txtComision;
+	private GridData gridData_2;
+	private GridData gridData_3;
 
 	
 	public CotizacionesEditor() {
@@ -136,8 +140,7 @@ public class CotizacionesEditor extends AbstractEditorH {
 		cdController = new ComboDataController();
 		cdStatus = cdController.getComboDataKeyword(TipoKeyword.STATUS_COTIZACION);
 		cdVendedor = cdController.getComboDataVendedoresActivos();
-		cdRedViajes = cdController.getComboDataRedes();
-		cdRedViajes.agregarItemAt(REFERIDA_NONE, "", null, 0);
+		cdOrigenVenta = cdController.getComboDataTipoClientesActivos();
 		cdReferido = cdController.getComboDataClientesComisionables();
 		cdReferido.agregarItemAt(REFERIDO_NONE, "", null, 0);
 	}
@@ -168,6 +171,7 @@ public class CotizacionesEditor extends AbstractEditorH {
 		Date pFin = FechaUtil.toDate(txtFin.getText());
 		String pNombre = txtANombreDe.getText();
 		String pProspecto = txtNombreCliente.getText();
+		String pFuente = comboFuente.getText();
 		Float pSubTotal = txt2Float(lSubtotal.getText());
 		Float pPorcHospedaje = txt2Float(txtPorcHospedaje.getText());
 		Float pHospedaje = txt2Float(lHospedaje.getText());
@@ -178,7 +182,7 @@ public class CotizacionesEditor extends AbstractEditorH {
 		porcPago = (pPago / pTotal) * 100;
 		Integer pPaxs = txt2Integer(txtPaxs.getText());
 		Long pIdVendedor = cdVendedor.getKeyAsLongByIndex(comboVendedor.getSelectionIndex());
-		Red pRedViajes = (Red) cdRedViajes.getObjectByIndex(comboRedViajes.getSelectionIndex());
+		TipoCliente pOrigenVenta = (TipoCliente) cdOrigenVenta.getObjectByIndex(comboOrigenVenta.getSelectionIndex());
 		Cliente pReferidoPor = (Cliente) cdReferido.getObjectByIndex(comboReferido.getSelectionIndex());
 		
 		String pVendedor = comboVendedor.getText();
@@ -198,6 +202,7 @@ public class CotizacionesEditor extends AbstractEditorH {
 		registro.setCliente(cliente);
 		registro.setProspecto(pProspecto);
 		registro.setNombre(pNombre);
+		registro.setFuente(pFuente);
 		registro.setNumeroTour(pNumeroTour);
 		registro.setFechaInicio(pInicio);
 		registro.setFechaFin(pFin);
@@ -211,7 +216,7 @@ public class CotizacionesEditor extends AbstractEditorH {
 		registro.setPorcPago(porcPago);
 		registro.setPaxs(pPaxs);
 		registro.setComision(comision);
-		registro.setRedViajes(pRedViajes);
+		registro.setOrigenVenta(pOrigenVenta);
 		registro.setIdVendedor(pIdVendedor);
 		registro.setDspVendedor(pVendedor);
 		registro.setEstado(pEstado);
@@ -266,6 +271,11 @@ public class CotizacionesEditor extends AbstractEditorH {
 					"El nombre del cliente no puede superar los 50 caracteres (" + pNombreCliente.length() + ").");
 			return false;
 		}
+		if (comboOrigenVenta.getSelectionIndex() == -1) {
+			MessageDialog.openInformation(getSite().getShell(), "Validación de campos",
+				"El campo de \"Origen de venta\" no puede quedar en blanco");
+			return false;
+		}
 		if (comboVendedor.getSelectionIndex() == -1) {
 			MessageDialog.openInformation(getSite().getShell(), "Validación de campos",
 					"Debe seleccionar un vendedor para la cotización.");
@@ -291,6 +301,13 @@ public class CotizacionesEditor extends AbstractEditorH {
 			MessageDialog.openInformation(getSite().getShell(), "Validación de campos",
 				"Debe indicar el porcentaje de impuesto que se aplicará a la cotización.");
 			return false;
+		}
+		if (comboOrigenVenta.getText().equalsIgnoreCase("Directo")) {
+			if (comboFuente.getSelectionIndex() == -1) {
+				MessageDialog.openInformation(getSite().getShell(), "Validación de campos",
+						"Debe seleccionar un elemento del campo \"Fuente\" si el origen de la venta es \"Directo\".");
+				return false;
+			}
 		}
 		if (comboReferido.getSelectionIndex() != -1) {
 			String comboText = comboReferido.getText();
@@ -417,6 +434,7 @@ public class CotizacionesEditor extends AbstractEditorH {
 			txtEstado.setText("Activa");
 			txtPago.setText("0.00");
 			txtPorcImpuesto.setText("0");
+			comboFuente.setEnabled(false);
 			txtComision.setEnabled(false);
 			viewerAct.setInput(registro.getListaActividades());
 			viewerPaxs.setInput(registro.getListaPaxs());
@@ -439,9 +457,18 @@ public class CotizacionesEditor extends AbstractEditorH {
 			txtEstado.setText(cdStatus.getTextoByKey(registro.getEstado()));
 			txtPaxs.setText(valor2Txt(registro.getPaxs()));
 			System.out.println(registro.getIdVendedor() + "ja: " + registro.getDspVendedor());
-			Red redViajes = registro.getRedViajes();
-			if (redViajes != null) {
-				comboRedViajes.setText(registro.getRedViajes().getDescripcion());
+			// Esto es requerido porque el combo box puede hacer referencia a un registro "Inactivo" que estaba
+			// "Activo" al momento de guardar la cotización.  Si agregamos el registro inactivo, al guardar
+			// va a reventar el proceso porque no encuentra la selección del combo box.
+			// TODO algún día hacer que el ComboData discrimine elementos Activos/Inactivos.
+			if (registro.getOrigenVenta() != null) {
+				comboOrigenVenta.setText(registro.getOrigenVenta().getDescripcion());
+				if (comboOrigenVenta.getSelectionIndex() == -1) {
+					String dspTipoCliente = registro.getOrigenVenta().getDescripcion() + " (Inactivo)";
+					cdOrigenVenta.agregarItem(dspTipoCliente, registro.getOrigenVenta().getIdTipo(), registro.getOrigenVenta());
+					comboOrigenVenta.add(dspTipoCliente);
+					comboOrigenVenta.select(comboOrigenVenta.indexOf(dspTipoCliente));
+				}
 			}
 			comboVendedor.select(comboVendedor.indexOf(valor2Txt(registro.getDspVendedor())));
 			if (comboVendedor.getSelectionIndex() == -1) {
@@ -451,6 +478,12 @@ public class CotizacionesEditor extends AbstractEditorH {
 					comboVendedor.select(comboVendedor.indexOf(valor2Txt(registro.getDspVendedor())));
 				}
 			}
+			
+			comboFuente.setText(valor2Txt(registro.getFuente()));
+			if (!comboOrigenVenta.getText().equalsIgnoreCase("Directo")) {
+				comboFuente.setEnabled(false);
+			}
+			
 			txtPago.setText(valor2Txt(registro.getPago(), "0.00"));
 			// cargamos datos del cliente
 			if (registro.getCliente() != null) {
@@ -615,13 +648,24 @@ public class CotizacionesEditor extends AbstractEditorH {
 		txtPaxs.setTextLimit(3);
 		txtPaxs.addModifyListener(this.createModifyListener());
 		
-		Label lblRedViajes = new Label(grupoTop, SWT.NONE);
-		lblRedViajes.setText("Red de viajes:");
+		Label lblOrigenVenta = new Label(grupoTop, SWT.NONE);
+		lblOrigenVenta.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+		lblOrigenVenta.setText("Origen venta:");
 		
-		comboRedViajes = new Combo(grupoTop, SWT.READ_ONLY);
-		comboRedViajes.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1));
-		comboRedViajes.setItems(cdRedViajes.getTexto());
-		comboRedViajes.addModifyListener(this.createModifyListener());
+		comboOrigenVenta = new Combo(grupoTop, SWT.READ_ONLY);
+		comboOrigenVenta.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1));
+		comboOrigenVenta.setItems(cdOrigenVenta.getTexto());
+		comboOrigenVenta.addModifyListener(this.createModifyListener());
+		comboOrigenVenta.addModifyListener(new ModifyListener() {
+			public void modifyText(ModifyEvent e) {
+				if (comboOrigenVenta.getText().equalsIgnoreCase("Directo")) {
+					comboFuente.setEnabled(true);
+				} else {
+					comboFuente.deselectAll();
+					comboFuente.setEnabled(false);
+				}
+			}
+		});
 		
 		lblVendedor = new Label(grupoTop, SWT.NONE);
 		GridData gd_lblVendedor = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
@@ -690,7 +734,7 @@ public class CotizacionesEditor extends AbstractEditorH {
 		Group grupoCliente = new Group(parent, SWT.NONE);
 		grupoCliente.setText(" Vendido a ");
 		gridLayout = new GridLayout();
-		gridLayout.numColumns = 3;
+		gridLayout.numColumns = 5;
 		grupoCliente.setLayout(gridLayout);
 		GridData gdCliente = new GridData(GridData.FILL, GridData.FILL, true, true);
 		gdCliente.horizontalSpan = 1;
@@ -705,8 +749,9 @@ public class CotizacionesEditor extends AbstractEditorH {
 		txtNoCliente.setEnabled(false);
 		
 		Button bBuscar = new Button(grupoCliente, SWT.PUSH);
-		gridData = new GridData(18,18);
-		bBuscar.setLayoutData(gridData);
+		gridData_2 = new GridData(18,18);
+		gridData_2.horizontalSpan = 3;
+		bBuscar.setLayoutData(gridData_2);
 		image = AbstractUIPlugin.imageDescriptorFromPlugin(pluginId, "icons/lupa3.gif");
 		bBuscar.setImage(image.createImage());
 		bBuscar.addSelectionListener(new SelectionAdapter() {
@@ -719,23 +764,24 @@ public class CotizacionesEditor extends AbstractEditorH {
 		l = new Label(grupoCliente, SWT.None);
 		l.setText("Nombre:");
 		txtNombreCliente = new Text(grupoCliente, SWT.SINGLE | SWT.BORDER);
-		gridData = new GridData(200,15);
-		gridData.horizontalSpan = 2;
-		txtNombreCliente.setLayoutData(gridData);
+		gridData_3 = new GridData(200,15);
+		gridData_3.horizontalSpan = 2;
+		txtNombreCliente.setLayoutData(gridData_3);
 		txtNombreCliente.addModifyListener(this.createModifyListener());
+		
+		Label lblFuente = new Label(grupoCliente, SWT.NONE);
+		lblFuente.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+		lblFuente.setText("Fuente:");
+		
+		comboFuente = new Combo(grupoCliente, SWT.READ_ONLY);
+		comboFuente.setItems(Fuente.getAsStringArray());
+		comboFuente.addModifyListener(this.createModifyListener());
 		
 		Label lblReferido = new Label(grupoCliente, SWT.NONE);
 		lblReferido.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
 		lblReferido.setText("Referido por:");
 		
-		Composite composite = new Composite(grupoCliente, SWT.NONE);
-		composite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
-		GridLayout gl_composite = new GridLayout(4, false);
-		gl_composite.marginWidth = 0;
-		gl_composite.marginHeight = 0;
-		composite.setLayout(gl_composite);
-		
-		comboReferido = new Combo(composite, SWT.READ_ONLY);
+		comboReferido = new Combo(grupoCliente, SWT.READ_ONLY);
 		GridData gd_comboReferido = new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1);
 		gd_comboReferido.widthHint = 185;
 		comboReferido.setLayoutData(gd_comboReferido);
@@ -754,16 +800,10 @@ public class CotizacionesEditor extends AbstractEditorH {
 			}
 		});
 		
-		Label lblComision = new Label(composite, SWT.NONE);
-		GridData gd_lblComision = new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1);
-		gd_lblComision.horizontalIndent = 25;
-		lblComision.setLayoutData(gd_lblComision);
-		lblComision.setText("Comisi\u00F3n:");
+		Label lblComision = new Label(grupoCliente, SWT.NONE);
+		lblComision.setText("Comisión:");
 		
-		txtComision = new Text(composite, SWT.BORDER);
-		GridData gd_txtComision = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
-		gd_txtComision.widthHint = 50;
-		txtComision.setLayoutData(gd_txtComision);
+		txtComision = new Text(grupoCliente, SWT.BORDER);
 		txtComision.addModifyListener(this.createModifyListener());
 		
 		
