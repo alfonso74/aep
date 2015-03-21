@@ -65,7 +65,7 @@
             <text-property name="helpText">Filtra las cotizaciones en base al año indicado</text-property>
             <text-property name="promptText">Año de inicio</text-property>
             <property name="valueType">dynamic</property>
-            <property name="dataSetName">Listado YYYY</property>
+            <property name="dataSetName">Periodos YYYY</property>
             <expression name="valueExpr" type="javascript">dataSetRow["yyyy"]</expression>
             <expression name="sortByColumn">dataSetRow["yyyy"]</expression>
             <property name="sortDirection">desc</property>
@@ -152,7 +152,7 @@
         </oda-data-source>
     </data-sources>
     <data-sets>
-        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Listado YYYY" id="146">
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Periodos YYYY" id="146">
             <list-property name="columnHints">
                 <structure>
                     <property name="columnName">yyyy</property>
